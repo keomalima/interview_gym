@@ -115,5 +115,5 @@
       "expected": null
     }
   ],
-  "referenceCode": "export function minRotatedValue(nums) {\n  if(!nums.length)return null;\n  let l=0,r=nums.length-1;\n  while(l<r){const m=Math.floor((l+r)/2);if(nums[m]>nums[r])l=m+1;else r=m;}\n  return nums[l];\n}\n"
+  "referenceCode": "export function minRotatedValue(nums) {\n    if (!nums.length)\n        return null;\n    let l = 0, r = nums.length - 1;\n    while (l < r) {\n        const m = Math.floor((l + r) / 2);\n        if (nums[m] > nums[r])\n            l = m + 1;\n        else\n            r = m;\n    }\n    return nums[l];\n}\n"
 }

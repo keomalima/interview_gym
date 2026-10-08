@@ -102,5 +102,5 @@
       "expected": "invalid"
     }
   ],
-  "referenceCode": "export function classifyTriangle(a,b,c) {\n  const sides=[a,b,c];if(sides.some(n=>n<=0)||a+b<=c||a+c<=b||b+c<=a)return 'invalid';\n  if(a===b&&b===c)return 'equilateral';\n  return a===b||b===c||a===c?'isosceles':'scalene';\n}\n"
+  "referenceCode": "export function classifyTriangle(a, b, c) {\n    const sides = [a, b, c];\n    if (sides.some(n => n <= 0) || a + b <= c || a + c <= b || b + c <= a)\n        return 'invalid';\n    if (a === b && b === c)\n        return 'equilateral';\n    return a === b || b === c || a === c ? 'isosceles' : 'scalene';\n}\n"
 }

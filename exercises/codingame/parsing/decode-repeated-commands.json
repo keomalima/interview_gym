@@ -121,5 +121,5 @@
       "error": "Invalid command"
     }
   ],
-  "referenceCode": "export function expandCommands(input) {\n  const out=[];const commands=input.trim();if(!commands)return [];\n  for(const token of commands.split(/\\s+/)){const m=/^([NSEW])(\\d+)$/.exec(token);if(!m)throw new Error('Invalid command');const n=Number(m[2]);if(n>1000)throw new Error('Too many moves');for(let i=0;i<n;i++)out.push(m[1]);}\n  return out;\n}\n"
+  "referenceCode": "export function expandCommands(input) {\n    const out = [];\n    const commands = input.trim();\n    if (!commands)\n        return [];\n    for (const token of commands.split(/\\s+/)) {\n        const m = /^([NSEW])(\\d+)$/.exec(token);\n        if (!m)\n            throw new Error('Invalid command');\n        const n = Number(m[2]);\n        if (n > 1000)\n            throw new Error('Too many moves');\n        for (let i = 0; i < n; i++)\n            out.push(m[1]);\n    }\n    return out;\n}\n"
 }

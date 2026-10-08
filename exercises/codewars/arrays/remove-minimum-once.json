@@ -145,5 +145,5 @@
       "expected": []
     }
   ],
-  "referenceCode": "export function removeFirstMinimum(nums) {\n  if(!nums.length)return [];\n  const idx=nums.indexOf(Math.min(...nums));return nums.filter((_,i)=>i!==idx);\n}\n"
+  "referenceCode": "export function removeFirstMinimum(nums) {\n    if (!nums.length)\n        return [];\n    const idx = nums.indexOf(Math.min(...nums));\n    return nums.filter((_, i) => i !== idx);\n}\n"
 }

@@ -177,5 +177,5 @@
       }
     }
   ],
-  "referenceCode": "export function aggregateHttpStatuses(logs: { status: number }[]) {\n  const result={success:0,redirect:0,clientError:0,serverError:0,other:0};\n  for(const x of logs){const s=x.status;const key=s>=200&&s<300?'success':s>=300&&s<400?'redirect':s>=400&&s<500?'clientError':s>=500&&s<600?'serverError':'other';result[key]++;}\n  return result;\n}\n"
+  "referenceCode": "export function aggregateHttpStatuses(logs: {\n    status: number;\n}[]) {\n    const result = { success: 0, redirect: 0, clientError: 0, serverError: 0, other: 0 };\n    for (const x of logs) {\n        const s = x.status;\n        const key = s >= 200 && s < 300 ? 'success' : s >= 300 && s < 400 ? 'redirect' : s >= 400 && s < 500 ? 'clientError' : s >= 500 && s < 600 ? 'serverError' : 'other';\n        result[key]++;\n    }\n    return result;\n}\n"
 }

@@ -87,5 +87,5 @@
       "expected": true
     }
   ],
-  "referenceCode": "export function isPangram(text) {\n  const letters=new Set((text.toLowerCase().match(/[a-z]/g)||[]));return letters.size===26;\n}\n"
+  "referenceCode": "export function isPangram(text) {\n    const letters = new Set((text.toLowerCase().match(/[a-z]/g) || []));\n    return letters.size === 26;\n}\n"
 }

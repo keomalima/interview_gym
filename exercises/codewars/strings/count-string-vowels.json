@@ -87,5 +87,5 @@
       "expected": 3
     }
   ],
-  "referenceCode": "export function countVowels(text) {return (text.match(/[aeiou]/gi)||[]).length;}\n"
+  "referenceCode": "export function countVowels(text) { return (text.match(/[aeiou]/gi) || []).length; }\n"
 }

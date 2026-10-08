@@ -158,5 +158,5 @@
       ]
     }
   ],
-  "referenceCode": "export function kClosestSorted(nums,k,target) {\n  if(k<0||k>nums.length)return [];\n  let l=0,r=nums.length-k;\n  while(l<r){const m=Math.floor((l+r)/2);if(target-nums[m]>nums[m+k]-target)l=m+1;else r=m;}\n  return nums.slice(l,l+k);\n}\n"
+  "referenceCode": "export function kClosestSorted(nums, k, target) {\n    if (k < 0 || k > nums.length)\n        return [];\n    let l = 0, r = nums.length - k;\n    while (l < r) {\n        const m = Math.floor((l + r) / 2);\n        if (target - nums[m] > nums[m + k] - target)\n            l = m + 1;\n        else\n            r = m;\n    }\n    return nums.slice(l, l + k);\n}\n"
 }

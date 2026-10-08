@@ -87,5 +87,5 @@
       "expected": 8
     }
   ],
-  "referenceCode": "export function scrabbleScore(word) {\n  const values={1:'AEIOULNRST',2:'DG',3:'BCMP',4:'FHVWY',5:'K',8:'JX',10:'QZ'};\n  let sum=0;for(const c of word.toUpperCase())for(const [value,letters] of Object.entries(values))if(letters.includes(c))sum+=Number(value);\n  return sum;\n}\n"
+  "referenceCode": "export function scrabbleScore(word) {\n    const values = { 1: 'AEIOULNRST', 2: 'DG', 3: 'BCMP', 4: 'FHVWY', 5: 'K', 8: 'JX', 10: 'QZ' };\n    let sum = 0;\n    for (const c of word.toUpperCase())\n        for (const [value, letters] of Object.entries(values))\n            if (letters.includes(c))\n                sum += Number(value);\n    return sum;\n}\n"
 }

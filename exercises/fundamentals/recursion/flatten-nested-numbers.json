@@ -173,5 +173,5 @@
       ]
     }
   ],
-  "referenceCode": "export function flattenNestedNumbers(items) {\n  const result = [];\n  function visit(list) {\n    for (const value of list) {\n      if (Array.isArray(value)) visit(value);\n      else result.push(value);\n    }\n  }\n  visit(items);\n  return result;\n}\n"
+  "referenceCode": "export function flattenNestedNumbers(items) {\n    const result = [];\n    function visit(list) {\n        for (const value of list) {\n            if (Array.isArray(value))\n                visit(value);\n            else\n                result.push(value);\n        }\n    }\n    visit(items);\n    return result;\n}\n"
 }

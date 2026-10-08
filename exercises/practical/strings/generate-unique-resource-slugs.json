@@ -123,5 +123,5 @@
       ]
     }
   ],
-  "referenceCode": "export function makeUniqueSlugs(titles: string[]) {\n  const used=new Set(),out=[];\n  for(const title of titles){const base=title.toLowerCase().trim().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'item';let slug=base,index=2;\n    while(used.has(slug))slug=base+'-'+index++;\n    used.add(slug);out.push(slug);\n  }\n  return out;\n}\n"
+  "referenceCode": "export function makeUniqueSlugs(titles: string[]) {\n    const used = new Set(), out = [];\n    for (const title of titles) {\n        const base = title.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'item';\n        let slug = base, index = 2;\n        while (used.has(slug))\n            slug = base + '-' + index++;\n        used.add(slug);\n        out.push(slug);\n    }\n    return out;\n}\n"
 }

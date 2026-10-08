@@ -178,5 +178,5 @@
       ]
     }
   ],
-  "referenceCode": "export function salesByRegion(orders: { region: string; quantity: number; unitCents: number }[]) {\n  const map=new Map();for(const o of orders){const total=o.quantity*o.unitCents;map.set(o.region,(map.get(o.region)||0)+total);}\n  return [...map].sort(([a],[b])=>a.localeCompare(b)).map(([region,totalCents])=>({region,totalCents}));\n}\n"
+  "referenceCode": "export function salesByRegion(orders: {\n    region: string;\n    quantity: number;\n    unitCents: number;\n}[]) {\n    const map = new Map();\n    for (const o of orders) {\n        const total = o.quantity * o.unitCents;\n        map.set(o.region, (map.get(o.region) || 0) + total);\n    }\n    return [...map].sort(([a], [b]) => a.localeCompare(b)).map(([region, totalCents]) => ({ region, totalCents }));\n}\n"
 }

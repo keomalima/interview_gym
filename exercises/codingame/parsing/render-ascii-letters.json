@@ -139,5 +139,5 @@
       ]
     }
   ],
-  "referenceCode": "export function renderAsciiLetters(text,width,height,rows) {\n  const out=[];const normalized=text.toUpperCase();\n  for(let r=0;r<height;r++){let line='';for(const c of normalized){const pos=/^[A-Z]$/.test(c)?c.charCodeAt(0)-65:26;line+=rows[r].slice(pos*width,(pos+1)*width);}out.push(line);}\n  return out;\n}\n"
+  "referenceCode": "export function renderAsciiLetters(text, width, height, rows) {\n    const out = [];\n    const normalized = text.toUpperCase();\n    for (let r = 0; r < height; r++) {\n        let line = '';\n        for (const c of normalized) {\n            const pos = /^[A-Z]$/.test(c) ? c.charCodeAt(0) - 65 : 26;\n            line += rows[r].slice(pos * width, (pos + 1) * width);\n        }\n        out.push(line);\n    }\n    return out;\n}\n"
 }

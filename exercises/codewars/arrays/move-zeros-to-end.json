@@ -148,5 +148,5 @@
       ]
     }
   ],
-  "referenceCode": "export function moveZerosToEnd(values) {\n  const nonZero=values.filter(x=>x!==0);return nonZero.concat(Array(values.length-nonZero.length).fill(0));\n}\n"
+  "referenceCode": "export function moveZerosToEnd(values) {\n    const nonZero = values.filter(x => x !== 0);\n    return nonZero.concat(Array(values.length - nonZero.length).fill(0));\n}\n"
 }

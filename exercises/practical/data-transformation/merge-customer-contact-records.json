@@ -172,5 +172,5 @@
       ]
     }
   ],
-  "referenceCode": "export function mergeCustomerContacts(records: { email: string; name: string; phone: string }[]) {\n  const m=new Map();for(const r of records){const email=r.email.trim().toLowerCase();if(!m.has(email))m.set(email,{email,name:r.name.trim(),phone:r.phone||''});\n    else{const current=m.get(email);if(!current.name&&r.name.trim())current.name=r.name.trim();if(!current.phone&&r.phone)current.phone=r.phone;}}\n  return [...m.values()];\n}\n"
+  "referenceCode": "export function mergeCustomerContacts(records: {\n    email: string;\n    name: string;\n    phone: string;\n}[]) {\n    const m = new Map();\n    for (const r of records) {\n        const email = r.email.trim().toLowerCase();\n        if (!m.has(email))\n            m.set(email, { email, name: r.name.trim(), phone: r.phone || '' });\n        else {\n            const current = m.get(email);\n            if (!current.name && r.name.trim())\n                current.name = r.name.trim();\n            if (!current.phone && r.phone)\n                current.phone = r.phone;\n        }\n    }\n    return [...m.values()];\n}\n"
 }

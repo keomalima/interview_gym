@@ -112,5 +112,5 @@
       "expected": 2
     }
   ],
-  "referenceCode": "export function minCoinsForAmount(coins,amount) {\n  const dp=Array(amount+1).fill(Infinity);dp[0]=0;\n  for(let a=1;a<=amount;a++)for(const c of coins)if(c>0&&c<=a)dp[a]=Math.min(dp[a],dp[a-c]+1);\n  return Number.isFinite(dp[amount])?dp[amount]:-1;\n}\n"
+  "referenceCode": "export function minCoinsForAmount(coins, amount) {\n    const dp = Array(amount + 1).fill(Infinity);\n    dp[0] = 0;\n    for (let a = 1; a <= amount; a++)\n        for (const c of coins)\n            if (c > 0 && c <= a)\n                dp[a] = Math.min(dp[a], dp[a - c] + 1);\n    return Number.isFinite(dp[amount]) ? dp[amount] : -1;\n}\n"
 }

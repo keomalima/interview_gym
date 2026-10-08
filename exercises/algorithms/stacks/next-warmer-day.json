@@ -194,5 +194,5 @@
       ]
     }
   ],
-  "referenceCode": "export function nextWarmerDays(temperatures) {\n  const result = Array(temperatures.length).fill(0);\n  const stack = [];\n  for (let i = 0; i < temperatures.length; i++) {\n    while (stack.length && temperatures[i] > temperatures[stack[stack.length - 1]]) {\n      const past = stack.pop();\n      result[past] = i - past;\n    }\n    stack.push(i);\n  }\n  return result;\n}\n"
+  "referenceCode": "export function nextWarmerDays(temperatures) {\n    const result = Array(temperatures.length).fill(0);\n    const stack = [];\n    for (let i = 0; i < temperatures.length; i++) {\n        while (stack.length && temperatures[i] > temperatures[stack[stack.length - 1]]) {\n            const past = stack.pop();\n            result[past] = i - past;\n        }\n        stack.push(i);\n    }\n    return result;\n}\n"
 }

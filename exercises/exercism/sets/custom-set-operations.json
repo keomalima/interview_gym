@@ -180,5 +180,5 @@
       }
     }
   ],
-  "referenceCode": "export function setOperations(a,b) {\n  const x=new Set(a),y=new Set(b),sort=xs=>[...xs].sort((m,n)=>m-n);\n  return {union:sort(new Set([...x,...y])),intersection:sort([...x].filter(n=>y.has(n))),difference:sort([...x].filter(n=>!y.has(n)))};\n}\n"
+  "referenceCode": "export function setOperations(a, b) {\n    const x = new Set(a), y = new Set(b), sort = xs => [...xs].sort((m, n) => m - n);\n    return { union: sort(new Set([...x, ...y])), intersection: sort([...x].filter(n => y.has(n))), difference: sort([...x].filter(n => !y.has(n))) };\n}\n"
 }

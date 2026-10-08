@@ -118,5 +118,5 @@
       ]
     }
   ],
-  "referenceCode": "export function minesweeperNumbers(board) {\n  const rows=board.length,cols=rows?board[0].length:0;\n  return board.map((line,r)=>[...line].map((c,col)=>{\n    if(c==='*')return '*';let count=0;\n    for(let dr=-1;dr<=1;dr++)for(let dc=-1;dc<=1;dc++){if(!dr&&!dc)continue;const rr=r+dr,cc=col+dc;if(rr>=0&&cc>=0&&rr<rows&&cc<cols&&board[rr][cc]==='*')count++;}\n    return String(count);\n  }).join(''));\n}\n"
+  "referenceCode": "export function minesweeperNumbers(board) {\n    const rows = board.length, cols = rows ? board[0].length : 0;\n    return board.map((line, r) => [...line].map((c, col) => {\n        if (c === '*')\n            return '*';\n        let count = 0;\n        for (let dr = -1; dr <= 1; dr++)\n            for (let dc = -1; dc <= 1; dc++) {\n                if (!dr && !dc)\n                    continue;\n                const rr = r + dr, cc = col + dc;\n                if (rr >= 0 && cc >= 0 && rr < rows && cc < cols && board[rr][cc] === '*')\n                    count++;\n            }\n        return String(count);\n    }).join(''));\n}\n"
 }

@@ -121,5 +121,5 @@
       "expected": 9
     }
   ],
-  "referenceCode": "export function maxSingleTradeProfit(prices) {\n  let lowest = Infinity, best = 0;\n  for (const price of prices) { best = Math.max(best, price - lowest); lowest = Math.min(lowest, price); }\n  return best;\n}\n"
+  "referenceCode": "export function maxSingleTradeProfit(prices) {\n    let lowest = Infinity, best = 0;\n    for (const price of prices) {\n        best = Math.max(best, price - lowest);\n        lowest = Math.min(lowest, price);\n    }\n    return best;\n}\n"
 }

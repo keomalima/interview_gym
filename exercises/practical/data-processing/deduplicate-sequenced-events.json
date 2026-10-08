@@ -208,5 +208,5 @@
       ]
     }
   ],
-  "referenceCode": "export function deduplicateEvents(events) {\n  const latest = new Map();\n  for (const event of events) {\n    const old = latest.get(event.id);\n    if (!old || event.sequence >= old.sequence) latest.set(event.id, event);\n  }\n  return [...latest.values()].sort((a,b) => a.id < b.id ? -1 : a.id > b.id ? 1 : 0);\n}\n"
+  "referenceCode": "export function deduplicateEvents(events) {\n    const latest = new Map();\n    for (const event of events) {\n        const old = latest.get(event.id);\n        if (!old || event.sequence >= old.sequence)\n            latest.set(event.id, event);\n    }\n    return [...latest.values()].sort((a, b) => a.id < b.id ? -1 : a.id > b.id ? 1 : 0);\n}\n"
 }

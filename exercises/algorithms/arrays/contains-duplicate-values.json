@@ -110,5 +110,5 @@
       "expected": false
     }
   ],
-  "referenceCode": "export function hasDuplicates(nums) {\n  const seen = new Set();\n  for (const n of nums) {\n    if (seen.has(n)) return true;\n    seen.add(n);\n  }\n  return false;\n}\n"
+  "referenceCode": "export function hasDuplicates(nums) {\n    const seen = new Set();\n    for (const n of nums) {\n        if (seen.has(n))\n            return true;\n        seen.add(n);\n    }\n    return false;\n}\n"
 }

@@ -176,5 +176,5 @@
       ]
     }
   ],
-  "referenceCode": "export function treeLevels(root) {\n  if(!root)return [];\n  const q=[root],out=[];let head=0;\n  while(head<q.length){const end=q.length,level=[];\n    while(head<end){const n=q[head++];level.push(n.val);if(n.left)q.push(n.left);if(n.right)q.push(n.right);}\n    out.push(level);\n  }\n  return out;\n}\n"
+  "referenceCode": "export function treeLevels(root) {\n    if (!root)\n        return [];\n    const q = [root], out = [];\n    let head = 0;\n    while (head < q.length) {\n        const end = q.length, level = [];\n        while (head < end) {\n            const n = q[head++];\n            level.push(n.val);\n            if (n.left)\n                q.push(n.left);\n            if (n.right)\n                q.push(n.right);\n        }\n        out.push(level);\n    }\n    return out;\n}\n"
 }

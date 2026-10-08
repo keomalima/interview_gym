@@ -166,5 +166,5 @@
       ]
     }
   ],
-  "referenceCode": "export function filterInclusiveDates(records,from,to) {\n  return records.filter(r=>r.date>=from&&r.date<=to);\n}\n"
+  "referenceCode": "export function filterInclusiveDates(records, from, to) {\n    return records.filter(r => r.date >= from && r.date <= to);\n}\n"
 }

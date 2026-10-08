@@ -140,5 +140,5 @@
       ]
     }
   ],
-  "referenceCode": "export function countNamedCalls(names) {\n  function makeCounter() {\n    let count = 0;\n    return () => ++count;\n  }\n  const counters = new Map();\n  return names.map(name => {\n    if (!counters.has(name)) counters.set(name, makeCounter());\n    return counters.get(name)();\n  });\n}\n"
+  "referenceCode": "export function countNamedCalls(names) {\n    function makeCounter() {\n        let count = 0;\n        return () => ++count;\n    }\n    const counters = new Map();\n    return names.map(name => {\n        if (!counters.has(name))\n            counters.set(name, makeCounter());\n        return counters.get(name)();\n    });\n}\n"
 }

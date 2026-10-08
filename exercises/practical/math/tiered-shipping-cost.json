@@ -129,5 +129,5 @@
       "expected": 1299
     }
   ],
-  "referenceCode": "export function shippingCostCents(items: { priceCents: number; quantity: number; weightGrams: number }[], freeOverCents: number) {\n  const subtotal=items.reduce((s,i)=>s+i.priceCents*i.quantity,0);\n  if(subtotal>=freeOverCents)return 0;\n  const weight=items.reduce((s,i)=>s+i.weightGrams*i.quantity,0);\n  if(weight===0)return 0;\n  return weight<=500?499:weight<=2000?799:1299;\n}\n"
+  "referenceCode": "export function shippingCostCents(items: {\n    priceCents: number;\n    quantity: number;\n    weightGrams: number;\n}[], freeOverCents: number) {\n    const subtotal = items.reduce((s, i) => s + i.priceCents * i.quantity, 0);\n    if (subtotal >= freeOverCents)\n        return 0;\n    const weight = items.reduce((s, i) => s + i.weightGrams * i.quantity, 0);\n    if (weight === 0)\n        return 0;\n    return weight <= 500 ? 499 : weight <= 2000 ? 799 : 1299;\n}\n"
 }

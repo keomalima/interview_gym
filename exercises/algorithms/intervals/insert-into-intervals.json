@@ -253,5 +253,5 @@
       ]
     }
   ],
-  "referenceCode": "export function insertInterval(intervals,newInterval) {\n  const out=[];let [s,e]=newInterval, i=0;\n  while(i<intervals.length && intervals[i][1]<s)out.push(intervals[i++].slice());\n  while(i<intervals.length && intervals[i][0]<=e){s=Math.min(s,intervals[i][0]);e=Math.max(e,intervals[i][1]);i++;}\n  out.push([s,e]);while(i<intervals.length)out.push(intervals[i++].slice());\n  return out;\n}\n"
+  "referenceCode": "export function insertInterval(intervals, newInterval) {\n    const out = [];\n    let [s, e] = newInterval, i = 0;\n    while (i < intervals.length && intervals[i][1] < s)\n        out.push(intervals[i++].slice());\n    while (i < intervals.length && intervals[i][0] <= e) {\n        s = Math.min(s, intervals[i][0]);\n        e = Math.max(e, intervals[i][1]);\n        i++;\n    }\n    out.push([s, e]);\n    while (i < intervals.length)\n        out.push(intervals[i++].slice());\n    return out;\n}\n"
 }

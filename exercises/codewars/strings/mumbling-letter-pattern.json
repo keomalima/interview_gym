@@ -88,5 +88,5 @@
       "expected": "Z-Zz"
     }
   ],
-  "referenceCode": "export function mumbleLetters(text) {return [...text.toLowerCase()].map((c,i)=>c.toUpperCase()+c.repeat(i)).join('-');}\n"
+  "referenceCode": "export function mumbleLetters(text) { return [...text.toLowerCase()].map((c, i) => c.toUpperCase() + c.repeat(i)).join('-'); }\n"
 }

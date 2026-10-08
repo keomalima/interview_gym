@@ -138,5 +138,5 @@
       }
     }
   ],
-  "referenceCode": "export function mergeRuntimeConfig(base: Record<string, any>, override: Record<string, any>) {\n  const result={...base};for(const [key,value] of Object.entries(override)){if(value!==null&&value!==undefined)result[key]=value;}\n  return result;\n}\n"
+  "referenceCode": "export function mergeRuntimeConfig(base: Record<string, any>, override: Record<string, any>) {\n    const result = { ...base };\n    for (const [key, value] of Object.entries(override)) {\n        if (value !== null && value !== undefined)\n            result[key] = value;\n    }\n    return result;\n}\n"
 }

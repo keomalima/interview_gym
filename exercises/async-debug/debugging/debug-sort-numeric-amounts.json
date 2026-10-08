@@ -127,5 +127,5 @@
       ]
     }
   ],
-  "referenceCode": "export function sortNumericAmounts(amounts) {return [...amounts].sort((a,b)=>a-b);}\n"
+  "referenceCode": "export function sortNumericAmounts(amounts) { return [...amounts].sort((a, b) => a - b); }\n"
 }

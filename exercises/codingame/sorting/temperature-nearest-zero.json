@@ -114,5 +114,5 @@
       "expected": 0
     }
   ],
-  "referenceCode": "export function closestTemperature(temperatures) {\n  if(!temperatures.length)return 0;\n  return temperatures.reduce((best,n)=>Math.abs(n)<Math.abs(best)||Math.abs(n)===Math.abs(best)&&n>best?n:best);\n}\n"
+  "referenceCode": "export function closestTemperature(temperatures) {\n    if (!temperatures.length)\n        return 0;\n    return temperatures.reduce((best, n) => Math.abs(n) < Math.abs(best) || Math.abs(n) === Math.abs(best) && n > best ? n : best);\n}\n"
 }

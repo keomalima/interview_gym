@@ -247,5 +247,5 @@
       ]
     }
   ],
-  "referenceCode": "export function mergeOverlappingIntervals(intervals) {\n  const sorted = intervals.map(([start,end]) => [start,end]).sort((a,b) => a[0]-b[0]);\n  const merged = [];\n  for (const [start,end] of sorted) {\n    if (merged.length === 0 || start > merged[merged.length - 1][1]) merged.push([start,end]);\n    else merged[merged.length - 1][1] = Math.max(merged[merged.length - 1][1],end);\n  }\n  return merged;\n}\n"
+  "referenceCode": "export function mergeOverlappingIntervals(intervals) {\n    const sorted = intervals.map(([start, end]) => [start, end]).sort((a, b) => a[0] - b[0]);\n    const merged = [];\n    for (const [start, end] of sorted) {\n        if (merged.length === 0 || start > merged[merged.length - 1][1])\n            merged.push([start, end]);\n        else\n            merged[merged.length - 1][1] = Math.max(merged[merged.length - 1][1], end);\n    }\n    return merged;\n}\n"
 }

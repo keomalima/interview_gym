@@ -138,5 +138,5 @@
       "expected": "UNKNOWN"
     }
   ],
-  "referenceCode": "export function lookupMime(entries,filename) {\n  const dot=filename.lastIndexOf('.');if(dot<0||dot===filename.length-1)return 'UNKNOWN';\n  const ext=filename.slice(dot+1).toLowerCase();\n  for(const [key,mime] of entries)if(key.toLowerCase()===ext)return mime;\n  return 'UNKNOWN';\n}\n"
+  "referenceCode": "export function lookupMime(entries, filename) {\n    const dot = filename.lastIndexOf('.');\n    if (dot < 0 || dot === filename.length - 1)\n        return 'UNKNOWN';\n    const ext = filename.slice(dot + 1).toLowerCase();\n    for (const [key, mime] of entries)\n        if (key.toLowerCase() === ext)\n            return mime;\n    return 'UNKNOWN';\n}\n"
 }

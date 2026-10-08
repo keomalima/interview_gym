@@ -95,5 +95,5 @@
       "error": "Positive integer required"
     }
   ],
-  "referenceCode": "export function classifyPerfectNumber(n) {\n  if(n<=0)throw new Error('Positive integer required');\n  let sum=0;for(let d=1;d<=Math.floor(n/2);d++)if(n%d===0)sum+=d;\n  return sum===n?'perfect':sum>n?'abundant':'deficient';\n}\n"
+  "referenceCode": "export function classifyPerfectNumber(n) {\n    if (n <= 0)\n        throw new Error('Positive integer required');\n    let sum = 0;\n    for (let d = 1; d <= Math.floor(n / 2); d++)\n        if (n % d === 0)\n            sum += d;\n    return sum === n ? 'perfect' : sum > n ? 'abundant' : 'deficient';\n}\n"
 }

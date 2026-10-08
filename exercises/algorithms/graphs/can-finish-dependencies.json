@@ -141,5 +141,5 @@
       "expected": true
     }
   ],
-  "referenceCode": "export function canCompleteCourses(count,prerequisites) {\n  const adj=Array.from({length:count},()=>[]),indegree=Array(count).fill(0);\n  for(const [course,required] of prerequisites){adj[required].push(course);indegree[course]++;}\n  const q=[];for(let i=0;i<count;i++)if(!indegree[i])q.push(i);\n  let taken=0;for(let h=0;h<q.length;h++){const u=q[h];taken++;for(const v of adj[u])if(--indegree[v]===0)q.push(v);}\n  return taken===count;\n}\n"
+  "referenceCode": "export function canCompleteCourses(count, prerequisites) {\n    const adj = Array.from({ length: count }, () => []), indegree = Array(count).fill(0);\n    for (const [course, required] of prerequisites) {\n        adj[required].push(course);\n        indegree[course]++;\n    }\n    const q = [];\n    for (let i = 0; i < count; i++)\n        if (!indegree[i])\n            q.push(i);\n    let taken = 0;\n    for (let h = 0; h < q.length; h++) {\n        const u = q[h];\n        taken++;\n        for (const v of adj[u])\n            if (--indegree[v] === 0)\n                q.push(v);\n    }\n    return taken === count;\n}\n"
 }

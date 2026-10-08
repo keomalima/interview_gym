@@ -155,5 +155,5 @@
       }
     }
   ],
-  "referenceCode": "export function resolveFeatureFlags(defaults: Record<string, unknown>, overrides: Record<string, unknown>, allowed: string[]) {\n  const result={};for(const key of Object.keys(defaults).sort()){result[key]=allowed.includes(key)&&Object.hasOwn(overrides,key)?Boolean(overrides[key]):Boolean(defaults[key]);}return result;\n}\n"
+  "referenceCode": "export function resolveFeatureFlags(defaults: Record<string, unknown>, overrides: Record<string, unknown>, allowed: string[]) {\n    const result = {};\n    for (const key of Object.keys(defaults).sort()) {\n        result[key] = allowed.includes(key) && Object.hasOwn(overrides, key) ? Boolean(overrides[key]) : Boolean(defaults[key]);\n    }\n    return result;\n}\n"
 }

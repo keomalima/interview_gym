@@ -176,5 +176,5 @@
       ]
     }
   ],
-  "referenceCode": "export function conflictingBookings(bookings: { id: string; room: string; start: number; end: number }[]) {\n  const out=[];for(let i=0;i<bookings.length;i++)for(let j=i+1;j<bookings.length;j++){\n    const a=bookings[i],b=bookings[j];if(a.room===b.room&&a.start<b.end&&b.start<a.end)out.push([a.id,b.id]);\n  }\n  return out;\n}\n"
+  "referenceCode": "export function conflictingBookings(bookings: {\n    id: string;\n    room: string;\n    start: number;\n    end: number;\n}[]) {\n    const out = [];\n    for (let i = 0; i < bookings.length; i++)\n        for (let j = i + 1; j < bookings.length; j++) {\n            const a = bookings[i], b = bookings[j];\n            if (a.room === b.room && a.start < b.end && b.start < a.end)\n                out.push([a.id, b.id]);\n        }\n    return out;\n}\n"
 }

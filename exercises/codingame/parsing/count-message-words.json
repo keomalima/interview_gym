@@ -137,5 +137,5 @@
       ]
     }
   ],
-  "referenceCode": "export function messageWordCounts(text) {\n  const tokens=text.toLowerCase().match(/[a-z0-9]+/g)||[],count={};\n  for(const word of tokens)count[word]=(count[word]||0)+1;\n  return Object.entries(count).sort(([a],[b])=>a.localeCompare(b)).map(([word,times])=>({word,count:times}));\n}\n"
+  "referenceCode": "export function messageWordCounts(text) {\n    const tokens = text.toLowerCase().match(/[a-z0-9]+/g) || [], count = {};\n    for (const word of tokens)\n        count[word] = (count[word] || 0) + 1;\n    return Object.entries(count).sort(([a], [b]) => a.localeCompare(b)).map(([word, times]) => ({ word, count: times }));\n}\n"
 }

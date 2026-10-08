@@ -131,5 +131,5 @@
       "expected": []
     }
   ],
-  "referenceCode": "export function findAnagrams(word,candidates) {\n  const lower=word.toLowerCase(),key=[...lower].sort().join('');\n  return candidates.filter(c=>c.toLowerCase()!==lower&&[...c.toLowerCase()].sort().join('')===key);\n}\n"
+  "referenceCode": "export function findAnagrams(word, candidates) {\n    const lower = word.toLowerCase(), key = [...lower].sort().join('');\n    return candidates.filter(c => c.toLowerCase() !== lower && [...c.toLowerCase()].sort().join('') === key);\n}\n"
 }

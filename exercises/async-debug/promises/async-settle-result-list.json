@@ -169,5 +169,5 @@
       ]
     }
   ],
-  "referenceCode": "export async function settleJobResults(jobs: { ok: boolean; value?: unknown; reason?: string }[]) {\n  const promises=jobs.map(j=>j.ok?Promise.resolve(j.value):Promise.reject(new Error(j.reason)));\n  const settled=await Promise.allSettled(promises);\n  return settled.map(r=>r.status==='fulfilled'?{status:'fulfilled',value:r.value}:{status:'rejected',reason:r.reason.message});\n}\n"
+  "referenceCode": "export async function settleJobResults(jobs: {\n    ok: boolean;\n    value?: unknown;\n    reason?: string;\n}[]) {\n    const promises = jobs.map(j => j.ok ? Promise.resolve(j.value) : Promise.reject(new Error(j.reason)));\n    const settled = await Promise.allSettled(promises);\n    return settled.map(r => r.status === 'fulfilled' ? { status: 'fulfilled', value: r.value } : { status: 'rejected', reason: r.reason.message });\n}\n"
 }

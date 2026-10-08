@@ -137,5 +137,5 @@
       "expected": 2
     }
   ],
-  "referenceCode": "export function maxTreeDepth(root) {\n  if (root == null) return 0;\n  const queue = [root];\n  let head = 0, depth = 0;\n  while (head < queue.length) {\n    const count = queue.length - head;\n    for (let i = 0; i < count; i++) {\n      const node = queue[head++];\n      if (node.left != null) queue.push(node.left);\n      if (node.right != null) queue.push(node.right);\n    }\n    depth++;\n  }\n  return depth;\n}\n"
+  "referenceCode": "export function maxTreeDepth(root) {\n    if (root == null)\n        return 0;\n    const queue = [root];\n    let head = 0, depth = 0;\n    while (head < queue.length) {\n        const count = queue.length - head;\n        for (let i = 0; i < count; i++) {\n            const node = queue[head++];\n            if (node.left != null)\n                queue.push(node.left);\n            if (node.right != null)\n                queue.push(node.right);\n        }\n        depth++;\n    }\n    return depth;\n}\n"
 }

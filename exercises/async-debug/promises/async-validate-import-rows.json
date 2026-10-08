@@ -169,5 +169,5 @@
       }
     }
   ],
-  "referenceCode": "export async function validateAsyncRows(rows: { id: unknown; amount: unknown }[]) {\n  const checked=await Promise.all(rows.map(async(row,index)=>{const record=await Promise.resolve(row);const valid=typeof record.id==='string'&&record.id.length>0&&Number.isInteger(record.amount)&&record.amount>=0;return {index,valid};}));\n  return {valid:checked.filter(x=>x.valid).map(x=>x.index),invalid:checked.filter(x=>!x.valid).map(x=>x.index)};\n}\n"
+  "referenceCode": "export async function validateAsyncRows(rows: {\n    id: unknown;\n    amount: unknown;\n}[]) {\n    const checked = await Promise.all(rows.map(async (row, index) => { const record = await Promise.resolve(row); const valid = typeof record.id === 'string' && record.id.length > 0 && Number.isInteger(record.amount) && record.amount >= 0; return { index, valid }; }));\n    return { valid: checked.filter(x => x.valid).map(x => x.index), invalid: checked.filter(x => !x.valid).map(x => x.index) };\n}\n"
 }

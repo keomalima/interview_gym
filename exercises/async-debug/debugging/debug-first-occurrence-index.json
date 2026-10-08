@@ -119,5 +119,5 @@
       "expected": 0
     }
   ],
-  "referenceCode": "export function indexOfFirstMatch(items,target) {\n  for(let i=0;i<items.length;i++)if(items[i]===target)return i;return -1;\n}\n"
+  "referenceCode": "export function indexOfFirstMatch(items, target) {\n    for (let i = 0; i < items.length; i++)\n        if (items[i] === target)\n            return i;\n    return -1;\n}\n"
 }

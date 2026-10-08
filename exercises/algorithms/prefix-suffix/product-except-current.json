@@ -142,5 +142,5 @@
       ]
     }
   ],
-  "referenceCode": "export function productExceptSelf(nums) {\n  const result = Array(nums.length).fill(1);\n  let p = 1;\n  for (let i = 0; i < nums.length; i++) { result[i] = p; p *= nums[i]; }\n  p = 1;\n  for (let i = nums.length - 1; i >= 0; i--) { result[i] *= p; p *= nums[i]; }\n  return result;\n}\n"
+  "referenceCode": "export function productExceptSelf(nums) {\n    const result = Array(nums.length).fill(1);\n    let p = 1;\n    for (let i = 0; i < nums.length; i++) {\n        result[i] = p;\n        p *= nums[i];\n    }\n    p = 1;\n    for (let i = nums.length - 1; i >= 0; i--) {\n        result[i] *= p;\n        p *= nums[i];\n    }\n    return result;\n}\n"
 }

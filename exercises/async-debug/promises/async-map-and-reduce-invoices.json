@@ -124,5 +124,5 @@
       "expected": 200
     }
   ],
-  "referenceCode": "export async function sumAsyncInvoices(invoices: { qty: number; unitCents: number }[]) {\n  const cents=await Promise.all(invoices.map(async invoice=>{const x=await Promise.resolve(invoice);return x.qty*x.unitCents;}));\n  return cents.reduce((sum,n)=>sum+n,0);\n}\n"
+  "referenceCode": "export async function sumAsyncInvoices(invoices: {\n    qty: number;\n    unitCents: number;\n}[]) {\n    const cents = await Promise.all(invoices.map(async (invoice) => { const x = await Promise.resolve(invoice); return x.qty * x.unitCents; }));\n    return cents.reduce((sum, n) => sum + n, 0);\n}\n"
 }

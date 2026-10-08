@@ -157,5 +157,5 @@
       "expected": "East"
     }
   ],
-  "referenceCode": "export function closestStation(lat,lon,stations) {\n  if(!stations.length)return null;\n  const radians=x=>x*Math.PI/180;\n  let closest=null,best=Infinity;\n  for(const s of stations){const x=radians(s.lon-lon)*Math.cos(radians((lat+s.lat)/2)),y=radians(s.lat-lat);const d=6371*Math.sqrt(x*x+y*y);\n    if(d<best){best=d;closest=s.name;}}\n  return closest;\n}\n"
+  "referenceCode": "export function closestStation(lat, lon, stations) {\n    if (!stations.length)\n        return null;\n    const radians = x => x * Math.PI / 180;\n    let closest = null, best = Infinity;\n    for (const s of stations) {\n        const x = radians(s.lon - lon) * Math.cos(radians((lat + s.lat) / 2)), y = radians(s.lat - lat);\n        const d = 6371 * Math.sqrt(x * x + y * y);\n        if (d < best) {\n            best = d;\n            closest = s.name;\n        }\n    }\n    return closest;\n}\n"
 }

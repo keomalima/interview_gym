@@ -87,5 +87,5 @@
       "expected": 25164150
     }
   ],
-  "referenceCode": "export function differenceOfSquares(n) {\n  const sum=n*(n+1)/2,squares=n*(n+1)*(2*n+1)/6;\n  return sum*sum-squares;\n}\n"
+  "referenceCode": "export function differenceOfSquares(n) {\n    const sum = n * (n + 1) / 2, squares = n * (n + 1) * (2 * n + 1) / 6;\n    return sum * sum - squares;\n}\n"
 }

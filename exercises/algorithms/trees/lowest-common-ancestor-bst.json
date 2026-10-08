@@ -168,5 +168,5 @@
       "expected": 2
     }
   ],
-  "referenceCode": "export function lowestCommonAncestorValue(root,a,b) {\n  let node=root;\n  while(node){if(a<node.val&&b<node.val)node=node.left;else if(a>node.val&&b>node.val)node=node.right;else return node.val;}\n  return null;\n}\n"
+  "referenceCode": "export function lowestCommonAncestorValue(root, a, b) {\n    let node = root;\n    while (node) {\n        if (a < node.val && b < node.val)\n            node = node.left;\n        else if (a > node.val && b > node.val)\n            node = node.right;\n        else\n            return node.val;\n    }\n    return null;\n}\n"
 }

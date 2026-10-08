@@ -103,5 +103,5 @@
       ]
     }
   ],
-  "referenceCode": "export function primeFactors(n) {\n  const out=[];\n  for(let d=2;d*d<=n;d++){while(n%d===0){out.push(d);n/=d;}}\n  if(n>1)out.push(n);return out;\n}\n"
+  "referenceCode": "export function primeFactors(n) {\n    const out = [];\n    for (let d = 2; d * d <= n; d++) {\n        while (n % d === 0) {\n            out.push(d);\n            n /= d;\n        }\n    }\n    if (n > 1)\n        out.push(n);\n    return out;\n}\n"
 }

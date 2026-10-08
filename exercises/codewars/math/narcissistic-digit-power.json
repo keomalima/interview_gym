@@ -87,5 +87,5 @@
       "expected": false
     }
   ],
-  "referenceCode": "export function isNarcissistic(n) {\n  const ds=String(n).split(''),p=ds.length;\n  return ds.reduce((s,d)=>s+Number(d)**p,0)===n;\n}\n"
+  "referenceCode": "export function isNarcissistic(n) {\n    const ds = String(n).split(''), p = ds.length;\n    return ds.reduce((s, d) => s + Number(d) ** p, 0) === n;\n}\n"
 }

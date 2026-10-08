@@ -170,5 +170,5 @@
       "expected": 0
     }
   ],
-  "referenceCode": "export function minIntervalsToRemove(intervals) {\n  const sorted=intervals.map(x=>x.slice()).sort((a,b)=>a[1]-b[1]);\n  let lastEnd=-Infinity,kept=0;\n  for(const [s,e] of sorted)if(s>=lastEnd){lastEnd=e;kept++;}\n  return intervals.length-kept;\n}\n"
+  "referenceCode": "export function minIntervalsToRemove(intervals) {\n    const sorted = intervals.map(x => x.slice()).sort((a, b) => a[1] - b[1]);\n    let lastEnd = -Infinity, kept = 0;\n    for (const [s, e] of sorted)\n        if (s >= lastEnd) {\n            lastEnd = e;\n            kept++;\n        }\n    return intervals.length - kept;\n}\n"
 }

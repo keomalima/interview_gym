@@ -103,5 +103,5 @@
       "expected": "Alex, Jacob and 2 others like this"
     }
   ],
-  "referenceCode": "export function formatLikes(names) {\n  if(!names.length)return 'no one likes this';\n  if(names.length===1)return names[0]+' likes this';\n  if(names.length===2)return names[0]+' and '+names[1]+' like this';\n  if(names.length===3)return names[0]+', '+names[1]+' and '+names[2]+' like this';\n  return names[0]+', '+names[1]+' and '+(names.length-2)+' others like this';\n}\n"
+  "referenceCode": "export function formatLikes(names) {\n    if (!names.length)\n        return 'no one likes this';\n    if (names.length === 1)\n        return names[0] + ' likes this';\n    if (names.length === 2)\n        return names[0] + ' and ' + names[1] + ' like this';\n    if (names.length === 3)\n        return names[0] + ', ' + names[1] + ' and ' + names[2] + ' like this';\n    return names[0] + ', ' + names[1] + ' and ' + (names.length - 2) + ' others like this';\n}\n"
 }

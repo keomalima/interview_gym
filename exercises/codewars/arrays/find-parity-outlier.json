@@ -134,5 +134,5 @@
       "expected": -7
     }
   ],
-  "referenceCode": "export function parityOutlier(nums) {\n  const p=nums.slice(0,3).filter(n=>Math.abs(n%2)===1).length>=2?1:0;\n  return nums.find(n=>Math.abs(n%2)!==p);\n}\n"
+  "referenceCode": "export function parityOutlier(nums) {\n    const p = nums.slice(0, 3).filter(n => Math.abs(n % 2) === 1).length >= 2 ? 1 : 0;\n    return nums.find(n => Math.abs(n % 2) !== p);\n}\n"
 }

@@ -115,5 +115,5 @@
       "expected": 4
     }
   ],
-  "referenceCode": "export function longestDryStreak(rainfall) {\n  let best=0,now=0;for(const mm of rainfall){now=mm===0?now+1:0;best=Math.max(best,now);}return best;\n}\n"
+  "referenceCode": "export function longestDryStreak(rainfall) {\n    let best = 0, now = 0;\n    for (const mm of rainfall) {\n        now = mm === 0 ? now + 1 : 0;\n        best = Math.max(best, now);\n    }\n    return best;\n}\n"
 }

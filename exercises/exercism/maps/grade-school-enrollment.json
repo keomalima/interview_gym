@@ -193,5 +193,5 @@
       ]
     }
   ],
-  "referenceCode": "export function gradeRoster(students) {\n  const groups=new Map();for(const {name,grade} of students){if(!groups.has(grade))groups.set(grade,[]);groups.get(grade).push(name);}\n  return [...groups].sort((a,b)=>a[0]-b[0]).map(([grade,names])=>({grade,names:names.sort((a,b)=>a.localeCompare(b))}));\n}\n"
+  "referenceCode": "export function gradeRoster(students) {\n    const groups = new Map();\n    for (const { name, grade } of students) {\n        if (!groups.has(grade))\n            groups.set(grade, []);\n        groups.get(grade).push(name);\n    }\n    return [...groups].sort((a, b) => a[0] - b[0]).map(([grade, names]) => ({ grade, names: names.sort((a, b) => a.localeCompare(b)) }));\n}\n"
 }

@@ -110,5 +110,5 @@
       "expected": 0
     }
   ],
-  "referenceCode": "export function minimumStrengthGap(values) {\n  if(values.length<2)return null;\n  const sorted=[...values].sort((a,b)=>a-b);let best=Infinity;\n  for(let i=1;i<sorted.length;i++)best=Math.min(best,sorted[i]-sorted[i-1]);return best;\n}\n"
+  "referenceCode": "export function minimumStrengthGap(values) {\n    if (values.length < 2)\n        return null;\n    const sorted = [...values].sort((a, b) => a - b);\n    let best = Infinity;\n    for (let i = 1; i < sorted.length; i++)\n        best = Math.min(best, sorted[i] - sorted[i - 1]);\n    return best;\n}\n"
 }

@@ -88,5 +88,5 @@
       "expected": true
     }
   ],
-  "referenceCode": "export function isValidIsbn10(value) {\n  const s=value.replace(/-/g,'');if(!/^[0-9]{9}[0-9X]$/.test(s))return false;\n  let sum=0;for(let i=0;i<10;i++)sum+=(10-i)*(s[i]==='X'?10:Number(s[i]));\n  return sum%11===0;\n}\n"
+  "referenceCode": "export function isValidIsbn10(value) {\n    const s = value.replace(/-/g, '');\n    if (!/^[0-9]{9}[0-9X]$/.test(s))\n        return false;\n    let sum = 0;\n    for (let i = 0; i < 10; i++)\n        sum += (10 - i) * (s[i] === 'X' ? 10 : Number(s[i]));\n    return sum % 11 === 0;\n}\n"
 }

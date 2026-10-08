@@ -210,5 +210,5 @@
       ]
     }
   ],
-  "referenceCode": "export function reconcilePayments(invoices: { id: string; totalCents: number }[], payments: { invoiceId: string; cents: number }[]) {\n  const paid=new Map();for(const p of payments)paid.set(p.invoiceId,(paid.get(p.invoiceId)||0)+p.cents);\n  return invoices.map(i=>({id:i.id,remainingCents:Math.max(0,i.totalCents-(paid.get(i.id)||0)),status:(paid.get(i.id)||0)>=i.totalCents?'paid':(paid.get(i.id)||0)>0?'partial':'unpaid'}));\n}\n"
+  "referenceCode": "export function reconcilePayments(invoices: {\n    id: string;\n    totalCents: number;\n}[], payments: {\n    invoiceId: string;\n    cents: number;\n}[]) {\n    const paid = new Map();\n    for (const p of payments)\n        paid.set(p.invoiceId, (paid.get(p.invoiceId) || 0) + p.cents);\n    return invoices.map(i => ({ id: i.id, remainingCents: Math.max(0, i.totalCents - (paid.get(i.id) || 0)), status: (paid.get(i.id) || 0) >= i.totalCents ? 'paid' : (paid.get(i.id) || 0) > 0 ? 'partial' : 'unpaid' }));\n}\n"
 }

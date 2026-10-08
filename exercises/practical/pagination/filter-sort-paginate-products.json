@@ -199,5 +199,5 @@
       }
     }
   ],
-  "referenceCode": "export function listProducts(products: { id: string; category: string; priceCents: number }[], options: {category?: string; minPrice?: number; page?: number; pageSize?: number}) {\n  const {category='',minPrice=0,page=1,pageSize=10}=options;\n  const matching=products.filter(p=>(!category||p.category===category)&&p.priceCents>=minPrice).sort((a,b)=>a.priceCents-b.priceCents||a.id.localeCompare(b.id));\n  const start=(page-1)*pageSize;\n  return {total:matching.length,items:matching.slice(start,start+pageSize)};\n}\n"
+  "referenceCode": "export function listProducts(products: {\n    id: string;\n    category: string;\n    priceCents: number;\n}[], options: {\n    category?: string;\n    minPrice?: number;\n    page?: number;\n    pageSize?: number;\n}) {\n    const { category = '', minPrice = 0, page = 1, pageSize = 10 } = options;\n    const matching = products.filter(p => (!category || p.category === category) && p.priceCents >= minPrice).sort((a, b) => a.priceCents - b.priceCents || a.id.localeCompare(b.id));\n    const start = (page - 1) * pageSize;\n    return { total: matching.length, items: matching.slice(start, start + pageSize) };\n}\n"
 }

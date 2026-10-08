@@ -145,5 +145,5 @@
       ]
     }
   ],
-  "referenceCode": "export function arrayDifference(a,b) {const removed=new Set(b);return a.filter(x=>!removed.has(x));}\n"
+  "referenceCode": "export function arrayDifference(a, b) { const removed = new Set(b); return a.filter(x => !removed.has(x)); }\n"
 }

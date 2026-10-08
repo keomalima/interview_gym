@@ -95,5 +95,5 @@
       "expected": "Zab-WXY"
     }
   ],
-  "referenceCode": "export function rotateCipher(text,shift) {\n  const amount=((shift%26)+26)%26;\n  return [...text].map(c=>{const n=c.charCodeAt(0),base=n>=65&&n<=90?65:n>=97&&n<=122?97:null;\n    return base===null?c:String.fromCharCode(base+(n-base+amount)%26);\n  }).join('');\n}\n"
+  "referenceCode": "export function rotateCipher(text, shift) {\n    const amount = ((shift % 26) + 26) % 26;\n    return [...text].map(c => {\n        const n = c.charCodeAt(0), base = n >= 65 && n <= 90 ? 65 : n >= 97 && n <= 122 ? 97 : null;\n        return base === null ? c : String.fromCharCode(base + (n - base + amount) % 26);\n    }).join('');\n}\n"
 }

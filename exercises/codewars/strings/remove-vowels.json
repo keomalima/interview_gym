@@ -87,5 +87,5 @@
       "expected": "Hll, Wrld!"
     }
   ],
-  "referenceCode": "export function removeVowels(text) {return text.replace(/[aeiou]/gi,'');}\n"
+  "referenceCode": "export function removeVowels(text) { return text.replace(/[aeiou]/gi, ''); }\n"
 }

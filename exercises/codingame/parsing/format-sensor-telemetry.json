@@ -149,5 +149,5 @@
       "error": "Invalid telemetry"
     }
   ],
-  "referenceCode": "export function parseTelemetry(lines) {\n  return lines.map(line=>{const parts=line.split(';');if(parts.length!==3)throw new Error('Invalid telemetry');\n    const [device,metric,value]=parts.map(x=>x.trim());if(!device||!metric||!/^[-+]?\\d+(?:\\.\\d+)?$/.test(value))throw new Error('Invalid telemetry');\n    return {device,metric,value:Number(value)};\n  });\n}\n"
+  "referenceCode": "export function parseTelemetry(lines) {\n    return lines.map(line => {\n        const parts = line.split(';');\n        if (parts.length !== 3)\n            throw new Error('Invalid telemetry');\n        const [device, metric, value] = parts.map(x => x.trim());\n        if (!device || !metric || !/^[-+]?\\d+(?:\\.\\d+)?$/.test(value))\n            throw new Error('Invalid telemetry');\n        return { device, metric, value: Number(value) };\n    });\n}\n"
 }

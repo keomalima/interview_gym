@@ -114,5 +114,5 @@
       "expected": -2
     }
   ],
-  "referenceCode": "export function oddOccurrence(nums) {\n  const c=new Map();for(const n of nums)c.set(n,(c.get(n)||0)+1);\n  for(const [n,count] of c)if(count%2===1)return n;\n  return null;\n}\n"
+  "referenceCode": "export function oddOccurrence(nums) {\n    const c = new Map();\n    for (const n of nums)\n        c.set(n, (c.get(n) || 0) + 1);\n    for (const [n, count] of c)\n        if (count % 2 === 1)\n            return n;\n    return null;\n}\n"
 }

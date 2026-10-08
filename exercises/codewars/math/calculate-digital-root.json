@@ -87,5 +87,5 @@
       "expected": 9
     }
   ],
-  "referenceCode": "export function digitalRoot(n) {\n  while(n>=10){n=String(n).split('').reduce((s,c)=>s+Number(c),0);}return n;\n}\n"
+  "referenceCode": "export function digitalRoot(n) {\n    while (n >= 10) {\n        n = String(n).split('').reduce((s, c) => s + Number(c), 0);\n    }\n    return n;\n}\n"
 }

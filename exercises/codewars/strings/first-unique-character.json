@@ -88,5 +88,5 @@
       "expected": "e"
     }
   ],
-  "referenceCode": "export function firstUniqueCharacter(text) {\n  const m=new Map();for(const c of text.toLowerCase())m.set(c,(m.get(c)||0)+1);\n  for(let i=0;i<text.length;i++)if(m.get(text[i].toLowerCase())===1)return text[i];\n  return '';\n}\n"
+  "referenceCode": "export function firstUniqueCharacter(text) {\n    const m = new Map();\n    for (const c of text.toLowerCase())\n        m.set(c, (m.get(c) || 0) + 1);\n    for (let i = 0; i < text.length; i++)\n        if (m.get(text[i].toLowerCase()) === 1)\n            return text[i];\n    return '';\n}\n"
 }

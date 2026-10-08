@@ -87,5 +87,5 @@
       "expected": "a BC"
     }
   ],
-  "referenceCode": "export function splitCamelCase(text) {return text.replace(/([a-z])([A-Z])/g,'$1 $2');}\n"
+  "referenceCode": "export function splitCamelCase(text) { return text.replace(/([a-z])([A-Z])/g, '$1 $2'); }\n"
 }

@@ -164,5 +164,5 @@
       "expected": "(234) 567-8901"
     }
   ],
-  "referenceCode": "export function formatPhoneDigits(digits) {\n  const s=digits.join('');return '('+s.slice(0,3)+') '+s.slice(3,6)+'-'+s.slice(6);\n}\n"
+  "referenceCode": "export function formatPhoneDigits(digits) {\n    const s = digits.join('');\n    return '(' + s.slice(0, 3) + ') ' + s.slice(3, 6) + '-' + s.slice(6);\n}\n"
 }

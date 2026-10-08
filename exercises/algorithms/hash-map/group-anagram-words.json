@@ -160,5 +160,5 @@
       ]
     }
   ],
-  "referenceCode": "export function groupAnagramWords(words) {\n  const m=new Map();\n  for(const w of words){const key=[...w].sort().join('');if(!m.has(key))m.set(key,[]);m.get(key).push(w);}\n  return [...m.values()];\n}\n"
+  "referenceCode": "export function groupAnagramWords(words) {\n    const groups = new Map();\n    for (const word of words) {\n        const sortedLetters = word.split('').sort().join('');\n        if (!groups.has(sortedLetters)) {\n            groups.set(sortedLetters, []);\n        }\n        groups.get(sortedLetters).push(word);\n    }\n    return Array.from(groups.values());\n}\n"
 }

@@ -131,5 +131,5 @@
       "expected": []
     }
   ],
-  "referenceCode": "export function retainNumericValues(values) {\n  return values.filter(v=>typeof v==='number'&&Number.isFinite(v));\n}\n"
+  "referenceCode": "export function retainNumericValues(values) {\n    return values.filter(v => typeof v === 'number' && Number.isFinite(v));\n}\n"
 }

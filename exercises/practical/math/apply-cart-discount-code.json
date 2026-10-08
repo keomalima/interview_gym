@@ -147,5 +147,5 @@
       }
     }
   ],
-  "referenceCode": "export function applyDiscount(lineItems: { quantity: number; unitCents: number }[], discountPercent: number) {\n  const subtotalCents=lineItems.reduce((s,x)=>s+x.quantity*x.unitCents,0);\n  const discountedCents=Math.round(subtotalCents*(100-discountPercent)/100);\n  return {subtotalCents,discountCents:subtotalCents-discountedCents,totalCents:discountedCents};\n}\n"
+  "referenceCode": "export function applyDiscount(lineItems: {\n    quantity: number;\n    unitCents: number;\n}[], discountPercent: number) {\n    const subtotalCents = lineItems.reduce((s, x) => s + x.quantity * x.unitCents, 0);\n    const discountedCents = Math.round(subtotalCents * (100 - discountPercent) / 100);\n    return { subtotalCents, discountCents: subtotalCents - discountedCents, totalCents: discountedCents };\n}\n"
 }

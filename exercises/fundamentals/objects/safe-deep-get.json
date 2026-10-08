@@ -167,5 +167,5 @@
       "expected": "missing"
     }
   ],
-  "referenceCode": "export function safeDeepGet(data: unknown, path: string, fallback: unknown): unknown {\n  if (path === '') return data;\n  let current: unknown = data;\n  for (const part of path.split('.')) {\n    if (current === null || typeof current !== 'object') return fallback;\n    if (!Object.prototype.hasOwnProperty.call(current, part)) return fallback;\n    current = (current as Record<string, unknown>)[part];\n  }\n  return current;\n}\n"
+  "referenceCode": "export function safeDeepGet(data: unknown, path: string, fallback: unknown): unknown {\n    if (path === '')\n        return data;\n    let current: unknown = data;\n    for (const part of path.split('.')) {\n        if (current === null || typeof current !== 'object')\n            return fallback;\n        if (!Object.prototype.hasOwnProperty.call(current, part))\n            return fallback;\n        current = (current as Record<string, unknown>)[part];\n    }\n    return current;\n}\n"
 }

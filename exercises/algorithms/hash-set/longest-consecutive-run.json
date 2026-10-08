@@ -121,5 +121,5 @@
       "expected": 1
     }
   ],
-  "referenceCode": "export function longestConsecutive(nums) {\n  const set = new Set(nums); let best = 0;\n  for (const n of set) {\n    if (set.has(n - 1)) continue;\n    let len = 1;\n    while (set.has(n + len)) len++;\n    best = Math.max(best, len);\n  }\n  return best;\n}\n"
+  "referenceCode": "export function longestConsecutive(nums) {\n    const set = new Set(nums);\n    let best = 0;\n    for (const n of set) {\n        if (set.has(n - 1))\n            continue;\n        let len = 1;\n        while (set.has(n + len))\n            len++;\n        best = Math.max(best, len);\n    }\n    return best;\n}\n"
 }

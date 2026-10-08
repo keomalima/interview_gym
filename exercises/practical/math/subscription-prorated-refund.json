@@ -109,5 +109,5 @@
       "error": "Invalid billing days"
     }
   ],
-  "referenceCode": "export function prorateMonthlyCharge(monthlyCents: number, daysUsed: number, daysInMonth: number) {\n  if(daysInMonth<=0||daysUsed<0||daysUsed>daysInMonth)throw new Error('Invalid billing days');\n  return Math.round(monthlyCents*daysUsed/daysInMonth);\n}\n"
+  "referenceCode": "export function prorateMonthlyCharge(monthlyCents: number, daysUsed: number, daysInMonth: number) {\n    if (daysInMonth <= 0 || daysUsed < 0 || daysUsed > daysInMonth)\n        throw new Error('Invalid billing days');\n    return Math.round(monthlyCents * daysUsed / daysInMonth);\n}\n"
 }

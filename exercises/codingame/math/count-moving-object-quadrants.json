@@ -179,5 +179,5 @@
       }
     }
   ],
-  "referenceCode": "export function countQuadrants(points) {\n  const result={NE:0,NW:0,SE:0,SW:0,axis:0};\n  for(const p of points){if(p.x===0||p.y===0){result.axis++;continue;}const key=(p.y>0?'N':'S')+(p.x>0?'E':'W');result[key]++;}\n  return result;\n}\n"
+  "referenceCode": "export function countQuadrants(points) {\n    const result = { NE: 0, NW: 0, SE: 0, SW: 0, axis: 0 };\n    for (const p of points) {\n        if (p.x === 0 || p.y === 0) {\n            result.axis++;\n            continue;\n        }\n        const key = (p.y > 0 ? 'N' : 'S') + (p.x > 0 ? 'E' : 'W');\n        result[key]++;\n    }\n    return result;\n}\n"
 }

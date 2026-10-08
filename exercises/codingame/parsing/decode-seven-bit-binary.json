@@ -95,5 +95,5 @@
       "error": "Invalid bitstream"
     }
   ],
-  "referenceCode": "export function decodeBinaryAscii(bits) {\n  if(bits.length%7!==0||!/^[01]*$/.test(bits))throw new Error('Invalid bitstream');\n  let out='';for(let i=0;i<bits.length;i+=7)out+=String.fromCharCode(parseInt(bits.slice(i,i+7),2));\n  return out;\n}\n"
+  "referenceCode": "export function decodeBinaryAscii(bits) {\n    if (bits.length % 7 !== 0 || !/^[01]*$/.test(bits))\n        throw new Error('Invalid bitstream');\n    let out = '';\n    for (let i = 0; i < bits.length; i += 7)\n        out += String.fromCharCode(parseInt(bits.slice(i, i + 7), 2));\n    return out;\n}\n"
 }

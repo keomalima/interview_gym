@@ -134,5 +134,5 @@
       "expected": 45
     }
   ],
-  "referenceCode": "export async function applyAsyncBalanceSteps(initial: number, steps: { type: \"add\" | \"subtract\"; amount: number }[]) {\n  let balance=initial;\n  for(const step of steps){const op=await Promise.resolve(step);balance=op.type==='add'?balance+op.amount:balance-op.amount;}\n  return balance;\n}\n"
+  "referenceCode": "export async function applyAsyncBalanceSteps(initial: number, steps: {\n    type: \"add\" | \"subtract\";\n    amount: number;\n}[]) {\n    let balance = initial;\n    for (const step of steps) {\n        const op = await Promise.resolve(step);\n        balance = op.type === 'add' ? balance + op.amount : balance - op.amount;\n    }\n    return balance;\n}\n"
 }

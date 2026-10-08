@@ -143,5 +143,5 @@
       }
     }
   ],
-  "referenceCode": "export function validateInvoiceLines(lines: { description: string; quantity: number; unitCents: number }[]) {\n  const errors=[];lines.forEach((line,i)=>{\n    if(typeof line.description!=='string'||!line.description.trim())errors.push('line '+i+': description');\n    if(!Number.isSafeInteger(line.quantity)||line.quantity<=0)errors.push('line '+i+': quantity');\n    if(!Number.isSafeInteger(line.unitCents)||line.unitCents<0)errors.push('line '+i+': price');\n  });return {valid:errors.length===0,errors};\n}\n"
+  "referenceCode": "export function validateInvoiceLines(lines: {\n    description: string;\n    quantity: number;\n    unitCents: number;\n}[]) {\n    const errors = [];\n    lines.forEach((line, i) => {\n        if (typeof line.description !== 'string' || !line.description.trim())\n            errors.push('line ' + i + ': description');\n        if (!Number.isSafeInteger(line.quantity) || line.quantity <= 0)\n            errors.push('line ' + i + ': quantity');\n        if (!Number.isSafeInteger(line.unitCents) || line.unitCents < 0)\n            errors.push('line ' + i + ': price');\n    });\n    return { valid: errors.length === 0, errors };\n}\n"
 }

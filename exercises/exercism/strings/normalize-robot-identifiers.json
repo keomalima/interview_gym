@@ -128,5 +128,5 @@
       ]
     }
   ],
-  "referenceCode": "export function normalizeRobotIds(names) {\n  const used=new Set();const out=[];\n  for(const raw of names){const base=raw.trim().toUpperCase().replace(/[^A-Z0-9]/g,'');let id=base||'ROBOT',i=2;\n    while(used.has(id))id=(base||'ROBOT')+'-'+i++;\n    used.add(id);out.push(id);\n  }\n  return out;\n}\n"
+  "referenceCode": "export function normalizeRobotIds(names) {\n    const used = new Set();\n    const out = [];\n    for (const raw of names) {\n        const base = raw.trim().toUpperCase().replace(/[^A-Z0-9]/g, '');\n        let id = base || 'ROBOT', i = 2;\n        while (used.has(id))\n            id = (base || 'ROBOT') + '-' + i++;\n        used.add(id);\n        out.push(id);\n    }\n    return out;\n}\n"
 }

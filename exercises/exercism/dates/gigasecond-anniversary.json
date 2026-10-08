@@ -88,5 +88,5 @@
       "expected": "2051-09-09T01:46:40.000Z"
     }
   ],
-  "referenceCode": "export function addGigasecond(isoDate) {\n  const ms=Date.parse(isoDate);if(!Number.isFinite(ms))throw new Error('Invalid date');\n  return new Date(ms+1000000000*1000).toISOString();\n}\n"
+  "referenceCode": "export function addGigasecond(isoDate) {\n    const ms = Date.parse(isoDate);\n    if (!Number.isFinite(ms))\n        throw new Error('Invalid date');\n    return new Date(ms + 1000000000 * 1000).toISOString();\n}\n"
 }

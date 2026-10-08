@@ -87,5 +87,5 @@
       "expected": 2
     }
   ],
-  "referenceCode": "export function countRepeatedCharacters(text) {\n  const counts=new Map();for(const ch of text.toLowerCase())counts.set(ch,(counts.get(ch)||0)+1);\n  return [...counts.values()].filter(n=>n>1).length;\n}\n"
+  "referenceCode": "export function countRepeatedCharacters(text) {\n    const counts = new Map();\n    for (const ch of text.toLowerCase())\n        counts.set(ch, (counts.get(ch) || 0) + 1);\n    return [...counts.values()].filter(n => n > 1).length;\n}\n"
 }

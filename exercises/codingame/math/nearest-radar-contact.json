@@ -138,5 +138,5 @@
       "expected": "left"
     }
   ],
-  "referenceCode": "export function nearestRadarPoint(points) {\n  if(!points.length)return null;let best=null,min=Infinity;\n  for(const p of points){const d=p.x*p.x+p.y*p.y;if(d<min){best=p.id;min=d;}}\n  return best;\n}\n"
+  "referenceCode": "export function nearestRadarPoint(points) {\n    if (!points.length)\n        return null;\n    let best = null, min = Infinity;\n    for (const p of points) {\n        const d = p.x * p.x + p.y * p.y;\n        if (d < min) {\n            best = p.id;\n            min = d;\n        }\n    }\n    return best;\n}\n"
 }

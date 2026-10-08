@@ -144,5 +144,5 @@
       ]
     }
   ],
-  "referenceCode": "export function uniqueConsecutive(items) {\n  const out=[];for(const x of items)if(!out.length||out[out.length-1]!==x)out.push(x);\n  return out;\n}\n"
+  "referenceCode": "export function uniqueConsecutive(items) {\n    const out = [];\n    for (const x of items)\n        if (!out.length || out[out.length - 1] !== x)\n            out.push(x);\n    return out;\n}\n"
 }

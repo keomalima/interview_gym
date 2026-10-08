@@ -88,5 +88,5 @@
       "expected": true
     }
   ],
-  "referenceCode": "export function isLuhnValid(text) {\n  const s=text.replace(/ /g,'');if(s.length<2||!/^[0-9]+$/.test(s))return false;\n  let sum=0,doubled=false;\n  for(let i=s.length-1;i>=0;i--){let d=Number(s[i]);if(doubled){d*=2;if(d>9)d-=9;}sum+=d;doubled=!doubled;}\n  return sum%10===0;\n}\n"
+  "referenceCode": "export function isLuhnValid(text) {\n    const s = text.replace(/ /g, '');\n    if (s.length < 2 || !/^[0-9]+$/.test(s))\n        return false;\n    let sum = 0, doubled = false;\n    for (let i = s.length - 1; i >= 0; i--) {\n        let d = Number(s[i]);\n        if (doubled) {\n            d *= 2;\n            if (d > 9)\n                d -= 9;\n        }\n        sum += d;\n        doubled = !doubled;\n    }\n    return sum % 10 === 0;\n}\n"
 }

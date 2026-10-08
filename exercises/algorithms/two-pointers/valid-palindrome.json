@@ -104,5 +104,5 @@
       "expected": true
     }
   ],
-  "referenceCode": "export function isNormalizedPalindrome(text) {\n  let left = 0, right = text.length - 1;\n  const valid = c => /[a-z0-9]/i.test(c);\n  while (left < right) {\n    while (left < right && !valid(text[left])) left++;\n    while (left < right && !valid(text[right])) right--;\n    if (text[left].toLowerCase() !== text[right].toLowerCase()) return false;\n    left++; right--;\n  }\n  return true;\n}\n"
+  "referenceCode": "export function isNormalizedPalindrome(text) {\n    let left = 0, right = text.length - 1;\n    const valid = c => /[a-z0-9]/i.test(c);\n    while (left < right) {\n        while (left < right && !valid(text[left]))\n            left++;\n        while (left < right && !valid(text[right]))\n            right--;\n        if (text[left].toLowerCase() !== text[right].toLowerCase())\n            return false;\n        left++;\n        right--;\n    }\n    return true;\n}\n"
 }

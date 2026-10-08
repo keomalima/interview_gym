@@ -95,5 +95,5 @@
       "error": "Invalid DNA nucleotide"
     }
   ],
-  "referenceCode": "export function transcribeDna(dna) {\n  const map={G:'C',C:'G',T:'A',A:'U'};\n  let result='';for(const c of dna){if(!(c in map))throw new Error('Invalid DNA nucleotide');result+=map[c];}\n  return result;\n}\n"
+  "referenceCode": "export function transcribeDna(dna) {\n    const map = { G: 'C', C: 'G', T: 'A', A: 'U' };\n    let result = '';\n    for (const c of dna) {\n        if (!(c in map))\n            throw new Error('Invalid DNA nucleotide');\n        result += map[c];\n    }\n    return result;\n}\n"
 }

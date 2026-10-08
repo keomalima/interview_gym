@@ -145,5 +145,5 @@
       "expected": []
     }
   ],
-  "referenceCode": "export function maxWindowValues(nums,k) {\n  if(k<1||k>nums.length) return [];\n  const q=[],out=[];let head=0;\n  for(let i=0;i<nums.length;i++) {\n    while(head<q.length && q[head]<=i-k)head++;\n    while(q.length>head && nums[q[q.length-1]]<=nums[i])q.pop();\n    q.push(i);if(i>=k-1)out.push(nums[q[head]]);\n  }\n  return out;\n}\n"
+  "referenceCode": "export function maxWindowValues(nums, k) {\n    if (k < 1 || k > nums.length)\n        return [];\n    const q = [], out = [];\n    let head = 0;\n    for (let i = 0; i < nums.length; i++) {\n        while (head < q.length && q[head] <= i - k)\n            head++;\n        while (q.length > head && nums[q[q.length - 1]] <= nums[i])\n            q.pop();\n        q.push(i);\n        if (i >= k - 1)\n            out.push(nums[q[head]]);\n    }\n    return out;\n}\n"
 }

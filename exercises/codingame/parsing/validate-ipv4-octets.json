@@ -108,5 +108,5 @@
       "expected": null
     }
   ],
-  "referenceCode": "export function parseIpv4(text) {\n  const p=text.split('.');if(p.length!==4)return null;\n  const out=[];\n  for(const s of p){if(!/^(0|[1-9]\\d*)$/.test(s))return null;const n=Number(s);if(n>255)return null;out.push(n);}\n  return out;\n}\n"
+  "referenceCode": "export function parseIpv4(text) {\n    const p = text.split('.');\n    if (p.length !== 4)\n        return null;\n    const out = [];\n    for (const s of p) {\n        if (!/^(0|[1-9]\\d*)$/.test(s))\n            return null;\n        const n = Number(s);\n        if (n > 255)\n            return null;\n        out.push(n);\n    }\n    return out;\n}\n"
 }

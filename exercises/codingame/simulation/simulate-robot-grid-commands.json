@@ -132,5 +132,5 @@
       "error": "Invalid direction"
     }
   ],
-  "referenceCode": "export function executeRobotMoves(x,y,commands) {\n  for(const c of commands){if(c==='N')y--;else if(c==='S')y++;else if(c==='E')x++;else if(c==='W')x--;else throw new Error('Invalid direction');}\n  return {x,y};\n}\n"
+  "referenceCode": "export function executeRobotMoves(x, y, commands) {\n    for (const c of commands) {\n        if (c === 'N')\n            y--;\n        else if (c === 'S')\n            y++;\n        else if (c === 'E')\n            x++;\n        else if (c === 'W')\n            x--;\n        else\n            throw new Error('Invalid direction');\n    }\n    return { x, y };\n}\n"
 }

@@ -148,5 +148,5 @@
       }
     }
   ],
-  "referenceCode": "export function sanitizeSignup(payload: { name: unknown; email: unknown }) {\n  const name=typeof payload.name==='string'?payload.name.trim().replace(/\\s+/g,' '):'';\n  const email=typeof payload.email==='string'?payload.email.trim().toLowerCase():'';\n  const errors=[];if(name.length<2)errors.push('name');if(!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email))errors.push('email');\n  return errors.length?{ok:false,errors}:{ok:true,value:{name,email}};\n}\n"
+  "referenceCode": "export function sanitizeSignup(payload: {\n    name: unknown;\n    email: unknown;\n}) {\n    const name = typeof payload.name === 'string' ? payload.name.trim().replace(/\\s+/g, ' ') : '';\n    const email = typeof payload.email === 'string' ? payload.email.trim().toLowerCase() : '';\n    const errors = [];\n    if (name.length < 2)\n        errors.push('name');\n    if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email))\n        errors.push('email');\n    return errors.length ? { ok: false, errors } : { ok: true, value: { name, email } };\n}\n"
 }

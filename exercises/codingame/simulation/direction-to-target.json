@@ -109,5 +109,5 @@
       "expected": "E"
     }
   ],
-  "referenceCode": "export function directionToTarget(x,y,tx,ty) {\n  const vertical=ty<y?'N':ty>y?'S':'';const horizontal=tx<x?'W':tx>x?'E':'';\n  return vertical+horizontal||'STAY';\n}\n"
+  "referenceCode": "export function directionToTarget(x, y, tx, ty) {\n    const vertical = ty < y ? 'N' : ty > y ? 'S' : '';\n    const horizontal = tx < x ? 'W' : tx > x ? 'E' : '';\n    return vertical + horizontal || 'STAY';\n}\n"
 }

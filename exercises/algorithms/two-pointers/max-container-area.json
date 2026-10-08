@@ -122,5 +122,5 @@
       "expected": 16
     }
   ],
-  "referenceCode": "export function maxContainerArea(heights) {\n  let l = 0, r = heights.length - 1, best = 0;\n  while (l < r) { best = Math.max(best, (r - l) * Math.min(heights[l], heights[r])); if (heights[l] <= heights[r]) l++; else r--; }\n  return best;\n}\n"
+  "referenceCode": "export function maxContainerArea(heights) {\n    let l = 0, r = heights.length - 1, best = 0;\n    while (l < r) {\n        best = Math.max(best, (r - l) * Math.min(heights[l], heights[r]));\n        if (heights[l] <= heights[r])\n            l++;\n        else\n            r--;\n    }\n    return best;\n}\n"
 }

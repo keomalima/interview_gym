@@ -95,5 +95,5 @@
       "expected": false
     }
   ],
-  "referenceCode": "export function areAnagrams(a,b) {\n  if(a.length!==b.length)return false;\n  const count=new Map();for(const c of a)count.set(c,(count.get(c)||0)+1);\n  for(const c of b){const n=count.get(c)||0;if(!n)return false;count.set(c,n-1);}\n  return true;\n}\n"
+  "referenceCode": "export function areAnagrams(a, b) {\n    if (a.length !== b.length)\n        return false;\n    const count = new Map();\n    for (const c of a)\n        count.set(c, (count.get(c) || 0) + 1);\n    for (const c of b) {\n        const n = count.get(c) || 0;\n        if (!n)\n            return false;\n        count.set(c, n - 1);\n    }\n    return true;\n}\n"
 }

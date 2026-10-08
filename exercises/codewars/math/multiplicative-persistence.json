@@ -87,5 +87,5 @@
       "expected": 0
     }
   ],
-  "referenceCode": "export function multiplicativePersistence(n) {\n  let steps=0;while(n>=10){n=String(n).split('').reduce((p,c)=>p*Number(c),1);steps++;}return steps;\n}\n"
+  "referenceCode": "export function multiplicativePersistence(n) {\n    let steps = 0;\n    while (n >= 10) {\n        n = String(n).split('').reduce((p, c) => p * Number(c), 1);\n        steps++;\n    }\n    return steps;\n}\n"
 }

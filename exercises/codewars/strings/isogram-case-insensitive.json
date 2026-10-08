@@ -88,5 +88,5 @@
       "expected": false
     }
   ],
-  "referenceCode": "export function isIsogram(word) {const chars=word.toLowerCase();return new Set(chars).size===chars.length;}\n"
+  "referenceCode": "export function isIsogram(word) { const chars = word.toLowerCase(); return new Set(chars).size === chars.length; }\n"
 }

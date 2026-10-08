@@ -172,5 +172,5 @@
       ]
     }
   ],
-  "referenceCode": "export function acceptWebhookEvents(events: { id: string; type: string }[]) {\n  const seen=new Set(),accepted=[];\n  for(const e of events){if(seen.has(e.id))continue;seen.add(e.id);accepted.push(e);}\n  return accepted;\n}\n"
+  "referenceCode": "export function acceptWebhookEvents(events: {\n    id: string;\n    type: string;\n}[]) {\n    const seen = new Set(), accepted = [];\n    for (const e of events) {\n        if (seen.has(e.id))\n            continue;\n        seen.add(e.id);\n        accepted.push(e);\n    }\n    return accepted;\n}\n"
 }

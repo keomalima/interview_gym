@@ -233,5 +233,5 @@
       }
     }
   ],
-  "referenceCode": "export function allocateStock(stock: Record<string, number>, orders: { id: string; sku: string; quantity: number }[]) {\n  const available={...stock},results=[];\n  for(const o of orders){const remaining=available[o.sku]??0;if(o.quantity>0&&remaining>=o.quantity){available[o.sku]=remaining-o.quantity;results.push({id:o.id,accepted:true});}\n    else results.push({id:o.id,accepted:false});}\n  return {remaining:available,results};\n}\n"
+  "referenceCode": "export function allocateStock(stock: Record<string, number>, orders: {\n    id: string;\n    sku: string;\n    quantity: number;\n}[]) {\n    const available = { ...stock }, results = [];\n    for (const o of orders) {\n        const remaining = available[o.sku] ?? 0;\n        if (o.quantity > 0 && remaining >= o.quantity) {\n            available[o.sku] = remaining - o.quantity;\n            results.push({ id: o.id, accepted: true });\n        }\n        else\n            results.push({ id: o.id, accepted: false });\n    }\n    return { remaining: available, results };\n}\n"
 }

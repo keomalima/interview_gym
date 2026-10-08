@@ -196,5 +196,5 @@
       }
     }
   ],
-  "referenceCode": "type Signup = { email: string; password: string; displayName: string };\nexport function validateSignupData(input: Signup): unknown {\n  const email = input.email.trim().toLowerCase();\n  const displayName = input.displayName.trim();\n  const errors: string[] = [];\n  if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) errors.push('email');\n  if (input.password.length < 8) errors.push('password');\n  if (displayName.length < 2 || displayName.length > 40) errors.push('displayName');\n  return errors.length ? {ok: false, errors} : {ok: true, user: {email, displayName}};\n}\n"
+  "referenceCode": "type Signup = {\n    email: string;\n    password: string;\n    displayName: string;\n};\nexport function validateSignupData(input: Signup): unknown {\n    const email = input.email.trim().toLowerCase();\n    const displayName = input.displayName.trim();\n    const errors: string[] = [];\n    if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email))\n        errors.push('email');\n    if (input.password.length < 8)\n        errors.push('password');\n    if (displayName.length < 2 || displayName.length > 40)\n        errors.push('displayName');\n    return errors.length ? { ok: false, errors } : { ok: true, user: { email, displayName } };\n}\n"
 }

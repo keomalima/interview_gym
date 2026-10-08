@@ -171,5 +171,5 @@
       "expected": []
     }
   ],
-  "referenceCode": "export function transposeMatrix(rows) {\n  if(!rows.length)return [];\n  return Array.from({length:rows[0].length},(_,c)=>rows.map(row=>row[c]));\n}\n"
+  "referenceCode": "export function transposeMatrix(rows) {\n    if (!rows.length)\n        return [];\n    return Array.from({ length: rows[0].length }, (_, c) => rows.map(row => row[c]));\n}\n"
 }

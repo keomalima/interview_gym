@@ -135,5 +135,5 @@
       }
     }
   ],
-  "referenceCode": "export async function resolveAsyncFallback(primary: { ok: boolean; value: unknown }, backup: unknown) {\n  try{const value=await (primary.ok?Promise.resolve(primary.value):Promise.reject(new Error('Primary failed')));return {source:'primary',value};}\n  catch{return {source:'fallback',value:await Promise.resolve(backup)};}\n}\n"
+  "referenceCode": "export async function resolveAsyncFallback(primary: {\n    ok: boolean;\n    value: unknown;\n}, backup: unknown) {\n    try {\n        const value = await (primary.ok ? Promise.resolve(primary.value) : Promise.reject(new Error('Primary failed')));\n        return { source: 'primary', value };\n    }\n    catch {\n        return { source: 'fallback', value: await Promise.resolve(backup) };\n    }\n}\n"
 }

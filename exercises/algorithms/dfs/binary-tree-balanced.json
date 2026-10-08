@@ -136,5 +136,5 @@
       "expected": true
     }
   ],
-  "referenceCode": "export function isHeightBalanced(root) {\n  function depth(n){if(!n)return 0;const l=depth(n.left);if(l<0)return -1;const r=depth(n.right);if(r<0||Math.abs(l-r)>1)return -1;return Math.max(l,r)+1;}\n  return depth(root)>=0;\n}\n"
+  "referenceCode": "export function isHeightBalanced(root) {\n    function depth(n) { if (!n)\n        return 0; const l = depth(n.left); if (l < 0)\n        return -1; const r = depth(n.right); if (r < 0 || Math.abs(l - r) > 1)\n        return -1; return Math.max(l, r) + 1; }\n    return depth(root) >= 0;\n}\n"
 }

@@ -130,5 +130,5 @@
       "error": "Invalid nucleotide"
     }
   ],
-  "referenceCode": "export function countNucleotides(dna) {\n  const count={A:0,C:0,G:0,T:0};\n  for(const c of dna){if(!(c in count))throw new Error('Invalid nucleotide');count[c]++;}\n  return count;\n}\n"
+  "referenceCode": "export function countNucleotides(dna) {\n    const count = { A: 0, C: 0, G: 0, T: 0 };\n    for (const c of dna) {\n        if (!(c in count))\n            throw new Error('Invalid nucleotide');\n        count[c]++;\n    }\n    return count;\n}\n"
 }

@@ -106,5 +106,5 @@
       ]
     }
   ],
-  "referenceCode": "export function decodeAllergies(score) {\n  const names=['eggs','peanuts','shellfish','strawberries','tomatoes','chocolate','pollen','cats'];\n  return names.filter((_,i)=>(score&(1<<i))!==0);\n}\n"
+  "referenceCode": "export function decodeAllergies(score) {\n    const names = ['eggs', 'peanuts', 'shellfish', 'strawberries', 'tomatoes', 'chocolate', 'pollen', 'cats'];\n    return names.filter((_, i) => (score & (1 << i)) !== 0);\n}\n"
 }

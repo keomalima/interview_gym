@@ -113,5 +113,5 @@
       ]
     }
   ],
-  "referenceCode": "export async function fetchNormalizedNames(names: string[]) {\n  return await Promise.all(names.map(async name=>(await Promise.resolve(name)).trim().toUpperCase()));\n}\n"
+  "referenceCode": "export async function fetchNormalizedNames(names: string[]) {\n    const normalized = [];\n    for (const name of names) {\n        const resolvedName = await Promise.resolve(name);\n        normalized.push(resolvedName.trim().toUpperCase());\n    }\n    return normalized;\n}\n"
 }

@@ -149,5 +149,5 @@
       "error": "Invalid frame"
     }
   ],
-  "referenceCode": "export function simpleBowlingScore(frames) {\n  let total=0;for(const f of frames){if(f.length!==2||f.some(n=>!Number.isInteger(n)||n<0||n>10)||f[0]+f[1]>10)throw new Error('Invalid frame');total+=f[0]+f[1];}\n  return total;\n}\n"
+  "referenceCode": "export function simpleBowlingScore(frames) {\n    let total = 0;\n    for (const f of frames) {\n        if (f.length !== 2 || f.some(n => !Number.isInteger(n) || n < 0 || n > 10) || f[0] + f[1] > 10)\n            throw new Error('Invalid frame');\n        total += f[0] + f[1];\n    }\n    return total;\n}\n"
 }

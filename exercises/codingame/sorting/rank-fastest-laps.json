@@ -148,5 +148,5 @@
       ]
     }
   ],
-  "referenceCode": "export function rankLapTimes(laps) {\n  return laps.map((p,i)=>({...p,i})).sort((a,b)=>a.seconds-b.seconds||a.i-b.i).map(({i,...p})=>p.name);\n}\n"
+  "referenceCode": "export function rankLapTimes(laps) {\n    return laps.map((p, i) => ({ ...p, i })).sort((a, b) => a.seconds - b.seconds || a.i - b.i).map(({ i, ...p }) => p.name);\n}\n"
 }

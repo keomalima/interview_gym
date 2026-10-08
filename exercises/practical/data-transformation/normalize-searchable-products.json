@@ -162,5 +162,5 @@
       ]
     }
   ],
-  "referenceCode": "export function normalizeProducts(products: { id: string | number; name: string; stock: number }[]) {\n  return products.map(p=>({id:String(p.id),name:p.name.trim().replace(/\\s+/g,' '),searchKey:p.name.trim().replace(/\\s+/g,' ').toLowerCase(),inStock:p.stock>0}));\n}\n"
+  "referenceCode": "export function normalizeProducts(products: {\n    id: string | number;\n    name: string;\n    stock: number;\n}[]) {\n    return products.map(p => ({ id: String(p.id), name: p.name.trim().replace(/\\s+/g, ' '), searchKey: p.name.trim().replace(/\\s+/g, ' ').toLowerCase(), inStock: p.stock > 0 }));\n}\n"
 }

@@ -169,5 +169,5 @@
       ]
     }
   ],
-  "referenceCode": "export async function normalizeAsyncBatch(records: { id: string | number; name: string }[]) {\n  const tasks=records.map(async record=>{const value=await Promise.resolve(record);return {id:value.id,name:value.name.trim().toLowerCase()};});\n  return await Promise.all(tasks);\n}\n"
+  "referenceCode": "export async function normalizeAsyncBatch(records: {\n    id: string | number;\n    name: string;\n}[]) {\n    const tasks = records.map(async (record) => { const value = await Promise.resolve(record); return { id: value.id, name: value.name.trim().toLowerCase() }; });\n    return await Promise.all(tasks);\n}\n"
 }

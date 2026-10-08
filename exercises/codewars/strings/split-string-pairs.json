@@ -107,5 +107,5 @@
       ]
     }
   ],
-  "referenceCode": "export function splitIntoPairs(text) {const out=[];for(let i=0;i<text.length;i+=2)out.push((text.slice(i,i+2)+'_').slice(0,2));return out;}\n"
+  "referenceCode": "export function splitIntoPairs(text) { const out = []; for (let i = 0; i < text.length; i += 2)\n    out.push((text.slice(i, i + 2) + '_').slice(0, 2)); return out; }\n"
 }

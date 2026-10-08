@@ -129,5 +129,5 @@
       ]
     }
   ],
-  "referenceCode": "export function collapseAdjacent(nums) {\n  const out=[];\n  for(const n of nums)if(!out.length||out[out.length-1]!==n)out.push(n);\n  return out;\n}\n"
+  "referenceCode": "export function collapseAdjacent(nums) {\n    const out = [];\n    for (const n of nums)\n        if (!out.length || out[out.length - 1] !== n)\n            out.push(n);\n    return out;\n}\n"
 }

@@ -94,5 +94,5 @@
       "error": "Invalid binary"
     }
   ],
-  "referenceCode": "export function binaryToDecimal(bits) {\n  if(!/^[01]+$/.test(bits))throw new Error('Invalid binary');\n  return [...bits].reduce((n,bit)=>n*2+Number(bit),0);\n}\n"
+  "referenceCode": "export function binaryToDecimal(bits) {\n    if (!/^[01]+$/.test(bits))\n        throw new Error('Invalid binary');\n    return [...bits].reduce((n, bit) => n * 2 + Number(bit), 0);\n}\n"
 }

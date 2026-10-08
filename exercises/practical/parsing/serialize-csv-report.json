@@ -154,5 +154,5 @@
       "expected": "a,b\n,0\nfalse,"
     }
   ],
-  "referenceCode": "export function serializeCsv(headers: string[], rows: (string | number | boolean | null)[][]) {\n  const encode=value=>{const s=String(value==null?'':value);return /[\",\\n\\r]/.test(s)?'\"'+s.replace(/\"/g,'\"\"')+'\"':s;};\n  return [headers,...rows].map(row=>row.map(encode).join(',')).join('\\n');\n}\n"
+  "referenceCode": "export function serializeCsv(headers: string[], rows: (string | number | boolean | null)[][]) {\n    const encode = value => { const s = String(value == null ? '' : value); return /[\",\\n\\r]/.test(s) ? '\"' + s.replace(/\"/g, '\"\"') + '\"' : s; };\n    return [headers, ...rows].map(row => row.map(encode).join(',')).join('\\n');\n}\n"
 }

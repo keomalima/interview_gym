@@ -154,5 +154,5 @@
       }
     }
   ],
-  "referenceCode": "export async function applyAsyncStockUpdates(initial: Record<string, number>, changes: { sku: string; delta: number }[]) {\n  const stock={...initial};\n  for(const change of changes){const c=await Promise.resolve(change);stock[c.sku]=(stock[c.sku]||0)+c.delta;}\n  return stock;\n}\n"
+  "referenceCode": "export async function applyAsyncStockUpdates(initial: Record<string, number>, changes: {\n    sku: string;\n    delta: number;\n}[]) {\n    const stock = { ...initial };\n    for (const change of changes) {\n        const c = await Promise.resolve(change);\n        stock[c.sku] = (stock[c.sku] || 0) + c.delta;\n    }\n    return stock;\n}\n"
 }

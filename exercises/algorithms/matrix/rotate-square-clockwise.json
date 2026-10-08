@@ -190,5 +190,5 @@
       ]
     }
   ],
-  "referenceCode": "export function rotateMatrixClockwise(matrix) {\n  const n=matrix.length;return Array.from({length:n},(_,r)=>Array.from({length:n},(_,c)=>matrix[n-1-c][r]));\n}\n"
+  "referenceCode": "export function rotateMatrixClockwise(matrix) {\n    const size = matrix.length;\n    const rotated = [];\n    for (let row = 0; row < size; row++) {\n        const newRow = [];\n        for (let col = 0; col < size; col++) {\n            newRow.push(matrix[size - 1 - col][row]);\n        }\n        rotated.push(newRow);\n    }\n    return rotated;\n}\n"
 }

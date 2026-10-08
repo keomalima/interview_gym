@@ -144,5 +144,5 @@
       ]
     }
   ],
-  "referenceCode": "export function pageSlice(items,page,pageSize) {return items.slice((page-1)*pageSize,page*pageSize);}\n"
+  "referenceCode": "export function pageSlice(items, page, pageSize) {\n    const startIndex = (page - 1) * pageSize;\n    const endIndex = startIndex + pageSize;\n    return items.slice(startIndex, endIndex);\n}\n"
 }

@@ -87,5 +87,5 @@
       "expected": 987000
     }
   ],
-  "referenceCode": "export function descendingDigits(n) {return Number([...String(n)].sort((a,b)=>b.localeCompare(a)).join(''));}\n"
+  "referenceCode": "export function descendingDigits(n) { return Number([...String(n)].sort((a, b) => b.localeCompare(a)).join('')); }\n"
 }

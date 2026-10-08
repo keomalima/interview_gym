@@ -103,5 +103,5 @@
       "error": "Different lengths"
     }
   ],
-  "referenceCode": "export function hammingDistance(a,b) {\n  if(a.length!==b.length)throw new Error('Different lengths');\n  let count=0;for(let i=0;i<a.length;i++)if(a[i]!==b[i])count++;return count;\n}\n"
+  "referenceCode": "export function hammingDistance(a, b) {\n    if (a.length !== b.length)\n        throw new Error('Different lengths');\n    let count = 0;\n    for (let i = 0; i < a.length; i++)\n        if (a[i] !== b[i])\n            count++;\n    return count;\n}\n"
 }

@@ -95,5 +95,5 @@
       "expected": "Abc-123"
     }
   ],
-  "referenceCode": "export function decodeCaesar(text,shift) {\n  const s=((shift%26)+26)%26;\n  return text.replace(/[A-Za-z]/g,c=>{const start=c<='Z'?65:97;return String.fromCharCode(start+(c.charCodeAt(0)-start-s+26)%26);});\n}\n"
+  "referenceCode": "export function decodeCaesar(text, shift) {\n    const s = ((shift % 26) + 26) % 26;\n    return text.replace(/[A-Za-z]/g, c => { const start = c <= 'Z' ? 65 : 97; return String.fromCharCode(start + (c.charCodeAt(0) - start - s + 26) % 26); });\n}\n"
 }

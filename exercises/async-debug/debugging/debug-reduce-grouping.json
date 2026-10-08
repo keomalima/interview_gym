@@ -138,5 +138,5 @@
       }
     }
   ],
-  "referenceCode": "export function sumTotalsByCategory(items) {\n  const result={};for(const item of items)result[item.category]=(result[item.category]||0)+item.cents;return result;\n}\n"
+  "referenceCode": "export function sumTotalsByCategory(items) {\n    const totals = {};\n    for (const item of items) {\n        const category = item.category;\n        if (totals[category] === undefined) {\n            totals[category] = 0;\n        }\n        totals[category] += item.cents;\n    }\n    return totals;\n}\n"
 }

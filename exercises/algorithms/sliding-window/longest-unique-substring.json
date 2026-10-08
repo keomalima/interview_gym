@@ -105,5 +105,5 @@
       "expected": 3
     }
   ],
-  "referenceCode": "export function longestUniqueSubstring(text) {\n  const lastSeen = new Map();\n  let left = 0, best = 0, index = 0;\n  for (const char of text) {\n    if (lastSeen.has(char)) left = Math.max(left, lastSeen.get(char) + 1);\n    best = Math.max(best, index - left + 1);\n    lastSeen.set(char, index);\n    index++;\n  }\n  return best;\n}\n"
+  "referenceCode": "export function longestUniqueSubstring(text) {\n    const lastSeen = new Map();\n    let left = 0, best = 0, index = 0;\n    for (const char of text) {\n        if (lastSeen.has(char))\n            left = Math.max(left, lastSeen.get(char) + 1);\n        best = Math.max(best, index - left + 1);\n        lastSeen.set(char, index);\n        index++;\n    }\n    return best;\n}\n"
 }

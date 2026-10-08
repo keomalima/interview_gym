@@ -184,5 +184,5 @@
       ]
     }
   ],
-  "referenceCode": "export function milestoneProgress(tasks: { milestone: string; completed: boolean }[]) {\n  const m=new Map();for(const t of tasks){if(!m.has(t.milestone))m.set(t.milestone,{done:0,total:0});const x=m.get(t.milestone);x.total++;if(t.completed)x.done++;}\n  return [...m].sort(([a],[b])=>a.localeCompare(b)).map(([milestone,v])=>({milestone,done:v.done,total:v.total,percent:Math.round(100*v.done/v.total)}));\n}\n"
+  "referenceCode": "export function milestoneProgress(tasks: {\n    milestone: string;\n    completed: boolean;\n}[]) {\n    const m = new Map();\n    for (const t of tasks) {\n        if (!m.has(t.milestone))\n            m.set(t.milestone, { done: 0, total: 0 });\n        const x = m.get(t.milestone);\n        x.total++;\n        if (t.completed)\n            x.done++;\n    }\n    return [...m].sort(([a], [b]) => a.localeCompare(b)).map(([milestone, v]) => ({ milestone, done: v.done, total: v.total, percent: Math.round(100 * v.done / v.total) }));\n}\n"
 }

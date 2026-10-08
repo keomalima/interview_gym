@@ -140,5 +140,5 @@
       "expected": []
     }
   ],
-  "referenceCode": "export function topKFrequent(nums,k) {\n  const m=new Map();for(const n of nums)m.set(n,(m.get(n)||0)+1);\n  return [...m].sort((a,b)=>b[1]-a[1]||a[0]-b[0]).slice(0,Math.max(0,k)).map(([n])=>n);\n}\n"
+  "referenceCode": "export function topKFrequent(nums, k) {\n    const m = new Map();\n    for (const n of nums)\n        m.set(n, (m.get(n) || 0) + 1);\n    return [...m].sort((a, b) => b[1] - a[1] || a[0] - b[0]).slice(0, Math.max(0, k)).map(([n]) => n);\n}\n"
 }

@@ -179,5 +179,5 @@
       ]
     }
   ],
-  "referenceCode": "type Job = {id: string; outcome: 'success' | 'failure'; value?: unknown; message?: string};\nexport async function settleSimulatedJobs(jobs: Job[]): Promise<unknown[]> {\n  const promises = jobs.map(job => job.outcome === 'success'\n    ? Promise.resolve(job.value)\n    : Promise.reject(new Error(job.message)));\n  const results = await Promise.allSettled(promises);\n  return results.map((result, i) => result.status === 'fulfilled'\n    ? { id: jobs[i].id, status: 'fulfilled', value: result.value }\n    : { id: jobs[i].id, status: 'rejected', reason: result.reason.message });\n}\n"
+  "referenceCode": "type Job = {\n    id: string;\n    outcome: 'success' | 'failure';\n    value?: unknown;\n    message?: string;\n};\nexport async function settleSimulatedJobs(jobs: Job[]): Promise<unknown[]> {\n    const promises = jobs.map(job => job.outcome === 'success'\n        ? Promise.resolve(job.value)\n        : Promise.reject(new Error(job.message)));\n    const results = await Promise.allSettled(promises);\n    return results.map((result, i) => result.status === 'fulfilled'\n        ? { id: jobs[i].id, status: 'fulfilled', value: result.value }\n        : { id: jobs[i].id, status: 'rejected', reason: result.reason.message });\n}\n"
 }

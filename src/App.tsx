@@ -174,7 +174,13 @@ export function App({ onSignOut }: { onSignOut?: () => Promise<void> }) {
 
   useEffect(() => { document.documentElement.dataset.theme = theme; localStorage.setItem('interviewGym:theme', theme); }, [theme]);
   useEffect(() => () => { runRef.current?.stop(); }, []);
-  useEffect(() => { const timer = window.setInterval(() => setNow(Date.now()), 1000); return () => clearInterval(timer); }, []);
+  useEffect(() => {
+    const update = () => setNow(Date.now());
+    const timer = window.setInterval(update, 1000);
+    window.addEventListener('focus', update);
+    document.addEventListener('visibilitychange', update);
+    return () => { clearInterval(timer); window.removeEventListener('focus', update); document.removeEventListener('visibilitychange', update); };
+  }, []);
   const timedAttempt = session?.attempts.find(attempt => attempt.kind === 'timed');
   const secondsElapsed = session ? session.phase === 'continuation'
     ? Math.max(0, Math.floor((now - new Date(session.continuation_started_at ?? now).getTime()) / 1000))

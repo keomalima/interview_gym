@@ -191,5 +191,5 @@
       ]
     }
   ],
-  "referenceCode": "export function groupEventsBySession(events: { sessionId: string; type: string }[]) {\n  const map=new Map();for(const e of events){if(!map.has(e.sessionId))map.set(e.sessionId,[]);map.get(e.sessionId).push(e.type);}\n  return [...map].map(([sessionId,types])=>({sessionId,types}));\n}\n"
+  "referenceCode": "export function groupEventsBySession(events: {\n    sessionId: string;\n    type: string;\n}[]) {\n    const map = new Map();\n    for (const e of events) {\n        if (!map.has(e.sessionId))\n            map.set(e.sessionId, []);\n        map.get(e.sessionId).push(e.type);\n    }\n    return [...map].map(([sessionId, types]) => ({ sessionId, types }));\n}\n"
 }
