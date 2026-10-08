@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@codemirror/lang-javascript": "^6.2.4",
+    "@codemirror/lang-json": "^6.0.2",
     "@uiw/react-codemirror": "^4.25.2",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",

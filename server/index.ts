@@ -318,12 +318,12 @@ app.get('/api/history', async (_req, res) => {
   send(res, rows);
 });
 app.post('/api/sessions', async (req, res) => {
-  const { challengeId, notes = '' } = z.object({ challengeId: z.string(), notes: z.string().max(20000).optional() }).parse(req.body);
+  const { challengeId, notes = '', draftCode } = z.object({ challengeId: z.string(), notes: z.string().max(20000).optional(), draftCode: z.string().max(100000).optional() }).parse(req.body);
   const challenge = (await pool.query<Row>('SELECT payload FROM challenges WHERE id=$1', [challengeId])).rows[0]?.payload as Challenge | undefined;
   if (!challenge) { res.status(404).json({ error: 'Challenge not found' }); return; }
   const id = randomUUID();
   await pool.query(`INSERT INTO practice_sessions(id,challenge_id,challenge_snapshot,deadline_at,draft_code,notes)
-    VALUES($1,$2,$3,now()+($4 || ' minutes')::interval,$5,$6)`, [id, challengeId, challenge, String(challenge.durationMinutes), challenge.starterCode, notes]);
+    VALUES($1,$2,$3,now()+($4 || ' minutes')::interval,$5,$6)`, [id, challengeId, challenge, String(challenge.durationMinutes), draftCode ?? challenge.starterCode, notes]);
   send(res, await getSession(id));
 });
 app.get('/api/sessions/:id', async (req, res) => {

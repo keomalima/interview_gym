@@ -119,8 +119,6 @@ body{min-width:360px;background:var(--bg)}
 .collapsed-summary{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:34px;padding:0 15px;color:var(--muted);font-size:11px}
 .failure-text{color:#eb8c81;font-weight:600}
 .output-panel .console-body,.output-panel .testcase-view{flex:1;min-height:0;overflow:auto}
-.preview-editor{min-height:310px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--muted);text-align:center;padding:30px}
-.preview-editor h2{margin:0;color:var(--text);font-size:17px}.preview-editor p{font-size:12px;margin:0 0 8px}
 .interview-panel{padding:20px;overflow:visible;margin-bottom:24px}
 .interview-heading,.interview-actions{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .interview-heading{margin-bottom:18px}.interview-heading h2{font-size:20px;margin:5px 0 0}.eyebrow{display:flex;align-items:center;gap:6px;color:var(--accent);font-size:11px;text-transform:uppercase;letter-spacing:.1em}
@@ -233,3 +231,33 @@ body{min-width:360px;background:var(--bg)}
 .interview-progress button>svg{margin-left:auto}
 .interview-controls{flex:none}
 @media(max-width:580px){.sidebar{width:100%}.main-area.interview-view>.workspace-toolbar{display:flex}.interview-toolbar{gap:8px}.interview-progress{width:100%;gap:5px}.interview-progress button{max-width:none;gap:5px;padding-inline:7px}.interview-controls{width:100%;justify-content:flex-end}}
+
+/* Keep structured examples readable without wrapping long JSON lines. */
+.example-input pre,.case-field pre{min-width:0;max-width:100%;margin:0;padding:8px 10px;overflow-x:auto;white-space:pre;font:12px/1.55 ui-monospace,SFMono-Regular,monospace}
+.example-input pre{border-radius:4px;background:var(--raised)}
+.case-field pre{overflow-wrap:normal}
+.interview-progress button{height:36px;min-height:36px;gap:10px;text-align:left}
+.interview-progress .interview-tab-number{flex:none;width:18px;text-align:center}
+.interview-progress .interview-tab-title{flex:1;min-width:0;text-align:left;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.json-code-block{min-width:0;max-width:100%;max-height:180px;overflow:auto;border-radius:5px;background:var(--bg);color:var(--text)}
+.json-code-block .cm-editor{background:transparent!important;font:11px/1.45 ui-monospace,SFMono-Regular,monospace}
+.json-code-block .cm-scroller{max-height:180px;overflow:auto!important;font-family:ui-monospace,SFMono-Regular,monospace}
+.json-code-block .cm-content{padding:6px 8px}
+.json-code-block .cm-line{line-height:1.45}
+.json-code-block .cm-editor.cm-focused{outline:none}
+.interview-result-detail>summary{list-style:none;align-items:center;min-height:30px;line-height:1.2;margin:0}
+.interview-result-detail>summary::-webkit-details-marker{display:none}
+.interview-result-data{display:grid;gap:5px;padding:6px 8px 10px;border-bottom:1px solid var(--border)}
+.interview-result-data>strong{margin-top:4px;color:var(--muted);font-size:10px}
+
+/* Keep interview exercise names readable instead of forcing every tab into a narrow cell. */
+.interview-progress{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));min-width:0;overflow:visible}
+.interview-progress button{flex:initial;width:100%;min-width:0;max-width:none;min-height:44px;height:auto;overflow:visible;padding:8px 12px;align-items:flex-start}
+.interview-progress .interview-tab-title{white-space:normal;overflow:visible;text-overflow:clip;line-height:1.35}
+.interview-toolbar{height:auto;min-height:66px;padding:8px 8px 10px;align-items:stretch}
+.interview-progress{gap:10px;padding:0}
+.interview-progress button{align-items:center}
+.interview-controls{padding-left:16px;border-left:1px solid var(--border)}
+.collapse-output{width:32px;justify-content:center;padding:0;margin-inline:9px}
+.collapse-output span{display:none}
+@media(max-width:580px){.interview-toolbar{min-height:0;padding:4px 4px 10px}.interview-progress{display:flex;gap:6px;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin}.interview-progress button{flex:0 0 min(82vw,320px)}}
