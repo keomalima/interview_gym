@@ -30,7 +30,10 @@ export function installAuth(app: Express) {
   // JSON writes and same-origin fetches only. Cookies cannot authorize cross-site writes.
   app.use('/api', (req, res, next) => {
     if (authRequired && !['GET', 'HEAD', 'OPTIONS'].includes(req.method)) {
-      if (!req.is('application/json') || req.get('sec-fetch-site') === 'cross-site') {
+      // req.is() returns null for bodyless POSTs even when they declare JSON,
+      // which rejects actions such as restarting a timer that need no payload.
+      const contentType = req.get('content-type') ?? '';
+      if (!/^application\/json(?:\s*;|$)/i.test(contentType) || req.get('sec-fetch-site') === 'cross-site') {
         res.status(403).json({ error: 'Use a same-origin JSON request.' }); return;
       }
       const origin = req.get('origin');
