@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 1,
+  "id": "merge-customer-contact-records",
+  "title": "Merge duplicate customer contacts",
+  "eyebrow": "TypeScript · data-transformation",
+  "category": "practical",
+  "language": "typescript",
+  "difficulty": "medium",
+  "topics": [
+    "data-transformation",
+    "business logic"
+  ],
+  "skills": [
+    "data-transformation",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "fullstack",
+    "frontend",
+    "backend"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Consolidate duplicate customer records using normalized email.",
+  "durationMinutes": 25,
+  "functionName": "mergeCustomerContacts",
+  "requirements": [
+    "Trim and lowercase email keys.",
+    "For each email use the first nonempty name and first nonempty phone in encounter order.",
+    "Preserve first-seen email order."
+  ],
+  "starterCode": "export function mergeCustomerContacts(records: { email: string; name: string; phone: string }[]) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Normalize email before grouping.",
+    "Merge only fields missing from the retained record."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          {
+            "email": "A@B.COM",
+            "name": "Alice",
+            "phone": ""
+          },
+          {
+            "email": " a@b.com ",
+            "name": "",
+            "phone": "123"
+          }
+        ]
+      ],
+      "output": [
+        {
+          "email": "a@b.com",
+          "name": "Alice",
+          "phone": "123"
+        }
+      ]
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        []
+      ],
+      "output": []
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[{\"email\":\"A@B.COM\",\"name\":\"Alice\",\"phone\":\"\"},{\"email\":\" a@b.com \"…",
+      "input": [
+        [
+          {
+            "email": "A@B.COM",
+            "name": "Alice",
+            "phone": ""
+          },
+          {
+            "email": " a@b.com ",
+            "name": "",
+            "phone": "123"
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "email": "a@b.com",
+          "name": "Alice",
+          "phone": "123"
+        }
+      ]
+    },
+    {
+      "name": "Alternative scenario — [[]]",
+      "input": [
+        []
+      ],
+      "expected": []
+    },
+    {
+      "name": "Boundary condition — [[{\"email\":\"x@y.com\",\"name\":\"X\",\"phone\":\"22\"}]]",
+      "input": [
+        [
+          {
+            "email": "x@y.com",
+            "name": "X",
+            "phone": "22"
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "email": "x@y.com",
+          "name": "X",
+          "phone": "22"
+        }
+      ]
+    },
+    {
+      "name": "Edge case — [[{\"email\":\"a@b.com\",\"name\":\"\",\"phone\":\"\"},{\"email\":\"a@b.com\",\"name\"…",
+      "input": [
+        [
+          {
+            "email": "a@b.com",
+            "name": "",
+            "phone": ""
+          },
+          {
+            "email": "a@b.com",
+            "name": "A",
+            "phone": "1"
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "email": "a@b.com",
+          "name": "A",
+          "phone": "1"
+        }
+      ]
+    },
+    {
+      "name": "Additional variation — [[{\"email\":\"b@x.com\",\"name\":\"B\",\"phone\":\"\"},{\"email\":\"a@x.com\",\"name…",
+      "input": [
+        [
+          {
+            "email": "b@x.com",
+            "name": "B",
+            "phone": ""
+          },
+          {
+            "email": "a@x.com",
+            "name": "A",
+            "phone": ""
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "email": "b@x.com",
+          "name": "B",
+          "phone": ""
+        },
+        {
+          "email": "a@x.com",
+          "name": "A",
+          "phone": ""
+        }
+      ]
+    }
+  ],
+  "referenceCode": "export function mergeCustomerContacts(records: { email: string; name: string; phone: string }[]) {\n  const m=new Map();for(const r of records){const email=r.email.trim().toLowerCase();if(!m.has(email))m.set(email,{email,name:r.name.trim(),phone:r.phone||''});\n    else{const current=m.get(email);if(!current.name&&r.name.trim())current.name=r.name.trim();if(!current.phone&&r.phone)current.phone=r.phone;}}\n  return [...m.values()];\n}\n"
+}

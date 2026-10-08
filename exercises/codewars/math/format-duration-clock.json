@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "id": "format-duration-clock",
+  "title": "Format seconds as HH:MM:SS",
+  "eyebrow": "JavaScript · math",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "math",
+    "javascript fundamentals"
+  ],
+  "skills": [
+    "math",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Convert nonnegative whole seconds into a padded hours:minutes:seconds string.",
+  "durationMinutes": 15,
+  "functionName": "formatSeconds",
+  "requirements": [
+    "Hours may have more than two digits.",
+    "Always pad minutes and seconds to two digits.",
+    "Input is a nonnegative safe integer."
+  ],
+  "starterCode": "export function formatSeconds(total) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Use integer division by 3600 for hours.",
+    "Use modulo 60 to extract minute and second remainders."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        0
+      ],
+      "output": "00:00:00"
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        59
+      ],
+      "output": "00:00:59"
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [0]",
+      "input": [
+        0
+      ],
+      "expected": "00:00:00"
+    },
+    {
+      "name": "Alternative scenario — [59]",
+      "input": [
+        59
+      ],
+      "expected": "00:00:59"
+    },
+    {
+      "name": "Boundary condition — [60]",
+      "input": [
+        60
+      ],
+      "expected": "00:01:00"
+    },
+    {
+      "name": "Edge case — [359999]",
+      "input": [
+        359999
+      ],
+      "expected": "99:59:59"
+    },
+    {
+      "name": "Additional variation — [3661]",
+      "input": [
+        3661
+      ],
+      "expected": "01:01:01"
+    }
+  ],
+  "referenceCode": "export function formatSeconds(total) {\n  const h=Math.floor(total/3600),m=Math.floor(total%3600/60),s=total%60;\n  return [h,m,s].map(n=>String(n).padStart(2,'0')).join(':');\n}\n"
+}

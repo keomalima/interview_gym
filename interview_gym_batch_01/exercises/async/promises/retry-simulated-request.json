@@ -1,0 +1,217 @@
+{
+  "schemaVersion": 1,
+  "id": "retry-simulated-request",
+  "title": "Retry a simulated asynchronous request",
+  "eyebrow": "TypeScript · Promises",
+  "category": "practical",
+  "language": "typescript",
+  "difficulty": "medium",
+  "topics": [
+    "promises",
+    "async-await",
+    "error-handling"
+  ],
+  "skills": [
+    "retry logic",
+    "control flow",
+    "error propagation"
+  ],
+  "targetRoles": [
+    "backend",
+    "fullstack",
+    "general"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Implement bounded retries against a deterministic sequence of simulated async responses.",
+  "durationMinutes": 30,
+  "functionName": "retrySimulatedRequest",
+  "requirements": [
+    "responses is an array of simulated outcomes { ok: true, value } or { ok: false, error } in attempt order.",
+    "maxAttempts is a positive integer. Throw Error containing \"Invalid attempts\" otherwise.",
+    "Each attempt must await its simulated asynchronous Promise; on a failure, retry until a success or maxAttempts failures.",
+    "On success return { value, attemptsUsed }.",
+    "If all permitted attempts fail, throw an Error with the last attempted response’s error message.",
+    "If responses run out before maxAttempts, throw an Error containing \"No response\".",
+    "Inputs other than maxAttempts are valid."
+  ],
+  "starterCode": "type Response = {ok: true; value: unknown} | {ok: false; error: string};\nexport async function retrySimulatedRequest(responses: Response[], maxAttempts: number): Promise<unknown> {\n  // Await one simulated request per attempt.\n  return null;\n}\n",
+  "hints": [
+    "Validate the allowed number of attempts before the loop.",
+    "Wrap each response in Promise.resolve or Promise.reject; await and catch it.",
+    "Stop immediately after success and preserve the error from the last attempted failure."
+  ],
+  "examples": [
+    {
+      "label": "Succeeds after one failure",
+      "input": [
+        [
+          {
+            "ok": false,
+            "error": "temporary"
+          },
+          {
+            "ok": true,
+            "value": "ready"
+          }
+        ],
+        3
+      ],
+      "output": {
+        "value": "ready",
+        "attemptsUsed": 2
+      }
+    },
+    {
+      "label": "Immediate success",
+      "input": [
+        [
+          {
+            "ok": true,
+            "value": 0
+          }
+        ],
+        2
+      ],
+      "output": {
+        "value": 0,
+        "attemptsUsed": 1
+      }
+    }
+  ],
+  "tests": [
+    {
+      "name": "Succeeds after one failure",
+      "input": [
+        [
+          {
+            "ok": false,
+            "error": "temporary"
+          },
+          {
+            "ok": true,
+            "value": "ready"
+          }
+        ],
+        3
+      ],
+      "expected": {
+        "value": "ready",
+        "attemptsUsed": 2
+      }
+    },
+    {
+      "name": "Immediate success",
+      "input": [
+        [
+          {
+            "ok": true,
+            "value": 0
+          }
+        ],
+        2
+      ],
+      "expected": {
+        "value": 0,
+        "attemptsUsed": 1
+      }
+    },
+    {
+      "name": "Stops after max attempts",
+      "input": [
+        [
+          {
+            "ok": false,
+            "error": "first"
+          },
+          {
+            "ok": false,
+            "error": "second"
+          },
+          {
+            "ok": true,
+            "value": "too late"
+          }
+        ],
+        2
+      ],
+      "error": "second"
+    },
+    {
+      "name": "Last possible success",
+      "input": [
+        [
+          {
+            "ok": false,
+            "error": "down"
+          },
+          {
+            "ok": false,
+            "error": "down"
+          },
+          {
+            "ok": true,
+            "value": {
+              "ok": true
+            }
+          }
+        ],
+        3
+      ],
+      "expected": {
+        "value": {
+          "ok": true
+        },
+        "attemptsUsed": 3
+      }
+    },
+    {
+      "name": "No responses",
+      "input": [
+        [],
+        2
+      ],
+      "error": "No response"
+    },
+    {
+      "name": "Responses exhausted",
+      "input": [
+        [
+          {
+            "ok": false,
+            "error": "fail"
+          }
+        ],
+        2
+      ],
+      "error": "No response"
+    },
+    {
+      "name": "Zero attempts",
+      "input": [
+        [
+          {
+            "ok": true,
+            "value": 5
+          }
+        ],
+        0
+      ],
+      "error": "Invalid attempts"
+    },
+    {
+      "name": "Non-integer attempts",
+      "input": [
+        [
+          {
+            "ok": true,
+            "value": 5
+          }
+        ],
+        1.5
+      ],
+      "error": "Invalid attempts"
+    }
+  ],
+  "referenceCode": "type Response = {ok: true; value: unknown} | {ok: false; error: string};\nexport async function retrySimulatedRequest(responses: Response[], maxAttempts: number): Promise<unknown> {\n  if (!Number.isInteger(maxAttempts) || maxAttempts < 1) throw new Error('Invalid attempts');\n  for (let i = 0; i < maxAttempts; i++) {\n    if (i >= responses.length) throw new Error('No response');\n    const response = responses[i];\n    try {\n      const value = await (response.ok ? Promise.resolve(response.value) : Promise.reject(new Error(response.error)));\n      return { value, attemptsUsed: i + 1 };\n    } catch (error) {\n      if (i === maxAttempts - 1) throw error;\n    }\n  }\n  throw new Error('No response');\n}\n"
+}

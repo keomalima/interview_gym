@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "id": "group-anagram-words",
+  "title": "Group words by letter composition",
+  "eyebrow": "JavaScript · hash-map",
+  "category": "algorithms",
+  "language": "javascript",
+  "difficulty": "medium",
+  "topics": [
+    "hash-map",
+    "algorithms"
+  ],
+  "skills": [
+    "hash-map",
+    "algorithmic problem solving"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Group anagrams together while retaining the input order of groups and words.",
+  "durationMinutes": 25,
+  "functionName": "groupAnagramWords",
+  "requirements": [
+    "Words consist of lowercase English letters.",
+    "Order groups by the first member encountered; preserve word order inside groups.",
+    "Distinct groups must not merge."
+  ],
+  "starterCode": "export function groupAnagramWords(words) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Anagrams have the same sorted character signature.",
+    "Use an insertion-ordered Map from signature to a list of words."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ]
+      ],
+      "output": [
+        [
+          "eat",
+          "tea",
+          "ate"
+        ],
+        [
+          "tan",
+          "nat"
+        ],
+        [
+          "bat"
+        ]
+      ]
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        [
+          ""
+        ]
+      ],
+      "output": [
+        [
+          ""
+        ]
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[\"eat\",\"tea\",\"tan\",\"ate\",\"nat\",\"bat\"]]",
+      "input": [
+        [
+          "eat",
+          "tea",
+          "tan",
+          "ate",
+          "nat",
+          "bat"
+        ]
+      ],
+      "expected": [
+        [
+          "eat",
+          "tea",
+          "ate"
+        ],
+        [
+          "tan",
+          "nat"
+        ],
+        [
+          "bat"
+        ]
+      ]
+    },
+    {
+      "name": "Alternative scenario — [[\"\"]]",
+      "input": [
+        [
+          ""
+        ]
+      ],
+      "expected": [
+        [
+          ""
+        ]
+      ]
+    },
+    {
+      "name": "Boundary condition — [[]]",
+      "input": [
+        []
+      ],
+      "expected": []
+    },
+    {
+      "name": "Edge case — [[\"a\",\"a\"]]",
+      "input": [
+        [
+          "a",
+          "a"
+        ]
+      ],
+      "expected": [
+        [
+          "a",
+          "a"
+        ]
+      ]
+    },
+    {
+      "name": "Additional variation — [[\"ab\",\"ba\",\"abc\"]]",
+      "input": [
+        [
+          "ab",
+          "ba",
+          "abc"
+        ]
+      ],
+      "expected": [
+        [
+          "ab",
+          "ba"
+        ],
+        [
+          "abc"
+        ]
+      ]
+    }
+  ],
+  "referenceCode": "export function groupAnagramWords(words) {\n  const m=new Map();\n  for(const w of words){const key=[...w].sort().join('');if(!m.has(key))m.set(key,[]);m.get(key).push(w);}\n  return [...m.values()];\n}\n"
+}

@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "id": "render-ascii-letters",
+  "title": "Render uppercase text from an ASCII art alphabet",
+  "eyebrow": "JavaScript · parsing",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "medium",
+  "topics": [
+    "parsing",
+    "parsing and simulation"
+  ],
+  "skills": [
+    "parsing",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Render a word by taking fixed-width glyphs from an ASCII alphabet grid.",
+  "durationMinutes": 25,
+  "functionName": "renderAsciiLetters",
+  "requirements": [
+    "Rows contain 27 glyphs: A through Z then ? for unsupported characters.",
+    "Each glyph is width characters, and there are height rows.",
+    "Return an array containing one combined string per output row."
+  ],
+  "starterCode": "export function renderAsciiLetters(text,width,height,rows) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Convert supported letters to indexes 0..25.",
+    "For each output row, slice the corresponding glyph section for every character."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        "AB",
+        1,
+        1,
+        [
+          "ABCDEFGHIJKLMNOPQRSTUVWXYZ?"
+        ]
+      ],
+      "output": [
+        "AB"
+      ]
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        "A?",
+        1,
+        1,
+        [
+          "ABCDEFGHIJKLMNOPQRSTUVWXYZ?"
+        ]
+      ],
+      "output": [
+        "A?"
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [\"AB\",1,1,[\"ABCDEFGHIJKLMNOPQRSTUVWXYZ?\"]]",
+      "input": [
+        "AB",
+        1,
+        1,
+        [
+          "ABCDEFGHIJKLMNOPQRSTUVWXYZ?"
+        ]
+      ],
+      "expected": [
+        "AB"
+      ]
+    },
+    {
+      "name": "Alternative scenario — [\"A?\",1,1,[\"ABCDEFGHIJKLMNOPQRSTUVWXYZ?\"]]",
+      "input": [
+        "A?",
+        1,
+        1,
+        [
+          "ABCDEFGHIJKLMNOPQRSTUVWXYZ?"
+        ]
+      ],
+      "expected": [
+        "A?"
+      ]
+    },
+    {
+      "name": "Boundary condition — [\"\",1,1,[\"ABCDEFGHIJKLMNOPQRSTUVWXYZ?\"]]",
+      "input": [
+        "",
+        1,
+        1,
+        [
+          "ABCDEFGHIJKLMNOPQRSTUVWXYZ?"
+        ]
+      ],
+      "expected": [
+        ""
+      ]
+    },
+    {
+      "name": "Edge case — [\"z\",1,1,[\"ABCDEFGHIJKLMNOPQRSTUVWXYZ?\"]]",
+      "input": [
+        "z",
+        1,
+        1,
+        [
+          "ABCDEFGHIJKLMNOPQRSTUVWXYZ?"
+        ]
+      ],
+      "expected": [
+        "Z"
+      ]
+    },
+    {
+      "name": "Additional variation — [\"a!\",1,2,[\"ABCDEFGHIJKLMNOPQRSTUVWXYZ?\",\"abcdefghijklmnopqrstuvwxyz_\"]]",
+      "input": [
+        "a!",
+        1,
+        2,
+        [
+          "ABCDEFGHIJKLMNOPQRSTUVWXYZ?",
+          "abcdefghijklmnopqrstuvwxyz_"
+        ]
+      ],
+      "expected": [
+        "A?",
+        "a_"
+      ]
+    }
+  ],
+  "referenceCode": "export function renderAsciiLetters(text,width,height,rows) {\n  const out=[];const normalized=text.toUpperCase();\n  for(let r=0;r<height;r++){let line='';for(const c of normalized){const pos=/^[A-Z]$/.test(c)?c.charCodeAt(0)-65:26;line+=rows[r].slice(pos*width,(pos+1)*width);}out.push(line);}\n  return out;\n}\n"
+}

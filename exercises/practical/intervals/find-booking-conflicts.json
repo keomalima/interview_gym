@@ -1,0 +1,180 @@
+{
+  "schemaVersion": 1,
+  "id": "find-booking-conflicts",
+  "title": "Find overlapping room bookings",
+  "eyebrow": "TypeScript · intervals",
+  "category": "practical",
+  "language": "typescript",
+  "difficulty": "medium",
+  "topics": [
+    "intervals",
+    "business logic"
+  ],
+  "skills": [
+    "intervals",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Identify pairs of bookings overlapping in the same room.",
+  "durationMinutes": 25,
+  "functionName": "conflictingBookings",
+  "requirements": [
+    "Bookings are [start,end) half-open intervals.",
+    "Only bookings in the same room can conflict.",
+    "Return pairs of IDs ordered by input index i then j."
+  ],
+  "starterCode": "export function conflictingBookings(bookings: { id: string; room: string; start: number; end: number }[]) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Compare all pairs sharing the same room.",
+    "Two half-open intervals overlap when a.start<b.end and b.start<a.end."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          {
+            "id": "a",
+            "room": "X",
+            "start": 10,
+            "end": 12
+          },
+          {
+            "id": "b",
+            "room": "X",
+            "start": 11,
+            "end": 13
+          }
+        ]
+      ],
+      "output": [
+        [
+          "a",
+          "b"
+        ]
+      ]
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        []
+      ],
+      "output": []
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[{\"id\":\"a\",\"room\":\"X\",\"start\":10,\"end\":12},{\"id\":\"b\",\"room\":\"X\",\"st…",
+      "input": [
+        [
+          {
+            "id": "a",
+            "room": "X",
+            "start": 10,
+            "end": 12
+          },
+          {
+            "id": "b",
+            "room": "X",
+            "start": 11,
+            "end": 13
+          }
+        ]
+      ],
+      "expected": [
+        [
+          "a",
+          "b"
+        ]
+      ]
+    },
+    {
+      "name": "Alternative scenario — [[]]",
+      "input": [
+        []
+      ],
+      "expected": []
+    },
+    {
+      "name": "Boundary condition — [[{\"id\":\"a\",\"room\":\"X\",\"start\":10,\"end\":12},{\"id\":\"b\",\"room\":\"X\",\"st…",
+      "input": [
+        [
+          {
+            "id": "a",
+            "room": "X",
+            "start": 10,
+            "end": 12
+          },
+          {
+            "id": "b",
+            "room": "X",
+            "start": 12,
+            "end": 13
+          }
+        ]
+      ],
+      "expected": []
+    },
+    {
+      "name": "Edge case — [[{\"id\":\"a\",\"room\":\"X\",\"start\":1,\"end\":4},{\"id\":\"b\",\"room\":\"Y\",\"star…",
+      "input": [
+        [
+          {
+            "id": "a",
+            "room": "X",
+            "start": 1,
+            "end": 4
+          },
+          {
+            "id": "b",
+            "room": "Y",
+            "start": 2,
+            "end": 3
+          }
+        ]
+      ],
+      "expected": []
+    },
+    {
+      "name": "Additional variation — [[{\"id\":\"a\",\"room\":\"X\",\"start\":1,\"end\":4},{\"id\":\"b\",\"room\":\"X\",\"star…",
+      "input": [
+        [
+          {
+            "id": "a",
+            "room": "X",
+            "start": 1,
+            "end": 4
+          },
+          {
+            "id": "b",
+            "room": "X",
+            "start": 2,
+            "end": 3
+          },
+          {
+            "id": "c",
+            "room": "X",
+            "start": 3,
+            "end": 5
+          }
+        ]
+      ],
+      "expected": [
+        [
+          "a",
+          "b"
+        ],
+        [
+          "a",
+          "c"
+        ]
+      ]
+    }
+  ],
+  "referenceCode": "export function conflictingBookings(bookings: { id: string; room: string; start: number; end: number }[]) {\n  const out=[];for(let i=0;i<bookings.length;i++)for(let j=i+1;j<bookings.length;j++){\n    const a=bookings[i],b=bookings[j];if(a.room===b.room&&a.start<b.end&&b.start<a.end)out.push([a.id,b.id]);\n  }\n  return out;\n}\n"
+}

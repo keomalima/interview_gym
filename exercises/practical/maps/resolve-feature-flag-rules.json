@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "id": "resolve-feature-flag-rules",
+  "title": "Resolve feature access flags",
+  "eyebrow": "TypeScript · maps",
+  "category": "practical",
+  "language": "typescript",
+  "difficulty": "easy",
+  "topics": [
+    "maps",
+    "business logic"
+  ],
+  "skills": [
+    "maps",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Compute final feature flags from defaults and an allowlisted set of overrides.",
+  "durationMinutes": 20,
+  "functionName": "resolveFeatureFlags",
+  "requirements": [
+    "Only keys present in defaults appear in output.",
+    "Apply an override only if its key appears in allowed.",
+    "Coerce returned values to boolean."
+  ],
+  "starterCode": "export function resolveFeatureFlags(defaults: Record<string, unknown>, overrides: Record<string, unknown>, allowed: string[]) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Iterate over default feature keys.",
+    "Apply an override only for keys in the allowlist and overrides object."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        {
+          "chat": false,
+          "search": true
+        },
+        {
+          "chat": true
+        },
+        [
+          "chat"
+        ]
+      ],
+      "output": {
+        "chat": true,
+        "search": true
+      }
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        {
+          "a": true
+        },
+        {
+          "a": false
+        },
+        []
+      ],
+      "output": {
+        "a": true
+      }
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [{\"chat\":false,\"search\":true},{\"chat\":true},[\"chat\"]]",
+      "input": [
+        {
+          "chat": false,
+          "search": true
+        },
+        {
+          "chat": true
+        },
+        [
+          "chat"
+        ]
+      ],
+      "expected": {
+        "chat": true,
+        "search": true
+      }
+    },
+    {
+      "name": "Alternative scenario — [{\"a\":true},{\"a\":false},[]]",
+      "input": [
+        {
+          "a": true
+        },
+        {
+          "a": false
+        },
+        []
+      ],
+      "expected": {
+        "a": true
+      }
+    },
+    {
+      "name": "Boundary condition — [{},{\"x\":true},[\"x\"]]",
+      "input": [
+        {},
+        {
+          "x": true
+        },
+        [
+          "x"
+        ]
+      ],
+      "expected": {}
+    },
+    {
+      "name": "Edge case — [{\"a\":false,\"b\":false},{\"a\":true,\"b\":true},[\"a\"]]",
+      "input": [
+        {
+          "a": false,
+          "b": false
+        },
+        {
+          "a": true,
+          "b": true
+        },
+        [
+          "a"
+        ]
+      ],
+      "expected": {
+        "a": true,
+        "b": false
+      }
+    },
+    {
+      "name": "Additional variation — [{\"a\":1},{\"a\":0},[\"a\"]]",
+      "input": [
+        {
+          "a": 1
+        },
+        {
+          "a": 0
+        },
+        [
+          "a"
+        ]
+      ],
+      "expected": {
+        "a": false
+      }
+    }
+  ],
+  "referenceCode": "export function resolveFeatureFlags(defaults: Record<string, unknown>, overrides: Record<string, unknown>, allowed: string[]) {\n  const result={};for(const key of Object.keys(defaults).sort()){result[key]=allowed.includes(key)&&Object.hasOwn(overrides,key)?Boolean(overrides[key]):Boolean(defaults[key]);}return result;\n}\n"
+}

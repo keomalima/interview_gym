@@ -1,0 +1,263 @@
+{
+  "schemaVersion": 1,
+  "id": "paginate-filtered-records",
+  "title": "Build a filtered pagination response",
+  "eyebrow": "TypeScript · Pagination",
+  "category": "practical",
+  "language": "typescript",
+  "difficulty": "easy",
+  "topics": [
+    "pagination",
+    "array-methods",
+    "business-logic"
+  ],
+  "skills": [
+    "filtering",
+    "pagination",
+    "input validation"
+  ],
+  "targetRoles": [
+    "backend",
+    "fullstack",
+    "general"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Implement the pure data logic behind a typical REST list endpoint.",
+  "durationMinutes": 25,
+  "functionName": "paginateFilteredRecords",
+  "requirements": [
+    "records is an array of objects with id and status fields; status is a string.",
+    "If statusFilter is null, include all records; otherwise keep only exact matches.",
+    "page and pageSize are integers, page >= 1, and pageSize is between 1 and 100 inclusive.",
+    "Throw an Error containing \"Invalid pagination\" for invalid page or pageSize.",
+    "Return { items, page, pageSize, total, totalPages }, preserving original item order.",
+    "total counts filtered records; totalPages is Math.ceil(total / pageSize), including 0 for no records.",
+    "Return empty items for a page beyond the last page."
+  ],
+  "starterCode": "type RecordItem = { id: string; status: string };\nexport function paginateFilteredRecords(records: RecordItem[], page: number, pageSize: number, statusFilter: string | null): unknown {\n  return {items: [], page, pageSize, total: 0, totalPages: 0};\n}\n",
+  "hints": [
+    "Validate page/pageSize before processing records.",
+    "Apply the status filter before counting and slicing.",
+    "The slice start is (page - 1) × pageSize."
+  ],
+  "examples": [
+    {
+      "label": "Second filtered page",
+      "input": [
+        [
+          {
+            "id": "1",
+            "status": "open"
+          },
+          {
+            "id": "2",
+            "status": "closed"
+          },
+          {
+            "id": "3",
+            "status": "open"
+          },
+          {
+            "id": "4",
+            "status": "open"
+          }
+        ],
+        2,
+        1,
+        "open"
+      ],
+      "output": {
+        "items": [
+          {
+            "id": "3",
+            "status": "open"
+          }
+        ],
+        "page": 2,
+        "pageSize": 1,
+        "total": 3,
+        "totalPages": 3
+      }
+    },
+    {
+      "label": "Empty list",
+      "input": [
+        [],
+        1,
+        10,
+        null
+      ],
+      "output": {
+        "items": [],
+        "page": 1,
+        "pageSize": 10,
+        "total": 0,
+        "totalPages": 0
+      }
+    }
+  ],
+  "tests": [
+    {
+      "name": "Second filtered page",
+      "input": [
+        [
+          {
+            "id": "1",
+            "status": "open"
+          },
+          {
+            "id": "2",
+            "status": "closed"
+          },
+          {
+            "id": "3",
+            "status": "open"
+          },
+          {
+            "id": "4",
+            "status": "open"
+          }
+        ],
+        2,
+        1,
+        "open"
+      ],
+      "expected": {
+        "items": [
+          {
+            "id": "3",
+            "status": "open"
+          }
+        ],
+        "page": 2,
+        "pageSize": 1,
+        "total": 3,
+        "totalPages": 3
+      }
+    },
+    {
+      "name": "Empty list",
+      "input": [
+        [],
+        1,
+        10,
+        null
+      ],
+      "expected": {
+        "items": [],
+        "page": 1,
+        "pageSize": 10,
+        "total": 0,
+        "totalPages": 0
+      }
+    },
+    {
+      "name": "No filter",
+      "input": [
+        [
+          {
+            "id": "a",
+            "status": "x"
+          },
+          {
+            "id": "b",
+            "status": "y"
+          }
+        ],
+        1,
+        2,
+        null
+      ],
+      "expected": {
+        "items": [
+          {
+            "id": "a",
+            "status": "x"
+          },
+          {
+            "id": "b",
+            "status": "y"
+          }
+        ],
+        "page": 1,
+        "pageSize": 2,
+        "total": 2,
+        "totalPages": 1
+      }
+    },
+    {
+      "name": "Page beyond end",
+      "input": [
+        [
+          {
+            "id": "a",
+            "status": "x"
+          }
+        ],
+        4,
+        2,
+        null
+      ],
+      "expected": {
+        "items": [],
+        "page": 4,
+        "pageSize": 2,
+        "total": 1,
+        "totalPages": 1
+      }
+    },
+    {
+      "name": "No status matches",
+      "input": [
+        [
+          {
+            "id": "a",
+            "status": "x"
+          }
+        ],
+        1,
+        5,
+        "missing"
+      ],
+      "expected": {
+        "items": [],
+        "page": 1,
+        "pageSize": 5,
+        "total": 0,
+        "totalPages": 0
+      }
+    },
+    {
+      "name": "Page zero",
+      "input": [
+        [],
+        0,
+        10,
+        null
+      ],
+      "error": "Invalid pagination"
+    },
+    {
+      "name": "Size too large",
+      "input": [
+        [],
+        1,
+        101,
+        null
+      ],
+      "error": "Invalid pagination"
+    },
+    {
+      "name": "Fractional page",
+      "input": [
+        [],
+        1.5,
+        10,
+        null
+      ],
+      "error": "Invalid pagination"
+    }
+  ],
+  "referenceCode": "type RecordItem = { id: string; status: string };\nexport function paginateFilteredRecords(records: RecordItem[], page: number, pageSize: number, statusFilter: string | null): unknown {\n  if (!Number.isInteger(page) || page < 1 || !Number.isInteger(pageSize) || pageSize < 1 || pageSize > 100) throw new Error('Invalid pagination');\n  const filtered = statusFilter === null ? records : records.filter(row => row.status === statusFilter);\n  const total = filtered.length;\n  return {\n    items: filtered.slice((page-1)*pageSize, page*pageSize),\n    page, pageSize, total, totalPages: Math.ceil(total / pageSize)\n  };\n}\n"
+}

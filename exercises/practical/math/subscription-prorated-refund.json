@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "id": "subscription-prorated-refund",
+  "title": "Prorate a monthly subscription charge",
+  "eyebrow": "TypeScript · math",
+  "category": "practical",
+  "language": "typescript",
+  "difficulty": "easy",
+  "topics": [
+    "math",
+    "business logic"
+  ],
+  "skills": [
+    "math",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Calculate a proportional monthly charge for the number of days used.",
+  "durationMinutes": 20,
+  "functionName": "prorateMonthlyCharge",
+  "requirements": [
+    "All arguments are nonnegative integers except daysInMonth, which must be positive.",
+    "Round the final charge to the nearest cent once.",
+    "Reject invalid day ranges with Invalid billing days."
+  ],
+  "starterCode": "export function prorateMonthlyCharge(monthlyCents: number, daysUsed: number, daysInMonth: number) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Divide days used by days in the billing period.",
+    "Multiply that fraction by the full monthly price, then round."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        3000,
+        15,
+        30
+      ],
+      "output": 1500
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        3100,
+        0,
+        31
+      ],
+      "output": 0
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [3000,15,30]",
+      "input": [
+        3000,
+        15,
+        30
+      ],
+      "expected": 1500
+    },
+    {
+      "name": "Alternative scenario — [3100,0,31]",
+      "input": [
+        3100,
+        0,
+        31
+      ],
+      "expected": 0
+    },
+    {
+      "name": "Boundary condition — [3100,31,31]",
+      "input": [
+        3100,
+        31,
+        31
+      ],
+      "expected": 3100
+    },
+    {
+      "name": "Edge case — [999,1,30]",
+      "input": [
+        999,
+        1,
+        30
+      ],
+      "expected": 33
+    },
+    {
+      "name": "Additional variation — [600,30,30]",
+      "input": [
+        600,
+        30,
+        30
+      ],
+      "expected": 600
+    },
+    {
+      "name": "Rejects invalid billing range",
+      "input": [
+        100,
+        31,
+        30
+      ],
+      "error": "Invalid billing days"
+    }
+  ],
+  "referenceCode": "export function prorateMonthlyCharge(monthlyCents: number, daysUsed: number, daysInMonth: number) {\n  if(daysInMonth<=0||daysUsed<0||daysUsed>daysInMonth)throw new Error('Invalid billing days');\n  return Math.round(monthlyCents*daysUsed/daysInMonth);\n}\n"
+}

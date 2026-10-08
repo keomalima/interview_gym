@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "id": "valid-palindrome",
+  "title": "Validate a normalized palindrome",
+  "eyebrow": "JavaScript · Two Pointers",
+  "category": "algorithms",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "two-pointers",
+    "strings"
+  ],
+  "skills": [
+    "pointer movement",
+    "string normalization"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Determine whether the letters and digits in text form a palindrome, ignoring punctuation and case.",
+  "durationMinutes": 20,
+  "functionName": "isNormalizedPalindrome",
+  "requirements": [
+    "Only ASCII letters A–Z and digits 0–9 count; ignore all other characters.",
+    "Compare case-insensitively.",
+    "An empty normalized sequence is a palindrome.",
+    "Avoid creating a reversed copy of the normalized string."
+  ],
+  "starterCode": "export function isNormalizedPalindrome(text) {\n  // Compare meaningful characters from both ends.\n  return false;\n}\n",
+  "hints": [
+    "Consider checking characters without copying the entire normalized text.",
+    "Move two pointers inward, skipping characters that are not ASCII alphanumeric.",
+    "Compare lowercased characters before moving both pointers."
+  ],
+  "examples": [
+    {
+      "label": "Mixed punctuation",
+      "input": [
+        "A man, a plan, a canal: Panama"
+      ],
+      "output": true
+    },
+    {
+      "label": "Different letters",
+      "input": [
+        "race a car"
+      ],
+      "output": false
+    }
+  ],
+  "tests": [
+    {
+      "name": "Accepts a phrase",
+      "input": [
+        "A man, a plan, a canal: Panama"
+      ],
+      "expected": true
+    },
+    {
+      "name": "Rejects mismatch",
+      "input": [
+        "race a car"
+      ],
+      "expected": false
+    },
+    {
+      "name": "Empty string",
+      "input": [
+        ""
+      ],
+      "expected": true
+    },
+    {
+      "name": "Punctuation only",
+      "input": [
+        "...!?"
+      ],
+      "expected": true
+    },
+    {
+      "name": "Digits mixed with letters",
+      "input": [
+        "1a2a1"
+      ],
+      "expected": true
+    },
+    {
+      "name": "Different digits",
+      "input": [
+        "12"
+      ],
+      "expected": false
+    },
+    {
+      "name": "Ignores symbols",
+      "input": [
+        "a @ A"
+      ],
+      "expected": true
+    }
+  ],
+  "referenceCode": "export function isNormalizedPalindrome(text) {\n  let left = 0, right = text.length - 1;\n  const valid = c => /[a-z0-9]/i.test(c);\n  while (left < right) {\n    while (left < right && !valid(text[left])) left++;\n    while (left < right && !valid(text[right])) right--;\n    if (text[left].toLowerCase() !== text[right].toLowerCase()) return false;\n    left++; right--;\n  }\n  return true;\n}\n"
+}

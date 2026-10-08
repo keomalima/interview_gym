@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 1,
+  "id": "normalize-customer-directory",
+  "title": "Normalize customer directory records",
+  "eyebrow": "TypeScript · Data Transformation",
+  "category": "practical",
+  "language": "typescript",
+  "difficulty": "medium",
+  "topics": [
+    "data-transformation",
+    "validation",
+    "sorting"
+  ],
+  "skills": [
+    "normalization",
+    "input validation",
+    "sorting"
+  ],
+  "targetRoles": [
+    "backend",
+    "fullstack",
+    "general"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Convert customer signup records into a clean, sorted public-facing directory.",
+  "durationMinutes": 30,
+  "functionName": "normalizeCustomers",
+  "requirements": [
+    "Each customer has an integer id, firstName, lastName, email, and active boolean.",
+    "Trim name fields; displayName is trimmed firstName + space + trimmed lastName.",
+    "Normalize email with trim() and lowercase; preserve all records, including inactive ones.",
+    "Return objects { id, displayName, email, active } sorted by numeric id ascending.",
+    "Throw an Error containing \"Invalid customer\" for an unsafe integer id, empty trimmed name part, or email missing @ after trimming.",
+    "Throw an Error containing \"Duplicate id\" if any id is repeated.",
+    "Do not mutate the original records."
+  ],
+  "starterCode": "type Customer = { id: number; firstName: string; lastName: string; email: string; active: boolean };\ntype DirectoryEntry = { id: number; displayName: string; email: string; active: boolean };\nexport function normalizeCustomers(customers: Customer[]): DirectoryEntry[] {\n  return [];\n}\n",
+  "hints": [
+    "Validate and normalize each record in one pass.",
+    "Use a Set to detect repeated IDs before sorting.",
+    "Map to the output shape, then sort with a numeric comparator."
+  ],
+  "examples": [
+    {
+      "label": "Unsorted raw records",
+      "input": [
+        [
+          {
+            "id": 2,
+            "firstName": " Grace ",
+            "lastName": " Hopper ",
+            "email": " Grace@EXAMPLE.com ",
+            "active": true
+          },
+          {
+            "id": 1,
+            "firstName": "Ada",
+            "lastName": "Lovelace",
+            "email": "ADA@example.com",
+            "active": false
+          }
+        ]
+      ],
+      "output": [
+        {
+          "id": 1,
+          "displayName": "Ada Lovelace",
+          "email": "ada@example.com",
+          "active": false
+        },
+        {
+          "id": 2,
+          "displayName": "Grace Hopper",
+          "email": "grace@example.com",
+          "active": true
+        }
+      ]
+    },
+    {
+      "label": "Empty directory",
+      "input": [
+        []
+      ],
+      "output": []
+    }
+  ],
+  "tests": [
+    {
+      "name": "Unsorted raw records",
+      "input": [
+        [
+          {
+            "id": 2,
+            "firstName": " Grace ",
+            "lastName": " Hopper ",
+            "email": " Grace@EXAMPLE.com ",
+            "active": true
+          },
+          {
+            "id": 1,
+            "firstName": "Ada",
+            "lastName": "Lovelace",
+            "email": "ADA@example.com",
+            "active": false
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "id": 1,
+          "displayName": "Ada Lovelace",
+          "email": "ada@example.com",
+          "active": false
+        },
+        {
+          "id": 2,
+          "displayName": "Grace Hopper",
+          "email": "grace@example.com",
+          "active": true
+        }
+      ]
+    },
+    {
+      "name": "Empty directory",
+      "input": [
+        []
+      ],
+      "expected": []
+    },
+    {
+      "name": "Single inactive",
+      "input": [
+        [
+          {
+            "id": 0,
+            "firstName": " A ",
+            "lastName": " B ",
+            "email": "a@b.io",
+            "active": false
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "id": 0,
+          "displayName": "A B",
+          "email": "a@b.io",
+          "active": false
+        }
+      ]
+    },
+    {
+      "name": "Duplicate IDs",
+      "input": [
+        [
+          {
+            "id": 1,
+            "firstName": "A",
+            "lastName": "B",
+            "email": "a@b.com",
+            "active": true
+          },
+          {
+            "id": 1,
+            "firstName": "C",
+            "lastName": "D",
+            "email": "c@d.com",
+            "active": false
+          }
+        ]
+      ],
+      "error": "Duplicate id"
+    },
+    {
+      "name": "Empty name",
+      "input": [
+        [
+          {
+            "id": 2,
+            "firstName": " ",
+            "lastName": "Doe",
+            "email": "a@b.com",
+            "active": true
+          }
+        ]
+      ],
+      "error": "Invalid customer"
+    },
+    {
+      "name": "Malformed email",
+      "input": [
+        [
+          {
+            "id": 3,
+            "firstName": "A",
+            "lastName": "B",
+            "email": "abcd",
+            "active": true
+          }
+        ]
+      ],
+      "error": "Invalid customer"
+    },
+    {
+      "name": "Fractional ID",
+      "input": [
+        [
+          {
+            "id": 3.5,
+            "firstName": "A",
+            "lastName": "B",
+            "email": "a@b.com",
+            "active": true
+          }
+        ]
+      ],
+      "error": "Invalid customer"
+    }
+  ],
+  "referenceCode": "type Customer = { id: number; firstName: string; lastName: string; email: string; active: boolean };\ntype DirectoryEntry = { id: number; displayName: string; email: string; active: boolean };\nexport function normalizeCustomers(customers: Customer[]): DirectoryEntry[] {\n  const seen = new Set<number>();\n  const result: DirectoryEntry[] = customers.map(customer => {\n    if (!Number.isSafeInteger(customer.id) || !customer.firstName.trim() || !customer.lastName.trim() || !customer.email.trim().includes('@')) {\n      throw new Error('Invalid customer');\n    }\n    if (seen.has(customer.id)) throw new Error('Duplicate id');\n    seen.add(customer.id);\n    return {\n      id: customer.id,\n      displayName: `${customer.firstName.trim()} ${customer.lastName.trim()}`,\n      email: customer.email.trim().toLowerCase(),\n      active: customer.active\n    };\n  });\n  return result.sort((a,b) => a.id-b.id);\n}\n"
+}

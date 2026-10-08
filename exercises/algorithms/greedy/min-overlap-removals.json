@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "id": "min-overlap-removals",
+  "title": "Remove minimum overlapping intervals",
+  "eyebrow": "JavaScript · greedy",
+  "category": "algorithms",
+  "language": "javascript",
+  "difficulty": "medium",
+  "topics": [
+    "greedy",
+    "algorithms"
+  ],
+  "skills": [
+    "greedy",
+    "algorithmic problem solving"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Find the fewest intervals to delete so the rest do not overlap.",
+  "durationMinutes": 25,
+  "functionName": "minIntervalsToRemove",
+  "requirements": [
+    "Touching at endpoints is allowed.",
+    "Do not mutate the original intervals.",
+    "Return 0 when no intervals are given."
+  ],
+  "starterCode": "export function minIntervalsToRemove(intervals) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Maximize how many intervals you can keep.",
+    "Sorting by earliest finishing time enables a greedy selection."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            1,
+            3
+          ]
+        ]
+      ],
+      "output": 1
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ]
+        ]
+      ],
+      "output": 2
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[[1,2],[2,3],[3,4],[1,3]]]",
+      "input": [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            1,
+            3
+          ]
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "name": "Alternative scenario — [[[1,2],[1,2],[1,2]]]",
+      "input": [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ]
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "name": "Boundary condition — [[]]",
+      "input": [
+        []
+      ],
+      "expected": 0
+    },
+    {
+      "name": "Edge case — [[[1,10],[2,3],[3,4]]]",
+      "input": [
+        [
+          [
+            1,
+            10
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ]
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "name": "Additional variation — [[[0,1],[1,2]]]",
+      "input": [
+        [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ]
+        ]
+      ],
+      "expected": 0
+    }
+  ],
+  "referenceCode": "export function minIntervalsToRemove(intervals) {\n  const sorted=intervals.map(x=>x.slice()).sort((a,b)=>a[1]-b[1]);\n  let lastEnd=-Infinity,kept=0;\n  for(const [s,e] of sorted)if(s>=lastEnd){lastEnd=e;kept++;}\n  return intervals.length-kept;\n}\n"
+}

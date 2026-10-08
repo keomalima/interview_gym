@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "id": "subtract-array-values",
+  "title": "Remove values listed in another array",
+  "eyebrow": "JavaScript · arrays",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "arrays",
+    "javascript fundamentals"
+  ],
+  "skills": [
+    "arrays",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Remove every occurrence from the first array of any value found in the second.",
+  "durationMinutes": 15,
+  "functionName": "arrayDifference",
+  "requirements": [
+    "Preserve the order of remaining items.",
+    "Remove all occurrences of a disallowed value.",
+    "Do not mutate either array."
+  ],
+  "starterCode": "export function arrayDifference(a,b) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Membership checks can be accelerated with a Set.",
+    "Filter the first array by exclusion membership."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          1,
+          2
+        ],
+        [
+          1
+        ]
+      ],
+      "output": [
+        2
+      ]
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        [
+          1,
+          2,
+          2,
+          3
+        ],
+        [
+          2
+        ]
+      ],
+      "output": [
+        1,
+        3
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[1,2],[1]]",
+      "input": [
+        [
+          1,
+          2
+        ],
+        [
+          1
+        ]
+      ],
+      "expected": [
+        2
+      ]
+    },
+    {
+      "name": "Alternative scenario — [[1,2,2,3],[2]]",
+      "input": [
+        [
+          1,
+          2,
+          2,
+          3
+        ],
+        [
+          2
+        ]
+      ],
+      "expected": [
+        1,
+        3
+      ]
+    },
+    {
+      "name": "Boundary condition — [[],[1]]",
+      "input": [
+        [],
+        [
+          1
+        ]
+      ],
+      "expected": []
+    },
+    {
+      "name": "Edge case — [[1,2],[]]",
+      "input": [
+        [
+          1,
+          2
+        ],
+        []
+      ],
+      "expected": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "Additional variation — [[0,0,1],[0]]",
+      "input": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0
+        ]
+      ],
+      "expected": [
+        1
+      ]
+    }
+  ],
+  "referenceCode": "export function arrayDifference(a,b) {const removed=new Set(b);return a.filter(x=>!removed.has(x));}\n"
+}

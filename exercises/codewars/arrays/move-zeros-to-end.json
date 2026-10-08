@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "id": "move-zeros-to-end",
+  "title": "Move zeros to the end of an array",
+  "eyebrow": "JavaScript · arrays",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "arrays",
+    "javascript fundamentals"
+  ],
+  "skills": [
+    "arrays",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Return a new array with numeric zeros moved to the end while preserving other order.",
+  "durationMinutes": 15,
+  "functionName": "moveZerosToEnd",
+  "requirements": [
+    "Only numeric 0 is moved; false is not a numeric zero for this task.",
+    "Preserve the order of all nonzero elements.",
+    "Do not mutate input."
+  ],
+  "starterCode": "export function moveZerosToEnd(values) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Separate zero and nonzero values.",
+    "Keep original relative order in the nonzero group."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          1,
+          0,
+          1,
+          2,
+          0,
+          1,
+          3
+        ]
+      ],
+      "output": [
+        1,
+        1,
+        2,
+        1,
+        3,
+        0,
+        0
+      ]
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        [
+          0,
+          0
+        ]
+      ],
+      "output": [
+        0,
+        0
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[1,0,1,2,0,1,3]]",
+      "input": [
+        [
+          1,
+          0,
+          1,
+          2,
+          0,
+          1,
+          3
+        ]
+      ],
+      "expected": [
+        1,
+        1,
+        2,
+        1,
+        3,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Alternative scenario — [[0,0]]",
+      "input": [
+        [
+          0,
+          0
+        ]
+      ],
+      "expected": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Boundary condition — [[]]",
+      "input": [
+        []
+      ],
+      "expected": []
+    },
+    {
+      "name": "Edge case — [[0,1,0]]",
+      "input": [
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "expected": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Additional variation — [[false,0,2]]",
+      "input": [
+        [
+          false,
+          0,
+          2
+        ]
+      ],
+      "expected": [
+        false,
+        2,
+        0
+      ]
+    }
+  ],
+  "referenceCode": "export function moveZerosToEnd(values) {\n  const nonZero=values.filter(x=>x!==0);return nonZero.concat(Array(values.length-nonZero.length).fill(0));\n}\n"
+}

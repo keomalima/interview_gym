@@ -1,0 +1,87 @@
+<!doctype html><html><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' blob:; worker-src blob:; connect-src 'none'; img-src 'none'; style-src 'none'; base-uri 'none'; form-action 'none'"></head><body><script>
+(() => {
+  const workerSource = `
+    self.onmessage = async event => {
+      const { source, functionName, input, nonce, scriptOnly } = event.data;
+      const send = self.postMessage.bind(self);
+      let url;
+      let logCount = 0;
+      let logBytes = 0;
+      const stringify = value => {
+        if (typeof value === 'string') return value.slice(0, 2000);
+        if (value instanceof Error) return value.name + ': ' + value.message;
+        const seen = new WeakSet();
+        let entries = 0;
+        try {
+          return JSON.stringify(value, (_, item) => {
+            if (++entries > 200) return '[truncated]';
+            if (typeof item === 'bigint') return String(item) + 'n';
+            if (typeof item === 'string') return item.slice(0, 2000);
+            if (item && typeof item === 'object') {
+              if (seen.has(item)) return '[circular]';
+              seen.add(item);
+            }
+            return item;
+          })?.slice(0, 2000) ?? String(value).slice(0, 2000);
+        } catch { return '[unserializable]'; }
+      };
+      for (const level of ['log', 'info', 'warn', 'error', 'debug', 'table']) {
+        console[level] = (...args) => {
+          if (logCount >= 100 || logBytes >= 24000) return;
+          const text = args.slice(0, 10).map(stringify).join(' ').slice(0, 2000);
+          logCount++; logBytes += text.length;
+          send({ nonce, type: 'console', level, text });
+          if (logCount === 100 || logBytes >= 24000) send({ nonce, type: 'console', level: 'warn', text: 'Console output limit reached.' });
+        };
+      }
+      try {
+        url = URL.createObjectURL(new Blob([source], { type: 'text/javascript' }));
+        const module = await import(url);
+        if (scriptOnly) { send({ nonce, scriptComplete: true }); return; }
+        const fn = module[functionName];
+        if (typeof fn !== 'function') throw new Error('Export a function named ' + functionName);
+        const value = await fn(...input);
+        const serialized = JSON.stringify(value);
+        if (serialized === undefined) throw new Error('Function returned undefined');
+        if (serialized.length > 20000) throw new Error('Output exceeds 20 KB');
+        send({ nonce, value: JSON.parse(serialized) });
+      } catch (error) {
+        send({ nonce, error: String(error instanceof Error ? error.message : error).slice(0, 2000) });
+      } finally { if (url) URL.revokeObjectURL(url); }
+    };
+  `;
+  let activeWorker;
+  window.addEventListener('message', event => {
+    if (event.source !== parent) return;
+    if (event.data?.type === 'cancel') {
+      if (activeWorker) activeWorker.terminate();
+      activeWorker = undefined;
+      return;
+    }
+    if (event.data?.type !== 'execute') return;
+    if (activeWorker) activeWorker.terminate();
+    const blobUrl = URL.createObjectURL(new Blob([workerSource], { type: 'text/javascript' }));
+    const worker = new Worker(blobUrl);
+    URL.revokeObjectURL(blobUrl);
+    activeWorker = worker;
+    const nonce = event.data.nonce;
+    worker.onmessage = result => {
+      if (result.data?.nonce !== nonce) return;
+      if (result.data.type === 'console') {
+        parent.postMessage({ type: 'execution-console', nonce, level: result.data.level, text: result.data.text }, '*');
+        return;
+      }
+      parent.postMessage({ ...result.data, type: 'execution-result', nonce }, '*');
+      worker.terminate();
+      if (activeWorker === worker) activeWorker = undefined;
+    };
+    worker.onerror = () => {
+      parent.postMessage({ type: 'execution-result', nonce, error: 'Execution worker failed' }, '*');
+      worker.terminate();
+      if (activeWorker === worker) activeWorker = undefined;
+    };
+    worker.postMessage(event.data);
+  });
+  parent.postMessage({ type: 'runner-ready' }, '*');
+})();
+</script></body></html>

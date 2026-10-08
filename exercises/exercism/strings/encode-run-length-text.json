@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "id": "encode-run-length-text",
+  "title": "Run-length encode a string",
+  "eyebrow": "JavaScript · strings",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "strings",
+    "language fundamentals"
+  ],
+  "skills": [
+    "strings",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Compress consecutive character runs by prefixing counts greater than one.",
+  "durationMinutes": 20,
+  "functionName": "runLengthEncode",
+  "requirements": [
+    "Encode each run as the character alone when count=1, otherwise count followed by character.",
+    "Whitespace is significant.",
+    "The result is a string."
+  ],
+  "starterCode": "export function runLengthEncode(text) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Scan consecutive equal characters with a counter.",
+    "Flush the run when the next character differs or the string ends."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        "AABBBCCCC"
+      ],
+      "output": "2A3B4C"
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        "XYZ"
+      ],
+      "output": "XYZ"
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [\"AABBBCCCC\"]",
+      "input": [
+        "AABBBCCCC"
+      ],
+      "expected": "2A3B4C"
+    },
+    {
+      "name": "Alternative scenario — [\"XYZ\"]",
+      "input": [
+        "XYZ"
+      ],
+      "expected": "XYZ"
+    },
+    {
+      "name": "Boundary condition — [\"\"]",
+      "input": [
+        ""
+      ],
+      "expected": ""
+    },
+    {
+      "name": "Edge case — [\"ZZZZZZZZZZ\"]",
+      "input": [
+        "ZZZZZZZZZZ"
+      ],
+      "expected": "10Z"
+    },
+    {
+      "name": "Additional variation — [\"  B\"]",
+      "input": [
+        "  B"
+      ],
+      "expected": "2 B"
+    }
+  ],
+  "referenceCode": "export function runLengthEncode(text) {\n  if(!text)return '';\n  let out='',count=1;\n  for(let i=1;i<=text.length;i++){if(i<text.length&&text[i]===text[i-1])count++;else{out+=(count===1?'':count)+text[i-1];count=1;}}\n  return out;\n}\n"
+}

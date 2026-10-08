@@ -1,0 +1,257 @@
+{
+  "schemaVersion": 1,
+  "id": "insert-into-intervals",
+  "title": "Insert and merge one interval",
+  "eyebrow": "JavaScript · intervals",
+  "category": "algorithms",
+  "language": "javascript",
+  "difficulty": "medium",
+  "topics": [
+    "intervals",
+    "algorithms"
+  ],
+  "skills": [
+    "intervals",
+    "algorithmic problem solving"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Insert an interval into a sorted list of nonoverlapping intervals.",
+  "durationMinutes": 25,
+  "functionName": "insertInterval",
+  "requirements": [
+    "Intervals are closed and touching intervals merge.",
+    "Input is sorted and contains no overlap.",
+    "Return new arrays without mutating the inputs."
+  ],
+  "starterCode": "export function insertInterval(intervals,newInterval) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Copy intervals entirely before the insertion point.",
+    "Merge any interval intersecting the new interval, then append the rest."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          [
+            1,
+            3
+          ],
+          [
+            6,
+            9
+          ]
+        ],
+        [
+          2,
+          5
+        ]
+      ],
+      "output": [
+        [
+          1,
+          5
+        ],
+        [
+          6,
+          9
+        ]
+      ]
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            12,
+            16
+          ]
+        ],
+        [
+          4,
+          8
+        ]
+      ],
+      "output": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          10
+        ],
+        [
+          12,
+          16
+        ]
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[[1,3],[6,9]],[2,5]]",
+      "input": [
+        [
+          [
+            1,
+            3
+          ],
+          [
+            6,
+            9
+          ]
+        ],
+        [
+          2,
+          5
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          5
+        ],
+        [
+          6,
+          9
+        ]
+      ]
+    },
+    {
+      "name": "Alternative scenario — [[[1,2],[3,5],[6,7],[8,10],[12,16]],[4,8]]",
+      "input": [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            12,
+            16
+          ]
+        ],
+        [
+          4,
+          8
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          10
+        ],
+        [
+          12,
+          16
+        ]
+      ]
+    },
+    {
+      "name": "Boundary condition — [[],[2,3]]",
+      "input": [
+        [],
+        [
+          2,
+          3
+        ]
+      ],
+      "expected": [
+        [
+          2,
+          3
+        ]
+      ]
+    },
+    {
+      "name": "Edge case — [[[1,2]],[3,4]]",
+      "input": [
+        [
+          [
+            1,
+            2
+          ]
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ]
+    },
+    {
+      "name": "Additional variation — [[[2,5]],[0,1]]",
+      "input": [
+        [
+          [
+            2,
+            5
+          ]
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "expected": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          5
+        ]
+      ]
+    }
+  ],
+  "referenceCode": "export function insertInterval(intervals,newInterval) {\n  const out=[];let [s,e]=newInterval, i=0;\n  while(i<intervals.length && intervals[i][1]<s)out.push(intervals[i++].slice());\n  while(i<intervals.length && intervals[i][0]<=e){s=Math.min(s,intervals[i][0]);e=Math.max(e,intervals[i][1]);i++;}\n  out.push([s,e]);while(i<intervals.length)out.push(intervals[i++].slice());\n  return out;\n}\n"
+}

@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "id": "debug-await-async-mapping",
+  "title": "Debug an async map returning promises",
+  "eyebrow": "TypeScript · debugging",
+  "category": "practical",
+  "language": "typescript",
+  "difficulty": "easy",
+  "topics": [
+    "debugging",
+    "debugging"
+  ],
+  "skills": [
+    "debugging",
+    "debugging and async reasoning"
+  ],
+  "targetRoles": [
+    "fullstack",
+    "frontend",
+    "backend"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Fix a function that returns unresolved promises instead of normalized names.",
+  "durationMinutes": 20,
+  "functionName": "fetchNormalizedNames",
+  "requirements": [
+    "Return a Promise resolving to an array of uppercase trimmed strings.",
+    "Preserve input order.",
+    "The starter code has a missing aggregation await."
+  ],
+  "starterCode": "export async function fetchNormalizedNames(names: string[]) {\n  return names.map(async name => (await Promise.resolve(name)).trim().toUpperCase());\n}\n",
+  "hints": [
+    "Async callbacks produce promises, not direct values.",
+    "Use Promise.all to resolve the array before returning."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          " alice ",
+          " bob "
+        ]
+      ],
+      "output": [
+        "ALICE",
+        "BOB"
+      ]
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        []
+      ],
+      "output": []
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[\" alice \",\" bob \"]]",
+      "input": [
+        [
+          " alice ",
+          " bob "
+        ]
+      ],
+      "expected": [
+        "ALICE",
+        "BOB"
+      ]
+    },
+    {
+      "name": "Alternative scenario — [[]]",
+      "input": [
+        []
+      ],
+      "expected": []
+    },
+    {
+      "name": "Boundary condition — [[\"X\"]]",
+      "input": [
+        [
+          "X"
+        ]
+      ],
+      "expected": [
+        "X"
+      ]
+    },
+    {
+      "name": "Edge case — [[\" a \",\" B \"]]",
+      "input": [
+        [
+          " a ",
+          " B "
+        ]
+      ],
+      "expected": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "name": "Additional variation — [[\" one \"]]",
+      "input": [
+        [
+          " one "
+        ]
+      ],
+      "expected": [
+        "ONE"
+      ]
+    }
+  ],
+  "referenceCode": "export async function fetchNormalizedNames(names: string[]) {\n  return await Promise.all(names.map(async name=>(await Promise.resolve(name)).trim().toUpperCase()));\n}\n"
+}

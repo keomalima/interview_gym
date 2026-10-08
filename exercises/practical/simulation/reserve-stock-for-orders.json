@@ -1,0 +1,237 @@
+{
+  "schemaVersion": 1,
+  "id": "reserve-stock-for-orders",
+  "title": "Allocate limited inventory to orders",
+  "eyebrow": "TypeScript · simulation",
+  "category": "practical",
+  "language": "typescript",
+  "difficulty": "medium",
+  "topics": [
+    "simulation",
+    "business logic"
+  ],
+  "skills": [
+    "simulation",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Allocate inventory in order arrival sequence.",
+  "durationMinutes": 30,
+  "functionName": "allocateStock",
+  "requirements": [
+    "Each order contains id, sku and positive integer quantity.",
+    "Accept only if sufficient stock exists; decrement inventory for accepted orders.",
+    "Unknown SKUs have zero available stock; do not mutate input stock."
+  ],
+  "starterCode": "export function allocateStock(stock: Record<string, number>, orders: { id: string; sku: string; quantity: number }[]) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Copy the initial inventory before processing.",
+    "Process orders sequentially, reserving quantity only when available."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        {
+          "a": 5
+        },
+        [
+          {
+            "id": "1",
+            "sku": "a",
+            "quantity": 3
+          },
+          {
+            "id": "2",
+            "sku": "a",
+            "quantity": 3
+          }
+        ]
+      ],
+      "output": {
+        "remaining": {
+          "a": 2
+        },
+        "results": [
+          {
+            "id": "1",
+            "accepted": true
+          },
+          {
+            "id": "2",
+            "accepted": false
+          }
+        ]
+      }
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        {
+          "a": 3
+        },
+        [
+          {
+            "id": "x",
+            "sku": "a",
+            "quantity": 3
+          }
+        ]
+      ],
+      "output": {
+        "remaining": {
+          "a": 0
+        },
+        "results": [
+          {
+            "id": "x",
+            "accepted": true
+          }
+        ]
+      }
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [{\"a\":5},[{\"id\":\"1\",\"sku\":\"a\",\"quantity\":3},{\"id\":\"2\",\"sku\":\"a\",\"qua…",
+      "input": [
+        {
+          "a": 5
+        },
+        [
+          {
+            "id": "1",
+            "sku": "a",
+            "quantity": 3
+          },
+          {
+            "id": "2",
+            "sku": "a",
+            "quantity": 3
+          }
+        ]
+      ],
+      "expected": {
+        "remaining": {
+          "a": 2
+        },
+        "results": [
+          {
+            "id": "1",
+            "accepted": true
+          },
+          {
+            "id": "2",
+            "accepted": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "Alternative scenario — [{\"a\":3},[{\"id\":\"x\",\"sku\":\"a\",\"quantity\":3}]]",
+      "input": [
+        {
+          "a": 3
+        },
+        [
+          {
+            "id": "x",
+            "sku": "a",
+            "quantity": 3
+          }
+        ]
+      ],
+      "expected": {
+        "remaining": {
+          "a": 0
+        },
+        "results": [
+          {
+            "id": "x",
+            "accepted": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "Boundary condition — [{},[{\"id\":\"y\",\"sku\":\"x\",\"quantity\":1}]]",
+      "input": [
+        {},
+        [
+          {
+            "id": "y",
+            "sku": "x",
+            "quantity": 1
+          }
+        ]
+      ],
+      "expected": {
+        "remaining": {},
+        "results": [
+          {
+            "id": "y",
+            "accepted": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "Edge case — [{\"a\":1},[]]",
+      "input": [
+        {
+          "a": 1
+        },
+        []
+      ],
+      "expected": {
+        "remaining": {
+          "a": 1
+        },
+        "results": []
+      }
+    },
+    {
+      "name": "Additional variation — [{\"a\":2,\"b\":1},[{\"id\":\"a\",\"sku\":\"b\",\"quantity\":1},{\"id\":\"b\",\"sku\":\"a…",
+      "input": [
+        {
+          "a": 2,
+          "b": 1
+        },
+        [
+          {
+            "id": "a",
+            "sku": "b",
+            "quantity": 1
+          },
+          {
+            "id": "b",
+            "sku": "a",
+            "quantity": 2
+          }
+        ]
+      ],
+      "expected": {
+        "remaining": {
+          "a": 0,
+          "b": 0
+        },
+        "results": [
+          {
+            "id": "a",
+            "accepted": true
+          },
+          {
+            "id": "b",
+            "accepted": true
+          }
+        ]
+      }
+    }
+  ],
+  "referenceCode": "export function allocateStock(stock: Record<string, number>, orders: { id: string; sku: string; quantity: number }[]) {\n  const available={...stock},results=[];\n  for(const o of orders){const remaining=available[o.sku]??0;if(o.quantity>0&&remaining>=o.quantity){available[o.sku]=remaining-o.quantity;results.push({id:o.id,accepted:true});}\n    else results.push({id:o.id,accepted:false});}\n  return {remaining:available,results};\n}\n"
+}

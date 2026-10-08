@@ -1,0 +1,239 @@
+{
+  "schemaVersion": 1,
+  "id": "evaluate-request-quota",
+  "title": "Evaluate a sliding-window request quota",
+  "eyebrow": "JavaScript · Sliding Window",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "medium",
+  "topics": [
+    "sliding-window",
+    "timestamps",
+    "business-logic"
+  ],
+  "skills": [
+    "boundary reasoning",
+    "rate limiting",
+    "validation"
+  ],
+  "targetRoles": [
+    "backend",
+    "fullstack",
+    "general"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Decide whether a new request fits a rate limit based on a supplied request log.",
+  "durationMinutes": 30,
+  "functionName": "evaluateRequestQuota",
+  "requirements": [
+    "timestamps is an array of integer millisecond timestamps of previous requests; now is the current integer millisecond timestamp.",
+    "windowMs and limit are positive integers. Return an Error containing \"Invalid quota\" otherwise.",
+    "A previous request counts if its timestamp is > now - windowMs and <= now.",
+    "Reject future timestamps or non-integer timestamps with Error containing \"Invalid timestamp\".",
+    "A new request is allowed if fewer than limit previous requests are inside the window.",
+    "Return { allowed, remaining, retryAfterMs }. If allowed, remaining is limit - count - 1 and retryAfterMs is 0.",
+    "If denied, remaining is 0 and retryAfterMs is the integer milliseconds until enough counting requests expire for one new request to be allowed. If count is the number of recent requests sorted from oldest to newest, this is recent[count - limit] + windowMs - now.",
+    "Do not mutate or assume the timestamps are sorted."
+  ],
+  "starterCode": "export function evaluateRequestQuota(timestamps, now, limit, windowMs) {\n  return {allowed: false, remaining: 0, retryAfterMs: 0};\n}\n",
+  "hints": [
+    "Validate every timestamp and quota parameter before calculating.",
+    "Keep only requests newer than now - windowMs and sort them to identify the oldest.",
+    "If the window is full, determine which request must expire to bring the count below the limit."
+  ],
+  "examples": [
+    {
+      "label": "Below quota",
+      "input": [
+        [
+          900,
+          950
+        ],
+        1000,
+        3,
+        200
+      ],
+      "output": {
+        "allowed": true,
+        "remaining": 0,
+        "retryAfterMs": 0
+      }
+    },
+    {
+      "label": "Quota exceeded",
+      "input": [
+        [
+          900,
+          950,
+          990
+        ],
+        1000,
+        3,
+        200
+      ],
+      "output": {
+        "allowed": false,
+        "remaining": 0,
+        "retryAfterMs": 100
+      }
+    }
+  ],
+  "tests": [
+    {
+      "name": "Below quota",
+      "input": [
+        [
+          900,
+          950
+        ],
+        1000,
+        3,
+        200
+      ],
+      "expected": {
+        "allowed": true,
+        "remaining": 0,
+        "retryAfterMs": 0
+      }
+    },
+    {
+      "name": "Quota exceeded",
+      "input": [
+        [
+          900,
+          950,
+          990
+        ],
+        1000,
+        3,
+        200
+      ],
+      "expected": {
+        "allowed": false,
+        "remaining": 0,
+        "retryAfterMs": 100
+      }
+    },
+    {
+      "name": "Boundary excluded",
+      "input": [
+        [
+          800,
+          801
+        ],
+        1000,
+        2,
+        200
+      ],
+      "expected": {
+        "allowed": true,
+        "remaining": 0,
+        "retryAfterMs": 0
+      }
+    },
+    {
+      "name": "No requests",
+      "input": [
+        [],
+        100,
+        2,
+        500
+      ],
+      "expected": {
+        "allowed": true,
+        "remaining": 1,
+        "retryAfterMs": 0
+      }
+    },
+    {
+      "name": "Unsorted requests",
+      "input": [
+        [
+          960,
+          901,
+          945
+        ],
+        1000,
+        2,
+        200
+      ],
+      "expected": {
+        "allowed": false,
+        "remaining": 0,
+        "retryAfterMs": 145
+      }
+    },
+    {
+      "name": "Old requests ignored",
+      "input": [
+        [
+          100,
+          200
+        ],
+        1000,
+        1,
+        100
+      ],
+      "expected": {
+        "allowed": true,
+        "remaining": 0,
+        "retryAfterMs": 0
+      }
+    },
+    {
+      "name": "Bad limit",
+      "input": [
+        [],
+        1000,
+        0,
+        100
+      ],
+      "error": "Invalid quota"
+    },
+    {
+      "name": "Future timestamp",
+      "input": [
+        [
+          1001
+        ],
+        1000,
+        3,
+        100
+      ],
+      "error": "Invalid timestamp"
+    },
+    {
+      "name": "Noninteger timestamp",
+      "input": [
+        [
+          1.5
+        ],
+        1000,
+        3,
+        100
+      ],
+      "error": "Invalid timestamp"
+    },
+    {
+      "name": "Over capacity needs multiple expirations",
+      "input": [
+        [
+          900,
+          920,
+          940,
+          960
+        ],
+        1000,
+        2,
+        200
+      ],
+      "expected": {
+        "allowed": false,
+        "remaining": 0,
+        "retryAfterMs": 140
+      }
+    }
+  ],
+  "referenceCode": "export function evaluateRequestQuota(timestamps, now, limit, windowMs) {\n  if (!Number.isSafeInteger(now) || !Number.isSafeInteger(limit) || limit <= 0 || !Number.isSafeInteger(windowMs) || windowMs <= 0) throw new Error('Invalid quota');\n  const recent = [];\n  for (const stamp of timestamps) {\n    if (!Number.isSafeInteger(stamp) || stamp > now) throw new Error('Invalid timestamp');\n    if (stamp > now - windowMs) recent.push(stamp);\n  }\n  if (recent.length < limit) return { allowed: true, remaining: limit - recent.length - 1, retryAfterMs: 0 };\n  recent.sort((a,b) => a-b);\n  const releaseTime = recent[recent.length - limit] + windowMs;\n  return { allowed: false, remaining: 0, retryAfterMs: releaseTime - now };\n}\n"
+}

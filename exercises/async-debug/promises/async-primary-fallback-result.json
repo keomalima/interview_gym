@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "id": "async-primary-fallback-result",
+  "title": "Resolve a primary result or fallback",
+  "eyebrow": "TypeScript · promises",
+  "category": "practical",
+  "language": "typescript",
+  "difficulty": "medium",
+  "topics": [
+    "promises",
+    "asynchronous programming"
+  ],
+  "skills": [
+    "promises",
+    "debugging and async reasoning"
+  ],
+  "targetRoles": [
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Use a fallback value if a simulated asynchronous primary lookup fails.",
+  "durationMinutes": 25,
+  "functionName": "resolveAsyncFallback",
+  "requirements": [
+    "primary has {ok,value}; when ok=false the primary promise rejects.",
+    "Return the result source as primary or fallback together with its value.",
+    "A successful primary value of 0 or null must not trigger fallback."
+  ],
+  "starterCode": "export async function resolveAsyncFallback(primary: { ok: boolean; value: unknown }, backup: unknown) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Distinguish a rejected promise from a falsey value.",
+    "Await the primary inside try/catch and resolve the fallback only on rejection."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        {
+          "ok": true,
+          "value": 7
+        },
+        99
+      ],
+      "output": {
+        "source": "primary",
+        "value": 7
+      }
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        {
+          "ok": false,
+          "value": 7
+        },
+        99
+      ],
+      "output": {
+        "source": "fallback",
+        "value": 99
+      }
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [{\"ok\":true,\"value\":7},99]",
+      "input": [
+        {
+          "ok": true,
+          "value": 7
+        },
+        99
+      ],
+      "expected": {
+        "source": "primary",
+        "value": 7
+      }
+    },
+    {
+      "name": "Alternative scenario — [{\"ok\":false,\"value\":7},99]",
+      "input": [
+        {
+          "ok": false,
+          "value": 7
+        },
+        99
+      ],
+      "expected": {
+        "source": "fallback",
+        "value": 99
+      }
+    },
+    {
+      "name": "Boundary condition — [{\"ok\":true,\"value\":null},0]",
+      "input": [
+        {
+          "ok": true,
+          "value": null
+        },
+        0
+      ],
+      "expected": {
+        "source": "primary",
+        "value": null
+      }
+    },
+    {
+      "name": "Edge case — [{\"ok\":false,\"value\":\"a\"},\"b\"]",
+      "input": [
+        {
+          "ok": false,
+          "value": "a"
+        },
+        "b"
+      ],
+      "expected": {
+        "source": "fallback",
+        "value": "b"
+      }
+    },
+    {
+      "name": "Additional variation — [{\"ok\":true,\"value\":0},55]",
+      "input": [
+        {
+          "ok": true,
+          "value": 0
+        },
+        55
+      ],
+      "expected": {
+        "source": "primary",
+        "value": 0
+      }
+    }
+  ],
+  "referenceCode": "export async function resolveAsyncFallback(primary: { ok: boolean; value: unknown }, backup: unknown) {\n  try{const value=await (primary.ok?Promise.resolve(primary.value):Promise.reject(new Error('Primary failed')));return {source:'primary',value};}\n  catch{return {source:'fallback',value:await Promise.resolve(backup)};}\n}\n"
+}

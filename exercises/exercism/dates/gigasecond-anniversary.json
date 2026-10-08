@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "id": "gigasecond-anniversary",
+  "title": "Timestamp one billion seconds later",
+  "eyebrow": "JavaScript · dates",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "dates",
+    "language fundamentals"
+  ],
+  "skills": [
+    "dates",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Add one billion seconds to an ISO 8601 UTC timestamp.",
+  "durationMinutes": 20,
+  "functionName": "addGigasecond",
+  "requirements": [
+    "Return an ISO UTC timestamp with milliseconds.",
+    "Treat one gigasecond as exactly 1,000,000,000 seconds.",
+    "Throw an Error containing Invalid date for invalid input."
+  ],
+  "starterCode": "export function addGigasecond(isoDate) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Convert the timestamp to milliseconds.",
+    "Add one billion times one thousand, then format using toISOString."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        "2011-04-25T00:00:00.000Z"
+      ],
+      "output": "2043-01-01T01:46:40.000Z"
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        "1977-06-13T00:00:00.000Z"
+      ],
+      "output": "2009-02-19T01:46:40.000Z"
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [\"2011-04-25T00:00:00.000Z\"]",
+      "input": [
+        "2011-04-25T00:00:00.000Z"
+      ],
+      "expected": "2043-01-01T01:46:40.000Z"
+    },
+    {
+      "name": "Alternative scenario — [\"1977-06-13T00:00:00.000Z\"]",
+      "input": [
+        "1977-06-13T00:00:00.000Z"
+      ],
+      "expected": "2009-02-19T01:46:40.000Z"
+    },
+    {
+      "name": "Boundary condition — [\"2000-01-01T00:00:00.000Z\"]",
+      "input": [
+        "2000-01-01T00:00:00.000Z"
+      ],
+      "expected": "2031-09-09T01:46:40.000Z"
+    },
+    {
+      "name": "Edge case — [\"2024-02-29T12:30:00.000Z\"]",
+      "input": [
+        "2024-02-29T12:30:00.000Z"
+      ],
+      "expected": "2055-11-07T14:16:40.000Z"
+    },
+    {
+      "name": "Additional variation — [\"2020-01-01T00:00:00.000Z\"]",
+      "input": [
+        "2020-01-01T00:00:00.000Z"
+      ],
+      "expected": "2051-09-09T01:46:40.000Z"
+    }
+  ],
+  "referenceCode": "export function addGigasecond(isoDate) {\n  const ms=Date.parse(isoDate);if(!Number.isFinite(ms))throw new Error('Invalid date');\n  return new Date(ms+1000000000*1000).toISOString();\n}\n"
+}

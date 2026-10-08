@@ -1,0 +1,194 @@
+{
+  "id": "target-pair",
+  "category": "algorithms",
+  "language": "javascript",
+  "title": "Find a target pair",
+  "eyebrow": "JavaScript · Arrays & hash maps",
+  "summary": "Find two different positions in an array whose values add up to the target. Return their indices rather than their values.",
+  "durationMinutes": 20,
+  "functionName": "findTargetPair",
+  "requirements": [
+    "Accept nums (an array of integers) and target (an integer). Return [left, right], where left < right and nums[left] + nums[right] equals target.",
+    "If several pairs work, return the pair with the smallest right index; if tied, use the smallest left index.",
+    "Return [] when no pair exists. You cannot reuse the same position twice.",
+    "Do not change nums. Negative numbers, zero, and duplicate values are allowed.",
+    "Inputs contain at most 10,000 numbers, each between -1,000,000 and 1,000,000. Aim for O(n) time using a hash map."
+  ],
+  "starterCode": "export function findTargetPair(nums, target) {\n  return [];\n}\n\n// Try your own input with Run:\n// console.log(findTargetPair([4, 9, 2, 7], 11));\n",
+  "hints": [
+    "For each value, the other value you need is target minus the current value.",
+    "Store previously seen values and their indices in a Map. Check for the complement before adding the current position.",
+    "Keep the first index stored for a value. Scanning right indices from left to right then returns the required pair."
+  ],
+  "examples": [
+    {
+      "label": "A matching pair",
+      "input": [
+        [
+          4,
+          9,
+          2,
+          7
+        ],
+        11
+      ],
+      "output": [
+        1,
+        2
+      ]
+    },
+    {
+      "label": "Duplicate values at different positions",
+      "input": [
+        [
+          3,
+          3
+        ],
+        6
+      ],
+      "output": [
+        0,
+        1
+      ]
+    },
+    {
+      "label": "No matching pair",
+      "input": [
+        [
+          1,
+          2,
+          3
+        ],
+        10
+      ],
+      "output": []
+    }
+  ],
+  "tests": [
+    {
+      "name": "Finds a matching pair",
+      "input": [
+        [
+          4,
+          9,
+          2,
+          7
+        ],
+        11
+      ],
+      "expected": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "Uses two distinct duplicate positions",
+      "input": [
+        [
+          3,
+          3
+        ],
+        6
+      ],
+      "expected": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "Handles negatives and zero",
+      "input": [
+        [
+          -5,
+          0,
+          8,
+          5
+        ],
+        0
+      ],
+      "expected": [
+        0,
+        3
+      ]
+    },
+    {
+      "name": "Chooses the earliest right index",
+      "input": [
+        [
+          1,
+          2,
+          3,
+          4
+        ],
+        5
+      ],
+      "expected": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "Keeps the earliest index for duplicates",
+      "input": [
+        [
+          2,
+          2,
+          7
+        ],
+        9
+      ],
+      "expected": [
+        0,
+        2
+      ]
+    },
+    {
+      "name": "Returns empty when no pair exists",
+      "input": [
+        [
+          1,
+          2,
+          3
+        ],
+        10
+      ],
+      "expected": []
+    },
+    {
+      "name": "Cannot reuse a single position",
+      "input": [
+        [
+          4
+        ],
+        8
+      ],
+      "expected": []
+    },
+    {
+      "name": "Handles an empty array",
+      "input": [
+        [],
+        0
+      ],
+      "expected": []
+    }
+  ],
+  "referenceCode": "export function findTargetPair(nums, target) {\n  const seen = new Map();\n  for (let right = 0; right < nums.length; right++) {\n    const complement = target - nums[right];\n    if (seen.has(complement)) return [seen.get(complement), right];\n    if (!seen.has(nums[right])) seen.set(nums[right], right);\n  }\n  return [];\n}\n",
+  "difficulty": "easy",
+  "topics": [
+    "arrays",
+    "hash maps"
+  ],
+  "skills": [
+    "algorithm design",
+    "complexity analysis"
+  ],
+  "targetRoles": [
+    "general",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "schemaVersion": 1
+}

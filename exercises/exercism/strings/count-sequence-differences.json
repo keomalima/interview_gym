@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "id": "count-sequence-differences",
+  "title": "Count mismatches between two sequences",
+  "eyebrow": "JavaScript · strings",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "strings",
+    "language fundamentals"
+  ],
+  "skills": [
+    "strings",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Count the positions at which two equally sized strings differ.",
+  "durationMinutes": 15,
+  "functionName": "hammingDistance",
+  "requirements": [
+    "Characters are compared case-sensitively.",
+    "Throw an Error containing Different lengths for unequal input lengths.",
+    "Return zero for two empty strings."
+  ],
+  "starterCode": "export function hammingDistance(a,b) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "First make sure the lengths match.",
+    "Compare each pair of characters by index."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        "GAGCCT",
+        "CATCGT"
+      ],
+      "output": 3
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        "A",
+        "A"
+      ],
+      "output": 0
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [\"GAGCCT\",\"CATCGT\"]",
+      "input": [
+        "GAGCCT",
+        "CATCGT"
+      ],
+      "expected": 3
+    },
+    {
+      "name": "Alternative scenario — [\"A\",\"A\"]",
+      "input": [
+        "A",
+        "A"
+      ],
+      "expected": 0
+    },
+    {
+      "name": "Boundary condition — [\"\",\"\"]",
+      "input": [
+        "",
+        ""
+      ],
+      "expected": 0
+    },
+    {
+      "name": "Edge case — [\"abc\",\"axc\"]",
+      "input": [
+        "abc",
+        "axc"
+      ],
+      "expected": 1
+    },
+    {
+      "name": "Additional variation — [\"1234\",\"4321\"]",
+      "input": [
+        "1234",
+        "4321"
+      ],
+      "expected": 4
+    },
+    {
+      "name": "Rejects unequal lengths",
+      "input": [
+        "ACG",
+        "AG"
+      ],
+      "error": "Different lengths"
+    }
+  ],
+  "referenceCode": "export function hammingDistance(a,b) {\n  if(a.length!==b.length)throw new Error('Different lengths');\n  let count=0;for(let i=0;i<a.length;i++)if(a[i]!==b[i])count++;return count;\n}\n"
+}

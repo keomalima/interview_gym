@@ -1,0 +1,188 @@
+{
+  "schemaVersion": 1,
+  "id": "calculate-project-milestones",
+  "title": "Summarize project task completion",
+  "eyebrow": "TypeScript · data-transformation",
+  "category": "practical",
+  "language": "typescript",
+  "difficulty": "easy",
+  "topics": [
+    "data-transformation",
+    "business logic"
+  ],
+  "skills": [
+    "data-transformation",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "frontend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Aggregate completion counts and percentage for each milestone.",
+  "durationMinutes": 20,
+  "functionName": "milestoneProgress",
+  "requirements": [
+    "Each input task has milestone and completed boolean.",
+    "Sort output by milestone name ascending.",
+    "Round percent using Math.round; include done and total."
+  ],
+  "starterCode": "export function milestoneProgress(tasks: { milestone: string; completed: boolean }[]) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Count completed and total tasks in a Map.",
+    "Compute a rounded percentage per milestone after grouping."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          {
+            "milestone": "M1",
+            "completed": true
+          },
+          {
+            "milestone": "M1",
+            "completed": false
+          },
+          {
+            "milestone": "M2",
+            "completed": true
+          }
+        ]
+      ],
+      "output": [
+        {
+          "milestone": "M1",
+          "done": 1,
+          "total": 2,
+          "percent": 50
+        },
+        {
+          "milestone": "M2",
+          "done": 1,
+          "total": 1,
+          "percent": 100
+        }
+      ]
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        []
+      ],
+      "output": []
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[{\"milestone\":\"M1\",\"completed\":true},{\"milestone\":\"M1\",\"completed\":…",
+      "input": [
+        [
+          {
+            "milestone": "M1",
+            "completed": true
+          },
+          {
+            "milestone": "M1",
+            "completed": false
+          },
+          {
+            "milestone": "M2",
+            "completed": true
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "milestone": "M1",
+          "done": 1,
+          "total": 2,
+          "percent": 50
+        },
+        {
+          "milestone": "M2",
+          "done": 1,
+          "total": 1,
+          "percent": 100
+        }
+      ]
+    },
+    {
+      "name": "Alternative scenario — [[]]",
+      "input": [
+        []
+      ],
+      "expected": []
+    },
+    {
+      "name": "Boundary condition — [[{\"milestone\":\"A\",\"completed\":false}]]",
+      "input": [
+        [
+          {
+            "milestone": "A",
+            "completed": false
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "milestone": "A",
+          "done": 0,
+          "total": 1,
+          "percent": 0
+        }
+      ]
+    },
+    {
+      "name": "Edge case — [[{\"milestone\":\"A\",\"completed\":true}]]",
+      "input": [
+        [
+          {
+            "milestone": "A",
+            "completed": true
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "milestone": "A",
+          "done": 1,
+          "total": 1,
+          "percent": 100
+        }
+      ]
+    },
+    {
+      "name": "Additional variation — [[{\"milestone\":\"z\",\"completed\":true},{\"milestone\":\"a\",\"completed\":fa…",
+      "input": [
+        [
+          {
+            "milestone": "z",
+            "completed": true
+          },
+          {
+            "milestone": "a",
+            "completed": false
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "milestone": "a",
+          "done": 0,
+          "total": 1,
+          "percent": 0
+        },
+        {
+          "milestone": "z",
+          "done": 1,
+          "total": 1,
+          "percent": 100
+        }
+      ]
+    }
+  ],
+  "referenceCode": "export function milestoneProgress(tasks: { milestone: string; completed: boolean }[]) {\n  const m=new Map();for(const t of tasks){if(!m.has(t.milestone))m.set(t.milestone,{done:0,total:0});const x=m.get(t.milestone);x.total++;if(t.completed)x.done++;}\n  return [...m].sort(([a],[b])=>a.localeCompare(b)).map(([milestone,v])=>({milestone,done:v.done,total:v.total,percent:Math.round(100*v.done/v.total)}));\n}\n"
+}

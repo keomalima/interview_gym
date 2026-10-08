@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 1,
+  "id": "accept-unique-webhook-events",
+  "title": "Deduplicate webhook event IDs",
+  "eyebrow": "TypeScript · maps",
+  "category": "practical",
+  "language": "typescript",
+  "difficulty": "easy",
+  "topics": [
+    "maps",
+    "business logic"
+  ],
+  "skills": [
+    "maps",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Filter duplicate incoming webhook events by their unique identifier.",
+  "durationMinutes": 20,
+  "functionName": "acceptWebhookEvents",
+  "requirements": [
+    "Keep the first occurrence of each event ID.",
+    "Preserve the original order and objects in the output.",
+    "Do not modify input events."
+  ],
+  "starterCode": "export function acceptWebhookEvents(events: { id: string; type: string }[]) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "An event should be processed only if its ID is new.",
+    "Use a Set of seen IDs while scanning once."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          {
+            "id": "a",
+            "type": "paid"
+          },
+          {
+            "id": "a",
+            "type": "paid"
+          },
+          {
+            "id": "b",
+            "type": "failed"
+          }
+        ]
+      ],
+      "output": [
+        {
+          "id": "a",
+          "type": "paid"
+        },
+        {
+          "id": "b",
+          "type": "failed"
+        }
+      ]
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        []
+      ],
+      "output": []
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[{\"id\":\"a\",\"type\":\"paid\"},{\"id\":\"a\",\"type\":\"paid\"},{\"id\":\"b\",\"type\"…",
+      "input": [
+        [
+          {
+            "id": "a",
+            "type": "paid"
+          },
+          {
+            "id": "a",
+            "type": "paid"
+          },
+          {
+            "id": "b",
+            "type": "failed"
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "id": "a",
+          "type": "paid"
+        },
+        {
+          "id": "b",
+          "type": "failed"
+        }
+      ]
+    },
+    {
+      "name": "Alternative scenario — [[]]",
+      "input": [
+        []
+      ],
+      "expected": []
+    },
+    {
+      "name": "Boundary condition — [[{\"id\":\"1\",\"type\":\"one\"}]]",
+      "input": [
+        [
+          {
+            "id": "1",
+            "type": "one"
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "id": "1",
+          "type": "one"
+        }
+      ]
+    },
+    {
+      "name": "Edge case — [[{\"id\":\"x\",\"type\":\"one\"},{\"id\":\"x\",\"type\":\"two\"}]]",
+      "input": [
+        [
+          {
+            "id": "x",
+            "type": "one"
+          },
+          {
+            "id": "x",
+            "type": "two"
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "id": "x",
+          "type": "one"
+        }
+      ]
+    },
+    {
+      "name": "Additional variation — [[{\"id\":\"b\",\"type\":\"x\"},{\"id\":\"a\",\"type\":\"y\"}]]",
+      "input": [
+        [
+          {
+            "id": "b",
+            "type": "x"
+          },
+          {
+            "id": "a",
+            "type": "y"
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "id": "b",
+          "type": "x"
+        },
+        {
+          "id": "a",
+          "type": "y"
+        }
+      ]
+    }
+  ],
+  "referenceCode": "export function acceptWebhookEvents(events: { id: string; type: string }[]) {\n  const seen=new Set(),accepted=[];\n  for(const e of events){if(seen.has(e.id))continue;seen.add(e.id);accepted.push(e);}\n  return accepted;\n}\n"
+}

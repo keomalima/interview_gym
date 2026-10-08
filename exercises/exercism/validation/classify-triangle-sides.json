@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "id": "classify-triangle-sides",
+  "title": "Classify triangle by side lengths",
+  "eyebrow": "JavaScript · validation",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "validation",
+    "language fundamentals"
+  ],
+  "skills": [
+    "validation",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Identify a triangle as equilateral, isosceles, scalene, or invalid.",
+  "durationMinutes": 20,
+  "functionName": "classifyTriangle",
+  "requirements": [
+    "Sides must be positive and satisfy the strict triangle inequality.",
+    "Two equal sides imply isosceles; three equal sides imply equilateral.",
+    "Return a lowercase classification string."
+  ],
+  "starterCode": "export function classifyTriangle(a,b,c) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Validate side lengths before classifying.",
+    "Then compare equality among all three sides."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        2,
+        2,
+        2
+      ],
+      "output": "equilateral"
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        3,
+        4,
+        5
+      ],
+      "output": "scalene"
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [2,2,2]",
+      "input": [
+        2,
+        2,
+        2
+      ],
+      "expected": "equilateral"
+    },
+    {
+      "name": "Alternative scenario — [3,4,5]",
+      "input": [
+        3,
+        4,
+        5
+      ],
+      "expected": "scalene"
+    },
+    {
+      "name": "Boundary condition — [4,4,7]",
+      "input": [
+        4,
+        4,
+        7
+      ],
+      "expected": "isosceles"
+    },
+    {
+      "name": "Edge case — [1,1,3]",
+      "input": [
+        1,
+        1,
+        3
+      ],
+      "expected": "invalid"
+    },
+    {
+      "name": "Additional variation — [0,4,4]",
+      "input": [
+        0,
+        4,
+        4
+      ],
+      "expected": "invalid"
+    }
+  ],
+  "referenceCode": "export function classifyTriangle(a,b,c) {\n  const sides=[a,b,c];if(sides.some(n=>n<=0)||a+b<=c||a+c<=b||b+c<=a)return 'invalid';\n  if(a===b&&b===c)return 'equilateral';\n  return a===b||b===c||a===c?'isosceles':'scalene';\n}\n"
+}

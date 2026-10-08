@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "id": "adjacent-mine-count-grid",
+  "title": "Calculate minesweeper neighbor counts",
+  "eyebrow": "JavaScript · matrix",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "medium",
+  "topics": [
+    "matrix",
+    "parsing and simulation"
+  ],
+  "skills": [
+    "matrix",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Produce mine counts for every empty square in a minesweeper board.",
+  "durationMinutes": 25,
+  "functionName": "minesweeperNumbers",
+  "requirements": [
+    "Input is an array of equal-length strings using * for mines and . for empty.",
+    "Adjacent means eight directions including diagonals.",
+    "Keep mines as * and replace empty cells with digit characters."
+  ],
+  "starterCode": "export function minesweeperNumbers(board) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "For each empty cell inspect its eight neighbors.",
+    "Check bounds before reading a neighboring cell."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          "*..",
+          "...",
+          "..*"
+        ]
+      ],
+      "output": [
+        "*10",
+        "121",
+        "01*"
+      ]
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        []
+      ],
+      "output": []
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[\"*..\",\"...\",\"..*\"]]",
+      "input": [
+        [
+          "*..",
+          "...",
+          "..*"
+        ]
+      ],
+      "expected": [
+        "*10",
+        "121",
+        "01*"
+      ]
+    },
+    {
+      "name": "Alternative scenario — [[]]",
+      "input": [
+        []
+      ],
+      "expected": []
+    },
+    {
+      "name": "Boundary condition — [[\".\"]]",
+      "input": [
+        [
+          "."
+        ]
+      ],
+      "expected": [
+        "0"
+      ]
+    },
+    {
+      "name": "Edge case — [[\"***\"]]",
+      "input": [
+        [
+          "***"
+        ]
+      ],
+      "expected": [
+        "***"
+      ]
+    },
+    {
+      "name": "Additional variation — [[\"..\",\"..\"]]",
+      "input": [
+        [
+          "..",
+          ".."
+        ]
+      ],
+      "expected": [
+        "00",
+        "00"
+      ]
+    }
+  ],
+  "referenceCode": "export function minesweeperNumbers(board) {\n  const rows=board.length,cols=rows?board[0].length:0;\n  return board.map((line,r)=>[...line].map((c,col)=>{\n    if(c==='*')return '*';let count=0;\n    for(let dr=-1;dr<=1;dr++)for(let dc=-1;dc<=1;dc++){if(!dr&&!dc)continue;const rr=r+dr,cc=col+dc;if(rr>=0&&cc>=0&&rr<rows&&cc<cols&&board[rr][cc]==='*')count++;}\n    return String(count);\n  }).join(''));\n}\n"
+}

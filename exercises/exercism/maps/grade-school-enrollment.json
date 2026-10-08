@@ -1,0 +1,197 @@
+{
+  "schemaVersion": 1,
+  "id": "grade-school-enrollment",
+  "title": "Organize students by grade",
+  "eyebrow": "JavaScript · maps",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "medium",
+  "topics": [
+    "maps",
+    "language fundamentals"
+  ],
+  "skills": [
+    "maps",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Create an ordered roster grouping students by grade.",
+  "durationMinutes": 25,
+  "functionName": "gradeRoster",
+  "requirements": [
+    "Return {grade,names} objects in ascending numeric grade order.",
+    "Sort names alphabetically within each grade.",
+    "Input student names are unique."
+  ],
+  "starterCode": "export function gradeRoster(students) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Group names under each grade using a Map.",
+    "Sort groups by grade and each group’s names alphabetically."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          {
+            "name": "Alice",
+            "grade": 2
+          },
+          {
+            "name": "Bob",
+            "grade": 1
+          },
+          {
+            "name": "Zoe",
+            "grade": 2
+          }
+        ]
+      ],
+      "output": [
+        {
+          "grade": 1,
+          "names": [
+            "Bob"
+          ]
+        },
+        {
+          "grade": 2,
+          "names": [
+            "Alice",
+            "Zoe"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        []
+      ],
+      "output": []
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[{\"name\":\"Alice\",\"grade\":2},{\"name\":\"Bob\",\"grade\":1},{\"name\":\"Zoe\",…",
+      "input": [
+        [
+          {
+            "name": "Alice",
+            "grade": 2
+          },
+          {
+            "name": "Bob",
+            "grade": 1
+          },
+          {
+            "name": "Zoe",
+            "grade": 2
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "grade": 1,
+          "names": [
+            "Bob"
+          ]
+        },
+        {
+          "grade": 2,
+          "names": [
+            "Alice",
+            "Zoe"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Alternative scenario — [[]]",
+      "input": [
+        []
+      ],
+      "expected": []
+    },
+    {
+      "name": "Boundary condition — [[{\"name\":\"Eve\",\"grade\":3}]]",
+      "input": [
+        [
+          {
+            "name": "Eve",
+            "grade": 3
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "grade": 3,
+          "names": [
+            "Eve"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Edge case — [[{\"name\":\"Beta\",\"grade\":1},{\"name\":\"Alpha\",\"grade\":1}]]",
+      "input": [
+        [
+          {
+            "name": "Beta",
+            "grade": 1
+          },
+          {
+            "name": "Alpha",
+            "grade": 1
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "grade": 1,
+          "names": [
+            "Alpha",
+            "Beta"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Additional variation — [[{\"name\":\"Ann\",\"grade\":8},{\"name\":\"Jim\",\"grade\":4}]]",
+      "input": [
+        [
+          {
+            "name": "Ann",
+            "grade": 8
+          },
+          {
+            "name": "Jim",
+            "grade": 4
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "grade": 4,
+          "names": [
+            "Jim"
+          ]
+        },
+        {
+          "grade": 8,
+          "names": [
+            "Ann"
+          ]
+        }
+      ]
+    }
+  ],
+  "referenceCode": "export function gradeRoster(students) {\n  const groups=new Map();for(const {name,grade} of students){if(!groups.has(grade))groups.set(grade,[]);groups.get(grade).push(name);}\n  return [...groups].sort((a,b)=>a[0]-b[0]).map(([grade,names])=>({grade,names:names.sort((a,b)=>a.localeCompare(b))}));\n}\n"
+}

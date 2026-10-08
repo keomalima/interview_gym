@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "id": "check-anagram-lowercase",
+  "title": "Check whether two words are anagrams",
+  "eyebrow": "JavaScript · hash-map",
+  "category": "algorithms",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "hash-map",
+    "algorithms"
+  ],
+  "skills": [
+    "hash-map",
+    "algorithmic problem solving"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Check whether two strings use exactly the same characters with identical counts.",
+  "durationMinutes": 15,
+  "functionName": "areAnagrams",
+  "requirements": [
+    "Strings contain only lowercase English letters.",
+    "Return false when lengths differ.",
+    "The empty pair is valid."
+  ],
+  "starterCode": "export function areAnagrams(a,b) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Two words must have equal character frequencies.",
+    "Count characters in one word; subtract counts using the other."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        "anagram",
+        "nagaram"
+      ],
+      "output": true
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        "rat",
+        "car"
+      ],
+      "output": false
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [\"anagram\",\"nagaram\"]",
+      "input": [
+        "anagram",
+        "nagaram"
+      ],
+      "expected": true
+    },
+    {
+      "name": "Alternative scenario — [\"rat\",\"car\"]",
+      "input": [
+        "rat",
+        "car"
+      ],
+      "expected": false
+    },
+    {
+      "name": "Boundary condition — [\"\",\"\"]",
+      "input": [
+        "",
+        ""
+      ],
+      "expected": true
+    },
+    {
+      "name": "Edge case — [\"aacc\",\"ccac\"]",
+      "input": [
+        "aacc",
+        "ccac"
+      ],
+      "expected": false
+    },
+    {
+      "name": "Additional variation — [\"abc\",\"ab\"]",
+      "input": [
+        "abc",
+        "ab"
+      ],
+      "expected": false
+    }
+  ],
+  "referenceCode": "export function areAnagrams(a,b) {\n  if(a.length!==b.length)return false;\n  const count=new Map();for(const c of a)count.set(c,(count.get(c)||0)+1);\n  for(const c of b){const n=count.get(c)||0;if(!n)return false;count.set(c,n-1);}\n  return true;\n}\n"
+}

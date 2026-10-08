@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "id": "minimum-rotated-value",
+  "title": "Find the smallest rotated value",
+  "eyebrow": "JavaScript · binary-search",
+  "category": "algorithms",
+  "language": "javascript",
+  "difficulty": "medium",
+  "topics": [
+    "binary-search",
+    "algorithms"
+  ],
+  "skills": [
+    "binary-search",
+    "algorithmic problem solving"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Find the minimum element of a rotated strictly increasing array.",
+  "durationMinutes": 25,
+  "functionName": "minRotatedValue",
+  "requirements": [
+    "Return null for an empty array.",
+    "All values are distinct.",
+    "Aim for logarithmic time."
+  ],
+  "starterCode": "export function minRotatedValue(nums) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Compare the midpoint against the current rightmost value.",
+    "When the midpoint is larger, the rotation point lies on its right."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          3,
+          4,
+          5,
+          1,
+          2
+        ]
+      ],
+      "output": 1
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        [
+          11,
+          13,
+          15,
+          17
+        ]
+      ],
+      "output": 11
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[3,4,5,1,2]]",
+      "input": [
+        [
+          3,
+          4,
+          5,
+          1,
+          2
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "name": "Alternative scenario — [[11,13,15,17]]",
+      "input": [
+        [
+          11,
+          13,
+          15,
+          17
+        ]
+      ],
+      "expected": 11
+    },
+    {
+      "name": "Boundary condition — [[2,1]]",
+      "input": [
+        [
+          2,
+          1
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "name": "Edge case — [[1]]",
+      "input": [
+        [
+          1
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "name": "Additional variation — [[]]",
+      "input": [
+        []
+      ],
+      "expected": null
+    }
+  ],
+  "referenceCode": "export function minRotatedValue(nums) {\n  if(!nums.length)return null;\n  let l=0,r=nums.length-1;\n  while(l<r){const m=Math.floor((l+r)/2);if(nums[m]>nums[r])l=m+1;else r=m;}\n  return nums[l];\n}\n"
+}

@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "id": "calculate-bowling-frame-score",
+  "title": "Score ten-pin bowling without bonuses",
+  "eyebrow": "JavaScript · simulation",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "simulation",
+    "parsing and simulation"
+  ],
+  "skills": [
+    "simulation",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Calculate the total knocked-down pins in a simplified bowling game.",
+  "durationMinutes": 20,
+  "functionName": "simpleBowlingScore",
+  "requirements": [
+    "Each frame is exactly two rolls, summing to at most ten.",
+    "Ignore spare and strike bonuses in this simplified variant.",
+    "Throw Invalid frame for invalid pin counts."
+  ],
+  "starterCode": "export function simpleBowlingScore(frames) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Validate each frame before scoring it.",
+    "The simplified score is the sum of all roll values."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          [
+            3,
+            4
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            10,
+            0
+          ]
+        ]
+      ],
+      "output": 20
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        []
+      ],
+      "output": 0
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[[3,4],[2,1],[10,0]]]",
+      "input": [
+        [
+          [
+            3,
+            4
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            10,
+            0
+          ]
+        ]
+      ],
+      "expected": 20
+    },
+    {
+      "name": "Alternative scenario — [[]]",
+      "input": [
+        []
+      ],
+      "expected": 0
+    },
+    {
+      "name": "Boundary condition — [[[0,0]]]",
+      "input": [
+        [
+          [
+            0,
+            0
+          ]
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "name": "Edge case — [[[5,5],[7,0]]]",
+      "input": [
+        [
+          [
+            5,
+            5
+          ],
+          [
+            7,
+            0
+          ]
+        ]
+      ],
+      "expected": 17
+    },
+    {
+      "name": "Additional variation — [[[1,9],[0,10]]]",
+      "input": [
+        [
+          [
+            1,
+            9
+          ],
+          [
+            0,
+            10
+          ]
+        ]
+      ],
+      "expected": 20
+    },
+    {
+      "name": "Rejects invalid frame",
+      "input": [
+        [
+          [
+            9,
+            9
+          ]
+        ]
+      ],
+      "error": "Invalid frame"
+    }
+  ],
+  "referenceCode": "export function simpleBowlingScore(frames) {\n  let total=0;for(const f of frames){if(f.length!==2||f.some(n=>!Number.isInteger(n)||n<0||n>10)||f[0]+f[1]>10)throw new Error('Invalid frame');total+=f[0]+f[1];}\n  return total;\n}\n"
+}

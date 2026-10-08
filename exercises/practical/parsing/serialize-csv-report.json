@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "id": "serialize-csv-report",
+  "title": "Serialize report rows as RFC-style CSV",
+  "eyebrow": "TypeScript · parsing",
+  "category": "practical",
+  "language": "typescript",
+  "difficulty": "medium",
+  "topics": [
+    "parsing",
+    "business logic"
+  ],
+  "skills": [
+    "parsing",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "fullstack",
+    "frontend",
+    "backend"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Turn tabular values into correctly escaped CSV text.",
+  "durationMinutes": 25,
+  "functionName": "serializeCsv",
+  "requirements": [
+    "Use comma delimiter and LF between records; include the header row.",
+    "Quote fields containing commas, quotes or newlines; double any internal quote.",
+    "Convert null to empty string and other values using String."
+  ],
+  "starterCode": "export function serializeCsv(headers: string[], rows: (string | number | boolean | null)[][]) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Create a field-encoding helper.",
+    "Quote fields only when necessary and escape embedded quotes by doubling."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          "name",
+          "age"
+        ],
+        [
+          [
+            "Alice",
+            30
+          ],
+          [
+            "Bob",
+            25
+          ]
+        ]
+      ],
+      "output": "name,age\nAlice,30\nBob,25"
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        [
+          "value"
+        ],
+        [
+          [
+            "hello, world"
+          ],
+          [
+            "quote\"here"
+          ]
+        ]
+      ],
+      "output": "value\n\"hello, world\"\n\"quote\"\"here\""
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[\"name\",\"age\"],[[\"Alice\",30],[\"Bob\",25]]]",
+      "input": [
+        [
+          "name",
+          "age"
+        ],
+        [
+          [
+            "Alice",
+            30
+          ],
+          [
+            "Bob",
+            25
+          ]
+        ]
+      ],
+      "expected": "name,age\nAlice,30\nBob,25"
+    },
+    {
+      "name": "Alternative scenario — [[\"value\"],[[\"hello, world\"],[\"quote\\\"here\"]]]",
+      "input": [
+        [
+          "value"
+        ],
+        [
+          [
+            "hello, world"
+          ],
+          [
+            "quote\"here"
+          ]
+        ]
+      ],
+      "expected": "value\n\"hello, world\"\n\"quote\"\"here\""
+    },
+    {
+      "name": "Boundary condition — [[],[]]",
+      "input": [
+        [],
+        []
+      ],
+      "expected": ""
+    },
+    {
+      "name": "Edge case — [[\"x\"],[[\"line\\nbreak\"]]]",
+      "input": [
+        [
+          "x"
+        ],
+        [
+          [
+            "line\nbreak"
+          ]
+        ]
+      ],
+      "expected": "x\n\"line\nbreak\""
+    },
+    {
+      "name": "Additional variation — [[\"a\",\"b\"],[[null,0],[false,\"\"]]]",
+      "input": [
+        [
+          "a",
+          "b"
+        ],
+        [
+          [
+            null,
+            0
+          ],
+          [
+            false,
+            ""
+          ]
+        ]
+      ],
+      "expected": "a,b\n,0\nfalse,"
+    }
+  ],
+  "referenceCode": "export function serializeCsv(headers: string[], rows: (string | number | boolean | null)[][]) {\n  const encode=value=>{const s=String(value==null?'':value);return /[\",\\n\\r]/.test(s)?'\"'+s.replace(/\"/g,'\"\"')+'\"':s;};\n  return [headers,...rows].map(row=>row.map(encode).join(',')).join('\\n');\n}\n"
+}

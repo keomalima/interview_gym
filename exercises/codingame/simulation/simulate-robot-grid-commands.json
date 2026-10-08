@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "id": "simulate-robot-grid-commands",
+  "title": "Simulate robot movements on a grid",
+  "eyebrow": "JavaScript · simulation",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "simulation",
+    "parsing and simulation"
+  ],
+  "skills": [
+    "simulation",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Simulate a robot using cardinal movements.",
+  "durationMinutes": 15,
+  "functionName": "executeRobotMoves",
+  "requirements": [
+    "X increases to the east and Y increases to the south.",
+    "Each character moves exactly one cell.",
+    "Reject other direction codes with Invalid direction."
+  ],
+  "starterCode": "export function executeRobotMoves(x,y,commands) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Maintain current X and Y positions.",
+    "Update one coordinate for each command."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        0,
+        0,
+        "NNESW"
+      ],
+      "output": {
+        "x": 0,
+        "y": -1
+      }
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        3,
+        4,
+        ""
+      ],
+      "output": {
+        "x": 3,
+        "y": 4
+      }
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [0,0,\"NNESW\"]",
+      "input": [
+        0,
+        0,
+        "NNESW"
+      ],
+      "expected": {
+        "x": 0,
+        "y": -1
+      }
+    },
+    {
+      "name": "Alternative scenario — [3,4,\"\"]",
+      "input": [
+        3,
+        4,
+        ""
+      ],
+      "expected": {
+        "x": 3,
+        "y": 4
+      }
+    },
+    {
+      "name": "Boundary condition — [0,0,\"EESS\"]",
+      "input": [
+        0,
+        0,
+        "EESS"
+      ],
+      "expected": {
+        "x": 2,
+        "y": 2
+      }
+    },
+    {
+      "name": "Edge case — [1,1,\"WN\"]",
+      "input": [
+        1,
+        1,
+        "WN"
+      ],
+      "expected": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "name": "Additional variation — [-2,-2,\"SSW\"]",
+      "input": [
+        -2,
+        -2,
+        "SSW"
+      ],
+      "expected": {
+        "x": -3,
+        "y": 0
+      }
+    },
+    {
+      "name": "Rejects unknown movement",
+      "input": [
+        0,
+        0,
+        "XZ"
+      ],
+      "error": "Invalid direction"
+    }
+  ],
+  "referenceCode": "export function executeRobotMoves(x,y,commands) {\n  for(const c of commands){if(c==='N')y--;else if(c==='S')y++;else if(c==='E')x++;else if(c==='W')x--;else throw new Error('Invalid direction');}\n  return {x,y};\n}\n"
+}

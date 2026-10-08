@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "id": "rank-fastest-laps",
+  "title": "Sort competitors by fastest lap time",
+  "eyebrow": "JavaScript · sorting",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "sorting",
+    "parsing and simulation"
+  ],
+  "skills": [
+    "sorting",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Rank race participants by their lap times.",
+  "durationMinutes": 20,
+  "functionName": "rankLapTimes",
+  "requirements": [
+    "Smaller seconds means faster.",
+    "Ties retain input order.",
+    "Return a list of competitor names."
+  ],
+  "starterCode": "export function rankLapTimes(laps) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Sort by seconds ascending.",
+    "Use the original index as an explicit tiebreaker."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          {
+            "name": "A",
+            "seconds": 68
+          },
+          {
+            "name": "B",
+            "seconds": 65
+          }
+        ]
+      ],
+      "output": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        []
+      ],
+      "output": []
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[{\"name\":\"A\",\"seconds\":68},{\"name\":\"B\",\"seconds\":65}]]",
+      "input": [
+        [
+          {
+            "name": "A",
+            "seconds": 68
+          },
+          {
+            "name": "B",
+            "seconds": 65
+          }
+        ]
+      ],
+      "expected": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "name": "Alternative scenario — [[]]",
+      "input": [
+        []
+      ],
+      "expected": []
+    },
+    {
+      "name": "Boundary condition — [[{\"name\":\"first\",\"seconds\":60},{\"name\":\"second\",\"seconds\":60}]]",
+      "input": [
+        [
+          {
+            "name": "first",
+            "seconds": 60
+          },
+          {
+            "name": "second",
+            "seconds": 60
+          }
+        ]
+      ],
+      "expected": [
+        "first",
+        "second"
+      ]
+    },
+    {
+      "name": "Edge case — [[{\"name\":\"x\",\"seconds\":90}]]",
+      "input": [
+        [
+          {
+            "name": "x",
+            "seconds": 90
+          }
+        ]
+      ],
+      "expected": [
+        "x"
+      ]
+    },
+    {
+      "name": "Additional variation — [[{\"name\":\"C\",\"seconds\":77},{\"name\":\"B\",\"seconds\":50},{\"name\":\"A\",\"s…",
+      "input": [
+        [
+          {
+            "name": "C",
+            "seconds": 77
+          },
+          {
+            "name": "B",
+            "seconds": 50
+          },
+          {
+            "name": "A",
+            "seconds": 60
+          }
+        ]
+      ],
+      "expected": [
+        "B",
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "referenceCode": "export function rankLapTimes(laps) {\n  return laps.map((p,i)=>({...p,i})).sort((a,b)=>a.seconds-b.seconds||a.i-b.i).map(({i,...p})=>p.name);\n}\n"
+}

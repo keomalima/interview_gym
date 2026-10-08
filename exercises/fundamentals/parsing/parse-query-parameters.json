@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "id": "parse-query-parameters",
+  "title": "Parse URL query parameters",
+  "eyebrow": "JavaScript · Parsing",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "medium",
+  "topics": [
+    "parsing",
+    "strings",
+    "objects"
+  ],
+  "skills": [
+    "string parsing",
+    "encoding",
+    "duplicate keys"
+  ],
+  "targetRoles": [
+    "frontend",
+    "fullstack",
+    "general"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Turn a URL query string into an object while preserving repeated keys.",
+  "durationMinutes": 25,
+  "functionName": "parseQueryParameters",
+  "requirements": [
+    "Accept a query string with or without an initial ?; input contains no URL fragment (#).",
+    "Split nonempty &-separated fields on the first = character only; fields with no = have an empty value.",
+    "Decode percent-encoded bytes and treat + as a space in both keys and values.",
+    "Represent each key as an array of all its values, even if it appears once; preserve occurrence order.",
+    "Ignore empty fields caused by consecutive or trailing & characters.",
+    "Malformed percent escapes must throw an Error containing \"Invalid encoding\"."
+  ],
+  "starterCode": "export function parseQueryParameters(query) {\n  // Decode the key and value for each parameter.\n  return {};\n}\n",
+  "hints": [
+    "Remove an optional leading ? and split on &.",
+    "Find the first = per pair; other = characters belong to the value.",
+    "Use decodeURIComponent after replacing + with spaces; append to each key’s array."
+  ],
+  "examples": [
+    {
+      "label": "Repeated key",
+      "input": [
+        "?tag=js&tag=ts&name=Ada+Lovelace"
+      ],
+      "output": {
+        "tag": [
+          "js",
+          "ts"
+        ],
+        "name": [
+          "Ada Lovelace"
+        ]
+      }
+    },
+    {
+      "label": "Empty input",
+      "input": [
+        ""
+      ],
+      "output": {}
+    }
+  ],
+  "tests": [
+    {
+      "name": "Repeated key",
+      "input": [
+        "?tag=js&tag=ts&name=Ada+Lovelace"
+      ],
+      "expected": {
+        "tag": [
+          "js",
+          "ts"
+        ],
+        "name": [
+          "Ada Lovelace"
+        ]
+      }
+    },
+    {
+      "name": "Empty input",
+      "input": [
+        ""
+      ],
+      "expected": {}
+    },
+    {
+      "name": "Missing equal sign",
+      "input": [
+        "flag"
+      ],
+      "expected": {
+        "flag": [
+          ""
+        ]
+      }
+    },
+    {
+      "name": "Empty value",
+      "input": [
+        "a="
+      ],
+      "expected": {
+        "a": [
+          ""
+        ]
+      }
+    },
+    {
+      "name": "Additional equals",
+      "input": [
+        "x=a=b=c"
+      ],
+      "expected": {
+        "x": [
+          "a=b=c"
+        ]
+      }
+    },
+    {
+      "name": "Encoded key and value",
+      "input": [
+        "a%20b=c%2Bd"
+      ],
+      "expected": {
+        "a b": [
+          "c+d"
+        ]
+      }
+    },
+    {
+      "name": "Skip empty pairs",
+      "input": [
+        "?a=1&&b=2&"
+      ],
+      "expected": {
+        "a": [
+          "1"
+        ],
+        "b": [
+          "2"
+        ]
+      }
+    },
+    {
+      "name": "Malformed encoding",
+      "input": [
+        "%XX=x"
+      ],
+      "error": "Invalid encoding"
+    }
+  ],
+  "referenceCode": "export function parseQueryParameters(query) {\n  const result = Object.create(null);\n  const source = query.startsWith('?') ? query.slice(1) : query;\n  if (source === '') return result;\n  const decode = text => {\n    try { return decodeURIComponent(text.replace(/\\+/g, ' ')); }\n    catch { throw new Error('Invalid encoding'); }\n  };\n  for (const field of source.split('&')) {\n    if (field === '') continue;\n    const equals = field.indexOf('=');\n    const key = decode(equals < 0 ? field : field.slice(0, equals));\n    const value = decode(equals < 0 ? '' : field.slice(equals + 1));\n    if (!Object.prototype.hasOwnProperty.call(result, key)) result[key] = [];\n    result[key].push(value);\n  }\n  return result;\n}\n"
+}

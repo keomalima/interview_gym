@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "id": "normalize-robot-identifiers",
+  "title": "Normalize robot serial identifiers",
+  "eyebrow": "JavaScript · strings",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "medium",
+  "topics": [
+    "strings",
+    "language fundamentals"
+  ],
+  "skills": [
+    "strings",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Normalize robot identifiers and resolve duplicates deterministically.",
+  "durationMinutes": 25,
+  "functionName": "normalizeRobotIds",
+  "requirements": [
+    "Trim whitespace, uppercase, and remove non-alphanumeric characters.",
+    "Use ROBOT if the cleaned name is empty.",
+    "Append -2, -3, etc. to duplicated identifiers in input order."
+  ],
+  "starterCode": "export function normalizeRobotIds(names) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "First compute a canonical uppercase alphanumeric base.",
+    "Track used identifiers and add the smallest unused numeric suffix."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          " ra-1 ",
+          "RA 1",
+          "rA_1"
+        ]
+      ],
+      "output": [
+        "RA1",
+        "RA1-2",
+        "RA1-3"
+      ]
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        []
+      ],
+      "output": []
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[\" ra-1 \",\"RA 1\",\"rA_1\"]]",
+      "input": [
+        [
+          " ra-1 ",
+          "RA 1",
+          "rA_1"
+        ]
+      ],
+      "expected": [
+        "RA1",
+        "RA1-2",
+        "RA1-3"
+      ]
+    },
+    {
+      "name": "Alternative scenario — [[]]",
+      "input": [
+        []
+      ],
+      "expected": []
+    },
+    {
+      "name": "Boundary condition — [[\"###\",\"\",\"robot\"]]",
+      "input": [
+        [
+          "###",
+          "",
+          "robot"
+        ]
+      ],
+      "expected": [
+        "ROBOT",
+        "ROBOT-2",
+        "ROBOT-3"
+      ]
+    },
+    {
+      "name": "Edge case — [[\"X1\",\"x1\",\"X2\"]]",
+      "input": [
+        [
+          "X1",
+          "x1",
+          "X2"
+        ]
+      ],
+      "expected": [
+        "X1",
+        "X1-2",
+        "X2"
+      ]
+    },
+    {
+      "name": "Additional variation — [[\"A\",\"A\",\"A\"]]",
+      "input": [
+        [
+          "A",
+          "A",
+          "A"
+        ]
+      ],
+      "expected": [
+        "A",
+        "A-2",
+        "A-3"
+      ]
+    }
+  ],
+  "referenceCode": "export function normalizeRobotIds(names) {\n  const used=new Set();const out=[];\n  for(const raw of names){const base=raw.trim().toUpperCase().replace(/[^A-Z0-9]/g,'');let id=base||'ROBOT',i=2;\n    while(used.has(id))id=(base||'ROBOT')+'-'+i++;\n    used.add(id);out.push(id);\n  }\n  return out;\n}\n"
+}

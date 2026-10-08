@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "id": "remove-vowels",
+  "title": "Delete vowels from a sentence",
+  "eyebrow": "JavaScript · strings",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "strings",
+    "javascript fundamentals"
+  ],
+  "skills": [
+    "strings",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Remove English vowel letters from a string.",
+  "durationMinutes": 15,
+  "functionName": "removeVowels",
+  "requirements": [
+    "Treat both uppercase and lowercase A, E, I, O, U as vowels.",
+    "Preserve all other characters, spaces, and punctuation."
+  ],
+  "starterCode": "export function removeVowels(text) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "A case-insensitive character class can recognize vowels.",
+    "Replace every match with an empty string."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        "This website is for losers LOL!"
+      ],
+      "output": "Ths wbst s fr lsrs LL!"
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        "aeiouAEIOU"
+      ],
+      "output": ""
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [\"This website is for losers LOL!\"]",
+      "input": [
+        "This website is for losers LOL!"
+      ],
+      "expected": "Ths wbst s fr lsrs LL!"
+    },
+    {
+      "name": "Alternative scenario — [\"aeiouAEIOU\"]",
+      "input": [
+        "aeiouAEIOU"
+      ],
+      "expected": ""
+    },
+    {
+      "name": "Boundary condition — [\"rhythm\"]",
+      "input": [
+        "rhythm"
+      ],
+      "expected": "rhythm"
+    },
+    {
+      "name": "Edge case — [\"\"]",
+      "input": [
+        ""
+      ],
+      "expected": ""
+    },
+    {
+      "name": "Additional variation — [\"Hello, World!\"]",
+      "input": [
+        "Hello, World!"
+      ],
+      "expected": "Hll, Wrld!"
+    }
+  ],
+  "referenceCode": "export function removeVowels(text) {return text.replace(/[aeiou]/gi,'');}\n"
+}

@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "id": "decode-seven-bit-binary",
+  "title": "Decode groups of seven ASCII binary digits",
+  "eyebrow": "JavaScript · parsing",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "parsing",
+    "parsing and simulation"
+  ],
+  "skills": [
+    "parsing",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Read a binary stream as seven-bit ASCII characters.",
+  "durationMinutes": 20,
+  "functionName": "decodeBinaryAscii",
+  "requirements": [
+    "The bit count must be divisible by seven.",
+    "Reject characters other than 0 and 1 with Invalid bitstream.",
+    "Return the empty string for empty input."
+  ],
+  "starterCode": "export function decodeBinaryAscii(bits) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Take consecutive groups of seven bits.",
+    "Parse each group as binary and convert it to a character."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        "1000001"
+      ],
+      "output": "A"
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        "10000101000011"
+      ],
+      "output": "BC"
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [\"1000001\"]",
+      "input": [
+        "1000001"
+      ],
+      "expected": "A"
+    },
+    {
+      "name": "Alternative scenario — [\"10000101000011\"]",
+      "input": [
+        "10000101000011"
+      ],
+      "expected": "BC"
+    },
+    {
+      "name": "Boundary condition — [\"\"]",
+      "input": [
+        ""
+      ],
+      "expected": ""
+    },
+    {
+      "name": "Edge case — [\"0100001\"]",
+      "input": [
+        "0100001"
+      ],
+      "expected": "!"
+    },
+    {
+      "name": "Additional variation — [\"1001000\"]",
+      "input": [
+        "1001000"
+      ],
+      "expected": "H"
+    },
+    {
+      "name": "Rejects misaligned stream",
+      "input": [
+        "101"
+      ],
+      "error": "Invalid bitstream"
+    }
+  ],
+  "referenceCode": "export function decodeBinaryAscii(bits) {\n  if(bits.length%7!==0||!/^[01]*$/.test(bits))throw new Error('Invalid bitstream');\n  let out='';for(let i=0;i<bits.length;i+=7)out+=String.fromCharCode(parseInt(bits.slice(i,i+7),2));\n  return out;\n}\n"
+}

@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "id": "first-unique-character",
+  "title": "First non-repeating character",
+  "eyebrow": "JavaScript · strings",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "strings",
+    "javascript fundamentals"
+  ],
+  "skills": [
+    "strings",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Return the first original character that appears exactly once ignoring letter case.",
+  "durationMinutes": 20,
+  "functionName": "firstUniqueCharacter",
+  "requirements": [
+    "Count matches case-insensitively.",
+    "Preserve the original case in the returned character.",
+    "Return an empty string if every character repeats."
+  ],
+  "starterCode": "export function firstUniqueCharacter(text) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Count lowercased characters.",
+    "Scan the original string in order to find the first count of one."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        "stress"
+      ],
+      "output": "t"
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        "sTreSS"
+      ],
+      "output": "T"
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [\"stress\"]",
+      "input": [
+        "stress"
+      ],
+      "expected": "t"
+    },
+    {
+      "name": "Alternative scenario — [\"sTreSS\"]",
+      "input": [
+        "sTreSS"
+      ],
+      "expected": "T"
+    },
+    {
+      "name": "Boundary condition — [\"aabb\"]",
+      "input": [
+        "aabb"
+      ],
+      "expected": ""
+    },
+    {
+      "name": "Edge case — [\"\"]",
+      "input": [
+        ""
+      ],
+      "expected": ""
+    },
+    {
+      "name": "Additional variation — [\"moonmen\"]",
+      "input": [
+        "moonmen"
+      ],
+      "expected": "e"
+    }
+  ],
+  "referenceCode": "export function firstUniqueCharacter(text) {\n  const m=new Map();for(const c of text.toLowerCase())m.set(c,(m.get(c)||0)+1);\n  for(let i=0;i<text.length;i++)if(m.get(text[i].toLowerCase())===1)return text[i];\n  return '';\n}\n"
+}

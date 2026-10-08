@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "id": "unary-bitstream-encoder",
+  "title": "Encode a message as unary bit groups",
+  "eyebrow": "JavaScript · parsing",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "medium",
+  "topics": [
+    "parsing",
+    "parsing and simulation"
+  ],
+  "skills": [
+    "parsing",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Encode the seven-bit ASCII binary representation of text into unary runs.",
+  "durationMinutes": 25,
+  "functionName": "unaryEncode",
+  "requirements": [
+    "Input contains only seven-bit ASCII characters.",
+    "For each consecutive run of 1 bits emit 0 followed by as many zeros as bits.",
+    "For a run of 0 bits emit 00 followed by as many zeros; separate blocks with one space."
+  ],
+  "starterCode": "export function unaryEncode(text) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Convert characters to exactly seven bits each.",
+    "Compress consecutive equal binary digits into run pairs."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        "C"
+      ],
+      "output": "0 0 00 0000 0 00"
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        "CC"
+      ],
+      "output": "0 0 00 0000 0 000 00 0000 0 00"
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [\"C\"]",
+      "input": [
+        "C"
+      ],
+      "expected": "0 0 00 0000 0 00"
+    },
+    {
+      "name": "Alternative scenario — [\"CC\"]",
+      "input": [
+        "CC"
+      ],
+      "expected": "0 0 00 0000 0 000 00 0000 0 00"
+    },
+    {
+      "name": "Boundary condition — [\"\"]",
+      "input": [
+        ""
+      ],
+      "expected": ""
+    },
+    {
+      "name": "Edge case — [\"A\"]",
+      "input": [
+        "A"
+      ],
+      "expected": "0 0 00 00000 0 0"
+    },
+    {
+      "name": "Additional variation — [\"Hi\"]",
+      "input": [
+        "Hi"
+      ],
+      "expected": "0 0 00 00 0 0 00 000 0 00 00 0 0 0 00 00 0 0"
+    }
+  ],
+  "referenceCode": "export function unaryEncode(text) {\n  const bits=[...text].map(c=>c.charCodeAt(0).toString(2).padStart(7,'0')).join('');\n  const groups=bits.match(/0+|1+/g)||[];\n  return groups.map(g=>(g[0]==='1'?'0 ':'00 ')+'0'.repeat(g.length)).join(' ');\n}\n"
+}

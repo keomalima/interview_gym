@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "id": "async-map-and-reduce-invoices",
+  "title": "Compute async invoice totals",
+  "eyebrow": "TypeScript · promises",
+  "category": "practical",
+  "language": "typescript",
+  "difficulty": "easy",
+  "topics": [
+    "promises",
+    "asynchronous programming"
+  ],
+  "skills": [
+    "promises",
+    "debugging and async reasoning"
+  ],
+  "targetRoles": [
+    "fullstack",
+    "frontend",
+    "backend"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Fetch simulated invoice lines concurrently and sum their totals.",
+  "durationMinutes": 20,
+  "functionName": "sumAsyncInvoices",
+  "requirements": [
+    "For each line use Promise.resolve to simulate fetching it.",
+    "Multiply qty and unitCents.",
+    "Return a single integer total in cents."
+  ],
+  "starterCode": "export async function sumAsyncInvoices(invoices: { qty: number; unitCents: number }[]) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Map lines to asynchronous amount calculations.",
+    "Wait for all amounts before reducing them to one sum."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          {
+            "qty": 2,
+            "unitCents": 100
+          },
+          {
+            "qty": 3,
+            "unitCents": 50
+          }
+        ]
+      ],
+      "output": 350
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        []
+      ],
+      "output": 0
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[{\"qty\":2,\"unitCents\":100},{\"qty\":3,\"unitCents\":50}]]",
+      "input": [
+        [
+          {
+            "qty": 2,
+            "unitCents": 100
+          },
+          {
+            "qty": 3,
+            "unitCents": 50
+          }
+        ]
+      ],
+      "expected": 350
+    },
+    {
+      "name": "Alternative scenario — [[]]",
+      "input": [
+        []
+      ],
+      "expected": 0
+    },
+    {
+      "name": "Boundary condition — [[{\"qty\":1,\"unitCents\":0}]]",
+      "input": [
+        [
+          {
+            "qty": 1,
+            "unitCents": 0
+          }
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "name": "Edge case — [[{\"qty\":0,\"unitCents\":10}]]",
+      "input": [
+        [
+          {
+            "qty": 0,
+            "unitCents": 10
+          }
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "name": "Additional variation — [[{\"qty\":1,\"unitCents\":199},{\"qty\":1,\"unitCents\":1}]]",
+      "input": [
+        [
+          {
+            "qty": 1,
+            "unitCents": 199
+          },
+          {
+            "qty": 1,
+            "unitCents": 1
+          }
+        ]
+      ],
+      "expected": 200
+    }
+  ],
+  "referenceCode": "export async function sumAsyncInvoices(invoices: { qty: number; unitCents: number }[]) {\n  const cents=await Promise.all(invoices.map(async invoice=>{const x=await Promise.resolve(invoice);return x.qty*x.unitCents;}));\n  return cents.reduce((sum,n)=>sum+n,0);\n}\n"
+}

@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "id": "async-sequential-stock-updates",
+  "title": "Apply asynchronous stock updates",
+  "eyebrow": "TypeScript · promises",
+  "category": "practical",
+  "language": "typescript",
+  "difficulty": "easy",
+  "topics": [
+    "promises",
+    "asynchronous programming"
+  ],
+  "skills": [
+    "promises",
+    "debugging and async reasoning"
+  ],
+  "targetRoles": [
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Apply a stream of asynchronous inventory deltas to a copied inventory.",
+  "durationMinutes": 20,
+  "functionName": "applyAsyncStockUpdates",
+  "requirements": [
+    "Each change contains sku and signed integer delta.",
+    "Use 0 for unknown SKUs; process changes in input order.",
+    "Return a new inventory object without mutating the original."
+  ],
+  "starterCode": "export async function applyAsyncStockUpdates(initial: Record<string, number>, changes: { sku: string; delta: number }[]) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Clone the initial inventory before changes.",
+    "Await each change before applying its delta."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        {
+          "a": 5
+        },
+        [
+          {
+            "sku": "a",
+            "delta": -2
+          },
+          {
+            "sku": "b",
+            "delta": 3
+          }
+        ]
+      ],
+      "output": {
+        "a": 3,
+        "b": 3
+      }
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        {},
+        []
+      ],
+      "output": {}
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [{\"a\":5},[{\"sku\":\"a\",\"delta\":-2},{\"sku\":\"b\",\"delta\":3}]]",
+      "input": [
+        {
+          "a": 5
+        },
+        [
+          {
+            "sku": "a",
+            "delta": -2
+          },
+          {
+            "sku": "b",
+            "delta": 3
+          }
+        ]
+      ],
+      "expected": {
+        "a": 3,
+        "b": 3
+      }
+    },
+    {
+      "name": "Alternative scenario — [{},[]]",
+      "input": [
+        {},
+        []
+      ],
+      "expected": {}
+    },
+    {
+      "name": "Boundary condition — [{\"a\":0},[{\"sku\":\"a\",\"delta\":5}]]",
+      "input": [
+        {
+          "a": 0
+        },
+        [
+          {
+            "sku": "a",
+            "delta": 5
+          }
+        ]
+      ],
+      "expected": {
+        "a": 5
+      }
+    },
+    {
+      "name": "Edge case — [{\"a\":3},[{\"sku\":\"a\",\"delta\":-3}]]",
+      "input": [
+        {
+          "a": 3
+        },
+        [
+          {
+            "sku": "a",
+            "delta": -3
+          }
+        ]
+      ],
+      "expected": {
+        "a": 0
+      }
+    },
+    {
+      "name": "Additional variation — [{\"a\":1,\"b\":2},[{\"sku\":\"b\",\"delta\":5},{\"sku\":\"a\",\"delta\":1}]]",
+      "input": [
+        {
+          "a": 1,
+          "b": 2
+        },
+        [
+          {
+            "sku": "b",
+            "delta": 5
+          },
+          {
+            "sku": "a",
+            "delta": 1
+          }
+        ]
+      ],
+      "expected": {
+        "a": 2,
+        "b": 7
+      }
+    }
+  ],
+  "referenceCode": "export async function applyAsyncStockUpdates(initial: Record<string, number>, changes: { sku: string; delta: number }[]) {\n  const stock={...initial};\n  for(const change of changes){const c=await Promise.resolve(change);stock[c.sku]=(stock[c.sku]||0)+c.delta;}\n  return stock;\n}\n"
+}

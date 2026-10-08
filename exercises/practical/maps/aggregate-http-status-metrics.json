@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "id": "aggregate-http-status-metrics",
+  "title": "Summarize response status metrics",
+  "eyebrow": "TypeScript · maps",
+  "category": "practical",
+  "language": "typescript",
+  "difficulty": "easy",
+  "topics": [
+    "maps",
+    "business logic"
+  ],
+  "skills": [
+    "maps",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Count HTTP responses by status-code family.",
+  "durationMinutes": 20,
+  "functionName": "aggregateHttpStatuses",
+  "requirements": [
+    "2xx success, 3xx redirect, 4xx clientError, 5xx serverError; everything else other.",
+    "Return all five counters even when zero."
+  ],
+  "starterCode": "export function aggregateHttpStatuses(logs: { status: number }[]) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Initialize counters for each status family.",
+    "Choose a bucket using inclusive lower and exclusive upper bounds."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          {
+            "status": 200
+          },
+          {
+            "status": 201
+          },
+          {
+            "status": 404
+          },
+          {
+            "status": 500
+          }
+        ]
+      ],
+      "output": {
+        "success": 2,
+        "redirect": 0,
+        "clientError": 1,
+        "serverError": 1,
+        "other": 0
+      }
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        []
+      ],
+      "output": {
+        "success": 0,
+        "redirect": 0,
+        "clientError": 0,
+        "serverError": 0,
+        "other": 0
+      }
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[{\"status\":200},{\"status\":201},{\"status\":404},{\"status\":500}]]",
+      "input": [
+        [
+          {
+            "status": 200
+          },
+          {
+            "status": 201
+          },
+          {
+            "status": 404
+          },
+          {
+            "status": 500
+          }
+        ]
+      ],
+      "expected": {
+        "success": 2,
+        "redirect": 0,
+        "clientError": 1,
+        "serverError": 1,
+        "other": 0
+      }
+    },
+    {
+      "name": "Alternative scenario — [[]]",
+      "input": [
+        []
+      ],
+      "expected": {
+        "success": 0,
+        "redirect": 0,
+        "clientError": 0,
+        "serverError": 0,
+        "other": 0
+      }
+    },
+    {
+      "name": "Boundary condition — [[{\"status\":301},{\"status\":302},{\"status\":100}]]",
+      "input": [
+        [
+          {
+            "status": 301
+          },
+          {
+            "status": 302
+          },
+          {
+            "status": 100
+          }
+        ]
+      ],
+      "expected": {
+        "success": 0,
+        "redirect": 2,
+        "clientError": 0,
+        "serverError": 0,
+        "other": 1
+      }
+    },
+    {
+      "name": "Edge case — [[{\"status\":429},{\"status\":503}]]",
+      "input": [
+        [
+          {
+            "status": 429
+          },
+          {
+            "status": 503
+          }
+        ]
+      ],
+      "expected": {
+        "success": 0,
+        "redirect": 0,
+        "clientError": 1,
+        "serverError": 1,
+        "other": 0
+      }
+    },
+    {
+      "name": "Additional variation — [[{\"status\":204},{\"status\":600}]]",
+      "input": [
+        [
+          {
+            "status": 204
+          },
+          {
+            "status": 600
+          }
+        ]
+      ],
+      "expected": {
+        "success": 1,
+        "redirect": 0,
+        "clientError": 0,
+        "serverError": 0,
+        "other": 1
+      }
+    }
+  ],
+  "referenceCode": "export function aggregateHttpStatuses(logs: { status: number }[]) {\n  const result={success:0,redirect:0,clientError:0,serverError:0,other:0};\n  for(const x of logs){const s=x.status;const key=s>=200&&s<300?'success':s>=300&&s<400?'redirect':s>=400&&s<500?'clientError':s>=500&&s<600?'serverError':'other';result[key]++;}\n  return result;\n}\n"
+}

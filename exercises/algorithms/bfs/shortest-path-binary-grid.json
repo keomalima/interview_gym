@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "id": "shortest-path-binary-grid",
+  "title": "Shortest path through empty grid cells",
+  "eyebrow": "JavaScript · bfs",
+  "category": "algorithms",
+  "language": "javascript",
+  "difficulty": "medium",
+  "topics": [
+    "bfs",
+    "algorithms"
+  ],
+  "skills": [
+    "bfs",
+    "algorithmic problem solving"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Find the shortest orthogonal route through zero-valued grid cells.",
+  "durationMinutes": 30,
+  "functionName": "shortestZeroPath",
+  "requirements": [
+    "0 means walkable and 1 means blocked.",
+    "Distance counts the number of visited cells including endpoints.",
+    "Return -1 if start/end is blocked or no route exists."
+  ],
+  "starterCode": "export function shortestZeroPath(grid) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "BFS finds shortest paths in unweighted graphs.",
+    "Treat each walkable cell as a vertex and avoid revisiting it."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      ],
+      "output": 3
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ]
+        ]
+      ],
+      "output": -1
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[[0,0],[0,0]]]",
+      "input": [
+        [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "name": "Alternative scenario — [[[0,1],[1,0]]]",
+      "input": [
+        [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ]
+        ]
+      ],
+      "expected": -1
+    },
+    {
+      "name": "Boundary condition — [[[0]]]",
+      "input": [
+        [
+          [
+            0
+          ]
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "name": "Edge case — [[[1]]]",
+      "input": [
+        [
+          [
+            1
+          ]
+        ]
+      ],
+      "expected": -1
+    },
+    {
+      "name": "Additional variation — [[]]",
+      "input": [
+        []
+      ],
+      "expected": -1
+    }
+  ],
+  "referenceCode": "export function shortestZeroPath(grid) {\n  const rows=grid.length,cols=rows?grid[0].length:0;\n  if(!rows||!cols||grid[0][0]!==0||grid[rows-1][cols-1]!==0)return -1;\n  const q=[[0,0,1]],seen=new Set(['0,0']);let head=0;\n  while(head<q.length){const [r,c,steps]=q[head++];if(r===rows-1&&c===cols-1)return steps;\n    for(const [dr,dc] of [[1,0],[-1,0],[0,1],[0,-1]]){\n      const nr=r+dr,nc=c+dc,k=nr+','+nc;\n      if(nr<0||nc<0||nr>=rows||nc>=cols||grid[nr][nc]!==0||seen.has(k))continue;\n      seen.add(k);q.push([nr,nc,steps+1]);\n    }\n  }\n  return -1;\n}\n"
+}

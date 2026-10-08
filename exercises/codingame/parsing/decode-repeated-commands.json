@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "id": "decode-repeated-commands",
+  "title": "Decode repeated movement commands",
+  "eyebrow": "JavaScript · parsing",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "parsing",
+    "parsing and simulation"
+  ],
+  "skills": [
+    "parsing",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Expand compact compass commands into individual moves.",
+  "durationMinutes": 20,
+  "functionName": "expandCommands",
+  "requirements": [
+    "Commands are space-separated direction letters N,S,E,W followed by a nonnegative count.",
+    "Return one letter per move in order.",
+    "Reject malformed tokens with an Error containing Invalid command."
+  ],
+  "starterCode": "export function expandCommands(input) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Split on whitespace after trimming.",
+    "Validate each token and repeat its direction the stated number of times."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        "N2 E1 S3"
+      ],
+      "output": [
+        "N",
+        "N",
+        "E",
+        "S",
+        "S",
+        "S"
+      ]
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        "W0 E2"
+      ],
+      "output": [
+        "E",
+        "E"
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [\"N2 E1 S3\"]",
+      "input": [
+        "N2 E1 S3"
+      ],
+      "expected": [
+        "N",
+        "N",
+        "E",
+        "S",
+        "S",
+        "S"
+      ]
+    },
+    {
+      "name": "Alternative scenario — [\"W0 E2\"]",
+      "input": [
+        "W0 E2"
+      ],
+      "expected": [
+        "E",
+        "E"
+      ]
+    },
+    {
+      "name": "Boundary condition — [\"\"]",
+      "input": [
+        ""
+      ],
+      "expected": []
+    },
+    {
+      "name": "Edge case — [\"N1\"]",
+      "input": [
+        "N1"
+      ],
+      "expected": [
+        "N"
+      ]
+    },
+    {
+      "name": "Additional variation — [\"  S2  W1  \"]",
+      "input": [
+        "  S2  W1  "
+      ],
+      "expected": [
+        "S",
+        "S",
+        "W"
+      ]
+    },
+    {
+      "name": "Rejects malformed direction",
+      "input": [
+        "Q1"
+      ],
+      "error": "Invalid command"
+    }
+  ],
+  "referenceCode": "export function expandCommands(input) {\n  const out=[];const commands=input.trim();if(!commands)return [];\n  for(const token of commands.split(/\\s+/)){const m=/^([NSEW])(\\d+)$/.exec(token);if(!m)throw new Error('Invalid command');const n=Number(m[2]);if(n>1000)throw new Error('Too many moves');for(let i=0;i<n;i++)out.push(m[1]);}\n  return out;\n}\n"
+}

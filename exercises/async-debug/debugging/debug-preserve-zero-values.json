@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "id": "debug-preserve-zero-values",
+  "title": "Debug a filter losing valid zero values",
+  "eyebrow": "JavaScript · debugging",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "debugging",
+    "debugging"
+  ],
+  "skills": [
+    "debugging",
+    "debugging and async reasoning"
+  ],
+  "targetRoles": [
+    "frontend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Repair a filter that drops zero along with invalid values.",
+  "durationMinutes": 15,
+  "functionName": "retainNumericValues",
+  "requirements": [
+    "Keep only finite JavaScript number values (including zero and negative numbers).",
+    "Remove null, booleans and numeric strings.",
+    "Do not mutate input."
+  ],
+  "starterCode": "export function retainNumericValues(values) {\n  return values.filter(Boolean);\n}\n",
+  "hints": [
+    "Boolean truthiness incorrectly removes numeric zero.",
+    "Check the value type and numeric finiteness explicitly."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          0,
+          1,
+          null,
+          2
+        ]
+      ],
+      "output": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        [
+          false,
+          0,
+          "3",
+          3
+        ]
+      ],
+      "output": [
+        0,
+        3
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[0,1,null,2]]",
+      "input": [
+        [
+          0,
+          1,
+          null,
+          2
+        ]
+      ],
+      "expected": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "name": "Alternative scenario — [[false,0,\"3\",3]]",
+      "input": [
+        [
+          false,
+          0,
+          "3",
+          3
+        ]
+      ],
+      "expected": [
+        0,
+        3
+      ]
+    },
+    {
+      "name": "Boundary condition — [[]]",
+      "input": [
+        []
+      ],
+      "expected": []
+    },
+    {
+      "name": "Edge case — [[1.5,-2,0]]",
+      "input": [
+        [
+          1.5,
+          -2,
+          0
+        ]
+      ],
+      "expected": [
+        1.5,
+        -2,
+        0
+      ]
+    },
+    {
+      "name": "Additional variation — [[null,null]]",
+      "input": [
+        [
+          null,
+          null
+        ]
+      ],
+      "expected": []
+    }
+  ],
+  "referenceCode": "export function retainNumericValues(values) {\n  return values.filter(v=>typeof v==='number'&&Number.isFinite(v));\n}\n"
+}

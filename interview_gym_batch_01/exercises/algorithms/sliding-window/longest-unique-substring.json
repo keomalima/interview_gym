@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "id": "longest-unique-substring",
+  "title": "Longest substring without repeating characters",
+  "eyebrow": "JavaScript · Sliding Window",
+  "category": "algorithms",
+  "language": "javascript",
+  "difficulty": "medium",
+  "topics": [
+    "sliding-window",
+    "strings",
+    "hash-maps"
+  ],
+  "skills": [
+    "window invariants",
+    "index tracking"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Find the length of the longest contiguous substring with no repeated characters.",
+  "durationMinutes": 25,
+  "functionName": "longestUniqueSubstring",
+  "requirements": [
+    "Treat each JavaScript Unicode code point (for...of) as one character.",
+    "Return a length, not the substring.",
+    "An empty string returns 0.",
+    "Aim for O(n) time."
+  ],
+  "starterCode": "export function longestUniqueSubstring(text) {\n  // Track a moving window with no duplicate characters.\n  return 0;\n}\n",
+  "hints": [
+    "Track the most recent index of each character.",
+    "When a character was seen inside the current window, move the left edge.",
+    "Use Math.max(left, lastSeen + 1) so the left edge never moves backward."
+  ],
+  "examples": [
+    {
+      "label": "Repeated prefix",
+      "input": [
+        "abcabcbb"
+      ],
+      "output": 3
+    },
+    {
+      "label": "All same",
+      "input": [
+        "bbbbb"
+      ],
+      "output": 1
+    }
+  ],
+  "tests": [
+    {
+      "name": "Repeated prefix",
+      "input": [
+        "abcabcbb"
+      ],
+      "expected": 3
+    },
+    {
+      "name": "All same",
+      "input": [
+        "bbbbb"
+      ],
+      "expected": 1
+    },
+    {
+      "name": "Overlap",
+      "input": [
+        "pwwkew"
+      ],
+      "expected": 3
+    },
+    {
+      "name": "Empty",
+      "input": [
+        ""
+      ],
+      "expected": 0
+    },
+    {
+      "name": "All distinct",
+      "input": [
+        "abcdef"
+      ],
+      "expected": 6
+    },
+    {
+      "name": "Old duplicate outside window",
+      "input": [
+        "abba"
+      ],
+      "expected": 2
+    },
+    {
+      "name": "Unicode characters",
+      "input": [
+        "😀a😀b"
+      ],
+      "expected": 3
+    }
+  ],
+  "referenceCode": "export function longestUniqueSubstring(text) {\n  const lastSeen = new Map();\n  let left = 0, best = 0, index = 0;\n  for (const char of text) {\n    if (lastSeen.has(char)) left = Math.max(left, lastSeen.get(char) + 1);\n    best = Math.max(best, index - left + 1);\n    lastSeen.set(char, index);\n    index++;\n  }\n  return best;\n}\n"
+}

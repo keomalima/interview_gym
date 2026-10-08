@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "id": "rotational-letter-cipher",
+  "title": "Rotate letters through the alphabet",
+  "eyebrow": "JavaScript · strings",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "strings",
+    "language fundamentals"
+  ],
+  "skills": [
+    "strings",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Shift alphabetic characters by a fixed rotation while preserving other characters.",
+  "durationMinutes": 20,
+  "functionName": "rotateCipher",
+  "requirements": [
+    "Use separate A-Z and a-z alphabets.",
+    "Leave numbers, spaces, and punctuation unchanged.",
+    "Negative and large shifts wrap around modulo 26."
+  ],
+  "starterCode": "export function rotateCipher(text,shift) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Convert characters to ASCII codes to find letter ranges.",
+    "Normalize shifts to 0..25 before wrapping inside the letter range."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        "a",
+        1
+      ],
+      "output": "b"
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        "Zebra!",
+        3
+      ],
+      "output": "Cheud!"
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [\"a\",1]",
+      "input": [
+        "a",
+        1
+      ],
+      "expected": "b"
+    },
+    {
+      "name": "Alternative scenario — [\"Zebra!\",3]",
+      "input": [
+        "Zebra!",
+        3
+      ],
+      "expected": "Cheud!"
+    },
+    {
+      "name": "Boundary condition — [\"HELLO\",13]",
+      "input": [
+        "HELLO",
+        13
+      ],
+      "expected": "URYYB"
+    },
+    {
+      "name": "Edge case — [\"\",5]",
+      "input": [
+        "",
+        5
+      ],
+      "expected": ""
+    },
+    {
+      "name": "Additional variation — [\"Abc-XYZ\",-1]",
+      "input": [
+        "Abc-XYZ",
+        -1
+      ],
+      "expected": "Zab-WXY"
+    }
+  ],
+  "referenceCode": "export function rotateCipher(text,shift) {\n  const amount=((shift%26)+26)%26;\n  return [...text].map(c=>{const n=c.charCodeAt(0),base=n>=65&&n<=90?65:n>=97&&n<=122?97:null;\n    return base===null?c:String.fromCharCode(base+(n-base+amount)%26);\n  }).join('');\n}\n"
+}

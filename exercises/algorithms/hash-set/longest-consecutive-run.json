@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "id": "longest-consecutive-run",
+  "title": "Longest consecutive integer sequence",
+  "eyebrow": "JavaScript · hash-set",
+  "category": "algorithms",
+  "language": "javascript",
+  "difficulty": "medium",
+  "topics": [
+    "hash-set",
+    "algorithms"
+  ],
+  "skills": [
+    "hash-set",
+    "algorithmic problem solving"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Find the size of the longest consecutive-number run regardless of input order.",
+  "durationMinutes": 25,
+  "functionName": "longestConsecutive",
+  "requirements": [
+    "Return the number of distinct consecutive integer values in the longest run.",
+    "Duplicates do not extend a run.",
+    "Aim for O(n) expected time."
+  ],
+  "starterCode": "export function longestConsecutive(nums) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "A run starts where the previous integer is missing.",
+    "Put values in a Set, and walk forward only from starts."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          100,
+          4,
+          200,
+          1,
+          3,
+          2
+        ]
+      ],
+      "output": 4
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        [
+          0,
+          1,
+          1,
+          2,
+          4
+        ]
+      ],
+      "output": 3
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[100,4,200,1,3,2]]",
+      "input": [
+        [
+          100,
+          4,
+          200,
+          1,
+          3,
+          2
+        ]
+      ],
+      "expected": 4
+    },
+    {
+      "name": "Alternative scenario — [[0,1,1,2,4]]",
+      "input": [
+        [
+          0,
+          1,
+          1,
+          2,
+          4
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "name": "Boundary condition — [[]]",
+      "input": [
+        []
+      ],
+      "expected": 0
+    },
+    {
+      "name": "Edge case — [[-2,-1,0,1]]",
+      "input": [
+        [
+          -2,
+          -1,
+          0,
+          1
+        ]
+      ],
+      "expected": 4
+    },
+    {
+      "name": "Additional variation — [[5]]",
+      "input": [
+        [
+          5
+        ]
+      ],
+      "expected": 1
+    }
+  ],
+  "referenceCode": "export function longestConsecutive(nums) {\n  const set = new Set(nums); let best = 0;\n  for (const n of set) {\n    if (set.has(n - 1)) continue;\n    let len = 1;\n    while (set.has(n + len)) len++;\n    best = Math.max(best, len);\n  }\n  return best;\n}\n"
+}

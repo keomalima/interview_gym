@@ -1,0 +1,11 @@
+.env
+.env.*
+.local
+.git
+mock.png
+playwright-report
+test-results
+scripts
+README.md
+docs
+AGENTS.md

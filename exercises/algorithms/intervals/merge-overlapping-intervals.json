@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "merge-overlapping-intervals",
+  "title": "Merge overlapping intervals",
+  "eyebrow": "JavaScript · Sorting",
+  "category": "algorithms",
+  "language": "javascript",
+  "difficulty": "medium",
+  "topics": [
+    "sorting",
+    "intervals"
+  ],
+  "skills": [
+    "interval overlap",
+    "sorting"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Combine intersecting or touching time intervals into a minimal sorted list.",
+  "durationMinutes": 25,
+  "functionName": "mergeOverlappingIntervals",
+  "requirements": [
+    "Each interval is [start, end], with integer start <= end.",
+    "Merge intervals whenever the next start is <= the current end (touching endpoints count as overlapping).",
+    "Return intervals sorted by start ascending.",
+    "Return [] for no intervals and do not mutate the input."
+  ],
+  "starterCode": "export function mergeOverlappingIntervals(intervals) {\n  // Sort a copy before scanning.\n  return [];\n}\n",
+  "hints": [
+    "Sort intervals by their start positions.",
+    "Compare each interval with the last merged interval.",
+    "Extend its end when overlapping; otherwise start a new interval."
+  ],
+  "examples": [
+    {
+      "label": "Overlap and separation",
+      "input": [
+        [
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            15,
+            18
+          ]
+        ]
+      ],
+      "output": [
+        [
+          1,
+          6
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          15,
+          18
+        ]
+      ]
+    },
+    {
+      "label": "Touching endpoints",
+      "input": [
+        [
+          [
+            1,
+            4
+          ],
+          [
+            4,
+            5
+          ]
+        ]
+      ],
+      "output": [
+        [
+          1,
+          5
+        ]
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "name": "Overlap and separation",
+      "input": [
+        [
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            15,
+            18
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          6
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          15,
+          18
+        ]
+      ]
+    },
+    {
+      "name": "Touching endpoints",
+      "input": [
+        [
+          [
+            1,
+            4
+          ],
+          [
+            4,
+            5
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          5
+        ]
+      ]
+    },
+    {
+      "name": "Empty",
+      "input": [
+        []
+      ],
+      "expected": []
+    },
+    {
+      "name": "Nested",
+      "input": [
+        [
+          [
+            1,
+            10
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            4,
+            5
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          10
+        ]
+      ]
+    },
+    {
+      "name": "Unsorted",
+      "input": [
+        [
+          [
+            8,
+            9
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            4
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          4
+        ],
+        [
+          8,
+          9
+        ]
+      ]
+    },
+    {
+      "name": "Negative values",
+      "input": [
+        [
+          [
+            -5,
+            -1
+          ],
+          [
+            -2,
+            3
+          ],
+          [
+            7,
+            7
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          -5,
+          3
+        ],
+        [
+          7,
+          7
+        ]
+      ]
+    }
+  ],
+  "referenceCode": "export function mergeOverlappingIntervals(intervals) {\n  const sorted = intervals.map(([start,end]) => [start,end]).sort((a,b) => a[0]-b[0]);\n  const merged = [];\n  for (const [start,end] of sorted) {\n    if (merged.length === 0 || start > merged[merged.length - 1][1]) merged.push([start,end]);\n    else merged[merged.length - 1][1] = Math.max(merged[merged.length - 1][1],end);\n  }\n  return merged;\n}\n"
+}

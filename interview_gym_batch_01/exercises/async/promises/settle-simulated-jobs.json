@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "id": "settle-simulated-jobs",
+  "title": "Collect outcomes of parallel jobs",
+  "eyebrow": "TypeScript · Promises",
+  "category": "practical",
+  "language": "typescript",
+  "difficulty": "medium",
+  "topics": [
+    "promises",
+    "async-await",
+    "error-handling"
+  ],
+  "skills": [
+    "promise coordination",
+    "result mapping"
+  ],
+  "targetRoles": [
+    "backend",
+    "fullstack",
+    "general"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Run a set of deterministic simulated asynchronous jobs and return every outcome in input order.",
+  "durationMinutes": 25,
+  "functionName": "settleSimulatedJobs",
+  "requirements": [
+    "Each job is { id, outcome, value?, message? }, where outcome is \"success\" or \"failure\".",
+    "Convert each job into a Promise: success resolves with its value; failure rejects with Error(message).",
+    "Launch all Promises without awaiting them one by one; use Promise.allSettled.",
+    "Return an array of { id, status: \"fulfilled\", value } or { id, status: \"rejected\", reason: string }.",
+    "The output order must match the input order.",
+    "Inputs are valid; a successful job always has a JSON-compatible value and a failed job has a message string."
+  ],
+  "starterCode": "type Job = {id: string; outcome: 'success' | 'failure'; value?: unknown; message?: string};\nexport async function settleSimulatedJobs(jobs: Job[]): Promise<unknown[]> {\n  return [];\n}\n",
+  "hints": [
+    "Map the input jobs to Promises without waiting inside the map.",
+    "Use Promise.allSettled to collect both fulfillment and rejection.",
+    "Match each settled result with its original job index and normalize the reason message."
+  ],
+  "examples": [
+    {
+      "label": "Mixed outcomes",
+      "input": [
+        [
+          {
+            "id": "1",
+            "outcome": "success",
+            "value": 42
+          },
+          {
+            "id": "2",
+            "outcome": "failure",
+            "message": "offline"
+          }
+        ]
+      ],
+      "output": [
+        {
+          "id": "1",
+          "status": "fulfilled",
+          "value": 42
+        },
+        {
+          "id": "2",
+          "status": "rejected",
+          "reason": "offline"
+        }
+      ]
+    },
+    {
+      "label": "Empty",
+      "input": [
+        []
+      ],
+      "output": []
+    }
+  ],
+  "tests": [
+    {
+      "name": "Mixed outcomes",
+      "input": [
+        [
+          {
+            "id": "1",
+            "outcome": "success",
+            "value": 42
+          },
+          {
+            "id": "2",
+            "outcome": "failure",
+            "message": "offline"
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "id": "1",
+          "status": "fulfilled",
+          "value": 42
+        },
+        {
+          "id": "2",
+          "status": "rejected",
+          "reason": "offline"
+        }
+      ]
+    },
+    {
+      "name": "Empty",
+      "input": [
+        []
+      ],
+      "expected": []
+    },
+    {
+      "name": "All success",
+      "input": [
+        [
+          {
+            "id": "a",
+            "outcome": "success",
+            "value": null
+          },
+          {
+            "id": "b",
+            "outcome": "success",
+            "value": [
+              1,
+              2
+            ]
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "id": "a",
+          "status": "fulfilled",
+          "value": null
+        },
+        {
+          "id": "b",
+          "status": "fulfilled",
+          "value": [
+            1,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "name": "All rejected",
+      "input": [
+        [
+          {
+            "id": "a",
+            "outcome": "failure",
+            "message": "A"
+          },
+          {
+            "id": "b",
+            "outcome": "failure",
+            "message": "B"
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "id": "a",
+          "status": "rejected",
+          "reason": "A"
+        },
+        {
+          "id": "b",
+          "status": "rejected",
+          "reason": "B"
+        }
+      ]
+    }
+  ],
+  "referenceCode": "type Job = {id: string; outcome: 'success' | 'failure'; value?: unknown; message?: string};\nexport async function settleSimulatedJobs(jobs: Job[]): Promise<unknown[]> {\n  const promises = jobs.map(job => job.outcome === 'success'\n    ? Promise.resolve(job.value)\n    : Promise.reject(new Error(job.message)));\n  const results = await Promise.allSettled(promises);\n  return results.map((result, i) => result.status === 'fulfilled'\n    ? { id: jobs[i].id, status: 'fulfilled', value: result.value }\n    : { id: jobs[i].id, status: 'rejected', reason: result.reason.message });\n}\n"
+}

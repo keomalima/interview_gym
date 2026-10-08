@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "id": "validate-luhn-number",
+  "title": "Validate an identifier using Luhn checksum",
+  "eyebrow": "JavaScript · math",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "medium",
+  "topics": [
+    "math",
+    "language fundamentals"
+  ],
+  "skills": [
+    "math",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Determine whether a digit string passes the Luhn checksum.",
+  "durationMinutes": 25,
+  "functionName": "isLuhnValid",
+  "requirements": [
+    "Ignore ASCII spaces.",
+    "Reject fewer than two digits or any other nondigit character.",
+    "Starting from the right, double every second digit and subtract 9 if the result is greater than 9."
+  ],
+  "starterCode": "export function isLuhnValid(text) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Scan digits from right to left.",
+    "A valid checksum has a total divisible by ten."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        "4539 1488 0343 6467"
+      ],
+      "output": true
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        "8273 1232 7352 0569"
+      ],
+      "output": false
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [\"4539 1488 0343 6467\"]",
+      "input": [
+        "4539 1488 0343 6467"
+      ],
+      "expected": true
+    },
+    {
+      "name": "Alternative scenario — [\"8273 1232 7352 0569\"]",
+      "input": [
+        "8273 1232 7352 0569"
+      ],
+      "expected": false
+    },
+    {
+      "name": "Boundary condition — [\"0\"]",
+      "input": [
+        "0"
+      ],
+      "expected": false
+    },
+    {
+      "name": "Edge case — [\"059\"]",
+      "input": [
+        "059"
+      ],
+      "expected": true
+    },
+    {
+      "name": "Additional variation — [\"  59  \"]",
+      "input": [
+        "  59  "
+      ],
+      "expected": true
+    }
+  ],
+  "referenceCode": "export function isLuhnValid(text) {\n  const s=text.replace(/ /g,'');if(s.length<2||!/^[0-9]+$/.test(s))return false;\n  let sum=0,doubled=false;\n  for(let i=s.length-1;i>=0;i--){let d=Number(s[i]);if(doubled){d*=2;if(d>9)d-=9;}sum+=d;doubled=!doubled;}\n  return sum%10===0;\n}\n"
+}

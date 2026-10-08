@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "id": "mumbling-letter-pattern",
+  "title": "Generate a repeating-letter pattern",
+  "eyebrow": "JavaScript · strings",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "strings",
+    "javascript fundamentals"
+  ],
+  "skills": [
+    "strings",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Transform each input letter into an increasingly long group joined by dashes.",
+  "durationMinutes": 15,
+  "functionName": "mumbleLetters",
+  "requirements": [
+    "Input consists of English letters.",
+    "Group i (zero-based) is one uppercase letter followed by i lowercase copies.",
+    "Separate groups with hyphens."
+  ],
+  "starterCode": "export function mumbleLetters(text) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Use the character index as the repeat count.",
+    "Join transformed pieces with a dash."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        "abcd"
+      ],
+      "output": "A-Bb-Ccc-Dddd"
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        "RqaEzty"
+      ],
+      "output": "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [\"abcd\"]",
+      "input": [
+        "abcd"
+      ],
+      "expected": "A-Bb-Ccc-Dddd"
+    },
+    {
+      "name": "Alternative scenario — [\"RqaEzty\"]",
+      "input": [
+        "RqaEzty"
+      ],
+      "expected": "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
+    },
+    {
+      "name": "Boundary condition — [\"\"]",
+      "input": [
+        ""
+      ],
+      "expected": ""
+    },
+    {
+      "name": "Edge case — [\"a\"]",
+      "input": [
+        "a"
+      ],
+      "expected": "A"
+    },
+    {
+      "name": "Additional variation — [\"Zz\"]",
+      "input": [
+        "Zz"
+      ],
+      "expected": "Z-Zz"
+    }
+  ],
+  "referenceCode": "export function mumbleLetters(text) {return [...text.toLowerCase()].map((c,i)=>c.toUpperCase()+c.repeat(i)).join('-');}\n"
+}

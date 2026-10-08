@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "id": "fewest-coins-change",
+  "title": "Minimum coins needed for an amount",
+  "eyebrow": "JavaScript · dynamic-programming",
+  "category": "algorithms",
+  "language": "javascript",
+  "difficulty": "medium",
+  "topics": [
+    "dynamic-programming",
+    "algorithms"
+  ],
+  "skills": [
+    "dynamic-programming",
+    "algorithmic problem solving"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Determine the fewest number of available coin denominations that sum to a target.",
+  "durationMinutes": 30,
+  "functionName": "minCoinsForAmount",
+  "requirements": [
+    "Each denomination may be reused any number of times.",
+    "Return -1 if the amount cannot be formed.",
+    "Amount is a nonnegative integer."
+  ],
+  "starterCode": "export function minCoinsForAmount(coins,amount) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "For every amount, try using each denomination as the last coin.",
+    "Store the best answer for smaller amounts in a DP array."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          1,
+          2,
+          5
+        ],
+        11
+      ],
+      "output": 3
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        [
+          2
+        ],
+        3
+      ],
+      "output": -1
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[1,2,5],11]",
+      "input": [
+        [
+          1,
+          2,
+          5
+        ],
+        11
+      ],
+      "expected": 3
+    },
+    {
+      "name": "Alternative scenario — [[2],3]",
+      "input": [
+        [
+          2
+        ],
+        3
+      ],
+      "expected": -1
+    },
+    {
+      "name": "Boundary condition — [[1],0]",
+      "input": [
+        [
+          1
+        ],
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "name": "Edge case — [[],4]",
+      "input": [
+        [],
+        4
+      ],
+      "expected": -1
+    },
+    {
+      "name": "Additional variation — [[2,4],8]",
+      "input": [
+        [
+          2,
+          4
+        ],
+        8
+      ],
+      "expected": 2
+    }
+  ],
+  "referenceCode": "export function minCoinsForAmount(coins,amount) {\n  const dp=Array(amount+1).fill(Infinity);dp[0]=0;\n  for(let a=1;a<=amount;a++)for(const c of coins)if(c>0&&c<=a)dp[a]=Math.min(dp[a],dp[a-c]+1);\n  return Number.isFinite(dp[amount])?dp[amount]:-1;\n}\n"
+}

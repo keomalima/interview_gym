@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "id": "contains-duplicate-values",
+  "title": "Detect duplicate values",
+  "eyebrow": "JavaScript · arrays",
+  "category": "algorithms",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "arrays",
+    "algorithms"
+  ],
+  "skills": [
+    "arrays",
+    "algorithmic problem solving"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Determine whether an integer array contains a repeated value.",
+  "durationMinutes": 15,
+  "functionName": "hasDuplicates",
+  "requirements": [
+    "Return true if any integer occurs at least twice; otherwise false.",
+    "An empty array has no duplicates.",
+    "Aim for O(n) time."
+  ],
+  "starterCode": "export function hasDuplicates(nums) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Think about recording values you have already encountered.",
+    "A Set can tell you whether each value has appeared before."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "output": false
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        [
+          1,
+          2,
+          1
+        ]
+      ],
+      "output": true
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[1,2,3]]",
+      "input": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected": false
+    },
+    {
+      "name": "Alternative scenario — [[1,2,1]]",
+      "input": [
+        [
+          1,
+          2,
+          1
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "name": "Boundary condition — [[]]",
+      "input": [
+        []
+      ],
+      "expected": false
+    },
+    {
+      "name": "Edge case — [[0,-1,0]]",
+      "input": [
+        [
+          0,
+          -1,
+          0
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "name": "Additional variation — [[9]]",
+      "input": [
+        [
+          9
+        ]
+      ],
+      "expected": false
+    }
+  ],
+  "referenceCode": "export function hasDuplicates(nums) {\n  const seen = new Set();\n  for (const n of nums) {\n    if (seen.has(n)) return true;\n    seen.add(n);\n  }\n  return false;\n}\n"
+}

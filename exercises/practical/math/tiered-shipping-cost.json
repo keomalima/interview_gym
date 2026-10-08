@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "id": "tiered-shipping-cost",
+  "title": "Calculate shipping costs by cart weight",
+  "eyebrow": "TypeScript · math",
+  "category": "practical",
+  "language": "typescript",
+  "difficulty": "easy",
+  "topics": [
+    "math",
+    "business logic"
+  ],
+  "skills": [
+    "math",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Compute shipping using subtotal and package weight.",
+  "durationMinutes": 20,
+  "functionName": "shippingCostCents",
+  "requirements": [
+    "Free shipping if cart subtotal is at least freeOverCents.",
+    "Otherwise: empty/weight 0 -> 0 cents; ≤500g -> 499; ≤2000g -> 799; above 2000g -> 1299.",
+    "Multiply each line weight and price by quantity."
+  ],
+  "starterCode": "export function shippingCostCents(items: { priceCents: number; quantity: number; weightGrams: number }[], freeOverCents: number) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Check free shipping before weight tiers.",
+    "Use simple weight cutoffs to determine delivery charge."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          {
+            "priceCents": 200,
+            "quantity": 1,
+            "weightGrams": 200
+          }
+        ],
+        1000
+      ],
+      "output": 499
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        [
+          {
+            "priceCents": 2000,
+            "quantity": 1,
+            "weightGrams": 10000
+          }
+        ],
+        1000
+      ],
+      "output": 0
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[{\"priceCents\":200,\"quantity\":1,\"weightGrams\":200}],1000]",
+      "input": [
+        [
+          {
+            "priceCents": 200,
+            "quantity": 1,
+            "weightGrams": 200
+          }
+        ],
+        1000
+      ],
+      "expected": 499
+    },
+    {
+      "name": "Alternative scenario — [[{\"priceCents\":2000,\"quantity\":1,\"weightGrams\":10000}],1000]",
+      "input": [
+        [
+          {
+            "priceCents": 2000,
+            "quantity": 1,
+            "weightGrams": 10000
+          }
+        ],
+        1000
+      ],
+      "expected": 0
+    },
+    {
+      "name": "Boundary condition — [[],1000]",
+      "input": [
+        [],
+        1000
+      ],
+      "expected": 0
+    },
+    {
+      "name": "Edge case — [[{\"priceCents\":100,\"quantity\":2,\"weightGrams\":300}],1000]",
+      "input": [
+        [
+          {
+            "priceCents": 100,
+            "quantity": 2,
+            "weightGrams": 300
+          }
+        ],
+        1000
+      ],
+      "expected": 799
+    },
+    {
+      "name": "Additional variation — [[{\"priceCents\":100,\"quantity\":1,\"weightGrams\":3000}],1000]",
+      "input": [
+        [
+          {
+            "priceCents": 100,
+            "quantity": 1,
+            "weightGrams": 3000
+          }
+        ],
+        1000
+      ],
+      "expected": 1299
+    }
+  ],
+  "referenceCode": "export function shippingCostCents(items: { priceCents: number; quantity: number; weightGrams: number }[], freeOverCents: number) {\n  const subtotal=items.reduce((s,i)=>s+i.priceCents*i.quantity,0);\n  if(subtotal>=freeOverCents)return 0;\n  const weight=items.reduce((s,i)=>s+i.weightGrams*i.quantity,0);\n  if(weight===0)return 0;\n  return weight<=500?499:weight<=2000?799:1299;\n}\n"
+}

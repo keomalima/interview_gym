@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 1,
+  "id": "sales-totals-by-region",
+  "title": "Summarize sales totals by region",
+  "eyebrow": "TypeScript · data-transformation",
+  "category": "practical",
+  "language": "typescript",
+  "difficulty": "easy",
+  "topics": [
+    "data-transformation",
+    "business logic"
+  ],
+  "skills": [
+    "data-transformation",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Aggregate line-item revenue by region, using integer cents.",
+  "durationMinutes": 20,
+  "functionName": "salesByRegion",
+  "requirements": [
+    "Each order contains region, quantity, and unitCents; values are nonnegative integers.",
+    "Return {region,totalCents} in alphabetical region order.",
+    "Include regions with zero revenue."
+  ],
+  "starterCode": "export function salesByRegion(orders: { region: string; quantity: number; unitCents: number }[]) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Multiply quantity by unit price before grouping.",
+    "Accumulate totals in a Map and sort the resulting entries."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          {
+            "region": "west",
+            "quantity": 2,
+            "unitCents": 150
+          },
+          {
+            "region": "east",
+            "quantity": 1,
+            "unitCents": 200
+          },
+          {
+            "region": "west",
+            "quantity": 1,
+            "unitCents": 50
+          }
+        ]
+      ],
+      "output": [
+        {
+          "region": "east",
+          "totalCents": 200
+        },
+        {
+          "region": "west",
+          "totalCents": 350
+        }
+      ]
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        []
+      ],
+      "output": []
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[{\"region\":\"west\",\"quantity\":2,\"unitCents\":150},{\"region\":\"east\",\"q…",
+      "input": [
+        [
+          {
+            "region": "west",
+            "quantity": 2,
+            "unitCents": 150
+          },
+          {
+            "region": "east",
+            "quantity": 1,
+            "unitCents": 200
+          },
+          {
+            "region": "west",
+            "quantity": 1,
+            "unitCents": 50
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "region": "east",
+          "totalCents": 200
+        },
+        {
+          "region": "west",
+          "totalCents": 350
+        }
+      ]
+    },
+    {
+      "name": "Alternative scenario — [[]]",
+      "input": [
+        []
+      ],
+      "expected": []
+    },
+    {
+      "name": "Boundary condition — [[{\"region\":\"north\",\"quantity\":0,\"unitCents\":500}]]",
+      "input": [
+        [
+          {
+            "region": "north",
+            "quantity": 0,
+            "unitCents": 500
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "region": "north",
+          "totalCents": 0
+        }
+      ]
+    },
+    {
+      "name": "Edge case — [[{\"region\":\"east\",\"quantity\":3,\"unitCents\":100}]]",
+      "input": [
+        [
+          {
+            "region": "east",
+            "quantity": 3,
+            "unitCents": 100
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "region": "east",
+          "totalCents": 300
+        }
+      ]
+    },
+    {
+      "name": "Additional variation — [[{\"region\":\"b\",\"quantity\":1,\"unitCents\":1},{\"region\":\"a\",\"quantity\"…",
+      "input": [
+        [
+          {
+            "region": "b",
+            "quantity": 1,
+            "unitCents": 1
+          },
+          {
+            "region": "a",
+            "quantity": 1,
+            "unitCents": 2
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "region": "a",
+          "totalCents": 2
+        },
+        {
+          "region": "b",
+          "totalCents": 1
+        }
+      ]
+    }
+  ],
+  "referenceCode": "export function salesByRegion(orders: { region: string; quantity: number; unitCents: number }[]) {\n  const map=new Map();for(const o of orders){const total=o.quantity*o.unitCents;map.set(o.region,(map.get(o.region)||0)+total);}\n  return [...map].sort(([a],[b])=>a.localeCompare(b)).map(([region,totalCents])=>({region,totalCents}));\n}\n"
+}

@@ -1,0 +1,194 @@
+{
+  "schemaVersion": 1,
+  "id": "rotate-square-clockwise",
+  "title": "Rotate a square matrix clockwise",
+  "eyebrow": "JavaScript · matrix",
+  "category": "algorithms",
+  "language": "javascript",
+  "difficulty": "medium",
+  "topics": [
+    "matrix",
+    "algorithms"
+  ],
+  "skills": [
+    "matrix",
+    "algorithmic problem solving"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Rotate a square matrix 90 degrees clockwise.",
+  "durationMinutes": 25,
+  "functionName": "rotateMatrixClockwise",
+  "requirements": [
+    "Return a new rotated matrix.",
+    "Do not mutate the original matrix.",
+    "Return [] for an empty matrix."
+  ],
+  "starterCode": "export function rotateMatrixClockwise(matrix) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "The last row becomes the first column.",
+    "Output row r and column c come from input row n-1-c and column r."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            4
+          ]
+        ]
+      ],
+      "output": [
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          2
+        ]
+      ]
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        [
+          [
+            1
+          ]
+        ]
+      ],
+      "output": [
+        [
+          1
+        ]
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[[1,2],[3,4]]]",
+      "input": [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            4
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          2
+        ]
+      ]
+    },
+    {
+      "name": "Alternative scenario — [[[1]]]",
+      "input": [
+        [
+          [
+            1
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          1
+        ]
+      ]
+    },
+    {
+      "name": "Boundary condition — [[]]",
+      "input": [
+        []
+      ],
+      "expected": []
+    },
+    {
+      "name": "Edge case — [[[1,2,3],[4,5,6],[7,8,9]]]",
+      "input": [
+        [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            4,
+            5,
+            6
+          ],
+          [
+            7,
+            8,
+            9
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          7,
+          4,
+          1
+        ],
+        [
+          8,
+          5,
+          2
+        ],
+        [
+          9,
+          6,
+          3
+        ]
+      ]
+    },
+    {
+      "name": "Additional variation — [[[0,0],[1,1]]]",
+      "input": [
+        [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ]
+    }
+  ],
+  "referenceCode": "export function rotateMatrixClockwise(matrix) {\n  const n=matrix.length;return Array.from({length:n},(_,r)=>Array.from({length:n},(_,c)=>matrix[n-1-c][r]));\n}\n"
+}

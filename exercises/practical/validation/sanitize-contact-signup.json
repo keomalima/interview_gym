@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "id": "sanitize-contact-signup",
+  "title": "Sanitize a simple registration form",
+  "eyebrow": "TypeScript · validation",
+  "category": "practical",
+  "language": "typescript",
+  "difficulty": "medium",
+  "topics": [
+    "validation",
+    "business logic"
+  ],
+  "skills": [
+    "validation",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "fullstack",
+    "frontend",
+    "backend"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Normalize and validate registration name/email fields.",
+  "durationMinutes": 25,
+  "functionName": "sanitizeSignup",
+  "requirements": [
+    "Trim and collapse whitespace in name; trim and lowercase email.",
+    "Name requires at least two characters; email requires a simple local@domain.tld shape.",
+    "Return success with ok=true and value (name and email), or failure with ok=false and errors in name/email order."
+  ],
+  "starterCode": "export function sanitizeSignup(payload: { name: unknown; email: unknown }) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Normalize fields before validation.",
+    "Return all failed field names instead of a single error."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        {
+          "name": " Alice  Smith ",
+          "email": " ALICE@example.COM "
+        }
+      ],
+      "output": {
+        "ok": true,
+        "value": {
+          "name": "Alice Smith",
+          "email": "alice@example.com"
+        }
+      }
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        {
+          "name": " A ",
+          "email": "bad"
+        }
+      ],
+      "output": {
+        "ok": false,
+        "errors": [
+          "name",
+          "email"
+        ]
+      }
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [{\"name\":\" Alice  Smith \",\"email\":\" ALICE@example.COM \"}]",
+      "input": [
+        {
+          "name": " Alice  Smith ",
+          "email": " ALICE@example.COM "
+        }
+      ],
+      "expected": {
+        "ok": true,
+        "value": {
+          "name": "Alice Smith",
+          "email": "alice@example.com"
+        }
+      }
+    },
+    {
+      "name": "Alternative scenario — [{\"name\":\" A \",\"email\":\"bad\"}]",
+      "input": [
+        {
+          "name": " A ",
+          "email": "bad"
+        }
+      ],
+      "expected": {
+        "ok": false,
+        "errors": [
+          "name",
+          "email"
+        ]
+      }
+    },
+    {
+      "name": "Boundary condition — [{\"name\":\"Bob\",\"email\":\"bob@test.org\"}]",
+      "input": [
+        {
+          "name": "Bob",
+          "email": "bob@test.org"
+        }
+      ],
+      "expected": {
+        "ok": true,
+        "value": {
+          "name": "Bob",
+          "email": "bob@test.org"
+        }
+      }
+    },
+    {
+      "name": "Edge case — [{\"name\":\"\",\"email\":\"a@b.c\"}]",
+      "input": [
+        {
+          "name": "",
+          "email": "a@b.c"
+        }
+      ],
+      "expected": {
+        "ok": false,
+        "errors": [
+          "name"
+        ]
+      }
+    },
+    {
+      "name": "Additional variation — [{\"name\":\"Ok\",\"email\":\"invalid@\"}]",
+      "input": [
+        {
+          "name": "Ok",
+          "email": "invalid@"
+        }
+      ],
+      "expected": {
+        "ok": false,
+        "errors": [
+          "email"
+        ]
+      }
+    }
+  ],
+  "referenceCode": "export function sanitizeSignup(payload: { name: unknown; email: unknown }) {\n  const name=typeof payload.name==='string'?payload.name.trim().replace(/\\s+/g,' '):'';\n  const email=typeof payload.email==='string'?payload.email.trim().toLowerCase():'';\n  const errors=[];if(name.length<2)errors.push('name');if(!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email))errors.push('email');\n  return errors.length?{ok:false,errors}:{ok:true,value:{name,email}};\n}\n"
+}

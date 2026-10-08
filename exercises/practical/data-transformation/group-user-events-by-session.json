@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 1,
+  "id": "group-user-events-by-session",
+  "title": "Group tracking events into sessions",
+  "eyebrow": "TypeScript · data-transformation",
+  "category": "practical",
+  "language": "typescript",
+  "difficulty": "easy",
+  "topics": [
+    "data-transformation",
+    "business logic"
+  ],
+  "skills": [
+    "data-transformation",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "frontend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Group client tracking event types by their session identifiers.",
+  "durationMinutes": 20,
+  "functionName": "groupEventsBySession",
+  "requirements": [
+    "Preserve first-seen session order and chronological event order within each session.",
+    "Return {sessionId,types} for each distinct session.",
+    "Do not deduplicate event types."
+  ],
+  "starterCode": "export function groupEventsBySession(events: { sessionId: string; type: string }[]) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "An insertion-ordered Map preserves first-seen session order.",
+    "Append each new event to its session list."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          {
+            "sessionId": "a",
+            "type": "view"
+          },
+          {
+            "sessionId": "b",
+            "type": "click"
+          },
+          {
+            "sessionId": "a",
+            "type": "save"
+          }
+        ]
+      ],
+      "output": [
+        {
+          "sessionId": "a",
+          "types": [
+            "view",
+            "save"
+          ]
+        },
+        {
+          "sessionId": "b",
+          "types": [
+            "click"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        []
+      ],
+      "output": []
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[{\"sessionId\":\"a\",\"type\":\"view\"},{\"sessionId\":\"b\",\"type\":\"click\"},{…",
+      "input": [
+        [
+          {
+            "sessionId": "a",
+            "type": "view"
+          },
+          {
+            "sessionId": "b",
+            "type": "click"
+          },
+          {
+            "sessionId": "a",
+            "type": "save"
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "sessionId": "a",
+          "types": [
+            "view",
+            "save"
+          ]
+        },
+        {
+          "sessionId": "b",
+          "types": [
+            "click"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Alternative scenario — [[]]",
+      "input": [
+        []
+      ],
+      "expected": []
+    },
+    {
+      "name": "Boundary condition — [[{\"sessionId\":\"x\",\"type\":\"open\"}]]",
+      "input": [
+        [
+          {
+            "sessionId": "x",
+            "type": "open"
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "sessionId": "x",
+          "types": [
+            "open"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Edge case — [[{\"sessionId\":\"b\",\"type\":\"a\"},{\"sessionId\":\"a\",\"type\":\"b\"}]]",
+      "input": [
+        [
+          {
+            "sessionId": "b",
+            "type": "a"
+          },
+          {
+            "sessionId": "a",
+            "type": "b"
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "sessionId": "b",
+          "types": [
+            "a"
+          ]
+        },
+        {
+          "sessionId": "a",
+          "types": [
+            "b"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Additional variation — [[{\"sessionId\":\"a\",\"type\":\"x\"},{\"sessionId\":\"a\",\"type\":\"x\"}]]",
+      "input": [
+        [
+          {
+            "sessionId": "a",
+            "type": "x"
+          },
+          {
+            "sessionId": "a",
+            "type": "x"
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "sessionId": "a",
+          "types": [
+            "x",
+            "x"
+          ]
+        }
+      ]
+    }
+  ],
+  "referenceCode": "export function groupEventsBySession(events: { sessionId: string; type: string }[]) {\n  const map=new Map();for(const e of events){if(!map.has(e.sessionId))map.set(e.sessionId,[]);map.get(e.sessionId).push(e.type);}\n  return [...map].map(([sessionId,types])=>({sessionId,types}));\n}\n"
+}

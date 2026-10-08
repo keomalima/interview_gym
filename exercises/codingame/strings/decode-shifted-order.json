@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "id": "decode-shifted-order",
+  "title": "Decode a Caesar-shifted transmission",
+  "eyebrow": "JavaScript · strings",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "strings",
+    "parsing and simulation"
+  ],
+  "skills": [
+    "strings",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Reverse a known Caesar cipher shift.",
+  "durationMinutes": 20,
+  "functionName": "decodeCaesar",
+  "requirements": [
+    "Preserve punctuation, spaces, and letter case.",
+    "A positive shift means ciphertext letters were rotated forward.",
+    "Negative shifts are allowed."
+  ],
+  "starterCode": "export function decodeCaesar(text,shift) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Decoding shifts the alphabet backward.",
+    "Normalize the shift modulo 26 and wrap within each letter range."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        "Khoor",
+        3
+      ],
+      "output": "Hello"
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        "BCD",
+        1
+      ],
+      "output": "ABC"
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [\"Khoor\",3]",
+      "input": [
+        "Khoor",
+        3
+      ],
+      "expected": "Hello"
+    },
+    {
+      "name": "Alternative scenario — [\"BCD\",1]",
+      "input": [
+        "BCD",
+        1
+      ],
+      "expected": "ABC"
+    },
+    {
+      "name": "Boundary condition — [\"abc\",-1]",
+      "input": [
+        "abc",
+        -1
+      ],
+      "expected": "bcd"
+    },
+    {
+      "name": "Edge case — [\"\",5]",
+      "input": [
+        "",
+        5
+      ],
+      "expected": ""
+    },
+    {
+      "name": "Additional variation — [\"Abc-123\",0]",
+      "input": [
+        "Abc-123",
+        0
+      ],
+      "expected": "Abc-123"
+    }
+  ],
+  "referenceCode": "export function decodeCaesar(text,shift) {\n  const s=((shift%26)+26)%26;\n  return text.replace(/[A-Za-z]/g,c=>{const start=c<='Z'?65:97;return String.fromCharCode(start+(c.charCodeAt(0)-start-s+26)%26);});\n}\n"
+}

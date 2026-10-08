@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "id": "lowest-common-ancestor-bst",
+  "title": "Lowest common ancestor in a BST",
+  "eyebrow": "JavaScript · trees",
+  "category": "algorithms",
+  "language": "javascript",
+  "difficulty": "medium",
+  "topics": [
+    "trees",
+    "algorithms"
+  ],
+  "skills": [
+    "trees",
+    "algorithmic problem solving"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Find the common ancestor of two values in a binary search tree.",
+  "durationMinutes": 25,
+  "functionName": "lowestCommonAncestorValue",
+  "requirements": [
+    "Each present value is unique.",
+    "The two values are guaranteed present when the root is not null.",
+    "Return the ancestor value, or null for no tree."
+  ],
+  "starterCode": "export function lowestCommonAncestorValue(root,a,b) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "BST values on the left are smaller and on the right larger.",
+    "Walk downward until the two target values no longer lie on the same side."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        {
+          "val": 6,
+          "left": {
+            "val": 2,
+            "left": {
+              "val": 0
+            },
+            "right": {
+              "val": 4
+            }
+          },
+          "right": {
+            "val": 8,
+            "left": {
+              "val": 7
+            },
+            "right": {
+              "val": 9
+            }
+          }
+        },
+        2,
+        8
+      ],
+      "output": 6
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        {
+          "val": 5,
+          "left": {
+            "val": 3
+          },
+          "right": {
+            "val": 7
+          }
+        },
+        3,
+        3
+      ],
+      "output": 3
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [{\"val\":6,\"left\":{\"val\":2,\"left\":{\"val\":0},\"right\":{\"val\":4}},\"right…",
+      "input": [
+        {
+          "val": 6,
+          "left": {
+            "val": 2,
+            "left": {
+              "val": 0
+            },
+            "right": {
+              "val": 4
+            }
+          },
+          "right": {
+            "val": 8,
+            "left": {
+              "val": 7
+            },
+            "right": {
+              "val": 9
+            }
+          }
+        },
+        2,
+        8
+      ],
+      "expected": 6
+    },
+    {
+      "name": "Alternative scenario — [{\"val\":5,\"left\":{\"val\":3},\"right\":{\"val\":7}},3,3]",
+      "input": [
+        {
+          "val": 5,
+          "left": {
+            "val": 3
+          },
+          "right": {
+            "val": 7
+          }
+        },
+        3,
+        3
+      ],
+      "expected": 3
+    },
+    {
+      "name": "Boundary condition — [{\"val\":5,\"left\":{\"val\":3},\"right\":{\"val\":7}},3,7]",
+      "input": [
+        {
+          "val": 5,
+          "left": {
+            "val": 3
+          },
+          "right": {
+            "val": 7
+          }
+        },
+        3,
+        7
+      ],
+      "expected": 5
+    },
+    {
+      "name": "Edge case — [null,1,2]",
+      "input": [
+        null,
+        1,
+        2
+      ],
+      "expected": null
+    },
+    {
+      "name": "Additional variation — [{\"val\":2},2,2]",
+      "input": [
+        {
+          "val": 2
+        },
+        2,
+        2
+      ],
+      "expected": 2
+    }
+  ],
+  "referenceCode": "export function lowestCommonAncestorValue(root,a,b) {\n  let node=root;\n  while(node){if(a<node.val&&b<node.val)node=node.left;else if(a>node.val&&b>node.val)node=node.right;else return node.val;}\n  return null;\n}\n"
+}

@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "id": "generate-unique-resource-slugs",
+  "title": "Create unique URL slugs",
+  "eyebrow": "TypeScript · strings",
+  "category": "practical",
+  "language": "typescript",
+  "difficulty": "medium",
+  "topics": [
+    "strings",
+    "business logic"
+  ],
+  "skills": [
+    "strings",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "fullstack",
+    "frontend",
+    "backend"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Generate deterministic unique URL-friendly slugs from titles.",
+  "durationMinutes": 25,
+  "functionName": "makeUniqueSlugs",
+  "requirements": [
+    "Lowercase ASCII characters, replace runs of non a-z0-9 with one hyphen, trim edge hyphens.",
+    "Use item for an empty result.",
+    "For repeats, append -2, -3, etc. until unique."
+  ],
+  "starterCode": "export function makeUniqueSlugs(titles: string[]) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Generate a normalized base slug first.",
+    "Track allocated slugs and increment the suffix until it is unused."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          "Hello World",
+          "Hello World",
+          "Hello-World"
+        ]
+      ],
+      "output": [
+        "hello-world",
+        "hello-world-2",
+        "hello-world-3"
+      ]
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        []
+      ],
+      "output": []
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[\"Hello World\",\"Hello World\",\"Hello-World\"]]",
+      "input": [
+        [
+          "Hello World",
+          "Hello World",
+          "Hello-World"
+        ]
+      ],
+      "expected": [
+        "hello-world",
+        "hello-world-2",
+        "hello-world-3"
+      ]
+    },
+    {
+      "name": "Alternative scenario — [[]]",
+      "input": [
+        []
+      ],
+      "expected": []
+    },
+    {
+      "name": "Boundary condition — [[\"!!!\",\"???\"]]",
+      "input": [
+        [
+          "!!!",
+          "???"
+        ]
+      ],
+      "expected": [
+        "item",
+        "item-2"
+      ]
+    },
+    {
+      "name": "Edge case — [[\"Foo  Bar\",\"foo bar-2\",\"foo bar\"]]",
+      "input": [
+        [
+          "Foo  Bar",
+          "foo bar-2",
+          "foo bar"
+        ]
+      ],
+      "expected": [
+        "foo-bar",
+        "foo-bar-2",
+        "foo-bar-3"
+      ]
+    },
+    {
+      "name": "Additional variation — [[\"Café\",\"Cafe\"]]",
+      "input": [
+        [
+          "Café",
+          "Cafe"
+        ]
+      ],
+      "expected": [
+        "caf",
+        "cafe"
+      ]
+    }
+  ],
+  "referenceCode": "export function makeUniqueSlugs(titles: string[]) {\n  const used=new Set(),out=[];\n  for(const title of titles){const base=title.toLowerCase().trim().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'item';let slug=base,index=2;\n    while(used.has(slug))slug=base+'-'+index++;\n    used.add(slug);out.push(slug);\n  }\n  return out;\n}\n"
+}

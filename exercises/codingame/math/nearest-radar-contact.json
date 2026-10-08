@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "id": "nearest-radar-contact",
+  "title": "Find nearest point on a radar display",
+  "eyebrow": "JavaScript · math",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "math",
+    "parsing and simulation"
+  ],
+  "skills": [
+    "math",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Identify the point with the shortest Euclidean distance to the origin.",
+  "durationMinutes": 15,
+  "functionName": "nearestRadarPoint",
+  "requirements": [
+    "Each point has id, x, and y.",
+    "Return the id of the first nearest point if distances tie.",
+    "Return null for no points."
+  ],
+  "starterCode": "export function nearestRadarPoint(points) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "No square root is needed to compare distances.",
+    "Compare x²+y² and keep the first minimum."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          {
+            "id": "a",
+            "x": 3,
+            "y": 4
+          },
+          {
+            "id": "b",
+            "x": 1,
+            "y": 1
+          }
+        ]
+      ],
+      "output": "b"
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        []
+      ],
+      "output": null
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[{\"id\":\"a\",\"x\":3,\"y\":4},{\"id\":\"b\",\"x\":1,\"y\":1}]]",
+      "input": [
+        [
+          {
+            "id": "a",
+            "x": 3,
+            "y": 4
+          },
+          {
+            "id": "b",
+            "x": 1,
+            "y": 1
+          }
+        ]
+      ],
+      "expected": "b"
+    },
+    {
+      "name": "Alternative scenario — [[]]",
+      "input": [
+        []
+      ],
+      "expected": null
+    },
+    {
+      "name": "Boundary condition — [[{\"id\":\"x\",\"x\":0,\"y\":0}]]",
+      "input": [
+        [
+          {
+            "id": "x",
+            "x": 0,
+            "y": 0
+          }
+        ]
+      ],
+      "expected": "x"
+    },
+    {
+      "name": "Edge case — [[{\"id\":\"first\",\"x\":1,\"y\":0},{\"id\":\"second\",\"x\":0,\"y\":1}]]",
+      "input": [
+        [
+          {
+            "id": "first",
+            "x": 1,
+            "y": 0
+          },
+          {
+            "id": "second",
+            "x": 0,
+            "y": 1
+          }
+        ]
+      ],
+      "expected": "first"
+    },
+    {
+      "name": "Additional variation — [[{\"id\":\"left\",\"x\":-2,\"y\":0},{\"id\":\"right\",\"x\":3,\"y\":0}]]",
+      "input": [
+        [
+          {
+            "id": "left",
+            "x": -2,
+            "y": 0
+          },
+          {
+            "id": "right",
+            "x": 3,
+            "y": 0
+          }
+        ]
+      ],
+      "expected": "left"
+    }
+  ],
+  "referenceCode": "export function nearestRadarPoint(points) {\n  if(!points.length)return null;let best=null,min=Infinity;\n  for(const p of points){const d=p.x*p.x+p.y*p.y;if(d<min){best=p.id;min=d;}}\n  return best;\n}\n"
+}

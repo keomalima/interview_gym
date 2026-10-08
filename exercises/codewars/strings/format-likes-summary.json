@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "id": "format-likes-summary",
+  "title": "Summarize a list of likes",
+  "eyebrow": "JavaScript · strings",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "strings",
+    "javascript fundamentals"
+  ],
+  "skills": [
+    "strings",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Produce a grammatically correct message describing who liked an item.",
+  "durationMinutes": 15,
+  "functionName": "formatLikes",
+  "requirements": [
+    "Use exactly the shown singular/plural wording.",
+    "For four or more names, show the first two names and the number of others."
+  ],
+  "starterCode": "export function formatLikes(names) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Handle list lengths zero through three explicitly.",
+    "For longer lists, the other count is length minus two."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        []
+      ],
+      "output": "no one likes this"
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        [
+          "Peter"
+        ]
+      ],
+      "output": "Peter likes this"
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[]]",
+      "input": [
+        []
+      ],
+      "expected": "no one likes this"
+    },
+    {
+      "name": "Alternative scenario — [[\"Peter\"]]",
+      "input": [
+        [
+          "Peter"
+        ]
+      ],
+      "expected": "Peter likes this"
+    },
+    {
+      "name": "Boundary condition — [[\"Jacob\",\"Alex\"]]",
+      "input": [
+        [
+          "Jacob",
+          "Alex"
+        ]
+      ],
+      "expected": "Jacob and Alex like this"
+    },
+    {
+      "name": "Edge case — [[\"Max\",\"John\",\"Mark\"]]",
+      "input": [
+        [
+          "Max",
+          "John",
+          "Mark"
+        ]
+      ],
+      "expected": "Max, John and Mark like this"
+    },
+    {
+      "name": "Additional variation — [[\"Alex\",\"Jacob\",\"Mark\",\"Max\"]]",
+      "input": [
+        [
+          "Alex",
+          "Jacob",
+          "Mark",
+          "Max"
+        ]
+      ],
+      "expected": "Alex, Jacob and 2 others like this"
+    }
+  ],
+  "referenceCode": "export function formatLikes(names) {\n  if(!names.length)return 'no one likes this';\n  if(names.length===1)return names[0]+' likes this';\n  if(names.length===2)return names[0]+' and '+names[1]+' like this';\n  if(names.length===3)return names[0]+', '+names[1]+' and '+names[2]+' like this';\n  return names[0]+', '+names[1]+' and '+(names.length-2)+' others like this';\n}\n"
+}

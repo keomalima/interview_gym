@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "id": "top-k-frequent-numbers",
+  "title": "Top k most frequent values",
+  "eyebrow": "JavaScript · sorting",
+  "category": "algorithms",
+  "language": "javascript",
+  "difficulty": "medium",
+  "topics": [
+    "sorting",
+    "algorithms"
+  ],
+  "skills": [
+    "sorting",
+    "algorithmic problem solving"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Return k distinct integers ordered by highest frequency.",
+  "durationMinutes": 25,
+  "functionName": "topKFrequent",
+  "requirements": [
+    "Break equal-frequency ties by smaller numerical value.",
+    "Return all distinct values when k exceeds the number of distinct integers.",
+    "Return [] if k is zero or negative."
+  ],
+  "starterCode": "export function topKFrequent(nums,k) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Build a frequency map first.",
+    "Sort entries by descending frequency and ascending value before selecting k."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        2
+      ],
+      "output": [
+        1,
+        2
+      ]
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        [
+          4,
+          4,
+          2,
+          2,
+          3
+        ],
+        2
+      ],
+      "output": [
+        2,
+        4
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[1,1,1,2,2,3],2]",
+      "input": [
+        [
+          1,
+          1,
+          1,
+          2,
+          2,
+          3
+        ],
+        2
+      ],
+      "expected": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "Alternative scenario — [[4,4,2,2,3],2]",
+      "input": [
+        [
+          4,
+          4,
+          2,
+          2,
+          3
+        ],
+        2
+      ],
+      "expected": [
+        2,
+        4
+      ]
+    },
+    {
+      "name": "Boundary condition — [[],3]",
+      "input": [
+        [],
+        3
+      ],
+      "expected": []
+    },
+    {
+      "name": "Edge case — [[5],1]",
+      "input": [
+        [
+          5
+        ],
+        1
+      ],
+      "expected": [
+        5
+      ]
+    },
+    {
+      "name": "Additional variation — [[2,1],0]",
+      "input": [
+        [
+          2,
+          1
+        ],
+        0
+      ],
+      "expected": []
+    }
+  ],
+  "referenceCode": "export function topKFrequent(nums,k) {\n  const m=new Map();for(const n of nums)m.set(n,(m.get(n)||0)+1);\n  return [...m].sort((a,b)=>b[1]-a[1]||a[0]-b[0]).slice(0,Math.max(0,k)).map(([n])=>n);\n}\n"
+}

@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "id": "apply-cart-discount-code",
+  "title": "Apply a discount to a cart subtotal",
+  "eyebrow": "TypeScript · math",
+  "category": "practical",
+  "language": "typescript",
+  "difficulty": "easy",
+  "topics": [
+    "math",
+    "business logic"
+  ],
+  "skills": [
+    "math",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "fullstack",
+    "frontend",
+    "backend"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Calculate subtotal, discount and total in integer cents.",
+  "durationMinutes": 20,
+  "functionName": "applyDiscount",
+  "requirements": [
+    "Discount is a number from 0 to 100 inclusive.",
+    "Calculate the subtotal before the discount and round the final discounted total once using Math.round.",
+    "Return subtotalCents, discountCents and totalCents."
+  ],
+  "starterCode": "export function applyDiscount(lineItems: { quantity: number; unitCents: number }[], discountPercent: number) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Sum quantity times unit cost.",
+    "Round the discounted total once; the difference is the discount amount."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          {
+            "quantity": 2,
+            "unitCents": 500
+          }
+        ],
+        10
+      ],
+      "output": {
+        "subtotalCents": 1000,
+        "discountCents": 100,
+        "totalCents": 900
+      }
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        [],
+        15
+      ],
+      "output": {
+        "subtotalCents": 0,
+        "discountCents": 0,
+        "totalCents": 0
+      }
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[{\"quantity\":2,\"unitCents\":500}],10]",
+      "input": [
+        [
+          {
+            "quantity": 2,
+            "unitCents": 500
+          }
+        ],
+        10
+      ],
+      "expected": {
+        "subtotalCents": 1000,
+        "discountCents": 100,
+        "totalCents": 900
+      }
+    },
+    {
+      "name": "Alternative scenario — [[],15]",
+      "input": [
+        [],
+        15
+      ],
+      "expected": {
+        "subtotalCents": 0,
+        "discountCents": 0,
+        "totalCents": 0
+      }
+    },
+    {
+      "name": "Boundary condition — [[{\"quantity\":1,\"unitCents\":99}],50]",
+      "input": [
+        [
+          {
+            "quantity": 1,
+            "unitCents": 99
+          }
+        ],
+        50
+      ],
+      "expected": {
+        "subtotalCents": 99,
+        "discountCents": 49,
+        "totalCents": 50
+      }
+    },
+    {
+      "name": "Edge case — [[{\"quantity\":1,\"unitCents\":100}],0]",
+      "input": [
+        [
+          {
+            "quantity": 1,
+            "unitCents": 100
+          }
+        ],
+        0
+      ],
+      "expected": {
+        "subtotalCents": 100,
+        "discountCents": 0,
+        "totalCents": 100
+      }
+    },
+    {
+      "name": "Additional variation — [[{\"quantity\":1,\"unitCents\":100}],100]",
+      "input": [
+        [
+          {
+            "quantity": 1,
+            "unitCents": 100
+          }
+        ],
+        100
+      ],
+      "expected": {
+        "subtotalCents": 100,
+        "discountCents": 100,
+        "totalCents": 0
+      }
+    }
+  ],
+  "referenceCode": "export function applyDiscount(lineItems: { quantity: number; unitCents: number }[], discountPercent: number) {\n  const subtotalCents=lineItems.reduce((s,x)=>s+x.quantity*x.unitCents,0);\n  const discountedCents=Math.round(subtotalCents*(100-discountPercent)/100);\n  return {subtotalCents,discountCents:subtotalCents-discountedCents,totalCents:discountedCents};\n}\n"
+}

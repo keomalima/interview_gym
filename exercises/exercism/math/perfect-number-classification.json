@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "id": "perfect-number-classification",
+  "title": "Classify a positive integer by its divisors",
+  "eyebrow": "JavaScript · math",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "math",
+    "language fundamentals"
+  ],
+  "skills": [
+    "math",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Classify numbers by the sum of their positive proper divisors.",
+  "durationMinutes": 20,
+  "functionName": "classifyPerfectNumber",
+  "requirements": [
+    "A proper divisor excludes the number itself.",
+    "Return perfect if equal, abundant if greater, or deficient if smaller.",
+    "Input must be positive."
+  ],
+  "starterCode": "export function classifyPerfectNumber(n) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Sum all positive divisors strictly smaller than the input.",
+    "Compare the sum against the original number."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        6
+      ],
+      "output": "perfect"
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        28
+      ],
+      "output": "perfect"
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [6]",
+      "input": [
+        6
+      ],
+      "expected": "perfect"
+    },
+    {
+      "name": "Alternative scenario — [28]",
+      "input": [
+        28
+      ],
+      "expected": "perfect"
+    },
+    {
+      "name": "Boundary condition — [12]",
+      "input": [
+        12
+      ],
+      "expected": "abundant"
+    },
+    {
+      "name": "Edge case — [8]",
+      "input": [
+        8
+      ],
+      "expected": "deficient"
+    },
+    {
+      "name": "Additional variation — [1]",
+      "input": [
+        1
+      ],
+      "expected": "deficient"
+    },
+    {
+      "name": "Rejects nonpositive input",
+      "input": [
+        0
+      ],
+      "error": "Positive integer required"
+    }
+  ],
+  "referenceCode": "export function classifyPerfectNumber(n) {\n  if(n<=0)throw new Error('Positive integer required');\n  let sum=0;for(let d=1;d<=Math.floor(n/2);d++)if(n%d===0)sum+=d;\n  return sum===n?'perfect':sum>n?'abundant':'deficient';\n}\n"
+}

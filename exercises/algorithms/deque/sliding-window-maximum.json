@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "id": "sliding-window-maximum",
+  "title": "Maximum in each fixed-size window",
+  "eyebrow": "JavaScript · deque",
+  "category": "algorithms",
+  "language": "javascript",
+  "difficulty": "hard",
+  "topics": [
+    "deque",
+    "algorithms"
+  ],
+  "skills": [
+    "deque",
+    "algorithmic problem solving"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Return the maximum in every consecutive window of size k.",
+  "durationMinutes": 35,
+  "functionName": "maxWindowValues",
+  "requirements": [
+    "When k is invalid, return [].",
+    "Return one value for every full window.",
+    "Aim for O(n) time."
+  ],
+  "starterCode": "export function maxWindowValues(nums,k) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "A decreasing deque can track only possible maxima.",
+    "Remove indices outside the window, and remove smaller values from its tail."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        3
+      ],
+      "output": [
+        3,
+        3,
+        5,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        [
+          1
+        ],
+        1
+      ],
+      "output": [
+        1
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[1,3,-1,-3,5,3,6,7],3]",
+      "input": [
+        [
+          1,
+          3,
+          -1,
+          -3,
+          5,
+          3,
+          6,
+          7
+        ],
+        3
+      ],
+      "expected": [
+        3,
+        3,
+        5,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "name": "Alternative scenario — [[1],1]",
+      "input": [
+        [
+          1
+        ],
+        1
+      ],
+      "expected": [
+        1
+      ]
+    },
+    {
+      "name": "Boundary condition — [[9,4,2],2]",
+      "input": [
+        [
+          9,
+          4,
+          2
+        ],
+        2
+      ],
+      "expected": [
+        9,
+        4
+      ]
+    },
+    {
+      "name": "Edge case — [[1,2],0]",
+      "input": [
+        [
+          1,
+          2
+        ],
+        0
+      ],
+      "expected": []
+    },
+    {
+      "name": "Additional variation — [[],1]",
+      "input": [
+        [],
+        1
+      ],
+      "expected": []
+    }
+  ],
+  "referenceCode": "export function maxWindowValues(nums,k) {\n  if(k<1||k>nums.length) return [];\n  const q=[],out=[];let head=0;\n  for(let i=0;i<nums.length;i++) {\n    while(head<q.length && q[head]<=i-k)head++;\n    while(q.length>head && nums[q[q.length-1]]<=nums[i])q.pop();\n    q.push(i);if(i>=k-1)out.push(nums[q[head]]);\n  }\n  return out;\n}\n"
+}

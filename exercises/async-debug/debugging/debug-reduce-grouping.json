@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "id": "debug-reduce-grouping",
+  "title": "Debug aggregation that overwrites totals",
+  "eyebrow": "JavaScript · debugging",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "debugging",
+    "debugging"
+  ],
+  "skills": [
+    "debugging",
+    "debugging and async reasoning"
+  ],
+  "targetRoles": [
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Fix an aggregation that remembers only the last amount per category.",
+  "durationMinutes": 20,
+  "functionName": "sumTotalsByCategory",
+  "requirements": [
+    "Return an object mapping category to the sum of all cents values.",
+    "Include zero and negative adjustments.",
+    "Do not modify input records."
+  ],
+  "starterCode": "export function sumTotalsByCategory(items) {\n  const result = {};\n  for (const item of items) result[item.category] = item.cents;\n  return result;\n}\n",
+  "hints": [
+    "A group total should accumulate rather than overwrite.",
+    "Use the previous sum when processing the next row."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          {
+            "category": "a",
+            "cents": 5
+          },
+          {
+            "category": "a",
+            "cents": 10
+          }
+        ]
+      ],
+      "output": {
+        "a": 15
+      }
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        []
+      ],
+      "output": {}
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[{\"category\":\"a\",\"cents\":5},{\"category\":\"a\",\"cents\":10}]]",
+      "input": [
+        [
+          {
+            "category": "a",
+            "cents": 5
+          },
+          {
+            "category": "a",
+            "cents": 10
+          }
+        ]
+      ],
+      "expected": {
+        "a": 15
+      }
+    },
+    {
+      "name": "Alternative scenario — [[]]",
+      "input": [
+        []
+      ],
+      "expected": {}
+    },
+    {
+      "name": "Boundary condition — [[{\"category\":\"a\",\"cents\":0}]]",
+      "input": [
+        [
+          {
+            "category": "a",
+            "cents": 0
+          }
+        ]
+      ],
+      "expected": {
+        "a": 0
+      }
+    },
+    {
+      "name": "Edge case — [[{\"category\":\"b\",\"cents\":1},{\"category\":\"a\",\"cents\":2}]]",
+      "input": [
+        [
+          {
+            "category": "b",
+            "cents": 1
+          },
+          {
+            "category": "a",
+            "cents": 2
+          }
+        ]
+      ],
+      "expected": {
+        "b": 1,
+        "a": 2
+      }
+    },
+    {
+      "name": "Additional variation — [[{\"category\":\"c\",\"cents\":-5},{\"category\":\"c\",\"cents\":2}]]",
+      "input": [
+        [
+          {
+            "category": "c",
+            "cents": -5
+          },
+          {
+            "category": "c",
+            "cents": 2
+          }
+        ]
+      ],
+      "expected": {
+        "c": -3
+      }
+    }
+  ],
+  "referenceCode": "export function sumTotalsByCategory(items) {\n  const result={};for(const item of items)result[item.category]=(result[item.category]||0)+item.cents;return result;\n}\n"
+}

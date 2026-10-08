@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "id": "sum-two-smallest-positive",
+  "title": "Sum the two smallest positive integers",
+  "eyebrow": "JavaScript · sorting",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "sorting",
+    "javascript fundamentals"
+  ],
+  "skills": [
+    "sorting",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Find the sum of the two smallest values in an array of positive integers.",
+  "durationMinutes": 15,
+  "functionName": "sumTwoSmallest",
+  "requirements": [
+    "Return null for fewer than two values.",
+    "The same value may be used twice if it occurs twice.",
+    "Do not mutate the input."
+  ],
+  "starterCode": "export function sumTwoSmallest(nums) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Sort a copy of the array numerically.",
+    "Add the first two values, if present."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          19,
+          5,
+          42,
+          2,
+          77
+        ]
+      ],
+      "output": 7
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        [
+          10,
+          343445353,
+          3453445,
+          3453545353453
+        ]
+      ],
+      "output": 3453455
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[19,5,42,2,77]]",
+      "input": [
+        [
+          19,
+          5,
+          42,
+          2,
+          77
+        ]
+      ],
+      "expected": 7
+    },
+    {
+      "name": "Alternative scenario — [[10,343445353,3453445,3453545353453]]",
+      "input": [
+        [
+          10,
+          343445353,
+          3453445,
+          3453545353453
+        ]
+      ],
+      "expected": 3453455
+    },
+    {
+      "name": "Boundary condition — [[1,2]]",
+      "input": [
+        [
+          1,
+          2
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "name": "Edge case — [[4,4,6]]",
+      "input": [
+        [
+          4,
+          4,
+          6
+        ]
+      ],
+      "expected": 8
+    },
+    {
+      "name": "Additional variation — [[]]",
+      "input": [
+        []
+      ],
+      "expected": null
+    }
+  ],
+  "referenceCode": "export function sumTwoSmallest(nums) {if(nums.length<2)return null;return [...nums].sort((a,b)=>a-b)[0]+[...nums].sort((a,b)=>a-b)[1];}\n"
+}

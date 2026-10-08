@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "id": "sort-digits-descending",
+  "title": "Rearrange digits from largest to smallest",
+  "eyebrow": "JavaScript · sorting",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "sorting",
+    "javascript fundamentals"
+  ],
+  "skills": [
+    "sorting",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Return the number obtained by sorting its decimal digits in descending order.",
+  "durationMinutes": 15,
+  "functionName": "descendingDigits",
+  "requirements": [
+    "Input is a nonnegative safe integer.",
+    "Return a number, not a string."
+  ],
+  "starterCode": "export function descendingDigits(n) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Treat the digits as characters for sorting.",
+    "Join them and convert the result back to a number."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        42145
+      ],
+      "output": 54421
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        145263
+      ],
+      "output": 654321
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [42145]",
+      "input": [
+        42145
+      ],
+      "expected": 54421
+    },
+    {
+      "name": "Alternative scenario — [145263]",
+      "input": [
+        145263
+      ],
+      "expected": 654321
+    },
+    {
+      "name": "Boundary condition — [0]",
+      "input": [
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "name": "Edge case — [1111]",
+      "input": [
+        1111
+      ],
+      "expected": 1111
+    },
+    {
+      "name": "Additional variation — [908070]",
+      "input": [
+        908070
+      ],
+      "expected": 987000
+    }
+  ],
+  "referenceCode": "export function descendingDigits(n) {return Number([...String(n)].sort((a,b)=>b.localeCompare(a)).join(''));}\n"
+}

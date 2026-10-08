@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "id": "async-normalize-record-batch",
+  "title": "Normalize records with Promise.all",
+  "eyebrow": "TypeScript · promises",
+  "category": "practical",
+  "language": "typescript",
+  "difficulty": "easy",
+  "topics": [
+    "promises",
+    "asynchronous programming"
+  ],
+  "skills": [
+    "promises",
+    "debugging and async reasoning"
+  ],
+  "targetRoles": [
+    "fullstack",
+    "frontend",
+    "backend"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Normalize asynchronous record results while preserving input order.",
+  "durationMinutes": 20,
+  "functionName": "normalizeAsyncBatch",
+  "requirements": [
+    "Resolve each provided JSON record with Promise.resolve as a stand-in for an asynchronous fetch.",
+    "Return {id,name} objects with trimmed lowercase names.",
+    "Use an async function and preserve input order."
+  ],
+  "starterCode": "export async function normalizeAsyncBatch(records: { id: string | number; name: string }[]) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Promise.all resolves mapped promises into an ordered array.",
+    "Await a record inside each mapped async task before normalizing."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          {
+            "id": 1,
+            "name": "  ALICE "
+          },
+          {
+            "id": 2,
+            "name": " BOB "
+          }
+        ]
+      ],
+      "output": [
+        {
+          "id": 1,
+          "name": "alice"
+        },
+        {
+          "id": 2,
+          "name": "bob"
+        }
+      ]
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        []
+      ],
+      "output": []
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[{\"id\":1,\"name\":\"  ALICE \"},{\"id\":2,\"name\":\" BOB \"}]]",
+      "input": [
+        [
+          {
+            "id": 1,
+            "name": "  ALICE "
+          },
+          {
+            "id": 2,
+            "name": " BOB "
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "id": 1,
+          "name": "alice"
+        },
+        {
+          "id": 2,
+          "name": "bob"
+        }
+      ]
+    },
+    {
+      "name": "Alternative scenario — [[]]",
+      "input": [
+        []
+      ],
+      "expected": []
+    },
+    {
+      "name": "Boundary condition — [[{\"id\":\"x\",\"name\":\"X\"}]]",
+      "input": [
+        [
+          {
+            "id": "x",
+            "name": "X"
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "id": "x",
+          "name": "x"
+        }
+      ]
+    },
+    {
+      "name": "Edge case — [[{\"id\":0,\"name\":\" Mixed Case \"}]]",
+      "input": [
+        [
+          {
+            "id": 0,
+            "name": " Mixed Case "
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "id": 0,
+          "name": "mixed case"
+        }
+      ]
+    },
+    {
+      "name": "Additional variation — [[{\"id\":3,\"name\":\" A \"},{\"id\":4,\"name\":\" B \"},{\"id\":5,\"name\":\" C \"}]]",
+      "input": [
+        [
+          {
+            "id": 3,
+            "name": " A "
+          },
+          {
+            "id": 4,
+            "name": " B "
+          },
+          {
+            "id": 5,
+            "name": " C "
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "id": 3,
+          "name": "a"
+        },
+        {
+          "id": 4,
+          "name": "b"
+        },
+        {
+          "id": 5,
+          "name": "c"
+        }
+      ]
+    }
+  ],
+  "referenceCode": "export async function normalizeAsyncBatch(records: { id: string | number; name: string }[]) {\n  const tasks=records.map(async record=>{const value=await Promise.resolve(record);return {id:value.id,name:value.name.trim().toLowerCase()};});\n  return await Promise.all(tasks);\n}\n"
+}

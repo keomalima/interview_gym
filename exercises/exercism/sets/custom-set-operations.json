@@ -1,0 +1,184 @@
+{
+  "schemaVersion": 1,
+  "id": "custom-set-operations",
+  "title": "Implement basic set operations",
+  "eyebrow": "JavaScript · sets",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "medium",
+  "topics": [
+    "sets",
+    "language fundamentals"
+  ],
+  "skills": [
+    "sets",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Compute union, intersection and left difference for two integer collections.",
+  "durationMinutes": 25,
+  "functionName": "setOperations",
+  "requirements": [
+    "Interpret each input as a mathematical set.",
+    "Sort every output array numerically ascending.",
+    "difference means elements in a but not in b."
+  ],
+  "starterCode": "export function setOperations(a,b) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Construct Sets to discard duplicates.",
+    "Use membership tests to build intersection and difference."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          1,
+          2,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "output": {
+        "union": [
+          1,
+          2,
+          3
+        ],
+        "intersection": [
+          2
+        ],
+        "difference": [
+          1
+        ]
+      }
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        [],
+        []
+      ],
+      "output": {
+        "union": [],
+        "intersection": [],
+        "difference": []
+      }
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[1,2,2],[2,3]]",
+      "input": [
+        [
+          1,
+          2,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "expected": {
+        "union": [
+          1,
+          2,
+          3
+        ],
+        "intersection": [
+          2
+        ],
+        "difference": [
+          1
+        ]
+      }
+    },
+    {
+      "name": "Alternative scenario — [[],[]]",
+      "input": [
+        [],
+        []
+      ],
+      "expected": {
+        "union": [],
+        "intersection": [],
+        "difference": []
+      }
+    },
+    {
+      "name": "Boundary condition — [[3,1],[]]",
+      "input": [
+        [
+          3,
+          1
+        ],
+        []
+      ],
+      "expected": {
+        "union": [
+          1,
+          3
+        ],
+        "intersection": [],
+        "difference": [
+          1,
+          3
+        ]
+      }
+    },
+    {
+      "name": "Edge case — [[],[4]]",
+      "input": [
+        [],
+        [
+          4
+        ]
+      ],
+      "expected": {
+        "union": [
+          4
+        ],
+        "intersection": [],
+        "difference": []
+      }
+    },
+    {
+      "name": "Additional variation — [[-1,0],[-1,2]]",
+      "input": [
+        [
+          -1,
+          0
+        ],
+        [
+          -1,
+          2
+        ]
+      ],
+      "expected": {
+        "union": [
+          -1,
+          0,
+          2
+        ],
+        "intersection": [
+          -1
+        ],
+        "difference": [
+          0
+        ]
+      }
+    }
+  ],
+  "referenceCode": "export function setOperations(a,b) {\n  const x=new Set(a),y=new Set(b),sort=xs=>[...xs].sort((m,n)=>m-n);\n  return {union:sort(new Set([...x,...y])),intersection:sort([...x].filter(n=>y.has(n))),difference:sort([...x].filter(n=>!y.has(n)))};\n}\n"
+}

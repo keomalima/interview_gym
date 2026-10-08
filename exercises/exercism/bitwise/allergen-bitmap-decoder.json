@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "id": "allergen-bitmap-decoder",
+  "title": "Decode an allergy bitmask",
+  "eyebrow": "JavaScript · bitwise",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "medium",
+  "topics": [
+    "bitwise",
+    "language fundamentals"
+  ],
+  "skills": [
+    "bitwise",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Decode a bitmask into an ordered list of allergens.",
+  "durationMinutes": 20,
+  "functionName": "decodeAllergies",
+  "requirements": [
+    "Bits 0..7 correspond to eggs, peanuts, shellfish, strawberries, tomatoes, chocolate, pollen, cats.",
+    "Ignore any bits above 7.",
+    "Return allergens in the order specified here."
+  ],
+  "starterCode": "export function decodeAllergies(score) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Each allergen corresponds to a power of two.",
+    "Use bitwise AND to test whether each bit is set."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        0
+      ],
+      "output": []
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        1
+      ],
+      "output": [
+        "eggs"
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [0]",
+      "input": [
+        0
+      ],
+      "expected": []
+    },
+    {
+      "name": "Alternative scenario — [1]",
+      "input": [
+        1
+      ],
+      "expected": [
+        "eggs"
+      ]
+    },
+    {
+      "name": "Boundary condition — [3]",
+      "input": [
+        3
+      ],
+      "expected": [
+        "eggs",
+        "peanuts"
+      ]
+    },
+    {
+      "name": "Edge case — [255]",
+      "input": [
+        255
+      ],
+      "expected": [
+        "eggs",
+        "peanuts",
+        "shellfish",
+        "strawberries",
+        "tomatoes",
+        "chocolate",
+        "pollen",
+        "cats"
+      ]
+    },
+    {
+      "name": "Additional variation — [257]",
+      "input": [
+        257
+      ],
+      "expected": [
+        "eggs"
+      ]
+    }
+  ],
+  "referenceCode": "export function decodeAllergies(score) {\n  const names=['eggs','peanuts','shellfish','strawberries','tomatoes','chocolate','pollen','cats'];\n  return names.filter((_,i)=>(score&(1<<i))!==0);\n}\n"
+}

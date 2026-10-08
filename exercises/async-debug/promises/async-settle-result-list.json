@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "id": "async-settle-result-list",
+  "title": "Collect fulfilled and rejected job outcomes",
+  "eyebrow": "TypeScript · promises",
+  "category": "practical",
+  "language": "typescript",
+  "difficulty": "medium",
+  "topics": [
+    "promises",
+    "asynchronous programming"
+  ],
+  "skills": [
+    "promises",
+    "debugging and async reasoning"
+  ],
+  "targetRoles": [
+    "fullstack",
+    "frontend",
+    "backend"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Produce a result record for every simulated async job, even failed ones.",
+  "durationMinutes": 25,
+  "functionName": "settleJobResults",
+  "requirements": [
+    "Jobs include ok plus a value or a failure reason; failed jobs reject with Error(reason).",
+    "Return fulfilled records with values, or rejected records with reasons.",
+    "Preserve input order."
+  ],
+  "starterCode": "export async function settleJobResults(jobs: { ok: boolean; value?: unknown; reason?: string }[]) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Promise.all rejects on the first failure, so it is not suitable here.",
+    "Promise.allSettled returns both successful and failed outcomes."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          {
+            "ok": true,
+            "value": 1
+          },
+          {
+            "ok": false,
+            "reason": "timeout"
+          }
+        ]
+      ],
+      "output": [
+        {
+          "status": "fulfilled",
+          "value": 1
+        },
+        {
+          "status": "rejected",
+          "reason": "timeout"
+        }
+      ]
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        []
+      ],
+      "output": []
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[{\"ok\":true,\"value\":1},{\"ok\":false,\"reason\":\"timeout\"}]]",
+      "input": [
+        [
+          {
+            "ok": true,
+            "value": 1
+          },
+          {
+            "ok": false,
+            "reason": "timeout"
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "status": "fulfilled",
+          "value": 1
+        },
+        {
+          "status": "rejected",
+          "reason": "timeout"
+        }
+      ]
+    },
+    {
+      "name": "Alternative scenario — [[]]",
+      "input": [
+        []
+      ],
+      "expected": []
+    },
+    {
+      "name": "Boundary condition — [[{\"ok\":true,\"value\":0}]]",
+      "input": [
+        [
+          {
+            "ok": true,
+            "value": 0
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "status": "fulfilled",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "name": "Edge case — [[{\"ok\":false,\"reason\":\"bad\"},{\"ok\":false,\"reason\":\"worse\"}]]",
+      "input": [
+        [
+          {
+            "ok": false,
+            "reason": "bad"
+          },
+          {
+            "ok": false,
+            "reason": "worse"
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "status": "rejected",
+          "reason": "bad"
+        },
+        {
+          "status": "rejected",
+          "reason": "worse"
+        }
+      ]
+    },
+    {
+      "name": "Additional variation — [[{\"ok\":true,\"value\":null},{\"ok\":true,\"value\":\"ok\"}]]",
+      "input": [
+        [
+          {
+            "ok": true,
+            "value": null
+          },
+          {
+            "ok": true,
+            "value": "ok"
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "status": "fulfilled",
+          "value": null
+        },
+        {
+          "status": "fulfilled",
+          "value": "ok"
+        }
+      ]
+    }
+  ],
+  "referenceCode": "export async function settleJobResults(jobs: { ok: boolean; value?: unknown; reason?: string }[]) {\n  const promises=jobs.map(j=>j.ok?Promise.resolve(j.value):Promise.reject(new Error(j.reason)));\n  const settled=await Promise.allSettled(promises);\n  return settled.map(r=>r.status==='fulfilled'?{status:'fulfilled',value:r.value}:{status:'rejected',reason:r.reason.message});\n}\n"
+}

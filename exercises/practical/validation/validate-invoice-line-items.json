@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "id": "validate-invoice-line-items",
+  "title": "Validate invoice line items",
+  "eyebrow": "TypeScript · validation",
+  "category": "practical",
+  "language": "typescript",
+  "difficulty": "medium",
+  "topics": [
+    "validation",
+    "business logic"
+  ],
+  "skills": [
+    "validation",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Validate invoice records and collect all field-level problems.",
+  "durationMinutes": 25,
+  "functionName": "validateInvoiceLines",
+  "requirements": [
+    "Description must be a nonempty string after trimming.",
+    "Quantity must be a positive safe integer, and unitCents a nonnegative safe integer.",
+    "Return {valid,errors}; messages are line i: description, quantity, price in that order."
+  ],
+  "starterCode": "export function validateInvoiceLines(lines: { description: string; quantity: number; unitCents: number }[]) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Validate every field for every line, without stopping at the first error.",
+    "Build error strings with the zero-based line index and field name."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          {
+            "description": "Service",
+            "quantity": 2,
+            "unitCents": 100
+          }
+        ]
+      ],
+      "output": {
+        "valid": true,
+        "errors": []
+      }
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        []
+      ],
+      "output": {
+        "valid": true,
+        "errors": []
+      }
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[{\"description\":\"Service\",\"quantity\":2,\"unitCents\":100}]]",
+      "input": [
+        [
+          {
+            "description": "Service",
+            "quantity": 2,
+            "unitCents": 100
+          }
+        ]
+      ],
+      "expected": {
+        "valid": true,
+        "errors": []
+      }
+    },
+    {
+      "name": "Alternative scenario — [[]]",
+      "input": [
+        []
+      ],
+      "expected": {
+        "valid": true,
+        "errors": []
+      }
+    },
+    {
+      "name": "Boundary condition — [[{\"description\":\" \",\"quantity\":0,\"unitCents\":-1}]]",
+      "input": [
+        [
+          {
+            "description": " ",
+            "quantity": 0,
+            "unitCents": -1
+          }
+        ]
+      ],
+      "expected": {
+        "valid": false,
+        "errors": [
+          "line 0: description",
+          "line 0: quantity",
+          "line 0: price"
+        ]
+      }
+    },
+    {
+      "name": "Edge case — [[{\"description\":\"item\",\"quantity\":1,\"unitCents\":0}]]",
+      "input": [
+        [
+          {
+            "description": "item",
+            "quantity": 1,
+            "unitCents": 0
+          }
+        ]
+      ],
+      "expected": {
+        "valid": true,
+        "errors": []
+      }
+    },
+    {
+      "name": "Additional variation — [[{\"description\":\"A\",\"quantity\":1.5,\"unitCents\":10}]]",
+      "input": [
+        [
+          {
+            "description": "A",
+            "quantity": 1.5,
+            "unitCents": 10
+          }
+        ]
+      ],
+      "expected": {
+        "valid": false,
+        "errors": [
+          "line 0: quantity"
+        ]
+      }
+    }
+  ],
+  "referenceCode": "export function validateInvoiceLines(lines: { description: string; quantity: number; unitCents: number }[]) {\n  const errors=[];lines.forEach((line,i)=>{\n    if(typeof line.description!=='string'||!line.description.trim())errors.push('line '+i+': description');\n    if(!Number.isSafeInteger(line.quantity)||line.quantity<=0)errors.push('line '+i+': quantity');\n    if(!Number.isSafeInteger(line.unitCents)||line.unitCents<0)errors.push('line '+i+': price');\n  });return {valid:errors.length===0,errors};\n}\n"
+}

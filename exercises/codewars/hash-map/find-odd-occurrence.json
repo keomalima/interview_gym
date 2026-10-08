@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "id": "find-odd-occurrence",
+  "title": "Find the number occurring an odd number of times",
+  "eyebrow": "JavaScript · hash-map",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "hash-map",
+    "javascript fundamentals"
+  ],
+  "skills": [
+    "hash-map",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Identify the integer occurring an odd number of times.",
+  "durationMinutes": 15,
+  "functionName": "oddOccurrence",
+  "requirements": [
+    "Input has at most one value with an odd occurrence count.",
+    "Return null if none exists.",
+    "Negative values and zero are allowed."
+  ],
+  "starterCode": "export function oddOccurrence(nums) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Track how often each number occurs.",
+    "An odd count leaves remainder one when divided by two."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          7
+        ]
+      ],
+      "output": 7
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        [
+          0,
+          1,
+          0,
+          1,
+          0
+        ]
+      ],
+      "output": 0
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[7]]",
+      "input": [
+        [
+          7
+        ]
+      ],
+      "expected": 7
+    },
+    {
+      "name": "Alternative scenario — [[0,1,0,1,0]]",
+      "input": [
+        [
+          0,
+          1,
+          0,
+          1,
+          0
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "name": "Boundary condition — [[1,1,2,2,3]]",
+      "input": [
+        [
+          1,
+          1,
+          2,
+          2,
+          3
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "name": "Edge case — [[]]",
+      "input": [
+        []
+      ],
+      "expected": null
+    },
+    {
+      "name": "Additional variation — [[-1,-1,-2]]",
+      "input": [
+        [
+          -1,
+          -1,
+          -2
+        ]
+      ],
+      "expected": -2
+    }
+  ],
+  "referenceCode": "export function oddOccurrence(nums) {\n  const c=new Map();for(const n of nums)c.set(n,(c.get(n)||0)+1);\n  for(const [n,count] of c)if(count%2===1)return n;\n  return null;\n}\n"
+}

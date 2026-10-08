@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "id": "isogram-case-insensitive",
+  "title": "Check whether a word is an isogram",
+  "eyebrow": "JavaScript · strings",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "strings",
+    "javascript fundamentals"
+  ],
+  "skills": [
+    "strings",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Check whether a word contains any repeating characters.",
+  "durationMinutes": 15,
+  "functionName": "isIsogram",
+  "requirements": [
+    "Compare letters case-insensitively.",
+    "Every character, including punctuation, counts.",
+    "An empty string is valid."
+  ],
+  "starterCode": "export function isIsogram(word) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Normalize case to avoid treating A and a differently.",
+    "Compare unique character count to total length."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        "Dermatoglyphics"
+      ],
+      "output": true
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        "aba"
+      ],
+      "output": false
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [\"Dermatoglyphics\"]",
+      "input": [
+        "Dermatoglyphics"
+      ],
+      "expected": true
+    },
+    {
+      "name": "Alternative scenario — [\"aba\"]",
+      "input": [
+        "aba"
+      ],
+      "expected": false
+    },
+    {
+      "name": "Boundary condition — [\"moOse\"]",
+      "input": [
+        "moOse"
+      ],
+      "expected": false
+    },
+    {
+      "name": "Edge case — [\"\"]",
+      "input": [
+        ""
+      ],
+      "expected": true
+    },
+    {
+      "name": "Additional variation — [\"six-year-old\"]",
+      "input": [
+        "six-year-old"
+      ],
+      "expected": false
+    }
+  ],
+  "referenceCode": "export function isIsogram(word) {const chars=word.toLowerCase();return new Set(chars).size===chars.length;}\n"
+}

@@ -1,0 +1,270 @@
+{
+  "batch": "01",
+  "schemaVersion": 1,
+  "count": 20,
+  "existingIdsAvoided": [
+    "matching-brackets",
+    "request-logs",
+    "target-pair",
+    "token-usage",
+    "usage-billing"
+  ],
+  "exerciseTypes": [
+    "function"
+  ],
+  "exercises": [
+    {
+      "id": "valid-palindrome",
+      "title": "Validate a normalized palindrome",
+      "path": "exercises/algorithms/two-pointers/valid-palindrome.json",
+      "category": "algorithms",
+      "difficulty": "easy",
+      "topics": [
+        "two-pointers",
+        "strings"
+      ],
+      "durationMinutes": 20
+    },
+    {
+      "id": "longest-unique-substring",
+      "title": "Longest substring without repeating characters",
+      "path": "exercises/algorithms/sliding-window/longest-unique-substring.json",
+      "category": "algorithms",
+      "difficulty": "medium",
+      "topics": [
+        "sliding-window",
+        "strings",
+        "hash-maps"
+      ],
+      "durationMinutes": 25
+    },
+    {
+      "id": "search-insert-position",
+      "title": "Search insertion position",
+      "path": "exercises/algorithms/binary-search/search-insert-position.json",
+      "category": "algorithms",
+      "difficulty": "easy",
+      "topics": [
+        "binary-search",
+        "arrays"
+      ],
+      "durationMinutes": 20
+    },
+    {
+      "id": "binary-tree-max-depth",
+      "title": "Maximum depth of a binary tree",
+      "path": "exercises/algorithms/trees/binary-tree-max-depth.json",
+      "category": "algorithms",
+      "difficulty": "easy",
+      "topics": [
+        "bfs",
+        "trees",
+        "queues"
+      ],
+      "durationMinutes": 25
+    },
+    {
+      "id": "count-grid-islands",
+      "title": "Count connected islands",
+      "path": "exercises/algorithms/graphs/count-grid-islands.json",
+      "category": "algorithms",
+      "difficulty": "medium",
+      "topics": [
+        "dfs",
+        "flood-fill",
+        "grids"
+      ],
+      "durationMinutes": 30
+    },
+    {
+      "id": "next-warmer-day",
+      "title": "Days until a warmer temperature",
+      "path": "exercises/algorithms/stacks/next-warmer-day.json",
+      "category": "algorithms",
+      "difficulty": "medium",
+      "topics": [
+        "monotonic-stack",
+        "arrays"
+      ],
+      "durationMinutes": 25
+    },
+    {
+      "id": "merge-overlapping-intervals",
+      "title": "Merge overlapping intervals",
+      "path": "exercises/algorithms/intervals/merge-overlapping-intervals.json",
+      "category": "algorithms",
+      "difficulty": "medium",
+      "topics": [
+        "sorting",
+        "intervals"
+      ],
+      "durationMinutes": 25
+    },
+    {
+      "id": "three-sum-zero",
+      "title": "Find unique zero-sum triples",
+      "path": "exercises/algorithms/two-pointers/three-sum-zero.json",
+      "category": "algorithms",
+      "difficulty": "medium",
+      "topics": [
+        "two-pointers",
+        "sorting",
+        "arrays"
+      ],
+      "durationMinutes": 35
+    },
+    {
+      "id": "independent-counter-streams",
+      "title": "Independent counters using closures",
+      "path": "exercises/fundamentals/closures/independent-counter-streams.json",
+      "category": "practical",
+      "difficulty": "easy",
+      "topics": [
+        "closures",
+        "state"
+      ],
+      "durationMinutes": 20
+    },
+    {
+      "id": "safe-deep-get",
+      "title": "Read a nested object property safely",
+      "path": "exercises/fundamentals/objects/safe-deep-get.json",
+      "category": "practical",
+      "difficulty": "easy",
+      "topics": [
+        "objects",
+        "iteration"
+      ],
+      "durationMinutes": 20
+    },
+    {
+      "id": "parse-query-parameters",
+      "title": "Parse URL query parameters",
+      "path": "exercises/fundamentals/parsing/parse-query-parameters.json",
+      "category": "practical",
+      "difficulty": "medium",
+      "topics": [
+        "parsing",
+        "strings",
+        "objects"
+      ],
+      "durationMinutes": 25
+    },
+    {
+      "id": "flatten-nested-numbers",
+      "title": "Flatten nested number arrays",
+      "path": "exercises/fundamentals/recursion/flatten-nested-numbers.json",
+      "category": "practical",
+      "difficulty": "easy",
+      "topics": [
+        "recursion",
+        "arrays"
+      ],
+      "durationMinutes": 20
+    },
+    {
+      "id": "normalize-customer-directory",
+      "title": "Normalize customer directory records",
+      "path": "exercises/practical/data-processing/normalize-customer-directory.json",
+      "category": "practical",
+      "difficulty": "medium",
+      "topics": [
+        "data-transformation",
+        "validation",
+        "sorting"
+      ],
+      "durationMinutes": 30
+    },
+    {
+      "id": "summarize-order-balances",
+      "title": "Calculate customer order balances",
+      "path": "exercises/practical/data-processing/summarize-order-balances.json",
+      "category": "practical",
+      "difficulty": "medium",
+      "topics": [
+        "data-transformation",
+        "hash-maps",
+        "business-logic"
+      ],
+      "durationMinutes": 30
+    },
+    {
+      "id": "deduplicate-sequenced-events",
+      "title": "Keep the latest event for each ID",
+      "path": "exercises/practical/data-processing/deduplicate-sequenced-events.json",
+      "category": "practical",
+      "difficulty": "medium",
+      "topics": [
+        "hash-maps",
+        "data-transformation",
+        "sorting"
+      ],
+      "durationMinutes": 25
+    },
+    {
+      "id": "settle-simulated-jobs",
+      "title": "Collect outcomes of parallel jobs",
+      "path": "exercises/async/promises/settle-simulated-jobs.json",
+      "category": "practical",
+      "difficulty": "medium",
+      "topics": [
+        "promises",
+        "async-await",
+        "error-handling"
+      ],
+      "durationMinutes": 25
+    },
+    {
+      "id": "retry-simulated-request",
+      "title": "Retry a simulated asynchronous request",
+      "path": "exercises/async/promises/retry-simulated-request.json",
+      "category": "practical",
+      "difficulty": "medium",
+      "topics": [
+        "promises",
+        "async-await",
+        "error-handling"
+      ],
+      "durationMinutes": 30
+    },
+    {
+      "id": "paginate-filtered-records",
+      "title": "Build a filtered pagination response",
+      "path": "exercises/practical/backend-logic/paginate-filtered-records.json",
+      "category": "practical",
+      "difficulty": "easy",
+      "topics": [
+        "pagination",
+        "array-methods",
+        "business-logic"
+      ],
+      "durationMinutes": 25
+    },
+    {
+      "id": "validate-signup-data",
+      "title": "Validate and normalize signup data",
+      "path": "exercises/practical/backend-logic/validate-signup-data.json",
+      "category": "practical",
+      "difficulty": "medium",
+      "topics": [
+        "input-validation",
+        "strings",
+        "business-logic"
+      ],
+      "durationMinutes": 30
+    },
+    {
+      "id": "evaluate-request-quota",
+      "title": "Evaluate a sliding-window request quota",
+      "path": "exercises/practical/backend-logic/evaluate-request-quota.json",
+      "category": "practical",
+      "difficulty": "medium",
+      "topics": [
+        "sliding-window",
+        "timestamps",
+        "business-logic"
+      ],
+      "durationMinutes": 30
+    }
+  ]
+}

@@ -1,0 +1,198 @@
+{
+  "schemaVersion": 1,
+  "id": "next-warmer-day",
+  "title": "Days until a warmer temperature",
+  "eyebrow": "JavaScript · Monotonic Stack",
+  "category": "algorithms",
+  "language": "javascript",
+  "difficulty": "medium",
+  "topics": [
+    "monotonic-stack",
+    "arrays"
+  ],
+  "skills": [
+    "stack invariants",
+    "linear-time reasoning"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "For each day, find how many days must pass until a strictly warmer day.",
+  "durationMinutes": 25,
+  "functionName": "nextWarmerDays",
+  "requirements": [
+    "Input is an array of integer daily temperatures.",
+    "Return an equally sized array: a positive number of days until the next strictly warmer temperature, or 0 if none exists.",
+    "Equal temperatures are not warmer.",
+    "Aim for O(n) time."
+  ],
+  "starterCode": "export function nextWarmerDays(temperatures) {\n  // Use a stack of indices waiting for warmer days.\n  return [];\n}\n",
+  "hints": [
+    "A stack can store indices whose next warmer day has not been found yet.",
+    "When today is warmer than the day at the stack top, that day is resolved.",
+    "Pop all resolved indices before adding the current index."
+  ],
+  "examples": [
+    {
+      "label": "Typical week",
+      "input": [
+        [
+          73,
+          74,
+          75,
+          71,
+          69,
+          72,
+          76,
+          73
+        ]
+      ],
+      "output": [
+        1,
+        1,
+        4,
+        2,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "label": "No warmer days",
+      "input": [
+        [
+          5,
+          4,
+          3
+        ]
+      ],
+      "output": [
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "name": "Typical week",
+      "input": [
+        [
+          73,
+          74,
+          75,
+          71,
+          69,
+          72,
+          76,
+          73
+        ]
+      ],
+      "expected": [
+        1,
+        1,
+        4,
+        2,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "No warmer days",
+      "input": [
+        [
+          5,
+          4,
+          3
+        ]
+      ],
+      "expected": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Increasing",
+      "input": [
+        [
+          1,
+          2,
+          3,
+          4
+        ]
+      ],
+      "expected": [
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "Equal values",
+      "input": [
+        [
+          3,
+          3,
+          3
+        ]
+      ],
+      "expected": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Empty",
+      "input": [
+        []
+      ],
+      "expected": []
+    },
+    {
+      "name": "Delayed warmer",
+      "input": [
+        [
+          3,
+          1,
+          2,
+          4
+        ]
+      ],
+      "expected": [
+        3,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "Negative temperatures",
+      "input": [
+        [
+          0,
+          -2,
+          -1,
+          1
+        ]
+      ],
+      "expected": [
+        3,
+        1,
+        1,
+        0
+      ]
+    }
+  ],
+  "referenceCode": "export function nextWarmerDays(temperatures) {\n  const result = Array(temperatures.length).fill(0);\n  const stack = [];\n  for (let i = 0; i < temperatures.length; i++) {\n    while (stack.length && temperatures[i] > temperatures[stack[stack.length - 1]]) {\n      const past = stack.pop();\n      result[past] = i - past;\n    }\n    stack.push(i);\n  }\n  return result;\n}\n"
+}

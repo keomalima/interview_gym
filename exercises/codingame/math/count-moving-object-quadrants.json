@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "id": "count-moving-object-quadrants",
+  "title": "Count radar contacts by quadrant",
+  "eyebrow": "JavaScript · math",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "math",
+    "parsing and simulation"
+  ],
+  "skills": [
+    "math",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Group two-dimensional points into compass quadrants.",
+  "durationMinutes": 20,
+  "functionName": "countQuadrants",
+  "requirements": [
+    "Positive Y means north, positive X means east.",
+    "Points on either axis count only in axis.",
+    "Return all five keys even if empty."
+  ],
+  "starterCode": "export function countQuadrants(points) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Handle axis points before quadrants.",
+    "Build a key from the signs of X and Y."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          {
+            "x": 1,
+            "y": 1
+          },
+          {
+            "x": -1,
+            "y": 2
+          },
+          {
+            "x": 0,
+            "y": 5
+          }
+        ]
+      ],
+      "output": {
+        "NE": 1,
+        "NW": 1,
+        "SE": 0,
+        "SW": 0,
+        "axis": 1
+      }
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        []
+      ],
+      "output": {
+        "NE": 0,
+        "NW": 0,
+        "SE": 0,
+        "SW": 0,
+        "axis": 0
+      }
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[{\"x\":1,\"y\":1},{\"x\":-1,\"y\":2},{\"x\":0,\"y\":5}]]",
+      "input": [
+        [
+          {
+            "x": 1,
+            "y": 1
+          },
+          {
+            "x": -1,
+            "y": 2
+          },
+          {
+            "x": 0,
+            "y": 5
+          }
+        ]
+      ],
+      "expected": {
+        "NE": 1,
+        "NW": 1,
+        "SE": 0,
+        "SW": 0,
+        "axis": 1
+      }
+    },
+    {
+      "name": "Alternative scenario — [[]]",
+      "input": [
+        []
+      ],
+      "expected": {
+        "NE": 0,
+        "NW": 0,
+        "SE": 0,
+        "SW": 0,
+        "axis": 0
+      }
+    },
+    {
+      "name": "Boundary condition — [[{\"x\":-3,\"y\":-2},{\"x\":5,\"y\":-1}]]",
+      "input": [
+        [
+          {
+            "x": -3,
+            "y": -2
+          },
+          {
+            "x": 5,
+            "y": -1
+          }
+        ]
+      ],
+      "expected": {
+        "NE": 0,
+        "NW": 0,
+        "SE": 1,
+        "SW": 1,
+        "axis": 0
+      }
+    },
+    {
+      "name": "Edge case — [[{\"x\":0,\"y\":0}]]",
+      "input": [
+        [
+          {
+            "x": 0,
+            "y": 0
+          }
+        ]
+      ],
+      "expected": {
+        "NE": 0,
+        "NW": 0,
+        "SE": 0,
+        "SW": 0,
+        "axis": 1
+      }
+    },
+    {
+      "name": "Additional variation — [[{\"x\":2,\"y\":2},{\"x\":3,\"y\":3}]]",
+      "input": [
+        [
+          {
+            "x": 2,
+            "y": 2
+          },
+          {
+            "x": 3,
+            "y": 3
+          }
+        ]
+      ],
+      "expected": {
+        "NE": 2,
+        "NW": 0,
+        "SE": 0,
+        "SW": 0,
+        "axis": 0
+      }
+    }
+  ],
+  "referenceCode": "export function countQuadrants(points) {\n  const result={NE:0,NW:0,SE:0,SW:0,axis:0};\n  for(const p of points){if(p.x===0||p.y===0){result.axis++;continue;}const key=(p.y>0?'N':'S')+(p.x>0?'E':'W');result[key]++;}\n  return result;\n}\n"
+}

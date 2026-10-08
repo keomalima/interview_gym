@@ -1,0 +1,346 @@
+{
+  "id": "request-logs",
+  "category": "practical",
+  "language": "typescript",
+  "title": "Summarize API request logs",
+  "eyebrow": "TypeScript · Data processing",
+  "summary": "Turn noisy request records into a concise reliability report for each route.",
+  "durationMinutes": 30,
+  "functionName": "summarizeRequests",
+  "requirements": [
+    "Deduplicate by requestId, keeping the record with the latest ISO timestamp. For tied timestamps, keep the last record in the input.",
+    "Strip query strings from routes, then group by the resulting route. Sort output by route.",
+    "For each route return count, errorRatePercent for HTTP 5xx responses rounded to one decimal, and p95Ms.",
+    "p95Ms uses the nearest-rank method: sort latencies and select index ceil(0.95 × count) - 1.",
+    "Ignore records with a status outside 100–599 or a negative/nonfinite latency."
+  ],
+  "starterCode": "type RequestLog = { requestId: string; timestamp: string; route: string; status: number; latencyMs: number };\ntype RouteSummary = { route: string; count: number; errorRatePercent: number; p95Ms: number };\n\nexport function summarizeRequests(logs: RequestLog[]): RouteSummary[] {\n  return [];\n}\n",
+  "hints": [
+    "Build a Map from requestId to the latest record. Replace a record when the next timestamp is greater than or equal to the saved one.",
+    "Group only valid deduplicated records by route.split(\"?\")[0].",
+    "Sort numeric latencies, then choose the nearest-rank index. Round error percentage with Math.round(value * 10) / 10."
+  ],
+  "examples": [
+    {
+      "label": "A route with one retry",
+      "input": [
+        [
+          {
+            "requestId": "r1",
+            "timestamp": "2026-01-01T10:00:00Z",
+            "route": "/orders?page=1",
+            "status": 200,
+            "latencyMs": 100
+          },
+          {
+            "requestId": "r2",
+            "timestamp": "2026-01-01T10:01:00Z",
+            "route": "/orders",
+            "status": 503,
+            "latencyMs": 200
+          }
+        ]
+      ],
+      "output": [
+        {
+          "route": "/orders",
+          "count": 2,
+          "errorRatePercent": 50,
+          "p95Ms": 200
+        }
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "name": "Groups routes and calculates error rate",
+      "input": [
+        [
+          {
+            "requestId": "r1",
+            "timestamp": "2026-01-01T10:00:00Z",
+            "route": "/orders?page=1",
+            "status": 200,
+            "latencyMs": 100
+          },
+          {
+            "requestId": "r2",
+            "timestamp": "2026-01-01T10:01:00Z",
+            "route": "/orders",
+            "status": 503,
+            "latencyMs": 200
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "route": "/orders",
+          "count": 2,
+          "errorRatePercent": 50,
+          "p95Ms": 200
+        }
+      ]
+    },
+    {
+      "name": "Keeps the latest duplicate, including tied timestamp",
+      "input": [
+        [
+          {
+            "requestId": "a",
+            "timestamp": "2026-01-02T00:00:00Z",
+            "route": "/b",
+            "status": 200,
+            "latencyMs": 20
+          },
+          {
+            "requestId": "a",
+            "timestamp": "2026-01-01T00:00:00Z",
+            "route": "/a",
+            "status": 500,
+            "latencyMs": 10
+          },
+          {
+            "requestId": "a",
+            "timestamp": "2026-01-02T00:00:00Z",
+            "route": "/b",
+            "status": 502,
+            "latencyMs": 30
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "route": "/b",
+          "count": 1,
+          "errorRatePercent": 100,
+          "p95Ms": 30
+        }
+      ]
+    },
+    {
+      "name": "Uses nearest rank and numeric sorting",
+      "input": [
+        [
+          {
+            "requestId": "1",
+            "timestamp": "2026-01-01T00:00:00Z",
+            "route": "/latency",
+            "status": 200,
+            "latencyMs": 10
+          },
+          {
+            "requestId": "2",
+            "timestamp": "2026-01-01T00:00:00Z",
+            "route": "/latency",
+            "status": 200,
+            "latencyMs": 20
+          },
+          {
+            "requestId": "3",
+            "timestamp": "2026-01-01T00:00:00Z",
+            "route": "/latency",
+            "status": 200,
+            "latencyMs": 30
+          },
+          {
+            "requestId": "4",
+            "timestamp": "2026-01-01T00:00:00Z",
+            "route": "/latency",
+            "status": 200,
+            "latencyMs": 40
+          },
+          {
+            "requestId": "5",
+            "timestamp": "2026-01-01T00:00:00Z",
+            "route": "/latency",
+            "status": 200,
+            "latencyMs": 50
+          },
+          {
+            "requestId": "6",
+            "timestamp": "2026-01-01T00:00:00Z",
+            "route": "/latency",
+            "status": 200,
+            "latencyMs": 60
+          },
+          {
+            "requestId": "7",
+            "timestamp": "2026-01-01T00:00:00Z",
+            "route": "/latency",
+            "status": 200,
+            "latencyMs": 70
+          },
+          {
+            "requestId": "8",
+            "timestamp": "2026-01-01T00:00:00Z",
+            "route": "/latency",
+            "status": 200,
+            "latencyMs": 80
+          },
+          {
+            "requestId": "9",
+            "timestamp": "2026-01-01T00:00:00Z",
+            "route": "/latency",
+            "status": 200,
+            "latencyMs": 90
+          },
+          {
+            "requestId": "10",
+            "timestamp": "2026-01-01T00:00:00Z",
+            "route": "/latency",
+            "status": 200,
+            "latencyMs": 100
+          },
+          {
+            "requestId": "11",
+            "timestamp": "2026-01-01T00:00:00Z",
+            "route": "/latency",
+            "status": 200,
+            "latencyMs": 110
+          },
+          {
+            "requestId": "12",
+            "timestamp": "2026-01-01T00:00:00Z",
+            "route": "/latency",
+            "status": 200,
+            "latencyMs": 120
+          },
+          {
+            "requestId": "13",
+            "timestamp": "2026-01-01T00:00:00Z",
+            "route": "/latency",
+            "status": 200,
+            "latencyMs": 130
+          },
+          {
+            "requestId": "14",
+            "timestamp": "2026-01-01T00:00:00Z",
+            "route": "/latency",
+            "status": 200,
+            "latencyMs": 140
+          },
+          {
+            "requestId": "15",
+            "timestamp": "2026-01-01T00:00:00Z",
+            "route": "/latency",
+            "status": 200,
+            "latencyMs": 150
+          },
+          {
+            "requestId": "16",
+            "timestamp": "2026-01-01T00:00:00Z",
+            "route": "/latency",
+            "status": 200,
+            "latencyMs": 160
+          },
+          {
+            "requestId": "17",
+            "timestamp": "2026-01-01T00:00:00Z",
+            "route": "/latency",
+            "status": 200,
+            "latencyMs": 170
+          },
+          {
+            "requestId": "18",
+            "timestamp": "2026-01-01T00:00:00Z",
+            "route": "/latency",
+            "status": 200,
+            "latencyMs": 180
+          },
+          {
+            "requestId": "19",
+            "timestamp": "2026-01-01T00:00:00Z",
+            "route": "/latency",
+            "status": 200,
+            "latencyMs": 190
+          },
+          {
+            "requestId": "20",
+            "timestamp": "2026-01-01T00:00:00Z",
+            "route": "/latency",
+            "status": 200,
+            "latencyMs": 200
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "route": "/latency",
+          "count": 20,
+          "errorRatePercent": 0,
+          "p95Ms": 190
+        }
+      ]
+    },
+    {
+      "name": "Ignores invalid rows and sorts routes",
+      "input": [
+        [
+          {
+            "requestId": "1",
+            "timestamp": "2026-01-01T00:00:00Z",
+            "route": "/z",
+            "status": 200,
+            "latencyMs": 5
+          },
+          {
+            "requestId": "2",
+            "timestamp": "2026-01-01T00:00:00Z",
+            "route": "/a",
+            "status": 99,
+            "latencyMs": 2
+          },
+          {
+            "requestId": "3",
+            "timestamp": "2026-01-01T00:00:00Z",
+            "route": "/b",
+            "status": 500,
+            "latencyMs": 4
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "route": "/b",
+          "count": 1,
+          "errorRatePercent": 100,
+          "p95Ms": 4
+        },
+        {
+          "route": "/z",
+          "count": 1,
+          "errorRatePercent": 0,
+          "p95Ms": 5
+        }
+      ]
+    },
+    {
+      "name": "Handles empty logs",
+      "input": [
+        []
+      ],
+      "expected": []
+    }
+  ],
+  "referenceCode": "type RequestLog = { requestId: string; timestamp: string; route: string; status: number; latencyMs: number };\ntype RouteSummary = { route: string; count: number; errorRatePercent: number; p95Ms: number };\n\nexport function summarizeRequests(logs: RequestLog[]): RouteSummary[] {\n  const latest = new Map<string, RequestLog>();\n  for (const log of logs) {\n    const previous = latest.get(log.requestId);\n    if (!previous || log.timestamp >= previous.timestamp) latest.set(log.requestId, log);\n  }\n  const grouped = new Map<string, RequestLog[]>();\n  for (const log of latest.values()) {\n    if (!Number.isInteger(log.status) || log.status < 100 || log.status > 599 || !Number.isFinite(log.latencyMs) || log.latencyMs < 0) continue;\n    const route = log.route.split('?')[0];\n    grouped.set(route, [...(grouped.get(route) ?? []), log]);\n  }\n  return [...grouped].sort(([a], [b]) => a.localeCompare(b)).map(([route, entries]) => {\n    const latencies = entries.map(x => x.latencyMs).sort((a, b) => a - b);\n    const errors = entries.filter(x => x.status >= 500).length;\n    return { route, count: entries.length, errorRatePercent: Math.round(errors / entries.length * 1000) / 10, p95Ms: latencies[Math.ceil(entries.length * 0.95) - 1] };\n  });\n}\n",
+  "difficulty": "medium",
+  "topics": [
+    "parsing",
+    "aggregation",
+    "sorting"
+  ],
+  "skills": [
+    "deduplication",
+    "statistics",
+    "data validation"
+  ],
+  "targetRoles": [
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [
+    "usage-billing"
+  ],
+  "schemaVersion": 1
+}

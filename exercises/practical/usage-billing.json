@@ -1,0 +1,218 @@
+{
+  "id": "usage-billing",
+  "category": "practical",
+  "language": "typescript",
+  "title": "Build monthly usage invoices",
+  "eyebrow": "TypeScript · Billing",
+  "summary": "Produce invoices from billable events across customers and a date window. All rates are fictional.",
+  "durationMinutes": 30,
+  "functionName": "buildInvoices",
+  "requirements": [
+    "Use only events with a YYYY-MM-DD date within the inclusive start/end range; ignore disputed events.",
+    "Reject a negative or noninteger units value with an Error.",
+    "Aggregate units per customer before pricing. The first 100 units per customer are free, the next 900 cost 4¢ each, and remaining units cost 2¢ each.",
+    "Return every customer with at least one included event, even if its invoice is 0¢. Sort by customerId.",
+    "Return { customerId, units, amountCents } for each invoice."
+  ],
+  "starterCode": "type UsageEvent = { customerId: string; date: string; units: number; disputed: boolean };\ntype Invoice = { customerId: string; units: number; amountCents: number };\n\nexport function buildInvoices(events: UsageEvent[], start: string, end: string): Invoice[] {\n  return [];\n}\n",
+  "hints": [
+    "Filter by the date strings first. ISO YYYY-MM-DD strings can be compared lexically.",
+    "Aggregate usage in a Map keyed by customerId.",
+    "For total units u, charge Math.min(Math.max(u - 100, 0), 900) × 4 plus Math.max(u - 1000, 0) × 2 cents."
+  ],
+  "examples": [
+    {
+      "label": "One customer across two events",
+      "input": [
+        [
+          {
+            "customerId": "acme",
+            "date": "2026-01-02",
+            "units": 75,
+            "disputed": false
+          },
+          {
+            "customerId": "acme",
+            "date": "2026-01-03",
+            "units": 75,
+            "disputed": false
+          }
+        ],
+        "2026-01-01",
+        "2026-01-31"
+      ],
+      "output": [
+        {
+          "customerId": "acme",
+          "units": 150,
+          "amountCents": 200
+        }
+      ]
+    },
+    {
+      "label": "No included events",
+      "input": [
+        [],
+        "2026-01-01",
+        "2026-01-31"
+      ],
+      "output": []
+    }
+  ],
+  "tests": [
+    {
+      "name": "Applies the free allowance across events",
+      "input": [
+        [
+          {
+            "customerId": "acme",
+            "date": "2026-01-02",
+            "units": 75,
+            "disputed": false
+          },
+          {
+            "customerId": "acme",
+            "date": "2026-01-03",
+            "units": 75,
+            "disputed": false
+          }
+        ],
+        "2026-01-01",
+        "2026-01-31"
+      ],
+      "expected": [
+        {
+          "customerId": "acme",
+          "units": 150,
+          "amountCents": 200
+        }
+      ]
+    },
+    {
+      "name": "Prices both paid tiers",
+      "input": [
+        [
+          {
+            "customerId": "zen",
+            "date": "2026-01-31",
+            "units": 1250,
+            "disputed": false
+          }
+        ],
+        "2026-01-01",
+        "2026-01-31"
+      ],
+      "expected": [
+        {
+          "customerId": "zen",
+          "units": 1250,
+          "amountCents": 4100
+        }
+      ]
+    },
+    {
+      "name": "Filters disputed and out-of-range events",
+      "input": [
+        [
+          {
+            "customerId": "acme",
+            "date": "2026-01-01",
+            "units": 100,
+            "disputed": false
+          },
+          {
+            "customerId": "acme",
+            "date": "2026-02-01",
+            "units": 900,
+            "disputed": false
+          },
+          {
+            "customerId": "zen",
+            "date": "2026-01-04",
+            "units": 500,
+            "disputed": true
+          }
+        ],
+        "2026-01-01",
+        "2026-01-31"
+      ],
+      "expected": [
+        {
+          "customerId": "acme",
+          "units": 100,
+          "amountCents": 0
+        }
+      ]
+    },
+    {
+      "name": "Keeps allowances separate and sorts customers",
+      "input": [
+        [
+          {
+            "customerId": "zeta",
+            "date": "2026-01-02",
+            "units": 101,
+            "disputed": false
+          },
+          {
+            "customerId": "acme",
+            "date": "2026-01-02",
+            "units": 99,
+            "disputed": false
+          }
+        ],
+        "2026-01-01",
+        "2026-01-31"
+      ],
+      "expected": [
+        {
+          "customerId": "acme",
+          "units": 99,
+          "amountCents": 0
+        },
+        {
+          "customerId": "zeta",
+          "units": 101,
+          "amountCents": 4
+        }
+      ]
+    },
+    {
+      "name": "Rejects invalid units",
+      "input": [
+        [
+          {
+            "customerId": "acme",
+            "date": "2026-01-02",
+            "units": -1,
+            "disputed": false
+          }
+        ],
+        "2026-01-01",
+        "2026-01-31"
+      ],
+      "error": "Invalid units"
+    }
+  ],
+  "referenceCode": "type UsageEvent = { customerId: string; date: string; units: number; disputed: boolean };\ntype Invoice = { customerId: string; units: number; amountCents: number };\n\nexport function buildInvoices(events: UsageEvent[], start: string, end: string): Invoice[] {\n  const totals = new Map<string, number>();\n  for (const event of events) {\n    if (!Number.isSafeInteger(event.units) || event.units < 0) throw new Error('Invalid units');\n    if (event.disputed || event.date < start || event.date > end) continue;\n    totals.set(event.customerId, (totals.get(event.customerId) ?? 0) + event.units);\n  }\n  return [...totals].sort(([a], [b]) => a.localeCompare(b)).map(([customerId, units]) => ({\n    customerId, units,\n    amountCents: Math.min(Math.max(units - 100, 0), 900) * 4 + Math.max(units - 1000, 0) * 2,\n  }));\n}\n",
+  "difficulty": "medium",
+  "topics": [
+    "billing",
+    "aggregation",
+    "dates"
+  ],
+  "skills": [
+    "data modeling",
+    "aggregation",
+    "date filtering"
+  ],
+  "targetRoles": [
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [
+    "token-usage"
+  ],
+  "schemaVersion": 1
+}

@@ -1,0 +1,210 @@
+{
+  "id": "token-usage",
+  "category": "practical",
+  "language": "typescript",
+  "title": "Calculate token-usage costs",
+  "eyebrow": "TypeScript · Business logic",
+  "summary": "Turn raw model usage into a customer-facing cost report. Prices below are fictional and supplied for this exercise.",
+  "durationMinutes": 25,
+  "functionName": "calculateTokenCosts",
+  "requirements": [
+    "Return totalCents and a byModel array sorted by model name.",
+    "The fictional prices per 1,000 tokens are: swift input 20¢, cached input 5¢, output 80¢; deep input 60¢, cached input 15¢, output 240¢.",
+    "For each row, bill inputTokens minus cachedInputTokens at the normal input price, cachedInputTokens at the cached price, and outputTokens at the output price.",
+    "Sum each model’s fractional cents before rounding once to the nearest whole cent. totalCents is the sum of rounded model amounts.",
+    "Reject an unknown model, negative/noninteger token count, or cachedInputTokens greater than inputTokens by throwing an Error.",
+    "Include zero-cost models that appear in the input; return an empty array and 0 for no usage."
+  ],
+  "starterCode": "type Usage = { model: 'swift' | 'deep'; inputTokens: number; cachedInputTokens: number; outputTokens: number };\ntype CostReport = { totalCents: number; byModel: { model: string; cents: number }[] };\n\nexport function calculateTokenCosts(usage: Usage[]): CostReport {\n  // Prices are in cents per 1,000 tokens.\n  return { totalCents: 0, byModel: [] };\n}\n",
+  "hints": [
+    "Use a price lookup keyed by model. Validate every row before adding its cost.",
+    "Keep fractional cents in the accumulator. Round only after all rows for a model are combined.",
+    "For a row: (inputTokens - cachedInputTokens) × inputRate / 1000 + cachedInputTokens × cachedRate / 1000 + outputTokens × outputRate / 1000."
+  ],
+  "examples": [
+    {
+      "label": "One swift request",
+      "input": [
+        [
+          {
+            "model": "swift",
+            "inputTokens": 1200,
+            "cachedInputTokens": 200,
+            "outputTokens": 500
+          }
+        ]
+      ],
+      "output": {
+        "totalCents": 61,
+        "byModel": [
+          {
+            "model": "swift",
+            "cents": 61
+          }
+        ]
+      }
+    },
+    {
+      "label": "Empty usage",
+      "input": [
+        []
+      ],
+      "output": {
+        "totalCents": 0,
+        "byModel": []
+      }
+    }
+  ],
+  "tests": [
+    {
+      "name": "Prices normal, cached, and output tokens",
+      "input": [
+        [
+          {
+            "model": "swift",
+            "inputTokens": 1200,
+            "cachedInputTokens": 200,
+            "outputTokens": 500
+          }
+        ]
+      ],
+      "expected": {
+        "totalCents": 61,
+        "byModel": [
+          {
+            "model": "swift",
+            "cents": 61
+          }
+        ]
+      }
+    },
+    {
+      "name": "Groups and sorts models",
+      "input": [
+        [
+          {
+            "model": "swift",
+            "inputTokens": 1000,
+            "cachedInputTokens": 0,
+            "outputTokens": 0
+          },
+          {
+            "model": "deep",
+            "inputTokens": 1000,
+            "cachedInputTokens": 0,
+            "outputTokens": 0
+          }
+        ]
+      ],
+      "expected": {
+        "totalCents": 80,
+        "byModel": [
+          {
+            "model": "deep",
+            "cents": 60
+          },
+          {
+            "model": "swift",
+            "cents": 20
+          }
+        ]
+      }
+    },
+    {
+      "name": "Rounds after aggregation",
+      "input": [
+        [
+          {
+            "model": "swift",
+            "inputTokens": 25,
+            "cachedInputTokens": 0,
+            "outputTokens": 0
+          },
+          {
+            "model": "swift",
+            "inputTokens": 25,
+            "cachedInputTokens": 0,
+            "outputTokens": 0
+          }
+        ]
+      ],
+      "expected": {
+        "totalCents": 1,
+        "byModel": [
+          {
+            "model": "swift",
+            "cents": 1
+          }
+        ]
+      }
+    },
+    {
+      "name": "Keeps zero-cost and empty reports",
+      "input": [
+        [
+          {
+            "model": "deep",
+            "inputTokens": 0,
+            "cachedInputTokens": 0,
+            "outputTokens": 0
+          }
+        ]
+      ],
+      "expected": {
+        "totalCents": 0,
+        "byModel": [
+          {
+            "model": "deep",
+            "cents": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "Rejects unknown models",
+      "input": [
+        [
+          {
+            "model": "mystery",
+            "inputTokens": 1,
+            "cachedInputTokens": 0,
+            "outputTokens": 0
+          }
+        ]
+      ],
+      "error": "Unknown model"
+    },
+    {
+      "name": "Rejects invalid token counts",
+      "input": [
+        [
+          {
+            "model": "swift",
+            "inputTokens": 2,
+            "cachedInputTokens": 3,
+            "outputTokens": 0
+          }
+        ]
+      ],
+      "error": "Invalid token count"
+    }
+  ],
+  "referenceCode": "type Usage = { model: 'swift' | 'deep'; inputTokens: number; cachedInputTokens: number; outputTokens: number };\ntype CostReport = { totalCents: number; byModel: { model: string; cents: number }[] };\n\nexport function calculateTokenCosts(usage: Usage[]): CostReport {\n  const prices: Record<string, { input: number; cached: number; output: number }> = {\n    swift: { input: 20, cached: 5, output: 80 },\n    deep: { input: 60, cached: 15, output: 240 },\n  };\n  const totals = new Map<string, number>();\n  for (const row of usage) {\n    const price = prices[row.model];\n    if (!price) throw new Error('Unknown model: ' + row.model);\n    const counts = [row.inputTokens, row.cachedInputTokens, row.outputTokens];\n    if (counts.some(n => !Number.isSafeInteger(n) || n < 0) || row.cachedInputTokens > row.inputTokens) {\n      throw new Error('Invalid token count');\n    }\n    const cents = ((row.inputTokens - row.cachedInputTokens) * price.input + row.cachedInputTokens * price.cached + row.outputTokens * price.output) / 1000;\n    totals.set(row.model, (totals.get(row.model) ?? 0) + cents);\n  }\n  const byModel = [...totals].sort(([a], [b]) => a.localeCompare(b)).map(([model, cents]) => ({ model, cents: Math.round(cents) }));\n  return { totalCents: byModel.reduce((sum, row) => sum + row.cents, 0), byModel };\n}\n",
+  "difficulty": "medium",
+  "topics": [
+    "billing",
+    "aggregation"
+  ],
+  "skills": [
+    "numeric reasoning",
+    "validation",
+    "aggregation"
+  ],
+  "targetRoles": [
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "schemaVersion": 1
+}

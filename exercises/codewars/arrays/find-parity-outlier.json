@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "id": "find-parity-outlier",
+  "title": "Find the only parity outlier",
+  "eyebrow": "JavaScript · arrays",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "arrays",
+    "javascript fundamentals"
+  ],
+  "skills": [
+    "arrays",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Find the only even or odd number in a list dominated by the other parity.",
+  "durationMinutes": 20,
+  "functionName": "parityOutlier",
+  "requirements": [
+    "There are at least three integers and exactly one outlier.",
+    "Negative values follow ordinary integer parity."
+  ],
+  "starterCode": "export function parityOutlier(nums) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Examine the first three items to find the majority parity.",
+    "Return the value with the opposite parity."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          2,
+          4,
+          0,
+          100,
+          4,
+          11,
+          2602,
+          36
+        ]
+      ],
+      "output": 11
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        [
+          160,
+          3,
+          1719,
+          19,
+          11,
+          13,
+          -21
+        ]
+      ],
+      "output": 160
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[2,4,0,100,4,11,2602,36]]",
+      "input": [
+        [
+          2,
+          4,
+          0,
+          100,
+          4,
+          11,
+          2602,
+          36
+        ]
+      ],
+      "expected": 11
+    },
+    {
+      "name": "Alternative scenario — [[160,3,1719,19,11,13,-21]]",
+      "input": [
+        [
+          160,
+          3,
+          1719,
+          19,
+          11,
+          13,
+          -21
+        ]
+      ],
+      "expected": 160
+    },
+    {
+      "name": "Boundary condition — [[1,3,2]]",
+      "input": [
+        [
+          1,
+          3,
+          2
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "name": "Edge case — [[2,1,4]]",
+      "input": [
+        [
+          2,
+          1,
+          4
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "name": "Additional variation — [[-2,-4,-7,8]]",
+      "input": [
+        [
+          -2,
+          -4,
+          -7,
+          8
+        ]
+      ],
+      "expected": -7
+    }
+  ],
+  "referenceCode": "export function parityOutlier(nums) {\n  const p=nums.slice(0,3).filter(n=>Math.abs(n%2)===1).length>=2?1:0;\n  return nums.find(n=>Math.abs(n%2)!==p);\n}\n"
+}

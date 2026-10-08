@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "id": "convert-dna-to-rna",
+  "title": "Transcribe DNA into RNA",
+  "eyebrow": "JavaScript · strings",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "strings",
+    "language fundamentals"
+  ],
+  "skills": [
+    "strings",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Map each DNA nucleotide to its complementary RNA nucleotide.",
+  "durationMinutes": 15,
+  "functionName": "transcribeDna",
+  "requirements": [
+    "Map G→C, C→G, T→A, A→U.",
+    "Input contains uppercase letters only.",
+    "Throw an Error containing Invalid DNA nucleotide for any invalid character."
+  ],
+  "starterCode": "export function transcribeDna(dna) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Use a lookup table for substitutions.",
+    "Validate each character before appending its complement."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        "GCTA"
+      ],
+      "output": "CGAU"
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        ""
+      ],
+      "output": ""
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [\"GCTA\"]",
+      "input": [
+        "GCTA"
+      ],
+      "expected": "CGAU"
+    },
+    {
+      "name": "Alternative scenario — [\"\"]",
+      "input": [
+        ""
+      ],
+      "expected": ""
+    },
+    {
+      "name": "Boundary condition — [\"ACGTACGT\"]",
+      "input": [
+        "ACGTACGT"
+      ],
+      "expected": "UGCAUGCA"
+    },
+    {
+      "name": "Edge case — [\"TTTT\"]",
+      "input": [
+        "TTTT"
+      ],
+      "expected": "AAAA"
+    },
+    {
+      "name": "Additional variation — [\"G\"]",
+      "input": [
+        "G"
+      ],
+      "expected": "C"
+    },
+    {
+      "name": "Rejects unknown base",
+      "input": [
+        "ACX"
+      ],
+      "error": "Invalid DNA nucleotide"
+    }
+  ],
+  "referenceCode": "export function transcribeDna(dna) {\n  const map={G:'C',C:'G',T:'A',A:'U'};\n  let result='';for(const c of dna){if(!(c in map))throw new Error('Invalid DNA nucleotide');result+=map[c];}\n  return result;\n}\n"
+}

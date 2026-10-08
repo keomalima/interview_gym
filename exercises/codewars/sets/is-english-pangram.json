@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "id": "is-english-pangram",
+  "title": "Check whether a sentence uses every letter",
+  "eyebrow": "JavaScript · sets",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "sets",
+    "javascript fundamentals"
+  ],
+  "skills": [
+    "sets",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Check whether a sentence contains every letter A through Z.",
+  "durationMinutes": 15,
+  "functionName": "isPangram",
+  "requirements": [
+    "Ignore case, punctuation, spaces, and digits.",
+    "Return true only when all 26 English letters occur."
+  ],
+  "starterCode": "export function isPangram(text) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Extract letters using a case-insensitive pattern.",
+    "Count distinct letters using a Set."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        "The quick brown fox jumps over the lazy dog"
+      ],
+      "output": true
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        "hello world"
+      ],
+      "output": false
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [\"The quick brown fox jumps over the lazy dog\"]",
+      "input": [
+        "The quick brown fox jumps over the lazy dog"
+      ],
+      "expected": true
+    },
+    {
+      "name": "Alternative scenario — [\"hello world\"]",
+      "input": [
+        "hello world"
+      ],
+      "expected": false
+    },
+    {
+      "name": "Boundary condition — [\"\"]",
+      "input": [
+        ""
+      ],
+      "expected": false
+    },
+    {
+      "name": "Edge case — [\"abcdefghijklmnopqrstuvwxyz\"]",
+      "input": [
+        "abcdefghijklmnopqrstuvwxyz"
+      ],
+      "expected": true
+    },
+    {
+      "name": "Additional variation — [\"Sphinx of black quartz, judge my vow!\"]",
+      "input": [
+        "Sphinx of black quartz, judge my vow!"
+      ],
+      "expected": true
+    }
+  ],
+  "referenceCode": "export function isPangram(text) {\n  const letters=new Set((text.toLowerCase().match(/[a-z]/g)||[]));return letters.size===26;\n}\n"
+}

@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "id": "binary-string-to-integer",
+  "title": "Convert a binary string to a number",
+  "eyebrow": "JavaScript · strings",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "strings",
+    "language fundamentals"
+  ],
+  "skills": [
+    "strings",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Convert a nonempty binary string to a decimal integer.",
+  "durationMinutes": 15,
+  "functionName": "binaryToDecimal",
+  "requirements": [
+    "Input contains only 0 and 1 and has up to 40 digits.",
+    "Reject empty strings and other characters with an Error containing Invalid binary."
+  ],
+  "starterCode": "export function binaryToDecimal(bits) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Each new bit doubles the accumulated value.",
+    "Add one when the next bit is 1."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        "101"
+      ],
+      "output": 5
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        "0"
+      ],
+      "output": 0
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [\"101\"]",
+      "input": [
+        "101"
+      ],
+      "expected": 5
+    },
+    {
+      "name": "Alternative scenario — [\"0\"]",
+      "input": [
+        "0"
+      ],
+      "expected": 0
+    },
+    {
+      "name": "Boundary condition — [\"11111111\"]",
+      "input": [
+        "11111111"
+      ],
+      "expected": 255
+    },
+    {
+      "name": "Edge case — [\"10000\"]",
+      "input": [
+        "10000"
+      ],
+      "expected": 16
+    },
+    {
+      "name": "Additional variation — [\"1\"]",
+      "input": [
+        "1"
+      ],
+      "expected": 1
+    },
+    {
+      "name": "Rejects invalid binary digits",
+      "input": [
+        "102"
+      ],
+      "error": "Invalid binary"
+    }
+  ],
+  "referenceCode": "export function binaryToDecimal(bits) {\n  if(!/^[01]+$/.test(bits))throw new Error('Invalid binary');\n  return [...bits].reduce((n,bit)=>n*2+Number(bit),0);\n}\n"
+}

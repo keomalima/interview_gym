@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "id": "longest-dry-weather-streak",
+  "title": "Find longest streak of dry days",
+  "eyebrow": "JavaScript · arrays",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "arrays",
+    "parsing and simulation"
+  ],
+  "skills": [
+    "arrays",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Count the longest consecutive run of days with zero rainfall.",
+  "durationMinutes": 15,
+  "functionName": "longestDryStreak",
+  "requirements": [
+    "Rainfall values are nonnegative numbers.",
+    "Only exactly zero counts as dry.",
+    "Return zero for an empty list."
+  ],
+  "starterCode": "export function longestDryStreak(rainfall) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Keep current and best streak lengths.",
+    "Reset the current streak whenever rainfall is nonzero."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "output": 3
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        []
+      ],
+      "output": 0
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[0,0,2,0,0,0,1]]",
+      "input": [
+        [
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "expected": 3
+    },
+    {
+      "name": "Alternative scenario — [[]]",
+      "input": [
+        []
+      ],
+      "expected": 0
+    },
+    {
+      "name": "Boundary condition — [[1,2,3]]",
+      "input": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "name": "Edge case — [[0]]",
+      "input": [
+        [
+          0
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "name": "Additional variation — [[0,0,0,0]]",
+      "input": [
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "expected": 4
+    }
+  ],
+  "referenceCode": "export function longestDryStreak(rainfall) {\n  let best=0,now=0;for(const mm of rainfall){now=mm===0?now+1:0;best=Math.max(best,now);}return best;\n}\n"
+}

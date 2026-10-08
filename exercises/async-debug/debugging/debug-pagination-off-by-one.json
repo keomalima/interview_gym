@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "id": "debug-pagination-off-by-one",
+  "title": "Debug a one-based pagination function",
+  "eyebrow": "JavaScript · debugging",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "debugging",
+    "debugging"
+  ],
+  "skills": [
+    "debugging",
+    "debugging and async reasoning"
+  ],
+  "targetRoles": [
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Repair the one-based page offset in an existing paging helper.",
+  "durationMinutes": 15,
+  "functionName": "pageSlice",
+  "requirements": [
+    "Pages start at 1.",
+    "Return an empty array for an out-of-range page.",
+    "Do not mutate the input."
+  ],
+  "starterCode": "export function pageSlice(items, page, pageSize) {\n  return items.slice(page * pageSize, (page + 1) * pageSize);\n}\n",
+  "hints": [
+    "Array indexes start at zero, but page numbers start at one.",
+    "The start index is (page-1) times pageSize."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        1,
+        2
+      ],
+      "output": [
+        1,
+        2
+      ]
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        2,
+        2
+      ],
+      "output": [
+        3,
+        4
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[1,2,3,4,5],1,2]",
+      "input": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        1,
+        2
+      ],
+      "expected": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "Alternative scenario — [[1,2,3,4,5],2,2]",
+      "input": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        2,
+        2
+      ],
+      "expected": [
+        3,
+        4
+      ]
+    },
+    {
+      "name": "Boundary condition — [[1,2,3],3,2]",
+      "input": [
+        [
+          1,
+          2,
+          3
+        ],
+        3,
+        2
+      ],
+      "expected": []
+    },
+    {
+      "name": "Edge case — [[],1,10]",
+      "input": [
+        [],
+        1,
+        10
+      ],
+      "expected": []
+    },
+    {
+      "name": "Additional variation — [[9],1,1]",
+      "input": [
+        [
+          9
+        ],
+        1,
+        1
+      ],
+      "expected": [
+        9
+      ]
+    }
+  ],
+  "referenceCode": "export function pageSlice(items,page,pageSize) {return items.slice((page-1)*pageSize,page*pageSize);}\n"
+}

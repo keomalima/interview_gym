@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "id": "async-sequential-account-steps",
+  "title": "Apply dependent async account operations",
+  "eyebrow": "TypeScript · promises",
+  "category": "practical",
+  "language": "typescript",
+  "difficulty": "easy",
+  "topics": [
+    "promises",
+    "asynchronous programming"
+  ],
+  "skills": [
+    "promises",
+    "debugging and async reasoning"
+  ],
+  "targetRoles": [
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Process asynchronous balance operations in strict sequence.",
+  "durationMinutes": 20,
+  "functionName": "applyAsyncBalanceSteps",
+  "requirements": [
+    "Each step has type add or subtract and an amount; inputs are valid.",
+    "Await each step before applying the next.",
+    "Return the final numerical balance."
+  ],
+  "starterCode": "export async function applyAsyncBalanceSteps(initial: number, steps: { type: \"add\" | \"subtract\"; amount: number }[]) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "The operations depend on the preceding balance.",
+    "A for...of loop with await makes sequencing explicit."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        100,
+        [
+          {
+            "type": "add",
+            "amount": 20
+          },
+          {
+            "type": "subtract",
+            "amount": 40
+          }
+        ]
+      ],
+      "output": 80
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        0,
+        []
+      ],
+      "output": 0
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [100,[{\"type\":\"add\",\"amount\":20},{\"type\":\"subtract\",\"amount\":40}]]",
+      "input": [
+        100,
+        [
+          {
+            "type": "add",
+            "amount": 20
+          },
+          {
+            "type": "subtract",
+            "amount": 40
+          }
+        ]
+      ],
+      "expected": 80
+    },
+    {
+      "name": "Alternative scenario — [0,[]]",
+      "input": [
+        0,
+        []
+      ],
+      "expected": 0
+    },
+    {
+      "name": "Boundary condition — [10,[{\"type\":\"subtract\",\"amount\":15}]]",
+      "input": [
+        10,
+        [
+          {
+            "type": "subtract",
+            "amount": 15
+          }
+        ]
+      ],
+      "expected": -5
+    },
+    {
+      "name": "Edge case — [5,[{\"type\":\"add\",\"amount\":1},{\"type\":\"add\",\"amount\":2}]]",
+      "input": [
+        5,
+        [
+          {
+            "type": "add",
+            "amount": 1
+          },
+          {
+            "type": "add",
+            "amount": 2
+          }
+        ]
+      ],
+      "expected": 8
+    },
+    {
+      "name": "Additional variation — [50,[{\"type\":\"subtract\",\"amount\":10},{\"type\":\"add\",\"amount\":5}]]",
+      "input": [
+        50,
+        [
+          {
+            "type": "subtract",
+            "amount": 10
+          },
+          {
+            "type": "add",
+            "amount": 5
+          }
+        ]
+      ],
+      "expected": 45
+    }
+  ],
+  "referenceCode": "export async function applyAsyncBalanceSteps(initial: number, steps: { type: \"add\" | \"subtract\"; amount: number }[]) {\n  let balance=initial;\n  for(const step of steps){const op=await Promise.resolve(step);balance=op.type==='add'?balance+op.amount:balance-op.amount;}\n  return balance;\n}\n"
+}

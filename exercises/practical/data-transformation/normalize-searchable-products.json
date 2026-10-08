@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "id": "normalize-searchable-products",
+  "title": "Normalize product data for a search index",
+  "eyebrow": "TypeScript · data-transformation",
+  "category": "practical",
+  "language": "typescript",
+  "difficulty": "easy",
+  "topics": [
+    "data-transformation",
+    "business logic"
+  ],
+  "skills": [
+    "data-transformation",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "frontend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Transform raw products into consistent UI-friendly search records.",
+  "durationMinutes": 20,
+  "functionName": "normalizeProducts",
+  "requirements": [
+    "Convert id to a string.",
+    "Trim names and collapse consecutive whitespace into one space.",
+    "searchKey is the normalized name lowercased; inStock is true when stock>0."
+  ],
+  "starterCode": "export function normalizeProducts(products: { id: string | number; name: string; stock: number }[]) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Normalize the name once.",
+    "Derive the search key and stock flag from that normalized record."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          {
+            "id": 12,
+            "name": "  Blue   Shirt ",
+            "stock": 3
+          }
+        ]
+      ],
+      "output": [
+        {
+          "id": "12",
+          "name": "Blue Shirt",
+          "searchKey": "blue shirt",
+          "inStock": true
+        }
+      ]
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        []
+      ],
+      "output": []
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[{\"id\":12,\"name\":\"  Blue   Shirt \",\"stock\":3}]]",
+      "input": [
+        [
+          {
+            "id": 12,
+            "name": "  Blue   Shirt ",
+            "stock": 3
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "id": "12",
+          "name": "Blue Shirt",
+          "searchKey": "blue shirt",
+          "inStock": true
+        }
+      ]
+    },
+    {
+      "name": "Alternative scenario — [[]]",
+      "input": [
+        []
+      ],
+      "expected": []
+    },
+    {
+      "name": "Boundary condition — [[{\"id\":\"a\",\"name\":\"Coffee\",\"stock\":0}]]",
+      "input": [
+        [
+          {
+            "id": "a",
+            "name": "Coffee",
+            "stock": 0
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "id": "a",
+          "name": "Coffee",
+          "searchKey": "coffee",
+          "inStock": false
+        }
+      ]
+    },
+    {
+      "name": "Edge case — [[{\"id\":1,\"name\":\" A \",\"stock\":-1}]]",
+      "input": [
+        [
+          {
+            "id": 1,
+            "name": " A ",
+            "stock": -1
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "id": "1",
+          "name": "A",
+          "searchKey": "a",
+          "inStock": false
+        }
+      ]
+    },
+    {
+      "name": "Additional variation — [[{\"id\":9,\"name\":\"Laptop Pro\",\"stock\":20},{\"id\":10,\"name\":\"Mouse\",\"s…",
+      "input": [
+        [
+          {
+            "id": 9,
+            "name": "Laptop Pro",
+            "stock": 20
+          },
+          {
+            "id": 10,
+            "name": "Mouse",
+            "stock": 1
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "id": "9",
+          "name": "Laptop Pro",
+          "searchKey": "laptop pro",
+          "inStock": true
+        },
+        {
+          "id": "10",
+          "name": "Mouse",
+          "searchKey": "mouse",
+          "inStock": true
+        }
+      ]
+    }
+  ],
+  "referenceCode": "export function normalizeProducts(products: { id: string | number; name: string; stock: number }[]) {\n  return products.map(p=>({id:String(p.id),name:p.name.trim().replace(/\\s+/g,' '),searchKey:p.name.trim().replace(/\\s+/g,' ').toLowerCase(),inStock:p.stock>0}));\n}\n"
+}

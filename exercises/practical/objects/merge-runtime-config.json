@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "id": "merge-runtime-config",
+  "title": "Merge configuration without mutation",
+  "eyebrow": "TypeScript · objects",
+  "category": "practical",
+  "language": "typescript",
+  "difficulty": "easy",
+  "topics": [
+    "objects",
+    "business logic"
+  ],
+  "skills": [
+    "objects",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "fullstack",
+    "frontend",
+    "backend"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Build a new flat configuration object with optional overrides.",
+  "durationMinutes": 20,
+  "functionName": "mergeRuntimeConfig",
+  "requirements": [
+    "Treat null and undefined override values as absent.",
+    "Valid override values include false, 0 and empty string.",
+    "Do not modify base or overrides."
+  ],
+  "starterCode": "export function mergeRuntimeConfig(base: Record<string, any>, override: Record<string, any>) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Start from a shallow copy of the defaults.",
+    "Overwrite only when the override value is not nullish."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        {
+          "theme": "dark",
+          "timeout": 100
+        },
+        {
+          "timeout": 50
+        }
+      ],
+      "output": {
+        "theme": "dark",
+        "timeout": 50
+      }
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        {
+          "a": 1
+        },
+        {
+          "a": null,
+          "b": 2
+        }
+      ],
+      "output": {
+        "a": 1,
+        "b": 2
+      }
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [{\"theme\":\"dark\",\"timeout\":100},{\"timeout\":50}]",
+      "input": [
+        {
+          "theme": "dark",
+          "timeout": 100
+        },
+        {
+          "timeout": 50
+        }
+      ],
+      "expected": {
+        "theme": "dark",
+        "timeout": 50
+      }
+    },
+    {
+      "name": "Alternative scenario — [{\"a\":1},{\"a\":null,\"b\":2}]",
+      "input": [
+        {
+          "a": 1
+        },
+        {
+          "a": null,
+          "b": 2
+        }
+      ],
+      "expected": {
+        "a": 1,
+        "b": 2
+      }
+    },
+    {
+      "name": "Boundary condition — [{},{}]",
+      "input": [
+        {},
+        {}
+      ],
+      "expected": {}
+    },
+    {
+      "name": "Edge case — [{\"enabled\":true},{\"enabled\":false}]",
+      "input": [
+        {
+          "enabled": true
+        },
+        {
+          "enabled": false
+        }
+      ],
+      "expected": {
+        "enabled": false
+      }
+    },
+    {
+      "name": "Additional variation — [{\"name\":\"x\"},{\"name\":\"\"}]",
+      "input": [
+        {
+          "name": "x"
+        },
+        {
+          "name": ""
+        }
+      ],
+      "expected": {
+        "name": ""
+      }
+    }
+  ],
+  "referenceCode": "export function mergeRuntimeConfig(base: Record<string, any>, override: Record<string, any>) {\n  const result={...base};for(const [key,value] of Object.entries(override)){if(value!==null&&value!==undefined)result[key]=value;}\n  return result;\n}\n"
+}

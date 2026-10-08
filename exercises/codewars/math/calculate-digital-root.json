@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "id": "calculate-digital-root",
+  "title": "Repeated digit sum",
+  "eyebrow": "JavaScript · math",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "math",
+    "javascript fundamentals"
+  ],
+  "skills": [
+    "math",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Add the decimal digits repeatedly until only one digit remains.",
+  "durationMinutes": 15,
+  "functionName": "digitalRoot",
+  "requirements": [
+    "Input is a nonnegative safe integer.",
+    "Return the final single digit."
+  ],
+  "starterCode": "export function digitalRoot(n) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Convert the number to digits and sum them.",
+    "Repeat only while the sum has two or more digits."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        16
+      ],
+      "output": 7
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        942
+      ],
+      "output": 6
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [16]",
+      "input": [
+        16
+      ],
+      "expected": 7
+    },
+    {
+      "name": "Alternative scenario — [942]",
+      "input": [
+        942
+      ],
+      "expected": 6
+    },
+    {
+      "name": "Boundary condition — [0]",
+      "input": [
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "name": "Edge case — [132189]",
+      "input": [
+        132189
+      ],
+      "expected": 6
+    },
+    {
+      "name": "Additional variation — [9]",
+      "input": [
+        9
+      ],
+      "expected": 9
+    }
+  ],
+  "referenceCode": "export function digitalRoot(n) {\n  while(n>=10){n=String(n).split('').reduce((s,c)=>s+Number(c),0);}return n;\n}\n"
+}

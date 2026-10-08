@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "id": "minimum-covering-substring",
+  "title": "Smallest substring covering required characters",
+  "eyebrow": "JavaScript · sliding-window",
+  "category": "algorithms",
+  "language": "javascript",
+  "difficulty": "hard",
+  "topics": [
+    "sliding-window",
+    "algorithms"
+  ],
+  "skills": [
+    "sliding-window",
+    "algorithmic problem solving"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Find the shortest part of a string containing every required character, including duplicates.",
+  "durationMinutes": 35,
+  "functionName": "minimumCoveringWindow",
+  "requirements": [
+    "Comparison is case sensitive.",
+    "Return the empty string when no window exists or target is empty.",
+    "If equally short windows exist, use the earliest one."
+  ],
+  "starterCode": "export function minimumCoveringWindow(text, target) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Keep character counts for the target, including repeated letters.",
+    "Expand right until valid, then shrink left while still valid."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        "ADOBECODEBANC",
+        "ABC"
+      ],
+      "output": "BANC"
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        "a",
+        "aa"
+      ],
+      "output": ""
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [\"ADOBECODEBANC\",\"ABC\"]",
+      "input": [
+        "ADOBECODEBANC",
+        "ABC"
+      ],
+      "expected": "BANC"
+    },
+    {
+      "name": "Alternative scenario — [\"a\",\"aa\"]",
+      "input": [
+        "a",
+        "aa"
+      ],
+      "expected": ""
+    },
+    {
+      "name": "Boundary condition — [\"a\",\"a\"]",
+      "input": [
+        "a",
+        "a"
+      ],
+      "expected": "a"
+    },
+    {
+      "name": "Edge case — [\"hello\",\"\"]",
+      "input": [
+        "hello",
+        ""
+      ],
+      "expected": ""
+    },
+    {
+      "name": "Additional variation — [\"aaab\",\"ab\"]",
+      "input": [
+        "aaab",
+        "ab"
+      ],
+      "expected": "ab"
+    }
+  ],
+  "referenceCode": "export function minimumCoveringWindow(text, target) {\n  if (!target) return '';\n  const need = new Map(); for (const c of target) need.set(c,(need.get(c)||0)+1);\n  let missing = target.length, left = 0, bestStart = 0, bestLen = Infinity;\n  for(let right=0;right<text.length;right++) {\n    const c = text[right]; if((need.get(c)||0)>0) missing--;\n    need.set(c,(need.get(c)||0)-1);\n    while(missing===0) {\n      if(right-left+1<bestLen){bestLen=right-left+1;bestStart=left;}\n      const out=text[left++];need.set(out,(need.get(out)||0)+1);\n      if(need.get(out)>0) missing++;\n    }\n  }\n  return bestLen===Infinity?'':text.slice(bestStart,bestStart+bestLen);\n}\n"
+}

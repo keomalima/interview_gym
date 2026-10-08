@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "id": "validate-isbn10",
+  "title": "Validate an ISBN-10 code",
+  "eyebrow": "JavaScript · strings",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "medium",
+  "topics": [
+    "strings",
+    "language fundamentals"
+  ],
+  "skills": [
+    "strings",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Validate an ISBN-10 identifier, allowing hyphens as separators.",
+  "durationMinutes": 25,
+  "functionName": "isValidIsbn10",
+  "requirements": [
+    "After removing hyphens, exactly ten characters remain.",
+    "Only the last character may be X, representing ten.",
+    "The weighted sum (10 to 1) must be divisible by 11."
+  ],
+  "starterCode": "export function isValidIsbn10(value) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Strip hyphens and validate the character layout.",
+    "Use decreasing weights from the first digit to the last."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        "3-598-21508-8"
+      ],
+      "output": true
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        "3-598-21508-9"
+      ],
+      "output": false
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [\"3-598-21508-8\"]",
+      "input": [
+        "3-598-21508-8"
+      ],
+      "expected": true
+    },
+    {
+      "name": "Alternative scenario — [\"3-598-21508-9\"]",
+      "input": [
+        "3-598-21508-9"
+      ],
+      "expected": false
+    },
+    {
+      "name": "Boundary condition — [\"3-598-21507-X\"]",
+      "input": [
+        "3-598-21507-X"
+      ],
+      "expected": true
+    },
+    {
+      "name": "Edge case — [\"\"]",
+      "input": [
+        ""
+      ],
+      "expected": false
+    },
+    {
+      "name": "Additional variation — [\"0471958697\"]",
+      "input": [
+        "0471958697"
+      ],
+      "expected": true
+    }
+  ],
+  "referenceCode": "export function isValidIsbn10(value) {\n  const s=value.replace(/-/g,'');if(!/^[0-9]{9}[0-9X]$/.test(s))return false;\n  let sum=0;for(let i=0;i<10;i++)sum+=(10-i)*(s[i]==='X'?10:Number(s[i]));\n  return sum%11===0;\n}\n"
+}

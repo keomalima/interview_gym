@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "id": "count-string-vowels",
+  "title": "Count vowels in a string",
+  "eyebrow": "JavaScript · strings",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "strings",
+    "javascript fundamentals"
+  ],
+  "skills": [
+    "strings",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Count the occurrences of A, E, I, O, U.",
+  "durationMinutes": 15,
+  "functionName": "countVowels",
+  "requirements": [
+    "Count vowels regardless of case.",
+    "Y is not a vowel for this task."
+  ],
+  "starterCode": "export function countVowels(text) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Search for vowel matches using a case-insensitive expression.",
+    "An absent match must count as zero."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        "abracadabra"
+      ],
+      "output": 5
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        "xyz"
+      ],
+      "output": 0
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [\"abracadabra\"]",
+      "input": [
+        "abracadabra"
+      ],
+      "expected": 5
+    },
+    {
+      "name": "Alternative scenario — [\"xyz\"]",
+      "input": [
+        "xyz"
+      ],
+      "expected": 0
+    },
+    {
+      "name": "Boundary condition — [\"\"]",
+      "input": [
+        ""
+      ],
+      "expected": 0
+    },
+    {
+      "name": "Edge case — [\"AEIOU\"]",
+      "input": [
+        "AEIOU"
+      ],
+      "expected": 5
+    },
+    {
+      "name": "Additional variation — [\"hello world\"]",
+      "input": [
+        "hello world"
+      ],
+      "expected": 3
+    }
+  ],
+  "referenceCode": "export function countVowels(text) {return (text.match(/[aeiou]/gi)||[]).length;}\n"
+}

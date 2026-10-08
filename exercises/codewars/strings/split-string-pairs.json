@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "id": "split-string-pairs",
+  "title": "Split text into two-character groups",
+  "eyebrow": "JavaScript · strings",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "strings",
+    "javascript fundamentals"
+  ],
+  "skills": [
+    "strings",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Split a string into pairs, padding the last pair if needed.",
+  "durationMinutes": 15,
+  "functionName": "splitIntoPairs",
+  "requirements": [
+    "Read characters from left to right.",
+    "If the final group has one character, append underscore.",
+    "Empty input yields an empty array."
+  ],
+  "starterCode": "export function splitIntoPairs(text) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Advance through the input two characters at a time.",
+    "Use underscore only for a one-character final slice."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        "abc"
+      ],
+      "output": [
+        "ab",
+        "c_"
+      ]
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        "abcdef"
+      ],
+      "output": [
+        "ab",
+        "cd",
+        "ef"
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [\"abc\"]",
+      "input": [
+        "abc"
+      ],
+      "expected": [
+        "ab",
+        "c_"
+      ]
+    },
+    {
+      "name": "Alternative scenario — [\"abcdef\"]",
+      "input": [
+        "abcdef"
+      ],
+      "expected": [
+        "ab",
+        "cd",
+        "ef"
+      ]
+    },
+    {
+      "name": "Boundary condition — [\"\"]",
+      "input": [
+        ""
+      ],
+      "expected": []
+    },
+    {
+      "name": "Edge case — [\"a\"]",
+      "input": [
+        "a"
+      ],
+      "expected": [
+        "a_"
+      ]
+    },
+    {
+      "name": "Additional variation — [\"abcd\"]",
+      "input": [
+        "abcd"
+      ],
+      "expected": [
+        "ab",
+        "cd"
+      ]
+    }
+  ],
+  "referenceCode": "export function splitIntoPairs(text) {const out=[];for(let i=0;i<text.length;i+=2)out.push((text.slice(i,i+2)+'_').slice(0,2));return out;}\n"
+}

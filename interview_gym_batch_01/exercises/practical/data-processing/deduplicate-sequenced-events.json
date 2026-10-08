@@ -1,0 +1,212 @@
+{
+  "schemaVersion": 1,
+  "id": "deduplicate-sequenced-events",
+  "title": "Keep the latest event for each ID",
+  "eyebrow": "JavaScript · Hash Maps",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "medium",
+  "topics": [
+    "hash-maps",
+    "data-transformation",
+    "sorting"
+  ],
+  "skills": [
+    "deduplication",
+    "stable tie-breaking"
+  ],
+  "targetRoles": [
+    "backend",
+    "fullstack",
+    "general"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Collapse event updates into one most-recent entry per ID.",
+  "durationMinutes": 25,
+  "functionName": "deduplicateEvents",
+  "requirements": [
+    "Each event has id (string), sequence (nonnegative integer), and payload (any JSON value).",
+    "For every ID, keep the event with the highest sequence.",
+    "If two events for an ID have the same sequence, keep whichever appears later in the input.",
+    "Return full retained event objects sorted by id lexicographically ascending.",
+    "Do not mutate events or payloads.",
+    "Assume all input events are valid."
+  ],
+  "starterCode": "export function deduplicateEvents(events) {\n  // Keep only the latest event per ID.\n  return [];\n}\n",
+  "hints": [
+    "Use a Map keyed by event ID.",
+    "Replace a stored event if the incoming sequence is greater than or equal to the stored sequence.",
+    "Sort the retained events by their IDs before returning."
+  ],
+  "examples": [
+    {
+      "label": "Updates out of order",
+      "input": [
+        [
+          {
+            "id": "b",
+            "sequence": 1,
+            "payload": "old"
+          },
+          {
+            "id": "a",
+            "sequence": 4,
+            "payload": "a"
+          },
+          {
+            "id": "b",
+            "sequence": 3,
+            "payload": "new"
+          }
+        ]
+      ],
+      "output": [
+        {
+          "id": "a",
+          "sequence": 4,
+          "payload": "a"
+        },
+        {
+          "id": "b",
+          "sequence": 3,
+          "payload": "new"
+        }
+      ]
+    },
+    {
+      "label": "Empty",
+      "input": [
+        []
+      ],
+      "output": []
+    }
+  ],
+  "tests": [
+    {
+      "name": "Updates out of order",
+      "input": [
+        [
+          {
+            "id": "b",
+            "sequence": 1,
+            "payload": "old"
+          },
+          {
+            "id": "a",
+            "sequence": 4,
+            "payload": "a"
+          },
+          {
+            "id": "b",
+            "sequence": 3,
+            "payload": "new"
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "id": "a",
+          "sequence": 4,
+          "payload": "a"
+        },
+        {
+          "id": "b",
+          "sequence": 3,
+          "payload": "new"
+        }
+      ]
+    },
+    {
+      "name": "Empty",
+      "input": [
+        []
+      ],
+      "expected": []
+    },
+    {
+      "name": "Tie uses latest input",
+      "input": [
+        [
+          {
+            "id": "x",
+            "sequence": 5,
+            "payload": "first"
+          },
+          {
+            "id": "x",
+            "sequence": 5,
+            "payload": "second"
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "id": "x",
+          "sequence": 5,
+          "payload": "second"
+        }
+      ]
+    },
+    {
+      "name": "Lower sequence ignored",
+      "input": [
+        [
+          {
+            "id": "x",
+            "sequence": 9,
+            "payload": {
+              "v": 9
+            }
+          },
+          {
+            "id": "x",
+            "sequence": 1,
+            "payload": {
+              "v": 1
+            }
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "id": "x",
+          "sequence": 9,
+          "payload": {
+            "v": 9
+          }
+        }
+      ]
+    },
+    {
+      "name": "Sorted by ID",
+      "input": [
+        [
+          {
+            "id": "z",
+            "sequence": 0,
+            "payload": null
+          },
+          {
+            "id": "a",
+            "sequence": 0,
+            "payload": false
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "id": "a",
+          "sequence": 0,
+          "payload": false
+        },
+        {
+          "id": "z",
+          "sequence": 0,
+          "payload": null
+        }
+      ]
+    }
+  ],
+  "referenceCode": "export function deduplicateEvents(events) {\n  const latest = new Map();\n  for (const event of events) {\n    const old = latest.get(event.id);\n    if (!old || event.sequence >= old.sequence) latest.set(event.id, event);\n  }\n  return [...latest.values()].sort((a,b) => a.id < b.id ? -1 : a.id > b.id ? 1 : 0);\n}\n"
+}

@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "id": "minimum-horse-strength-gap",
+  "title": "Smallest difference between horse strengths",
+  "eyebrow": "JavaScript · sorting",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "sorting",
+    "parsing and simulation"
+  ],
+  "skills": [
+    "sorting",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Return the smallest absolute difference between two horse power ratings.",
+  "durationMinutes": 20,
+  "functionName": "minimumStrengthGap",
+  "requirements": [
+    "Values are integers.",
+    "Return null if fewer than two values are provided.",
+    "Duplicate strengths yield zero."
+  ],
+  "starterCode": "export function minimumStrengthGap(values) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Sort strengths numerically.",
+    "Only adjacent sorted values can have the minimum gap."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          5,
+          8,
+          9,
+          4
+        ]
+      ],
+      "output": 1
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        [
+          1,
+          10
+        ]
+      ],
+      "output": 9
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[5,8,9,4]]",
+      "input": [
+        [
+          5,
+          8,
+          9,
+          4
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "name": "Alternative scenario — [[1,10]]",
+      "input": [
+        [
+          1,
+          10
+        ]
+      ],
+      "expected": 9
+    },
+    {
+      "name": "Boundary condition — [[]]",
+      "input": [
+        []
+      ],
+      "expected": null
+    },
+    {
+      "name": "Edge case — [[3]]",
+      "input": [
+        [
+          3
+        ]
+      ],
+      "expected": null
+    },
+    {
+      "name": "Additional variation — [[7,7,7]]",
+      "input": [
+        [
+          7,
+          7,
+          7
+        ]
+      ],
+      "expected": 0
+    }
+  ],
+  "referenceCode": "export function minimumStrengthGap(values) {\n  if(values.length<2)return null;\n  const sorted=[...values].sort((a,b)=>a-b);let best=Infinity;\n  for(let i=1;i<sorted.length;i++)best=Math.min(best,sorted[i]-sorted[i-1]);return best;\n}\n"
+}

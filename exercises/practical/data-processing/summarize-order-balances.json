@@ -1,0 +1,234 @@
+{
+  "schemaVersion": 1,
+  "id": "summarize-order-balances",
+  "title": "Calculate customer order balances",
+  "eyebrow": "TypeScript · Data Transformation",
+  "category": "practical",
+  "language": "typescript",
+  "difficulty": "medium",
+  "topics": [
+    "data-transformation",
+    "hash-maps",
+    "business-logic"
+  ],
+  "skills": [
+    "aggregation",
+    "validation",
+    "deterministic ordering"
+  ],
+  "targetRoles": [
+    "backend",
+    "fullstack",
+    "general"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Aggregate paid charges and refunds per customer, ignoring pending orders.",
+  "durationMinutes": 30,
+  "functionName": "summarizeOrderBalances",
+  "requirements": [
+    "Each row has customerId (string), amountCents (nonnegative safe integer), and status: paid, refunded, or pending.",
+    "Add paid amounts, subtract refunded amounts, and ignore pending amounts.",
+    "Include every customer present in the input even when their final balance is zero.",
+    "Return { customerId, balanceCents } rows sorted lexicographically by customerId.",
+    "Throw an Error containing \"Invalid order\" for unknown statuses, blank customerIds, or invalid amountCents.",
+    "Do not mutate the input."
+  ],
+  "starterCode": "type Order = { customerId: string; amountCents: number; status: 'paid' | 'refunded' | 'pending' };\nexport function summarizeOrderBalances(orders: Order[]): {customerId: string; balanceCents: number}[] {\n  return [];\n}\n",
+  "hints": [
+    "An accumulator keyed by customerId avoids nested loops.",
+    "Map paid to +amount, refunded to -amount, and pending to 0.",
+    "Convert the accumulator to an array and sort the customer IDs before returning."
+  ],
+  "examples": [
+    {
+      "label": "Paid, refunded and pending",
+      "input": [
+        [
+          {
+            "customerId": "b",
+            "amountCents": 600,
+            "status": "paid"
+          },
+          {
+            "customerId": "a",
+            "amountCents": 900,
+            "status": "paid"
+          },
+          {
+            "customerId": "a",
+            "amountCents": 200,
+            "status": "refunded"
+          },
+          {
+            "customerId": "b",
+            "amountCents": 20,
+            "status": "pending"
+          }
+        ]
+      ],
+      "output": [
+        {
+          "customerId": "a",
+          "balanceCents": 700
+        },
+        {
+          "customerId": "b",
+          "balanceCents": 600
+        }
+      ]
+    },
+    {
+      "label": "Empty",
+      "input": [
+        []
+      ],
+      "output": []
+    }
+  ],
+  "tests": [
+    {
+      "name": "Paid, refunded and pending",
+      "input": [
+        [
+          {
+            "customerId": "b",
+            "amountCents": 600,
+            "status": "paid"
+          },
+          {
+            "customerId": "a",
+            "amountCents": 900,
+            "status": "paid"
+          },
+          {
+            "customerId": "a",
+            "amountCents": 200,
+            "status": "refunded"
+          },
+          {
+            "customerId": "b",
+            "amountCents": 20,
+            "status": "pending"
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "customerId": "a",
+          "balanceCents": 700
+        },
+        {
+          "customerId": "b",
+          "balanceCents": 600
+        }
+      ]
+    },
+    {
+      "name": "Empty",
+      "input": [
+        []
+      ],
+      "expected": []
+    },
+    {
+      "name": "Pending only",
+      "input": [
+        [
+          {
+            "customerId": "u",
+            "amountCents": 500,
+            "status": "pending"
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "customerId": "u",
+          "balanceCents": 0
+        }
+      ]
+    },
+    {
+      "name": "More refunds than charges",
+      "input": [
+        [
+          {
+            "customerId": "x",
+            "amountCents": 10,
+            "status": "paid"
+          },
+          {
+            "customerId": "x",
+            "amountCents": 20,
+            "status": "refunded"
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "customerId": "x",
+          "balanceCents": -10
+        }
+      ]
+    },
+    {
+      "name": "Unknown status",
+      "input": [
+        [
+          {
+            "customerId": "a",
+            "amountCents": 1,
+            "status": "cancelled"
+          }
+        ]
+      ],
+      "error": "Invalid order"
+    },
+    {
+      "name": "Negative cents",
+      "input": [
+        [
+          {
+            "customerId": "a",
+            "amountCents": -1,
+            "status": "paid"
+          }
+        ]
+      ],
+      "error": "Invalid order"
+    },
+    {
+      "name": "Blank id",
+      "input": [
+        [
+          {
+            "customerId": " ",
+            "amountCents": 1,
+            "status": "paid"
+          }
+        ]
+      ],
+      "error": "Invalid order"
+    },
+    {
+      "name": "Zero value",
+      "input": [
+        [
+          {
+            "customerId": "a",
+            "amountCents": 0,
+            "status": "paid"
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "customerId": "a",
+          "balanceCents": 0
+        }
+      ]
+    }
+  ],
+  "referenceCode": "type Order = { customerId: string; amountCents: number; status: 'paid' | 'refunded' | 'pending' };\nexport function summarizeOrderBalances(orders: Order[]): {customerId: string; balanceCents: number}[] {\n  const balances = new Map<string, number>();\n  for (const row of orders) {\n    if (!row.customerId.trim() || !Number.isSafeInteger(row.amountCents) || row.amountCents < 0 || !['paid','refunded','pending'].includes(row.status)) {\n      throw new Error('Invalid order');\n    }\n    const change = row.status === 'paid' ? row.amountCents : row.status === 'refunded' ? -row.amountCents : 0;\n    balances.set(row.customerId, (balances.get(row.customerId) ?? 0) + change);\n  }\n  return [...balances].sort(([a],[b]) => a < b ? -1 : a > b ? 1 : 0).map(([customerId,balanceCents]) => ({customerId,balanceCents}));\n}\n"
+}

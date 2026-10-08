@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "id": "lookup-mime-extension",
+  "title": "Find a MIME type using file extensions",
+  "eyebrow": "JavaScript · parsing",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "parsing",
+    "parsing and simulation"
+  ],
+  "skills": [
+    "parsing",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Identify the MIME type of a filename from a configurable extension table.",
+  "durationMinutes": 20,
+  "functionName": "lookupMime",
+  "requirements": [
+    "Match extension names case-insensitively.",
+    "Only the segment after the last dot determines the extension.",
+    "Return UNKNOWN if no valid extension or match exists."
+  ],
+  "starterCode": "export function lookupMime(entries,filename) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Find the last dot in the filename.",
+    "Normalize extension case and compare it to the supplied table."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          [
+            "html",
+            "text/html"
+          ],
+          [
+            "png",
+            "image/png"
+          ]
+        ],
+        "Photo.PNG"
+      ],
+      "output": "image/png"
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        [
+          [
+            "html",
+            "text/html"
+          ]
+        ],
+        "index.html"
+      ],
+      "output": "text/html"
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[[\"html\",\"text/html\"],[\"png\",\"image/png\"]],\"Photo.PNG\"]",
+      "input": [
+        [
+          [
+            "html",
+            "text/html"
+          ],
+          [
+            "png",
+            "image/png"
+          ]
+        ],
+        "Photo.PNG"
+      ],
+      "expected": "image/png"
+    },
+    {
+      "name": "Alternative scenario — [[[\"html\",\"text/html\"]],\"index.html\"]",
+      "input": [
+        [
+          [
+            "html",
+            "text/html"
+          ]
+        ],
+        "index.html"
+      ],
+      "expected": "text/html"
+    },
+    {
+      "name": "Boundary condition — [[[\"jpg\",\"image/jpeg\"]],\"file\"]",
+      "input": [
+        [
+          [
+            "jpg",
+            "image/jpeg"
+          ]
+        ],
+        "file"
+      ],
+      "expected": "UNKNOWN"
+    },
+    {
+      "name": "Edge case — [[[\"gz\",\"application/gzip\"]],\"archive.tar.gz\"]",
+      "input": [
+        [
+          [
+            "gz",
+            "application/gzip"
+          ]
+        ],
+        "archive.tar.gz"
+      ],
+      "expected": "application/gzip"
+    },
+    {
+      "name": "Additional variation — [[[\"txt\",\"text/plain\"]],\"note.\"]",
+      "input": [
+        [
+          [
+            "txt",
+            "text/plain"
+          ]
+        ],
+        "note."
+      ],
+      "expected": "UNKNOWN"
+    }
+  ],
+  "referenceCode": "export function lookupMime(entries,filename) {\n  const dot=filename.lastIndexOf('.');if(dot<0||dot===filename.length-1)return 'UNKNOWN';\n  const ext=filename.slice(dot+1).toLowerCase();\n  for(const [key,mime] of entries)if(key.toLowerCase()===ext)return mime;\n  return 'UNKNOWN';\n}\n"
+}

@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "id": "remove-consecutive-duplicates",
+  "title": "Collapse adjacent duplicate items",
+  "eyebrow": "JavaScript · arrays",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "arrays",
+    "javascript fundamentals"
+  ],
+  "skills": [
+    "arrays",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Remove only repeated adjacent values while preserving later occurrences.",
+  "durationMinutes": 15,
+  "functionName": "uniqueConsecutive",
+  "requirements": [
+    "Compare array items by strict equality.",
+    "Return a new array.",
+    "A value may appear again after a different value."
+  ],
+  "starterCode": "export function uniqueConsecutive(items) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Compare each item against the last item accepted.",
+    "Do not remove all duplicates globally."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          1,
+          1,
+          2,
+          2,
+          3,
+          1
+        ]
+      ],
+      "output": [
+        1,
+        2,
+        3,
+        1
+      ]
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        [
+          "a",
+          "a",
+          "b",
+          "a"
+        ]
+      ],
+      "output": [
+        "a",
+        "b",
+        "a"
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[1,1,2,2,3,1]]",
+      "input": [
+        [
+          1,
+          1,
+          2,
+          2,
+          3,
+          1
+        ]
+      ],
+      "expected": [
+        1,
+        2,
+        3,
+        1
+      ]
+    },
+    {
+      "name": "Alternative scenario — [[\"a\",\"a\",\"b\",\"a\"]]",
+      "input": [
+        [
+          "a",
+          "a",
+          "b",
+          "a"
+        ]
+      ],
+      "expected": [
+        "a",
+        "b",
+        "a"
+      ]
+    },
+    {
+      "name": "Boundary condition — [[]]",
+      "input": [
+        []
+      ],
+      "expected": []
+    },
+    {
+      "name": "Edge case — [[0,0,0]]",
+      "input": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "expected": [
+        0
+      ]
+    },
+    {
+      "name": "Additional variation — [[1,2,3]]",
+      "input": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected": [
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "referenceCode": "export function uniqueConsecutive(items) {\n  const out=[];for(const x of items)if(!out.length||out[out.length-1]!==x)out.push(x);\n  return out;\n}\n"
+}

@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "id": "count-repeated-characters",
+  "title": "Count distinct repeating characters",
+  "eyebrow": "JavaScript · strings",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "strings",
+    "javascript fundamentals"
+  ],
+  "skills": [
+    "strings",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Count distinct characters that occur more than once, ignoring case.",
+  "durationMinutes": 15,
+  "functionName": "countRepeatedCharacters",
+  "requirements": [
+    "Digits and letters are included; uppercase and lowercase are equivalent.",
+    "Return the number of different repeated characters, not the number of repetitions."
+  ],
+  "starterCode": "export function countRepeatedCharacters(text) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Normalize case first.",
+    "Count occurrences and then count frequencies larger than one."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        "abcde"
+      ],
+      "output": 0
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        "aabbcde"
+      ],
+      "output": 2
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [\"abcde\"]",
+      "input": [
+        "abcde"
+      ],
+      "expected": 0
+    },
+    {
+      "name": "Alternative scenario — [\"aabbcde\"]",
+      "input": [
+        "aabbcde"
+      ],
+      "expected": 2
+    },
+    {
+      "name": "Boundary condition — [\"aA11\"]",
+      "input": [
+        "aA11"
+      ],
+      "expected": 2
+    },
+    {
+      "name": "Edge case — [\"\"]",
+      "input": [
+        ""
+      ],
+      "expected": 0
+    },
+    {
+      "name": "Additional variation — [\"Indivisibilities\"]",
+      "input": [
+        "Indivisibilities"
+      ],
+      "expected": 2
+    }
+  ],
+  "referenceCode": "export function countRepeatedCharacters(text) {\n  const counts=new Map();for(const ch of text.toLowerCase())counts.set(ch,(counts.get(ch)||0)+1);\n  return [...counts.values()].filter(n=>n>1).length;\n}\n"
+}

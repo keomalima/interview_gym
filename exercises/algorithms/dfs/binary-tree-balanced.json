@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "id": "binary-tree-balanced",
+  "title": "Check whether a binary tree is height-balanced",
+  "eyebrow": "JavaScript · dfs",
+  "category": "algorithms",
+  "language": "javascript",
+  "difficulty": "medium",
+  "topics": [
+    "dfs",
+    "algorithms"
+  ],
+  "skills": [
+    "dfs",
+    "algorithmic problem solving"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Check that every node has left/right subtree depths differing by no more than one.",
+  "durationMinutes": 25,
+  "functionName": "isHeightBalanced",
+  "requirements": [
+    "Balance must hold for every node, not only at the root.",
+    "A null tree is balanced.",
+    "Aim for O(n) time."
+  ],
+  "starterCode": "export function isHeightBalanced(root) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Compute subtree heights bottom-up.",
+    "Return a sentinel from an unbalanced subtree to stop work early."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        {
+          "val": 1,
+          "left": {
+            "val": 2
+          },
+          "right": {
+            "val": 3
+          }
+        }
+      ],
+      "output": true
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        {
+          "val": 1,
+          "left": {
+            "val": 2,
+            "left": {
+              "val": 3
+            }
+          }
+        }
+      ],
+      "output": false
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [{\"val\":1,\"left\":{\"val\":2},\"right\":{\"val\":3}}]",
+      "input": [
+        {
+          "val": 1,
+          "left": {
+            "val": 2
+          },
+          "right": {
+            "val": 3
+          }
+        }
+      ],
+      "expected": true
+    },
+    {
+      "name": "Alternative scenario — [{\"val\":1,\"left\":{\"val\":2,\"left\":{\"val\":3}}}]",
+      "input": [
+        {
+          "val": 1,
+          "left": {
+            "val": 2,
+            "left": {
+              "val": 3
+            }
+          }
+        }
+      ],
+      "expected": false
+    },
+    {
+      "name": "Boundary condition — [null]",
+      "input": [
+        null
+      ],
+      "expected": true
+    },
+    {
+      "name": "Edge case — [{\"val\":1}]",
+      "input": [
+        {
+          "val": 1
+        }
+      ],
+      "expected": true
+    },
+    {
+      "name": "Additional variation — [{\"val\":1,\"left\":{\"val\":2,\"left\":{\"val\":3},\"right\":{\"val\":4}},\"right…",
+      "input": [
+        {
+          "val": 1,
+          "left": {
+            "val": 2,
+            "left": {
+              "val": 3
+            },
+            "right": {
+              "val": 4
+            }
+          },
+          "right": {
+            "val": 5
+          }
+        }
+      ],
+      "expected": true
+    }
+  ],
+  "referenceCode": "export function isHeightBalanced(root) {\n  function depth(n){if(!n)return 0;const l=depth(n.left);if(l<0)return -1;const r=depth(n.right);if(r<0||Math.abs(l-r)>1)return -1;return Math.max(l,r)+1;}\n  return depth(root)>=0;\n}\n"
+}

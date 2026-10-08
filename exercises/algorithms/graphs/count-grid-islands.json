@@ -1,0 +1,199 @@
+{
+  "schemaVersion": 1,
+  "id": "count-grid-islands",
+  "title": "Count connected islands",
+  "eyebrow": "JavaScript · Dfs",
+  "category": "algorithms",
+  "language": "javascript",
+  "difficulty": "medium",
+  "topics": [
+    "dfs",
+    "flood-fill",
+    "grids"
+  ],
+  "skills": [
+    "boundary checks",
+    "connected components"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Count groups of orthogonally connected land cells in a rectangular character grid.",
+  "durationMinutes": 30,
+  "functionName": "countGridIslands",
+  "requirements": [
+    "The grid is a rectangular array of rows; each row is an array of strings \"1\" (land) or \"0\" (water).",
+    "Cells connect vertically or horizontally, not diagonally.",
+    "An empty grid returns 0.",
+    "Do not mutate the input grid.",
+    "Aim for O(rows × columns) time."
+  ],
+  "starterCode": "export function countGridIslands(grid) {\n  // Explore each group of adjacent land exactly once.\n  return 0;\n}\n",
+  "hints": [
+    "Scan the grid for land not previously visited.",
+    "For each new island, explore its neighbors with DFS or BFS.",
+    "Use a visited structure or a copied grid so the original grid is preserved."
+  ],
+  "examples": [
+    {
+      "label": "One island",
+      "input": [
+        [
+          [
+            "1",
+            "1",
+            "0"
+          ],
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0"
+          ]
+        ]
+      ],
+      "output": 1
+    },
+    {
+      "label": "Separated land",
+      "input": [
+        [
+          [
+            "1",
+            "0",
+            "1"
+          ]
+        ]
+      ],
+      "output": 2
+    }
+  ],
+  "tests": [
+    {
+      "name": "Empty",
+      "input": [
+        []
+      ],
+      "expected": 0
+    },
+    {
+      "name": "Empty rows",
+      "input": [
+        [
+          []
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "name": "All water",
+      "input": [
+        [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ]
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "name": "One island",
+      "input": [
+        [
+          [
+            "1",
+            "1",
+            "0"
+          ],
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0"
+          ]
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "name": "Separated land",
+      "input": [
+        [
+          [
+            "1",
+            "0",
+            "1"
+          ]
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "name": "Diagonal not connected",
+      "input": [
+        [
+          [
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "1"
+          ]
+        ]
+      ],
+      "expected": 2
+    },
+    {
+      "name": "Complex arrangement",
+      "input": [
+        [
+          [
+            "1",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0",
+            "1"
+          ],
+          [
+            "0",
+            "0",
+            "0",
+            "1"
+          ],
+          [
+            "1",
+            "0",
+            "1",
+            "1"
+          ]
+        ]
+      ],
+      "expected": 3
+    }
+  ],
+  "referenceCode": "export function countGridIslands(grid) {\n  if (grid.length === 0 || grid[0].length === 0) return 0;\n  const rows = grid.length, cols = grid[0].length;\n  const seen = Array.from({ length: rows }, () => Array(cols).fill(false));\n  let islands = 0;\n  for (let r = 0; r < rows; r++) {\n    for (let c = 0; c < cols; c++) {\n      if (grid[r][c] !== '1' || seen[r][c]) continue;\n      islands++;\n      const stack = [[r, c]];\n      seen[r][c] = true;\n      while (stack.length) {\n        const [x, y] = stack.pop();\n        for (const [dx, dy] of [[1,0],[-1,0],[0,1],[0,-1]]) {\n          const nx = x + dx, ny = y + dy;\n          if (nx < 0 || ny < 0 || nx >= rows || ny >= cols) continue;\n          if (grid[nx][ny] === '1' && !seen[nx][ny]) {\n            seen[nx][ny] = true;\n            stack.push([nx, ny]);\n          }\n        }\n      }\n    }\n  }\n  return islands;\n}\n"
+}

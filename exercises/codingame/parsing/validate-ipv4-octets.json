@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "id": "validate-ipv4-octets",
+  "title": "Parse and validate an IPv4 address",
+  "eyebrow": "JavaScript · parsing",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "parsing",
+    "parsing and simulation"
+  ],
+  "skills": [
+    "parsing",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Parse dotted-decimal IPv4 text into four octets.",
+  "durationMinutes": 20,
+  "functionName": "parseIpv4",
+  "requirements": [
+    "Exactly four integers between 0 and 255 are required.",
+    "Reject leading zeros except the digit 0 itself.",
+    "Return null for an invalid address."
+  ],
+  "starterCode": "export function parseIpv4(text) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Split on dots and require exactly four parts.",
+    "Validate digit format and numerical range independently."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        "192.168.1.10"
+      ],
+      "output": [
+        192,
+        168,
+        1,
+        10
+      ]
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        "0.0.0.0"
+      ],
+      "output": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [\"192.168.1.10\"]",
+      "input": [
+        "192.168.1.10"
+      ],
+      "expected": [
+        192,
+        168,
+        1,
+        10
+      ]
+    },
+    {
+      "name": "Alternative scenario — [\"0.0.0.0\"]",
+      "input": [
+        "0.0.0.0"
+      ],
+      "expected": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Boundary condition — [\"256.0.0.1\"]",
+      "input": [
+        "256.0.0.1"
+      ],
+      "expected": null
+    },
+    {
+      "name": "Edge case — [\"01.2.3.4\"]",
+      "input": [
+        "01.2.3.4"
+      ],
+      "expected": null
+    },
+    {
+      "name": "Additional variation — [\"127.0.0\"]",
+      "input": [
+        "127.0.0"
+      ],
+      "expected": null
+    }
+  ],
+  "referenceCode": "export function parseIpv4(text) {\n  const p=text.split('.');if(p.length!==4)return null;\n  const out=[];\n  for(const s of p){if(!/^(0|[1-9]\\d*)$/.test(s))return null;const n=Number(s);if(n>255)return null;out.push(n);}\n  return out;\n}\n"
+}

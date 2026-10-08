@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "id": "safe-deep-get",
+  "title": "Read a nested object property safely",
+  "eyebrow": "TypeScript · Objects",
+  "category": "practical",
+  "language": "typescript",
+  "difficulty": "easy",
+  "topics": [
+    "objects",
+    "iteration"
+  ],
+  "skills": [
+    "null handling",
+    "safe property access"
+  ],
+  "targetRoles": [
+    "frontend",
+    "fullstack",
+    "general"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Retrieve a nested value from JSON data using a dot-separated path.",
+  "durationMinutes": 20,
+  "functionName": "safeDeepGet",
+  "requirements": [
+    "data is a JSON-compatible value and path is a string.",
+    "A nonempty path contains dot-separated property names; numeric path segments index arrays.",
+    "Return fallback when a property does not exist or traversal reaches null or a primitive before the path ends.",
+    "An existing property with value null is returned as null, not replaced by fallback.",
+    "For an empty path, return data unchanged.",
+    "Only access own properties (not inherited properties)."
+  ],
+  "starterCode": "export function safeDeepGet(data: unknown, path: string, fallback: unknown): unknown {\n  // Traverse one path segment at a time.\n  return fallback;\n}\n",
+  "hints": [
+    "Split a nonempty path on dots and visit one segment at a time.",
+    "Before each lookup, check that the current value is an object or array.",
+    "Object.prototype.hasOwnProperty.call distinguishes an absent key from a present null."
+  ],
+  "examples": [
+    {
+      "label": "Nested object",
+      "input": [
+        {
+          "user": {
+            "profile": {
+              "name": "Ada"
+            }
+          }
+        },
+        "user.profile.name",
+        "unknown"
+      ],
+      "output": "Ada"
+    },
+    {
+      "label": "Missing path",
+      "input": [
+        {
+          "user": {}
+        },
+        "user.name",
+        "missing"
+      ],
+      "output": "missing"
+    }
+  ],
+  "tests": [
+    {
+      "name": "Nested object",
+      "input": [
+        {
+          "user": {
+            "profile": {
+              "name": "Ada"
+            }
+          }
+        },
+        "user.profile.name",
+        "unknown"
+      ],
+      "expected": "Ada"
+    },
+    {
+      "name": "Missing path",
+      "input": [
+        {
+          "user": {}
+        },
+        "user.name",
+        "missing"
+      ],
+      "expected": "missing"
+    },
+    {
+      "name": "Null is present",
+      "input": [
+        {
+          "user": {
+            "name": null
+          }
+        },
+        "user.name",
+        "missing"
+      ],
+      "expected": null
+    },
+    {
+      "name": "Array index",
+      "input": [
+        {
+          "items": [
+            {
+              "name": "x"
+            },
+            {
+              "name": "y"
+            }
+          ]
+        },
+        "items.1.name",
+        "?"
+      ],
+      "expected": "y"
+    },
+    {
+      "name": "Cannot continue through null",
+      "input": [
+        {
+          "user": null
+        },
+        "user.name",
+        "fallback"
+      ],
+      "expected": "fallback"
+    },
+    {
+      "name": "Empty path",
+      "input": [
+        {
+          "a": 1
+        },
+        "",
+        "fallback"
+      ],
+      "expected": {
+        "a": 1
+      }
+    },
+    {
+      "name": "Primitive input",
+      "input": [
+        17,
+        "a",
+        "fallback"
+      ],
+      "expected": "fallback"
+    },
+    {
+      "name": "Own property only",
+      "input": [
+        {},
+        "constructor",
+        "missing"
+      ],
+      "expected": "missing"
+    }
+  ],
+  "referenceCode": "export function safeDeepGet(data: unknown, path: string, fallback: unknown): unknown {\n  if (path === '') return data;\n  let current: unknown = data;\n  for (const part of path.split('.')) {\n    if (current === null || typeof current !== 'object') return fallback;\n    if (!Object.prototype.hasOwnProperty.call(current, part)) return fallback;\n    current = (current as Record<string, unknown>)[part];\n  }\n  return current;\n}\n"
+}

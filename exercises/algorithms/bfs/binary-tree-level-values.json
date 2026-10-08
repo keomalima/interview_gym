@@ -1,0 +1,180 @@
+{
+  "schemaVersion": 1,
+  "id": "binary-tree-level-values",
+  "title": "Collect binary tree values by level",
+  "eyebrow": "JavaScript · bfs",
+  "category": "algorithms",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "bfs",
+    "algorithms"
+  ],
+  "skills": [
+    "bfs",
+    "algorithmic problem solving"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Return the values of a binary tree grouped by depth, left to right.",
+  "durationMinutes": 20,
+  "functionName": "treeLevels",
+  "requirements": [
+    "Nodes use {val,left?,right?}; missing or null children are absent.",
+    "Return [] for a null root.",
+    "Each nested array contains one depth level."
+  ],
+  "starterCode": "export function treeLevels(root) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "A queue visits nodes in breadth-first order.",
+    "Process only the queue size recorded at the beginning of each level."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        {
+          "val": 3,
+          "left": {
+            "val": 9
+          },
+          "right": {
+            "val": 20,
+            "left": {
+              "val": 15
+            },
+            "right": {
+              "val": 7
+            }
+          }
+        }
+      ],
+      "output": [
+        [
+          3
+        ],
+        [
+          9,
+          20
+        ],
+        [
+          15,
+          7
+        ]
+      ]
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        null
+      ],
+      "output": []
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [{\"val\":3,\"left\":{\"val\":9},\"right\":{\"val\":20,\"left\":{\"val\":15},\"righ…",
+      "input": [
+        {
+          "val": 3,
+          "left": {
+            "val": 9
+          },
+          "right": {
+            "val": 20,
+            "left": {
+              "val": 15
+            },
+            "right": {
+              "val": 7
+            }
+          }
+        }
+      ],
+      "expected": [
+        [
+          3
+        ],
+        [
+          9,
+          20
+        ],
+        [
+          15,
+          7
+        ]
+      ]
+    },
+    {
+      "name": "Alternative scenario — [null]",
+      "input": [
+        null
+      ],
+      "expected": []
+    },
+    {
+      "name": "Boundary condition — [{\"val\":1}]",
+      "input": [
+        {
+          "val": 1
+        }
+      ],
+      "expected": [
+        [
+          1
+        ]
+      ]
+    },
+    {
+      "name": "Edge case — [{\"val\":1,\"left\":{\"val\":2,\"left\":{\"val\":3}}}]",
+      "input": [
+        {
+          "val": 1,
+          "left": {
+            "val": 2,
+            "left": {
+              "val": 3
+            }
+          }
+        }
+      ],
+      "expected": [
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ]
+      ]
+    },
+    {
+      "name": "Additional variation — [{\"val\":0,\"right\":{\"val\":2}}]",
+      "input": [
+        {
+          "val": 0,
+          "right": {
+            "val": 2
+          }
+        }
+      ],
+      "expected": [
+        [
+          0
+        ],
+        [
+          2
+        ]
+      ]
+    }
+  ],
+  "referenceCode": "export function treeLevels(root) {\n  if(!root)return [];\n  const q=[root],out=[];let head=0;\n  while(head<q.length){const end=q.length,level=[];\n    while(head<end){const n=q[head++];level.push(n.val);if(n.left)q.push(n.left);if(n.right)q.push(n.right);}\n    out.push(level);\n  }\n  return out;\n}\n"
+}

@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "id": "narcissistic-digit-power",
+  "title": "Check a narcissistic number",
+  "eyebrow": "JavaScript · math",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "math",
+    "javascript fundamentals"
+  ],
+  "skills": [
+    "math",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Check whether an integer equals the sum of its digits raised to its digit count.",
+  "durationMinutes": 15,
+  "functionName": "isNarcissistic",
+  "requirements": [
+    "Input is a nonnegative safe integer.",
+    "One-digit numbers are narcissistic."
+  ],
+  "starterCode": "export function isNarcissistic(n) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Count digits first.",
+    "Raise every digit to that count and compare the total to the original."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        153
+      ],
+      "output": true
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        1652
+      ],
+      "output": false
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [153]",
+      "input": [
+        153
+      ],
+      "expected": true
+    },
+    {
+      "name": "Alternative scenario — [1652]",
+      "input": [
+        1652
+      ],
+      "expected": false
+    },
+    {
+      "name": "Boundary condition — [7]",
+      "input": [
+        7
+      ],
+      "expected": true
+    },
+    {
+      "name": "Edge case — [9474]",
+      "input": [
+        9474
+      ],
+      "expected": true
+    },
+    {
+      "name": "Additional variation — [10]",
+      "input": [
+        10
+      ],
+      "expected": false
+    }
+  ],
+  "referenceCode": "export function isNarcissistic(n) {\n  const ds=String(n).split(''),p=ds.length;\n  return ds.reduce((s,d)=>s+Number(d)**p,0)===n;\n}\n"
+}

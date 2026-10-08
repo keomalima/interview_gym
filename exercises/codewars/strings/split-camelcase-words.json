@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "id": "split-camelcase-words",
+  "title": "Insert spaces in camelCase",
+  "eyebrow": "JavaScript · strings",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "strings",
+    "javascript fundamentals"
+  ],
+  "skills": [
+    "strings",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Separate camelCase word boundaries with a single space.",
+  "durationMinutes": 15,
+  "functionName": "splitCamelCase",
+  "requirements": [
+    "Insert a space between a lowercase letter followed by an uppercase letter.",
+    "Preserve all original characters."
+  ],
+  "starterCode": "export function splitCamelCase(text) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Look for a lowercase-to-uppercase transition.",
+    "Insert a space before the uppercase letter at that boundary."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        "camelCasing"
+      ],
+      "output": "camel Casing"
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        "identifier"
+      ],
+      "output": "identifier"
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [\"camelCasing\"]",
+      "input": [
+        "camelCasing"
+      ],
+      "expected": "camel Casing"
+    },
+    {
+      "name": "Alternative scenario — [\"identifier\"]",
+      "input": [
+        "identifier"
+      ],
+      "expected": "identifier"
+    },
+    {
+      "name": "Boundary condition — [\"breakCamelCase\"]",
+      "input": [
+        "breakCamelCase"
+      ],
+      "expected": "break Camel Case"
+    },
+    {
+      "name": "Edge case — [\"\"]",
+      "input": [
+        ""
+      ],
+      "expected": ""
+    },
+    {
+      "name": "Additional variation — [\"aBC\"]",
+      "input": [
+        "aBC"
+      ],
+      "expected": "a BC"
+    }
+  ],
+  "referenceCode": "export function splitCamelCase(text) {return text.replace(/([a-z])([A-Z])/g,'$1 $2');}\n"
+}

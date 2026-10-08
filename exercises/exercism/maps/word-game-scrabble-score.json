@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "id": "word-game-scrabble-score",
+  "title": "Compute a word game tile score",
+  "eyebrow": "JavaScript · maps",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "maps",
+    "language fundamentals"
+  ],
+  "skills": [
+    "maps",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Calculate a Scrabble-like tile score for a word.",
+  "durationMinutes": 20,
+  "functionName": "scrabbleScore",
+  "requirements": [
+    "Letter scores: 1 AEIOULNRST; 2 DG; 3 BCMP; 4 FHVWY; 5 K; 8 JX; 10 QZ.",
+    "Ignore case; input contains only English letters."
+  ],
+  "starterCode": "export function scrabbleScore(word) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Build a lookup from letter to points.",
+    "Add the score of each uppercased letter."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        "cabbage"
+      ],
+      "output": 14
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        "QUIZ"
+      ],
+      "output": 22
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [\"cabbage\"]",
+      "input": [
+        "cabbage"
+      ],
+      "expected": 14
+    },
+    {
+      "name": "Alternative scenario — [\"QUIZ\"]",
+      "input": [
+        "QUIZ"
+      ],
+      "expected": 22
+    },
+    {
+      "name": "Boundary condition — [\"\"]",
+      "input": [
+        ""
+      ],
+      "expected": 0
+    },
+    {
+      "name": "Edge case — [\"a\"]",
+      "input": [
+        "a"
+      ],
+      "expected": 1
+    },
+    {
+      "name": "Additional variation — [\"hello\"]",
+      "input": [
+        "hello"
+      ],
+      "expected": 8
+    }
+  ],
+  "referenceCode": "export function scrabbleScore(word) {\n  const values={1:'AEIOULNRST',2:'DG',3:'BCMP',4:'FHVWY',5:'K',8:'JX',10:'QZ'};\n  let sum=0;for(const c of word.toUpperCase())for(const [value,letters] of Object.entries(values))if(letters.includes(c))sum+=Number(value);\n  return sum;\n}\n"
+}

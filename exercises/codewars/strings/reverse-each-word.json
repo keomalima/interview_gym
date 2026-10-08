@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "id": "reverse-each-word",
+  "title": "Reverse each word without changing spaces",
+  "eyebrow": "JavaScript · strings",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "strings",
+    "javascript fundamentals"
+  ],
+  "skills": [
+    "strings",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Reverse the characters of each space-separated word independently.",
+  "durationMinutes": 15,
+  "functionName": "reverseWordsInPlace",
+  "requirements": [
+    "Do not change the number or positions of spaces.",
+    "Words are separated only by ASCII spaces."
+  ],
+  "starterCode": "export function reverseWordsInPlace(text) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Split on the literal space, not general whitespace.",
+    "Reverse each segment and join with spaces again."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        "Hello world"
+      ],
+      "output": "olleH dlrow"
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        "abc  de"
+      ],
+      "output": "cba  ed"
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [\"Hello world\"]",
+      "input": [
+        "Hello world"
+      ],
+      "expected": "olleH dlrow"
+    },
+    {
+      "name": "Alternative scenario — [\"abc  de\"]",
+      "input": [
+        "abc  de"
+      ],
+      "expected": "cba  ed"
+    },
+    {
+      "name": "Boundary condition — [\"\"]",
+      "input": [
+        ""
+      ],
+      "expected": ""
+    },
+    {
+      "name": "Edge case — [\"  a \"]",
+      "input": [
+        "  a "
+      ],
+      "expected": "  a "
+    },
+    {
+      "name": "Additional variation — [\"one\"]",
+      "input": [
+        "one"
+      ],
+      "expected": "eno"
+    }
+  ],
+  "referenceCode": "export function reverseWordsInPlace(text) {return text.split(' ').map(word=>[...word].reverse().join('')).join(' ');}\n"
+}

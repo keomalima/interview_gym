@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "id": "binary-tree-max-depth",
+  "title": "Maximum depth of a binary tree",
+  "eyebrow": "JavaScript · Bfs",
+  "category": "algorithms",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "bfs",
+    "trees",
+    "queues"
+  ],
+  "skills": [
+    "level-order traversal",
+    "tree traversal"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Count the number of node levels in a binary tree using breadth-first search.",
+  "durationMinutes": 25,
+  "functionName": "maxTreeDepth",
+  "requirements": [
+    "A node is an object with value and optional left/right child nodes; missing or null children are absent.",
+    "Depth is measured in nodes: an empty tree has depth 0, a lone root has depth 1.",
+    "Use breadth-first search and track level boundaries.",
+    "Do not mutate the tree."
+  ],
+  "starterCode": "export function maxTreeDepth(root) {\n  // Visit the tree one level at a time.\n  return 0;\n}\n",
+  "hints": [
+    "Put the root in a queue if it exists.",
+    "At the start of each level, record how many nodes are currently in the queue.",
+    "Process exactly that many nodes, then increment the depth once."
+  ],
+  "examples": [
+    {
+      "label": "Empty",
+      "input": [
+        null
+      ],
+      "output": 0
+    },
+    {
+      "label": "Uneven tree",
+      "input": [
+        {
+          "value": 3,
+          "left": {
+            "value": 9
+          },
+          "right": {
+            "value": 20,
+            "left": {
+              "value": 15
+            },
+            "right": {
+              "value": 7
+            }
+          }
+        }
+      ],
+      "output": 3
+    }
+  ],
+  "tests": [
+    {
+      "name": "Empty",
+      "input": [
+        null
+      ],
+      "expected": 0
+    },
+    {
+      "name": "Lone root",
+      "input": [
+        {
+          "value": 1
+        }
+      ],
+      "expected": 1
+    },
+    {
+      "name": "Right chain",
+      "input": [
+        {
+          "value": 1,
+          "right": {
+            "value": 2,
+            "right": {
+              "value": 3
+            }
+          }
+        }
+      ],
+      "expected": 3
+    },
+    {
+      "name": "Uneven tree",
+      "input": [
+        {
+          "value": 3,
+          "left": {
+            "value": 9
+          },
+          "right": {
+            "value": 20,
+            "left": {
+              "value": 15
+            },
+            "right": {
+              "value": 7
+            }
+          }
+        }
+      ],
+      "expected": 3
+    },
+    {
+      "name": "Balanced two levels",
+      "input": [
+        {
+          "value": 1,
+          "left": {
+            "value": 2
+          },
+          "right": {
+            "value": 3
+          }
+        }
+      ],
+      "expected": 2
+    }
+  ],
+  "referenceCode": "export function maxTreeDepth(root) {\n  if (root == null) return 0;\n  const queue = [root];\n  let head = 0, depth = 0;\n  while (head < queue.length) {\n    const count = queue.length - head;\n    for (let i = 0; i < count; i++) {\n      const node = queue[head++];\n      if (node.left != null) queue.push(node.left);\n      if (node.right != null) queue.push(node.right);\n    }\n    depth++;\n  }\n  return depth;\n}\n"
+}

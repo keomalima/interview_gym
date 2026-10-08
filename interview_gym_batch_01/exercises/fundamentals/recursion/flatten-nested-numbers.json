@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 1,
+  "id": "flatten-nested-numbers",
+  "title": "Flatten nested number arrays",
+  "eyebrow": "JavaScript · Recursion",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "recursion",
+    "arrays"
+  ],
+  "skills": [
+    "recursive traversal",
+    "accumulators"
+  ],
+  "targetRoles": [
+    "frontend",
+    "fullstack",
+    "general"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Flatten an arbitrarily nested JSON array of numbers while preserving their left-to-right order.",
+  "durationMinutes": 20,
+  "functionName": "flattenNestedNumbers",
+  "requirements": [
+    "Input is an array containing finite numbers or nested arrays of the same kind.",
+    "Return one flat array of numbers in their original traversal order.",
+    "Handle empty arrays and any nesting depth supported by the runtime.",
+    "Do not mutate the input.",
+    "Do not use Array.prototype.flat(Infinity)."
+  ],
+  "starterCode": "export function flattenNestedNumbers(items) {\n  // Visit nested arrays recursively.\n  return [];\n}\n",
+  "hints": [
+    "An element is either a number to collect or an array to visit.",
+    "Use a helper that walks each array and appends numbers to one output array.",
+    "Recurse into arrays before continuing with the remaining siblings."
+  ],
+  "examples": [
+    {
+      "label": "Nested values",
+      "input": [
+        [
+          1,
+          [
+            2,
+            [
+              3,
+              4
+            ]
+          ],
+          5
+        ]
+      ],
+      "output": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "label": "Empty",
+      "input": [
+        []
+      ],
+      "output": []
+    }
+  ],
+  "tests": [
+    {
+      "name": "Nested values",
+      "input": [
+        [
+          1,
+          [
+            2,
+            [
+              3,
+              4
+            ]
+          ],
+          5
+        ]
+      ],
+      "expected": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "name": "Empty",
+      "input": [
+        []
+      ],
+      "expected": []
+    },
+    {
+      "name": "Nested empties",
+      "input": [
+        [
+          [],
+          [
+            [],
+            []
+          ]
+        ]
+      ],
+      "expected": []
+    },
+    {
+      "name": "Multiple branches",
+      "input": [
+        [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            [
+              4
+            ]
+          ],
+          5
+        ]
+      ],
+      "expected": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "name": "Negative and zero",
+      "input": [
+        [
+          0,
+          [
+            -1,
+            [
+              2.5
+            ]
+          ]
+        ]
+      ],
+      "expected": [
+        0,
+        -1,
+        2.5
+      ]
+    },
+    {
+      "name": "Already flat",
+      "input": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "expected": [
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "referenceCode": "export function flattenNestedNumbers(items) {\n  const result = [];\n  function visit(list) {\n    for (const value of list) {\n      if (Array.isArray(value)) visit(value);\n      else result.push(value);\n    }\n  }\n  visit(items);\n  return result;\n}\n"
+}

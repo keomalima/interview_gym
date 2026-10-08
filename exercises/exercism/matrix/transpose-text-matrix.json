@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "id": "transpose-text-matrix",
+  "title": "Transpose a rectangular matrix",
+  "eyebrow": "JavaScript · matrix",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "matrix",
+    "language fundamentals"
+  ],
+  "skills": [
+    "matrix",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Swap matrix rows and columns.",
+  "durationMinutes": 20,
+  "functionName": "transposeMatrix",
+  "requirements": [
+    "All input rows have equal length.",
+    "Return a new matrix without mutating the input.",
+    "An empty matrix returns []."
+  ],
+  "starterCode": "export function transposeMatrix(rows) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Every input column becomes one output row.",
+    "Output cell (c,r) is input cell (r,c)."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            4,
+            5,
+            6
+          ]
+        ]
+      ],
+      "output": [
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          6
+        ]
+      ]
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        [
+          [
+            1
+          ]
+        ]
+      ],
+      "output": [
+        [
+          1
+        ]
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[[1,2,3],[4,5,6]]]",
+      "input": [
+        [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            4,
+            5,
+            6
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          6
+        ]
+      ]
+    },
+    {
+      "name": "Alternative scenario — [[[1]]]",
+      "input": [
+        [
+          [
+            1
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          1
+        ]
+      ]
+    },
+    {
+      "name": "Boundary condition — [[]]",
+      "input": [
+        []
+      ],
+      "expected": []
+    },
+    {
+      "name": "Edge case — [[[1,2,3]]]",
+      "input": [
+        [
+          [
+            1,
+            2,
+            3
+          ]
+        ]
+      ],
+      "expected": [
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ]
+      ]
+    },
+    {
+      "name": "Additional variation — [[[],[]]]",
+      "input": [
+        [
+          [],
+          []
+        ]
+      ],
+      "expected": []
+    }
+  ],
+  "referenceCode": "export function transposeMatrix(rows) {\n  if(!rows.length)return [];\n  return Array.from({length:rows[0].length},(_,c)=>rows.map(row=>row[c]));\n}\n"
+}

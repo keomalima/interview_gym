@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "id": "multiplicative-persistence",
+  "title": "Count digit-multiplication steps",
+  "eyebrow": "JavaScript · math",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "math",
+    "javascript fundamentals"
+  ],
+  "skills": [
+    "math",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Count how many times digits must be multiplied together to produce a single-digit result.",
+  "durationMinutes": 15,
+  "functionName": "multiplicativePersistence",
+  "requirements": [
+    "Input is a nonnegative safe integer.",
+    "A single-digit input requires zero steps."
+  ],
+  "starterCode": "export function multiplicativePersistence(n) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "One step replaces n with the product of its digits.",
+    "Repeat while more than one digit remains."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        39
+      ],
+      "output": 3
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        999
+      ],
+      "output": 4
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [39]",
+      "input": [
+        39
+      ],
+      "expected": 3
+    },
+    {
+      "name": "Alternative scenario — [999]",
+      "input": [
+        999
+      ],
+      "expected": 4
+    },
+    {
+      "name": "Boundary condition — [4]",
+      "input": [
+        4
+      ],
+      "expected": 0
+    },
+    {
+      "name": "Edge case — [25]",
+      "input": [
+        25
+      ],
+      "expected": 2
+    },
+    {
+      "name": "Additional variation — [0]",
+      "input": [
+        0
+      ],
+      "expected": 0
+    }
+  ],
+  "referenceCode": "export function multiplicativePersistence(n) {\n  let steps=0;while(n>=10){n=String(n).split('').reduce((p,c)=>p*Number(c),1);steps++;}return steps;\n}\n"
+}

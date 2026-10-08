@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "id": "factorize-prime-numbers",
+  "title": "Return the prime factors of an integer",
+  "eyebrow": "JavaScript · math",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "medium",
+  "topics": [
+    "math",
+    "language fundamentals"
+  ],
+  "skills": [
+    "math",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Express an integer as a sorted list of prime factors with multiplicity.",
+  "durationMinutes": 25,
+  "functionName": "primeFactors",
+  "requirements": [
+    "Input is a positive safe integer.",
+    "Return [] for 1.",
+    "Repeated prime factors appear repeatedly."
+  ],
+  "starterCode": "export function primeFactors(n) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Try potential divisors starting from two.",
+    "Divide repeatedly by each factor before moving onward."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        1
+      ],
+      "output": []
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        2
+      ],
+      "output": [
+        2
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [1]",
+      "input": [
+        1
+      ],
+      "expected": []
+    },
+    {
+      "name": "Alternative scenario — [2]",
+      "input": [
+        2
+      ],
+      "expected": [
+        2
+      ]
+    },
+    {
+      "name": "Boundary condition — [12]",
+      "input": [
+        12
+      ],
+      "expected": [
+        2,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "Edge case — [315]",
+      "input": [
+        315
+      ],
+      "expected": [
+        3,
+        3,
+        5,
+        7
+      ]
+    },
+    {
+      "name": "Additional variation — [97]",
+      "input": [
+        97
+      ],
+      "expected": [
+        97
+      ]
+    }
+  ],
+  "referenceCode": "export function primeFactors(n) {\n  const out=[];\n  for(let d=2;d*d<=n;d++){while(n%d===0){out.push(d);n/=d;}}\n  if(n>1)out.push(n);return out;\n}\n"
+}

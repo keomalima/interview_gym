@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "id": "count-message-words",
+  "title": "Build a message word-frequency table",
+  "eyebrow": "JavaScript · parsing",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "parsing",
+    "parsing and simulation"
+  ],
+  "skills": [
+    "parsing",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Count alphanumeric words in a message and return alphabetical frequency entries.",
+  "durationMinutes": 20,
+  "functionName": "messageWordCounts",
+  "requirements": [
+    "Words contain ASCII letters and digits; punctuation separates words.",
+    "Compare case-insensitively.",
+    "Return sorted {word,count} objects."
+  ],
+  "starterCode": "export function messageWordCounts(text) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Normalize case and tokenize using a regex.",
+    "Accumulate counts and then sort keys alphabetically."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        "Hello, hello world!"
+      ],
+      "output": [
+        {
+          "word": "hello",
+          "count": 2
+        },
+        {
+          "word": "world",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        ""
+      ],
+      "output": []
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [\"Hello, hello world!\"]",
+      "input": [
+        "Hello, hello world!"
+      ],
+      "expected": [
+        {
+          "word": "hello",
+          "count": 2
+        },
+        {
+          "word": "world",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "name": "Alternative scenario — [\"\"]",
+      "input": [
+        ""
+      ],
+      "expected": []
+    },
+    {
+      "name": "Boundary condition — [\"ONE one one TWO\"]",
+      "input": [
+        "ONE one one TWO"
+      ],
+      "expected": [
+        {
+          "word": "one",
+          "count": 3
+        },
+        {
+          "word": "two",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "name": "Edge case — [\"42 ways to 42\"]",
+      "input": [
+        "42 ways to 42"
+      ],
+      "expected": [
+        {
+          "word": "42",
+          "count": 2
+        },
+        {
+          "word": "to",
+          "count": 1
+        },
+        {
+          "word": "ways",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "name": "Additional variation — [\"a-b a b\"]",
+      "input": [
+        "a-b a b"
+      ],
+      "expected": [
+        {
+          "word": "a",
+          "count": 2
+        },
+        {
+          "word": "b",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "referenceCode": "export function messageWordCounts(text) {\n  const tokens=text.toLowerCase().match(/[a-z0-9]+/g)||[],count={};\n  for(const word of tokens)count[word]=(count[word]||0)+1;\n  return Object.entries(count).sort(([a],[b])=>a.localeCompare(b)).map(([word,times])=>({word,count:times}));\n}\n"
+}

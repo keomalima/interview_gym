@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "id": "closest-defibrillator-location",
+  "title": "Choose the nearest emergency station",
+  "eyebrow": "JavaScript · math",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "medium",
+  "topics": [
+    "math",
+    "parsing and simulation"
+  ],
+  "skills": [
+    "math",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Find the closest station to latitude/longitude coordinates by approximate geographic distance.",
+  "durationMinutes": 25,
+  "functionName": "closestStation",
+  "requirements": [
+    "Coordinates are decimal degrees; use x=ΔlongitudeRadians*cos(meanLatitudeRadians), y=ΔlatitudeRadians, d=6371*sqrt(x²+y²).",
+    "Return the first station name in ties, or null for no stations."
+  ],
+  "starterCode": "export function closestStation(lat,lon,stations) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Convert differences to radians.",
+    "Compute squared planar angular distance for each station and keep the nearest."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        48.85,
+        2.35,
+        [
+          {
+            "name": "A",
+            "lat": 48.86,
+            "lon": 2.35
+          },
+          {
+            "name": "B",
+            "lat": 48.9,
+            "lon": 2.5
+          }
+        ]
+      ],
+      "output": "A"
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        0,
+        0,
+        [
+          {
+            "name": "Origin",
+            "lat": 0,
+            "lon": 0
+          }
+        ]
+      ],
+      "output": "Origin"
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [48.85,2.35,[{\"name\":\"A\",\"lat\":48.86,\"lon\":2.35},{\"name\":\"B\",\"lat\":4…",
+      "input": [
+        48.85,
+        2.35,
+        [
+          {
+            "name": "A",
+            "lat": 48.86,
+            "lon": 2.35
+          },
+          {
+            "name": "B",
+            "lat": 48.9,
+            "lon": 2.5
+          }
+        ]
+      ],
+      "expected": "A"
+    },
+    {
+      "name": "Alternative scenario — [0,0,[{\"name\":\"Origin\",\"lat\":0,\"lon\":0}]]",
+      "input": [
+        0,
+        0,
+        [
+          {
+            "name": "Origin",
+            "lat": 0,
+            "lon": 0
+          }
+        ]
+      ],
+      "expected": "Origin"
+    },
+    {
+      "name": "Boundary condition — [0,0,[]]",
+      "input": [
+        0,
+        0,
+        []
+      ],
+      "expected": null
+    },
+    {
+      "name": "Edge case — [10,10,[{\"name\":\"Far\",\"lat\":12,\"lon\":12},{\"name\":\"Near\",\"lat\":10.01,…",
+      "input": [
+        10,
+        10,
+        [
+          {
+            "name": "Far",
+            "lat": 12,
+            "lon": 12
+          },
+          {
+            "name": "Near",
+            "lat": 10.01,
+            "lon": 10
+          }
+        ]
+      ],
+      "expected": "Near"
+    },
+    {
+      "name": "Additional variation — [40,-75,[{\"name\":\"West\",\"lat\":40,\"lon\":-76},{\"name\":\"East\",\"lat\":40,…",
+      "input": [
+        40,
+        -75,
+        [
+          {
+            "name": "West",
+            "lat": 40,
+            "lon": -76
+          },
+          {
+            "name": "East",
+            "lat": 40,
+            "lon": -74.9
+          }
+        ]
+      ],
+      "expected": "East"
+    }
+  ],
+  "referenceCode": "export function closestStation(lat,lon,stations) {\n  if(!stations.length)return null;\n  const radians=x=>x*Math.PI/180;\n  let closest=null,best=Infinity;\n  for(const s of stations){const x=radians(s.lon-lon)*Math.cos(radians((lat+s.lat)/2)),y=radians(s.lat-lat);const d=6371*Math.sqrt(x*x+y*y);\n    if(d<best){best=d;closest=s.name;}}\n  return closest;\n}\n"
+}

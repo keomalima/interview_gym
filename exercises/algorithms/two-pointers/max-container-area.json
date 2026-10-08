@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "id": "max-container-area",
+  "title": "Largest container of water",
+  "eyebrow": "JavaScript · two-pointers",
+  "category": "algorithms",
+  "language": "javascript",
+  "difficulty": "medium",
+  "topics": [
+    "two-pointers",
+    "algorithms"
+  ],
+  "skills": [
+    "two-pointers",
+    "algorithmic problem solving"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Choose two vertical lines that hold the most water.",
+  "durationMinutes": 25,
+  "functionName": "maxContainerArea",
+  "requirements": [
+    "Return width times the shorter height.",
+    "Return zero with fewer than two lines.",
+    "Use O(n) time."
+  ],
+  "starterCode": "export function maxContainerArea(heights) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Begin with the widest possible pair.",
+    "Move the pointer on the shorter side because the taller side cannot improve that width."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          1,
+          8,
+          6,
+          2,
+          5,
+          4,
+          8,
+          3,
+          7
+        ]
+      ],
+      "output": 49
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        [
+          1,
+          1
+        ]
+      ],
+      "output": 1
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[1,8,6,2,5,4,8,3,7]]",
+      "input": [
+        [
+          1,
+          8,
+          6,
+          2,
+          5,
+          4,
+          8,
+          3,
+          7
+        ]
+      ],
+      "expected": 49
+    },
+    {
+      "name": "Alternative scenario — [[1,1]]",
+      "input": [
+        [
+          1,
+          1
+        ]
+      ],
+      "expected": 1
+    },
+    {
+      "name": "Boundary condition — [[]]",
+      "input": [
+        []
+      ],
+      "expected": 0
+    },
+    {
+      "name": "Edge case — [[5]]",
+      "input": [
+        [
+          5
+        ]
+      ],
+      "expected": 0
+    },
+    {
+      "name": "Additional variation — [[4,3,2,1,4]]",
+      "input": [
+        [
+          4,
+          3,
+          2,
+          1,
+          4
+        ]
+      ],
+      "expected": 16
+    }
+  ],
+  "referenceCode": "export function maxContainerArea(heights) {\n  let l = 0, r = heights.length - 1, best = 0;\n  while (l < r) { best = Math.max(best, (r - l) * Math.min(heights[l], heights[r])); if (heights[l] <= heights[r]) l++; else r--; }\n  return best;\n}\n"
+}

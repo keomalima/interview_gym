@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "id": "count-dna-nucleotides",
+  "title": "Count each DNA nucleotide",
+  "eyebrow": "JavaScript · maps",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "maps",
+    "language fundamentals"
+  ],
+  "skills": [
+    "maps",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Report counts of A, C, G and T in a DNA sequence.",
+  "durationMinutes": 20,
+  "functionName": "countNucleotides",
+  "requirements": [
+    "Return an object containing all four keys even when their counts are zero.",
+    "Throw an Error containing Invalid nucleotide for other characters.",
+    "Input is uppercase."
+  ],
+  "starterCode": "export function countNucleotides(dna) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Initialize every nucleotide count to zero.",
+    "Increment counts as you scan the input."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        "AACCGGT"
+      ],
+      "output": {
+        "A": 2,
+        "C": 2,
+        "G": 2,
+        "T": 1
+      }
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        ""
+      ],
+      "output": {
+        "A": 0,
+        "C": 0,
+        "G": 0,
+        "T": 0
+      }
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [\"AACCGGT\"]",
+      "input": [
+        "AACCGGT"
+      ],
+      "expected": {
+        "A": 2,
+        "C": 2,
+        "G": 2,
+        "T": 1
+      }
+    },
+    {
+      "name": "Alternative scenario — [\"\"]",
+      "input": [
+        ""
+      ],
+      "expected": {
+        "A": 0,
+        "C": 0,
+        "G": 0,
+        "T": 0
+      }
+    },
+    {
+      "name": "Boundary condition — [\"GGGG\"]",
+      "input": [
+        "GGGG"
+      ],
+      "expected": {
+        "A": 0,
+        "C": 0,
+        "G": 4,
+        "T": 0
+      }
+    },
+    {
+      "name": "Edge case — [\"ATAT\"]",
+      "input": [
+        "ATAT"
+      ],
+      "expected": {
+        "A": 2,
+        "C": 0,
+        "G": 0,
+        "T": 2
+      }
+    },
+    {
+      "name": "Additional variation — [\"A\"]",
+      "input": [
+        "A"
+      ],
+      "expected": {
+        "A": 1,
+        "C": 0,
+        "G": 0,
+        "T": 0
+      }
+    },
+    {
+      "name": "Rejects invalid base",
+      "input": [
+        "ACN"
+      ],
+      "error": "Invalid nucleotide"
+    }
+  ],
+  "referenceCode": "export function countNucleotides(dna) {\n  const count={A:0,C:0,G:0,T:0};\n  for(const c of dna){if(!(c in count))throw new Error('Invalid nucleotide');count[c]++;}\n  return count;\n}\n"
+}

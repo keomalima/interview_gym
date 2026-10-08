@@ -1,0 +1,214 @@
+{
+  "schemaVersion": 1,
+  "id": "reconcile-payment-ledger",
+  "title": "Match payments to invoices",
+  "eyebrow": "TypeScript · maps",
+  "category": "practical",
+  "language": "typescript",
+  "difficulty": "medium",
+  "topics": [
+    "maps",
+    "business logic"
+  ],
+  "skills": [
+    "maps",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Calculate outstanding balances from a list of invoice payments.",
+  "durationMinutes": 25,
+  "functionName": "reconcilePayments",
+  "requirements": [
+    "Keep original invoice order.",
+    "Ignore payments referencing unknown invoice IDs.",
+    "Clamp remainingCents to zero; status is unpaid, partial or paid."
+  ],
+  "starterCode": "export function reconcilePayments(invoices: { id: string; totalCents: number }[], payments: { invoiceId: string; cents: number }[]) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Aggregate payment cents by invoice ID.",
+    "Compare each invoice total with the amount paid."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          {
+            "id": "i1",
+            "totalCents": 100
+          },
+          {
+            "id": "i2",
+            "totalCents": 50
+          }
+        ],
+        [
+          {
+            "invoiceId": "i1",
+            "cents": 30
+          },
+          {
+            "invoiceId": "i1",
+            "cents": 70
+          }
+        ]
+      ],
+      "output": [
+        {
+          "id": "i1",
+          "remainingCents": 0,
+          "status": "paid"
+        },
+        {
+          "id": "i2",
+          "remainingCents": 50,
+          "status": "unpaid"
+        }
+      ]
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        [
+          {
+            "id": "x",
+            "totalCents": 200
+          }
+        ],
+        [
+          {
+            "invoiceId": "x",
+            "cents": 50
+          }
+        ]
+      ],
+      "output": [
+        {
+          "id": "x",
+          "remainingCents": 150,
+          "status": "partial"
+        }
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[{\"id\":\"i1\",\"totalCents\":100},{\"id\":\"i2\",\"totalCents\":50}],[{\"invoi…",
+      "input": [
+        [
+          {
+            "id": "i1",
+            "totalCents": 100
+          },
+          {
+            "id": "i2",
+            "totalCents": 50
+          }
+        ],
+        [
+          {
+            "invoiceId": "i1",
+            "cents": 30
+          },
+          {
+            "invoiceId": "i1",
+            "cents": 70
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "id": "i1",
+          "remainingCents": 0,
+          "status": "paid"
+        },
+        {
+          "id": "i2",
+          "remainingCents": 50,
+          "status": "unpaid"
+        }
+      ]
+    },
+    {
+      "name": "Alternative scenario — [[{\"id\":\"x\",\"totalCents\":200}],[{\"invoiceId\":\"x\",\"cents\":50}]]",
+      "input": [
+        [
+          {
+            "id": "x",
+            "totalCents": 200
+          }
+        ],
+        [
+          {
+            "invoiceId": "x",
+            "cents": 50
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "id": "x",
+          "remainingCents": 150,
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "name": "Boundary condition — [[{\"id\":\"x\",\"totalCents\":1}],[]]",
+      "input": [
+        [
+          {
+            "id": "x",
+            "totalCents": 1
+          }
+        ],
+        []
+      ],
+      "expected": [
+        {
+          "id": "x",
+          "remainingCents": 1,
+          "status": "unpaid"
+        }
+      ]
+    },
+    {
+      "name": "Edge case — [[],[]]",
+      "input": [
+        [],
+        []
+      ],
+      "expected": []
+    },
+    {
+      "name": "Additional variation — [[{\"id\":\"x\",\"totalCents\":50}],[{\"invoiceId\":\"x\",\"cents\":100}]]",
+      "input": [
+        [
+          {
+            "id": "x",
+            "totalCents": 50
+          }
+        ],
+        [
+          {
+            "invoiceId": "x",
+            "cents": 100
+          }
+        ]
+      ],
+      "expected": [
+        {
+          "id": "x",
+          "remainingCents": 0,
+          "status": "paid"
+        }
+      ]
+    }
+  ],
+  "referenceCode": "export function reconcilePayments(invoices: { id: string; totalCents: number }[], payments: { invoiceId: string; cents: number }[]) {\n  const paid=new Map();for(const p of payments)paid.set(p.invoiceId,(paid.get(p.invoiceId)||0)+p.cents);\n  return invoices.map(i=>({id:i.id,remainingCents:Math.max(0,i.totalCents-(paid.get(i.id)||0)),status:(paid.get(i.id)||0)>=i.totalCents?'paid':(paid.get(i.id)||0)>0?'partial':'unpaid'}));\n}\n"
+}

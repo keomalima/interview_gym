@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "id": "debug-skip-adjacent-values",
+  "title": "Debug adjacent-duplicate removal",
+  "eyebrow": "JavaScript · debugging",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "debugging",
+    "debugging"
+  ],
+  "skills": [
+    "debugging",
+    "debugging and async reasoning"
+  ],
+  "targetRoles": [
+    "fullstack",
+    "frontend",
+    "backend"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Fix an existing implementation that accidentally skips values while removing adjacent duplicates.",
+  "durationMinutes": 15,
+  "functionName": "collapseAdjacent",
+  "requirements": [
+    "Return one representative for each consecutive run.",
+    "Preserve order and do not mutate input.",
+    "The provided starter implementation contains a bug; repair it."
+  ],
+  "starterCode": "export function collapseAdjacent(nums) {\n  for (let i = 0; i < nums.length; i++) {\n    if (nums[i] === nums[i + 1]) nums.splice(i, 1);\n  }\n  return nums;\n}\n",
+  "hints": [
+    "Removing items during forward iteration can skip the next element.",
+    "Build a new result rather than splicing the source during traversal."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          1,
+          1,
+          2,
+          2,
+          3
+        ]
+      ],
+      "output": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        []
+      ],
+      "output": []
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[1,1,2,2,3]]",
+      "input": [
+        [
+          1,
+          1,
+          2,
+          2,
+          3
+        ]
+      ],
+      "expected": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "Alternative scenario — [[]]",
+      "input": [
+        []
+      ],
+      "expected": []
+    },
+    {
+      "name": "Boundary condition — [[1,2,1]]",
+      "input": [
+        [
+          1,
+          2,
+          1
+        ]
+      ],
+      "expected": [
+        1,
+        2,
+        1
+      ]
+    },
+    {
+      "name": "Edge case — [[0,0,0]]",
+      "input": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "expected": [
+        0
+      ]
+    },
+    {
+      "name": "Additional variation — [[\"a\",\"a\",\"b\",\"b\"]]",
+      "input": [
+        [
+          "a",
+          "a",
+          "b",
+          "b"
+        ]
+      ],
+      "expected": [
+        "a",
+        "b"
+      ]
+    }
+  ],
+  "referenceCode": "export function collapseAdjacent(nums) {\n  const out=[];\n  for(const n of nums)if(!out.length||out[out.length-1]!==n)out.push(n);\n  return out;\n}\n"
+}

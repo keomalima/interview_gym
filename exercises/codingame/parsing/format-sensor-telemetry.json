@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "id": "format-sensor-telemetry",
+  "title": "Parse sensor telemetry lines",
+  "eyebrow": "JavaScript · parsing",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "medium",
+  "topics": [
+    "parsing",
+    "parsing and simulation"
+  ],
+  "skills": [
+    "parsing",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Convert semicolon-separated device measurements into structured records.",
+  "durationMinutes": 25,
+  "functionName": "parseTelemetry",
+  "requirements": [
+    "Each line must contain device;metric;numeric value.",
+    "Trim whitespace around fields.",
+    "Reject malformed records with Invalid telemetry."
+  ],
+  "starterCode": "export function parseTelemetry(lines) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Split each line on semicolons.",
+    "Validate field count, nonempty labels and numeric values before conversion."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          "a;temp;19.5",
+          "b;humidity;42"
+        ]
+      ],
+      "output": [
+        {
+          "device": "a",
+          "metric": "temp",
+          "value": 19.5
+        },
+        {
+          "device": "b",
+          "metric": "humidity",
+          "value": 42
+        }
+      ]
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        []
+      ],
+      "output": []
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[\"a;temp;19.5\",\"b;humidity;42\"]]",
+      "input": [
+        [
+          "a;temp;19.5",
+          "b;humidity;42"
+        ]
+      ],
+      "expected": [
+        {
+          "device": "a",
+          "metric": "temp",
+          "value": 19.5
+        },
+        {
+          "device": "b",
+          "metric": "humidity",
+          "value": 42
+        }
+      ]
+    },
+    {
+      "name": "Alternative scenario — [[]]",
+      "input": [
+        []
+      ],
+      "expected": []
+    },
+    {
+      "name": "Boundary condition — [[\" X ;voltage; -3.2 \"]]",
+      "input": [
+        [
+          " X ;voltage; -3.2 "
+        ]
+      ],
+      "expected": [
+        {
+          "device": "X",
+          "metric": "voltage",
+          "value": -3.2
+        }
+      ]
+    },
+    {
+      "name": "Edge case — [[\"s;load;0\"]]",
+      "input": [
+        [
+          "s;load;0"
+        ]
+      ],
+      "expected": [
+        {
+          "device": "s",
+          "metric": "load",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "name": "Additional variation — [[\"d;light;+2\"]]",
+      "input": [
+        [
+          "d;light;+2"
+        ]
+      ],
+      "expected": [
+        {
+          "device": "d",
+          "metric": "light",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "name": "Rejects incorrect field count",
+      "input": [
+        [
+          "invalid;line"
+        ]
+      ],
+      "error": "Invalid telemetry"
+    }
+  ],
+  "referenceCode": "export function parseTelemetry(lines) {\n  return lines.map(line=>{const parts=line.split(';');if(parts.length!==3)throw new Error('Invalid telemetry');\n    const [device,metric,value]=parts.map(x=>x.trim());if(!device||!metric||!/^[-+]?\\d+(?:\\.\\d+)?$/.test(value))throw new Error('Invalid telemetry');\n    return {device,metric,value:Number(value)};\n  });\n}\n"
+}

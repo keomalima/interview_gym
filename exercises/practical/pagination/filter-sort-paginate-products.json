@@ -1,0 +1,203 @@
+{
+  "schemaVersion": 1,
+  "id": "filter-sort-paginate-products",
+  "title": "Filter and paginate an in-memory product list",
+  "eyebrow": "TypeScript · pagination",
+  "category": "practical",
+  "language": "typescript",
+  "difficulty": "medium",
+  "topics": [
+    "pagination",
+    "business logic"
+  ],
+  "skills": [
+    "pagination",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "fullstack",
+    "frontend",
+    "backend"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Implement an in-memory endpoint-style product listing.",
+  "durationMinutes": 30,
+  "functionName": "listProducts",
+  "requirements": [
+    "Filter on exact category when provided, and priceCents>=minPrice.",
+    "Sort by ascending price then ID.",
+    "Use 1-based page numbers; return {total,items} without mutating inputs."
+  ],
+  "starterCode": "export function listProducts(products: { id: string; category: string; priceCents: number }[], options: {category?: string; minPrice?: number; page?: number; pageSize?: number}) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Filter before counting total.",
+    "Sort the filtered copy and slice the correct page range."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          {
+            "id": "b",
+            "category": "tools",
+            "priceCents": 200
+          },
+          {
+            "id": "a",
+            "category": "tools",
+            "priceCents": 100
+          }
+        ],
+        {
+          "category": "tools",
+          "page": 1,
+          "pageSize": 1
+        }
+      ],
+      "output": {
+        "total": 2,
+        "items": [
+          {
+            "id": "a",
+            "category": "tools",
+            "priceCents": 100
+          }
+        ]
+      }
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        [],
+        {}
+      ],
+      "output": {
+        "total": 0,
+        "items": []
+      }
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[{\"id\":\"b\",\"category\":\"tools\",\"priceCents\":200},{\"id\":\"a\",\"category…",
+      "input": [
+        [
+          {
+            "id": "b",
+            "category": "tools",
+            "priceCents": 200
+          },
+          {
+            "id": "a",
+            "category": "tools",
+            "priceCents": 100
+          }
+        ],
+        {
+          "category": "tools",
+          "page": 1,
+          "pageSize": 1
+        }
+      ],
+      "expected": {
+        "total": 2,
+        "items": [
+          {
+            "id": "a",
+            "category": "tools",
+            "priceCents": 100
+          }
+        ]
+      }
+    },
+    {
+      "name": "Alternative scenario — [[],{}]",
+      "input": [
+        [],
+        {}
+      ],
+      "expected": {
+        "total": 0,
+        "items": []
+      }
+    },
+    {
+      "name": "Boundary condition — [[{\"id\":\"a\",\"category\":\"x\",\"priceCents\":10}],{\"category\":\"z\"}]",
+      "input": [
+        [
+          {
+            "id": "a",
+            "category": "x",
+            "priceCents": 10
+          }
+        ],
+        {
+          "category": "z"
+        }
+      ],
+      "expected": {
+        "total": 0,
+        "items": []
+      }
+    },
+    {
+      "name": "Edge case — [[{\"id\":\"z\",\"category\":\"x\",\"priceCents\":10},{\"id\":\"a\",\"category\":\"x\"…",
+      "input": [
+        [
+          {
+            "id": "z",
+            "category": "x",
+            "priceCents": 10
+          },
+          {
+            "id": "a",
+            "category": "x",
+            "priceCents": 10
+          }
+        ],
+        {
+          "page": 1,
+          "pageSize": 5
+        }
+      ],
+      "expected": {
+        "total": 2,
+        "items": [
+          {
+            "id": "a",
+            "category": "x",
+            "priceCents": 10
+          },
+          {
+            "id": "z",
+            "category": "x",
+            "priceCents": 10
+          }
+        ]
+      }
+    },
+    {
+      "name": "Additional variation — [[{\"id\":\"a\",\"category\":\"x\",\"priceCents\":10}],{\"page\":2,\"pageSize\":10}]",
+      "input": [
+        [
+          {
+            "id": "a",
+            "category": "x",
+            "priceCents": 10
+          }
+        ],
+        {
+          "page": 2,
+          "pageSize": 10
+        }
+      ],
+      "expected": {
+        "total": 1,
+        "items": []
+      }
+    }
+  ],
+  "referenceCode": "export function listProducts(products: { id: string; category: string; priceCents: number }[], options: {category?: string; minPrice?: number; page?: number; pageSize?: number}) {\n  const {category='',minPrice=0,page=1,pageSize=10}=options;\n  const matching=products.filter(p=>(!category||p.category===category)&&p.priceCents>=minPrice).sort((a,b)=>a.priceCents-b.priceCents||a.id.localeCompare(b.id));\n  const start=(page-1)*pageSize;\n  return {total:matching.length,items:matching.slice(start,start+pageSize)};\n}\n"
+}

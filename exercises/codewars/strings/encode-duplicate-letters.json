@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "id": "encode-duplicate-letters",
+  "title": "Encode repeated and unique characters",
+  "eyebrow": "JavaScript · strings",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "strings",
+    "javascript fundamentals"
+  ],
+  "skills": [
+    "strings",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Encode each character as an opening or closing parenthesis according to its frequency.",
+  "durationMinutes": 15,
+  "functionName": "encodeDuplicates",
+  "requirements": [
+    "Return ( for a character appearing once, ) for a repeated character.",
+    "Compare letters case-insensitively.",
+    "Preserve input length."
+  ],
+  "starterCode": "export function encodeDuplicates(text) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Build a case-insensitive frequency table.",
+    "Convert each original character using its count."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        "din"
+      ],
+      "output": "((("
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        "recede"
+      ],
+      "output": "()()()"
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [\"din\"]",
+      "input": [
+        "din"
+      ],
+      "expected": "((("
+    },
+    {
+      "name": "Alternative scenario — [\"recede\"]",
+      "input": [
+        "recede"
+      ],
+      "expected": "()()()"
+    },
+    {
+      "name": "Boundary condition — [\"Success\"]",
+      "input": [
+        "Success"
+      ],
+      "expected": ")())())"
+    },
+    {
+      "name": "Edge case — [\"\"]",
+      "input": [
+        ""
+      ],
+      "expected": ""
+    },
+    {
+      "name": "Additional variation — [\"(( @\"]",
+      "input": [
+        "(( @"
+      ],
+      "expected": "))(("
+    }
+  ],
+  "referenceCode": "export function encodeDuplicates(text) {\n  const s=text.toLowerCase(),m=new Map();for(const c of s)m.set(c,(m.get(c)||0)+1);\n  return [...s].map(c=>m.get(c)>1?')':'(').join('');\n}\n"
+}

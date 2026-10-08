@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "id": "find-word-anagrams",
+  "title": "Find anagrams within a candidate list",
+  "eyebrow": "JavaScript · strings",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "strings",
+    "language fundamentals"
+  ],
+  "skills": [
+    "strings",
+    "implementation and edge cases"
+  ],
+  "targetRoles": [
+    "general",
+    "frontend",
+    "backend",
+    "fullstack"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Find candidate words that are anagrams of a given word.",
+  "durationMinutes": 20,
+  "functionName": "findAnagrams",
+  "requirements": [
+    "Ignore case for comparisons.",
+    "Exclude a candidate identical to the original ignoring case.",
+    "Preserve candidate spelling and order in the output."
+  ],
+  "starterCode": "export function findAnagrams(word,candidates) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
+  "hints": [
+    "Sorted letters give an anagram signature.",
+    "Exclude identical words before comparing signatures."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        "listen",
+        [
+          "enlists",
+          "google",
+          "inlets",
+          "banana"
+        ]
+      ],
+      "output": [
+        "inlets"
+      ]
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        "Orchestra",
+        [
+          "cashregister",
+          "Carthorse",
+          "radishes"
+        ]
+      ],
+      "output": [
+        "Carthorse"
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [\"listen\",[\"enlists\",\"google\",\"inlets\",\"banana\"]]",
+      "input": [
+        "listen",
+        [
+          "enlists",
+          "google",
+          "inlets",
+          "banana"
+        ]
+      ],
+      "expected": [
+        "inlets"
+      ]
+    },
+    {
+      "name": "Alternative scenario — [\"Orchestra\",[\"cashregister\",\"Carthorse\",\"radishes\"]]",
+      "input": [
+        "Orchestra",
+        [
+          "cashregister",
+          "Carthorse",
+          "radishes"
+        ]
+      ],
+      "expected": [
+        "Carthorse"
+      ]
+    },
+    {
+      "name": "Boundary condition — [\"abc\",[\"ABC\",\"bca\",\"cab\"]]",
+      "input": [
+        "abc",
+        [
+          "ABC",
+          "bca",
+          "cab"
+        ]
+      ],
+      "expected": [
+        "bca",
+        "cab"
+      ]
+    },
+    {
+      "name": "Edge case — [\"\",[\"\",\"x\"]]",
+      "input": [
+        "",
+        [
+          "",
+          "x"
+        ]
+      ],
+      "expected": []
+    },
+    {
+      "name": "Additional variation — [\"abc\",[]]",
+      "input": [
+        "abc",
+        []
+      ],
+      "expected": []
+    }
+  ],
+  "referenceCode": "export function findAnagrams(word,candidates) {\n  const lower=word.toLowerCase(),key=[...lower].sort().join('');\n  return candidates.filter(c=>c.toLowerCase()!==lower&&[...c.toLowerCase()].sort().join('')===key);\n}\n"
+}

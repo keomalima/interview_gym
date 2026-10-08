@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "id": "debug-inclusive-date-range",
+  "title": "Debug inclusive day-range filtering",
+  "eyebrow": "JavaScript · debugging",
+  "category": "practical",
+  "language": "javascript",
+  "difficulty": "easy",
+  "topics": [
+    "debugging",
+    "debugging"
+  ],
+  "skills": [
+    "debugging",
+    "debugging and async reasoning"
+  ],
+  "targetRoles": [
+    "fullstack",
+    "frontend",
+    "backend"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Fix a date-range filter that excludes records on the final day.",
+  "durationMinutes": 15,
+  "functionName": "filterInclusiveDates",
+  "requirements": [
+    "Dates are valid zero-padded YYYY-MM-DD strings.",
+    "Include both from and to bounds.",
+    "Preserve original record order."
+  ],
+  "starterCode": "export function filterInclusiveDates(records, from, to) {\n  return records.filter(r => r.date >= from && r.date < to);\n}\n",
+  "hints": [
+    "Lexicographic comparison works for zero-padded ISO dates.",
+    "The upper bound must be inclusive, not strictly less than."
+  ],
+  "examples": [
+    {
+      "label": "Typical case",
+      "input": [
+        [
+          {
+            "date": "2026-01-01",
+            "id": 1
+          },
+          {
+            "date": "2026-01-02",
+            "id": 2
+          }
+        ],
+        "2026-01-01",
+        "2026-01-02"
+      ],
+      "output": [
+        {
+          "date": "2026-01-01",
+          "id": 1
+        },
+        {
+          "date": "2026-01-02",
+          "id": 2
+        }
+      ]
+    },
+    {
+      "label": "Alternative case",
+      "input": [
+        [],
+        "2026-01-01",
+        "2026-01-10"
+      ],
+      "output": []
+    }
+  ],
+  "tests": [
+    {
+      "name": "Common case — [[{\"date\":\"2026-01-01\",\"id\":1},{\"date\":\"2026-01-02\",\"id\":2}],\"2026-0…",
+      "input": [
+        [
+          {
+            "date": "2026-01-01",
+            "id": 1
+          },
+          {
+            "date": "2026-01-02",
+            "id": 2
+          }
+        ],
+        "2026-01-01",
+        "2026-01-02"
+      ],
+      "expected": [
+        {
+          "date": "2026-01-01",
+          "id": 1
+        },
+        {
+          "date": "2026-01-02",
+          "id": 2
+        }
+      ]
+    },
+    {
+      "name": "Alternative scenario — [[],\"2026-01-01\",\"2026-01-10\"]",
+      "input": [
+        [],
+        "2026-01-01",
+        "2026-01-10"
+      ],
+      "expected": []
+    },
+    {
+      "name": "Boundary condition — [[{\"date\":\"2026-01-02\",\"id\":1}],\"2026-01-02\",\"2026-01-02\"]",
+      "input": [
+        [
+          {
+            "date": "2026-01-02",
+            "id": 1
+          }
+        ],
+        "2026-01-02",
+        "2026-01-02"
+      ],
+      "expected": [
+        {
+          "date": "2026-01-02",
+          "id": 1
+        }
+      ]
+    },
+    {
+      "name": "Edge case — [[{\"date\":\"2026-02-01\",\"id\":1}],\"2026-01-01\",\"2026-01-31\"]",
+      "input": [
+        [
+          {
+            "date": "2026-02-01",
+            "id": 1
+          }
+        ],
+        "2026-01-01",
+        "2026-01-31"
+      ],
+      "expected": []
+    },
+    {
+      "name": "Additional variation — [[{\"date\":\"2025-12-31\",\"id\":1},{\"date\":\"2026-01-01\",\"id\":2}],\"2026-0…",
+      "input": [
+        [
+          {
+            "date": "2025-12-31",
+            "id": 1
+          },
+          {
+            "date": "2026-01-01",
+            "id": 2
+          }
+        ],
+        "2026-01-01",
+        "2026-02-01"
+      ],
+      "expected": [
+        {
+          "date": "2026-01-01",
+          "id": 2
+        }
+      ]
+    }
+  ],
+  "referenceCode": "export function filterInclusiveDates(records,from,to) {\n  return records.filter(r=>r.date>=from&&r.date<=to);\n}\n"
+}

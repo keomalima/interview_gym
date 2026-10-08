@@ -1,0 +1,200 @@
+{
+  "schemaVersion": 1,
+  "id": "validate-signup-data",
+  "title": "Validate and normalize signup data",
+  "eyebrow": "TypeScript · Input Validation",
+  "category": "practical",
+  "language": "typescript",
+  "difficulty": "medium",
+  "topics": [
+    "input-validation",
+    "strings",
+    "business-logic"
+  ],
+  "skills": [
+    "validation design",
+    "normalization",
+    "error reporting"
+  ],
+  "targetRoles": [
+    "backend",
+    "fullstack",
+    "general"
+  ],
+  "exerciseType": "function",
+  "prerequisites": [],
+  "summary": "Validate an incoming signup payload without touching a database or an HTTP framework.",
+  "durationMinutes": 30,
+  "functionName": "validateSignupData",
+  "requirements": [
+    "Input is an object { email, password, displayName }, all strings.",
+    "Trim and lowercase email; consider it valid if it matches the simplified pattern ^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$.",
+    "Password must be at least 8 characters (JavaScript string length); do not trim it.",
+    "Display name after trimming must contain between 2 and 40 characters inclusive.",
+    "Return { ok: false, errors: string[] } for invalid inputs, with error labels in order: email, password, displayName.",
+    "For valid input return { ok: true, user: { email: normalizedEmail, displayName: trimmedName } }.",
+    "Never include password in the output."
+  ],
+  "starterCode": "type Signup = { email: string; password: string; displayName: string };\nexport function validateSignupData(input: Signup): unknown {\n  return {ok: false, errors: []};\n}\n",
+  "hints": [
+    "Normalize the email and display name before checking their rules.",
+    "Collect all validation errors rather than returning on the first one.",
+    "Build the successful user object without copying the password."
+  ],
+  "examples": [
+    {
+      "label": "Valid signup",
+      "input": [
+        {
+          "email": " Ada@EXAMPLE.org ",
+          "password": "secret123",
+          "displayName": " Ada "
+        }
+      ],
+      "output": {
+        "ok": true,
+        "user": {
+          "email": "ada@example.org",
+          "displayName": "Ada"
+        }
+      }
+    },
+    {
+      "label": "Invalid fields",
+      "input": [
+        {
+          "email": "no-at-sign",
+          "password": "short",
+          "displayName": " "
+        }
+      ],
+      "output": {
+        "ok": false,
+        "errors": [
+          "email",
+          "password",
+          "displayName"
+        ]
+      }
+    }
+  ],
+  "tests": [
+    {
+      "name": "Valid signup",
+      "input": [
+        {
+          "email": " Ada@EXAMPLE.org ",
+          "password": "secret123",
+          "displayName": " Ada "
+        }
+      ],
+      "expected": {
+        "ok": true,
+        "user": {
+          "email": "ada@example.org",
+          "displayName": "Ada"
+        }
+      }
+    },
+    {
+      "name": "Invalid fields",
+      "input": [
+        {
+          "email": "no-at-sign",
+          "password": "short",
+          "displayName": " "
+        }
+      ],
+      "expected": {
+        "ok": false,
+        "errors": [
+          "email",
+          "password",
+          "displayName"
+        ]
+      }
+    },
+    {
+      "name": "Only password invalid",
+      "input": [
+        {
+          "email": "a@b.co",
+          "password": "1234567",
+          "displayName": "Jo"
+        }
+      ],
+      "expected": {
+        "ok": false,
+        "errors": [
+          "password"
+        ]
+      }
+    },
+    {
+      "name": "Only name invalid",
+      "input": [
+        {
+          "email": "a@b.co",
+          "password": "12345678",
+          "displayName": "X"
+        }
+      ],
+      "expected": {
+        "ok": false,
+        "errors": [
+          "displayName"
+        ]
+      }
+    },
+    {
+      "name": "Whitespace in email",
+      "input": [
+        {
+          "email": "a b@c.com",
+          "password": "12345678",
+          "displayName": "Jane"
+        }
+      ],
+      "expected": {
+        "ok": false,
+        "errors": [
+          "email"
+        ]
+      }
+    },
+    {
+      "name": "Boundary length name",
+      "input": [
+        {
+          "email": "a@b.co",
+          "password": "12345678",
+          "displayName": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        }
+      ],
+      "expected": {
+        "ok": true,
+        "user": {
+          "email": "a@b.co",
+          "displayName": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        }
+      }
+    },
+    {
+      "name": "Long name",
+      "input": [
+        {
+          "email": "a@b.co",
+          "password": "12345678",
+          "displayName": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        }
+      ],
+      "expected": {
+        "ok": false,
+        "errors": [
+          "displayName"
+        ]
+      }
+    }
+  ],
+  "referenceCode": "type Signup = { email: string; password: string; displayName: string };\nexport function validateSignupData(input: Signup): unknown {\n  const email = input.email.trim().toLowerCase();\n  const displayName = input.displayName.trim();\n  const errors: string[] = [];\n  if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) errors.push('email');\n  if (input.password.length < 8) errors.push('password');\n  if (displayName.length < 2 || displayName.length > 40) errors.push('displayName');\n  return errors.length ? {ok: false, errors} : {ok: true, user: {email, displayName}};\n}\n"
+}
