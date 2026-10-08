@@ -17,8 +17,9 @@ try {
   const challengeId = 'token-usage';
   const challenge = (await request('/challenges')).find(item => item.id === challengeId);
   assert(challenge && !('referenceCode' in challenge));
-  const session = await request('/sessions', 'POST', { challengeId });
+  const session = await request('/sessions', 'POST', { challengeId, notes: 'Planning before starting' });
   assert.equal(session.challenge_id, challengeId);
+  assert.equal(session.notes, 'Planning before starting', 'pre-session notes carry into the new session');
   assert(!('referenceCode' in session.challenge));
 
   const restart = await request('/sessions', 'POST', { challengeId });

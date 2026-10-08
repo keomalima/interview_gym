@@ -228,4 +228,8 @@ body{min-width:360px;background:var(--bg)}
 .output-resize-handle:hover::after,.output-resize-handle:active::after{width:64px;background:var(--accent)}
 @media(max-width:1100px){.sidebar{width:230px}}
 @media(max-width:800px){.sidebar{width:210px}}
-@media(max-width:580px){.sidebar{width:100%}.main-area.interview-view>.workspace-toolbar{display:flex}.interview-toolbar{gap:8px}.interview-progress{gap:5px}.interview-progress button{gap:5px;padding-inline:7px}}
+.interview-progress{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));overflow:hidden;flex:1 1 auto}
+.interview-progress button{width:100%;max-width:none;min-width:0}
+.interview-progress button>svg{margin-left:auto}
+.interview-controls{flex:none}
+@media(max-width:580px){.sidebar{width:100%}.main-area.interview-view>.workspace-toolbar{display:flex}.interview-toolbar{gap:8px}.interview-progress{width:100%;gap:5px}.interview-progress button{max-width:none;gap:5px;padding-inline:7px}.interview-controls{width:100%;justify-content:flex-end}}
