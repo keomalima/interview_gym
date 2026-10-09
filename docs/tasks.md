@@ -111,3 +111,4 @@ Advanced progress analytics, structured feedback, optional AI evaluation, and No
 - Expanded learner-facing problem statements for all 150 exercises with clearer context and goals. Existing exercise contracts and tests were retained.
 - Verified all 150 reference solutions with `npm run exercises:validate`; `npm run check`, `npm test` (163 tests), and `npm run build` passed. The build retains the existing large-chunk warning.
 - Updated and read back all 150 summaries on the production Neon branch. The discount exercise requirements were also synchronized. Existing sessions and attempts were not changed.
+- Deployed production deployment `dpl_Gj5AhH5aczEHAzBiDv4cWD6etQi4` at `https://gym.keomalima.com`; the live page returned successfully and `/api/auth/status` returned the expected unauthenticated response.
