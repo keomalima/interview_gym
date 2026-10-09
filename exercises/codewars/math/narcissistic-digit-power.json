@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Check whether an integer equals the sum of its digits raised to its digit count.",
+  "summary": "A number validator checks whether a nonnegative integer equals the sum of each of its digits raised to the number of digits. Return whether the equality holds. Check whether an integer equals the sum of its digits raised to its digit count.",
   "durationMinutes": 15,
   "functionName": "isNarcissistic",
   "requirements": [

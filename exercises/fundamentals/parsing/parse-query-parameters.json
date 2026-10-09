@@ -23,7 +23,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Turn a URL query string into an object while preserving repeated keys.",
+  "summary": "A client-side router converts URL query parameters into a lookup object. Preserve repeated keys according to the exercise’s output contract and handle encoded values correctly. Turn a URL query string into an object while preserving repeated keys.",
   "durationMinutes": 25,
   "functionName": "parseQueryParameters",
   "requirements": [

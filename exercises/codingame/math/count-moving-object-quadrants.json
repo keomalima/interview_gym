@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Group two-dimensional points into compass quadrants.",
+  "summary": "A radar screen groups detected points into the four compass quadrants. Count how many points lie in each region according to the coordinate axes and the exercise’s boundary rules. Group two-dimensional points into compass quadrants.",
   "durationMinutes": 20,
   "functionName": "countQuadrants",
   "requirements": [

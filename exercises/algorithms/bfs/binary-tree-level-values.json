@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Return the values of a binary tree grouped by depth, left to right.",
+  "summary": "A monitoring tree stores one value at each node. Return its values level by level, from the root downward and left to right within each level. Return an empty list for an empty tree.",
   "durationMinutes": 20,
   "functionName": "treeLevels",
   "requirements": [

@@ -4,7 +4,7 @@
   "language": "javascript",
   "title": "Find a target pair",
   "eyebrow": "JavaScript · Arrays & hash maps",
-  "summary": "Find two different positions in an array whose values add up to the target. Return their indices rather than their values.",
+  "summary": "A checkout system stores each item price as an integer. Given an array of values and a target, return the indices of two different entries whose values add to the target. Use the first valid pair in index order, and return an empty array when no pair exists.",
   "durationMinutes": 20,
   "functionName": "findTargetPair",
   "requirements": [

@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Calculate a Scrabble-like tile score for a word.",
+  "summary": "A word-game scorekeeper totals the point values of a word’s letter tiles. Apply the supplied scoring rules to every letter and return the score. Calculate a Scrabble-like tile score for a word.",
   "durationMinutes": 20,
   "functionName": "scrabbleScore",
   "requirements": [

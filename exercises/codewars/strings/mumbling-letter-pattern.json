@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Transform each input letter into an increasingly long group joined by dashes.",
+  "summary": "A playful formatter expands each character into a group whose length increases with its position, capitalizing the first character of each group and lowercasing the rest. Transform each input letter into an increasingly long group joined by dashes.",
   "durationMinutes": 15,
   "functionName": "mumbleLetters",
   "requirements": [

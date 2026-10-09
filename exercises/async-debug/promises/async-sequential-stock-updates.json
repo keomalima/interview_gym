@@ -20,7 +20,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Apply a stream of asynchronous inventory deltas to a copied inventory.",
+  "summary": "An inventory feed supplies asynchronous stock changes that must be applied one at a time to a copy of the starting inventory. Preserve the caller’s original data and return the updated result. Apply a stream of asynchronous inventory deltas to a copied inventory.",
   "durationMinutes": 20,
   "functionName": "applyAsyncStockUpdates",
   "requirements": [

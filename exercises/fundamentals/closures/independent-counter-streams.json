@@ -21,7 +21,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Use a counter factory to process calls to independent named counters.",
+  "summary": "A telemetry collector creates several named counters that must keep independent state. Use closures so calls to one counter do not change another counter’s value. Use a counter factory to process calls to independent named counters.",
   "durationMinutes": 20,
   "functionName": "countNamedCalls",
   "requirements": [

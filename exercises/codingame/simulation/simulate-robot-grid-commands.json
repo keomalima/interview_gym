@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Simulate a robot using cardinal movements.",
+  "summary": "A warehouse robot starts at a supplied grid position and follows cardinal movement commands. Simulate the commands in order and return its final state. Simulate a robot using cardinal movements.",
   "durationMinutes": 15,
   "functionName": "executeRobotMoves",
   "requirements": [

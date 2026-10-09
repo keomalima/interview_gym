@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Calculate the total knocked-down pins in a simplified bowling game.",
+  "summary": "A bowling score display needs the total pins knocked down across a simplified ten-frame game. Calculate the score from the supplied rolls without adding strike or spare bonuses. Calculate the total knocked-down pins in a simplified bowling game.",
   "durationMinutes": 20,
   "functionName": "simpleBowlingScore",
   "requirements": [

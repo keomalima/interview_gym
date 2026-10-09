@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Return the product of every element except the element at the current index.",
+  "summary": "A batch processor needs one product per position, using every input value except the value at that position. Return the resulting array without using division, and preserve the input array.",
   "durationMinutes": 25,
   "functionName": "productExceptSelf",
   "requirements": [

@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Fix an off-by-one loop that skips the first element of the list.",
+  "summary": "A search helper should locate a value anywhere in a list, but a boundary mistake makes the first entry invisible. Correct the existing implementation while retaining its function contract. Fix an off-by-one loop that skips the first element of the list.",
   "durationMinutes": 15,
   "functionName": "indexOfFirstMatch",
   "requirements": [

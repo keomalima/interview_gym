@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Count alphanumeric words in a message and return alphabetical frequency entries.",
+  "summary": "A message analytics tool builds a frequency table from the words in a text. Treat words as alphanumeric runs, count their occurrences, and return entries in alphabetical order. Count alphanumeric words in a message and return alphabetical frequency entries.",
   "durationMinutes": 20,
   "functionName": "messageWordCounts",
   "requirements": [

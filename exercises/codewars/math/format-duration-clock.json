@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Convert nonnegative whole seconds into a padded hours:minutes:seconds string.",
+  "summary": "A media player stores elapsed time as a whole number of seconds but displays a clock. Convert the duration to a zero-padded HH:MM:SS string, allowing the hours field to grow beyond two digits. Convert nonnegative whole seconds into a padded hours:minutes:seconds string.",
   "durationMinutes": 15,
   "functionName": "formatSeconds",
   "requirements": [

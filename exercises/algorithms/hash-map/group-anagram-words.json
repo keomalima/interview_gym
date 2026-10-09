@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Group anagrams together while retaining the input order of groups and words.",
+  "summary": "A contact search tool groups names that contain the same letters in a different order. Group anagrams together while preserving the original order of groups and the original order of words within each group. Compare characters case-sensitively.",
   "durationMinutes": 25,
   "functionName": "groupAnagramWords",
   "requirements": [

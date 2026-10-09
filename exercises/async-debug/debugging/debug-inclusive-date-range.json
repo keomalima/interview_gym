@@ -21,7 +21,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Fix a date-range filter that excludes records on the final day.",
+  "summary": "A report filter should include records from both endpoints of a requested date range. Repair the final-day boundary so events on the end date are not dropped. Fix a date-range filter that excludes records on the final day.",
   "durationMinutes": 15,
   "functionName": "filterInclusiveDates",
   "requirements": [

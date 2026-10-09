@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Report counts of A, C, G and T in a DNA sequence.",
+  "summary": "A lab summary counts the four nucleotide bases in a DNA sample. Return the count for A, C, G, and T and follow the stated behavior for invalid symbols. Report counts of A, C, G and T in a DNA sequence.",
   "durationMinutes": 20,
   "functionName": "countNucleotides",
   "requirements": [

@@ -20,7 +20,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Repair a filter that drops zero along with invalid values.",
+  "summary": "A data cleanup helper should remove invalid values while preserving valid numeric zero. Fix the predicate that currently treats zero as missing. Repair a filter that drops zero along with invalid values.",
   "durationMinutes": 15,
   "functionName": "retainNumericValues",
   "requirements": [

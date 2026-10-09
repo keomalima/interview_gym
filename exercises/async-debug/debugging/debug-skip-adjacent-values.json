@@ -21,7 +21,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Fix an existing implementation that accidentally skips values while removing adjacent duplicates.",
+  "summary": "A cleanup helper removes repeated neighboring values, but its loop skips items after deleting an entry. Fix the traversal so every adjacent run is handled correctly. Fix an existing implementation that accidentally skips values while removing adjacent duplicates.",
   "durationMinutes": 15,
   "functionName": "collapseAdjacent",
   "requirements": [

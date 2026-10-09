@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Count how many times digits must be multiplied together to produce a single-digit result.",
+  "summary": "A number puzzle repeatedly multiplies the decimal digits of an integer until a single digit remains. Count how many multiplication rounds are required. Count how many times digits must be multiplied together to produce a single-digit result.",
   "durationMinutes": 15,
   "functionName": "multiplicativePersistence",
   "requirements": [

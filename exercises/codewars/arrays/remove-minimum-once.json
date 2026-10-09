@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Return the array without its first smallest value.",
+  "summary": "A ranking helper removes one lowest score before recalculating a result. Remove the first occurrence of the minimum and preserve the order of every remaining value. Return the array without its first smallest value.",
   "durationMinutes": 15,
   "functionName": "removeFirstMinimum",
   "requirements": [

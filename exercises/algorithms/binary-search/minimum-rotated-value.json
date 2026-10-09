@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Find the minimum element of a rotated strictly increasing array.",
+  "summary": "A sorted sequence has been rotated an unknown number of positions. Find and return its smallest value in logarithmic time; values are distinct and the input is nonempty.",
   "durationMinutes": 25,
   "functionName": "minRotatedValue",
   "requirements": [

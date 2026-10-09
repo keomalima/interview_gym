@@ -23,7 +23,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Return each distinct triple of values whose sum equals zero.",
+  "summary": "A transaction audit looks for three values whose combined adjustment is zero. Return all distinct value triplets that sum to zero, with each triplet in ascending order and no duplicate triplets in the result.",
   "durationMinutes": 35,
   "functionName": "threeSumZero",
   "requirements": [

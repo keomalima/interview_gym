@@ -21,7 +21,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Build a new flat configuration object with optional overrides.",
+  "summary": "An application builds runtime settings by combining a base configuration with optional overrides. Return a new flat object with the correct precedence while leaving both inputs unchanged. Build a new flat configuration object with optional overrides.",
   "durationMinutes": 20,
   "functionName": "mergeRuntimeConfig",
   "requirements": [

@@ -20,7 +20,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Aggregate completion counts and percentage for each milestone.",
+  "summary": "A project dashboard summarizes task completion within each milestone. Count completed and total tasks and calculate the completion percentage using the output shape specified by the exercise. Aggregate completion counts and percentage for each milestone.",
   "durationMinutes": 20,
   "functionName": "milestoneProgress",
   "requirements": [

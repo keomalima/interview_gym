@@ -21,7 +21,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Turn tabular values into correctly escaped CSV text.",
+  "summary": "A reporting tool exports rows as CSV for spreadsheets. Serialize headers and values with correct quoting and escaping for commas, quotes, and line breaks according to the required format. Turn tabular values into correctly escaped CSV text.",
   "durationMinutes": 25,
   "functionName": "serializeCsv",
   "requirements": [

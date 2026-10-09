@@ -23,7 +23,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Implement the pure data logic behind a typical REST list endpoint.",
+  "summary": "A REST list endpoint filters records, sorts the matching results, and returns one page plus pagination metadata. Implement the data transformation as a pure function without an HTTP server or database. Implement the pure data logic behind a typical REST list endpoint.",
   "durationMinutes": 25,
   "functionName": "paginateFilteredRecords",
   "requirements": [

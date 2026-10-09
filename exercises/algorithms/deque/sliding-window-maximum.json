@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Return the maximum in every consecutive window of size k.",
+  "summary": "A monitoring dashboard displays the peak reading for each consecutive window of k samples. Given the readings and window size, return the maximum from every window in order. Return an empty array when k is invalid or larger than the input.",
   "durationMinutes": 35,
   "functionName": "maxWindowValues",
   "requirements": [

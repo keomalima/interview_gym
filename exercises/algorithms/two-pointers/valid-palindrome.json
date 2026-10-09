@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Determine whether the letters and digits in text form a palindrome, ignoring punctuation and case.",
+  "summary": "A text validator checks whether the letters and digits in a phrase read the same in both directions. Ignore punctuation, whitespace, and letter case. Return true for text with no letters or digits.",
   "durationMinutes": 20,
   "functionName": "isNormalizedPalindrome",
   "requirements": [

@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Encode each character as an opening or closing parenthesis according to its frequency.",
+  "summary": "A display encoder converts each character to an opening or closing parenthesis based on whether that character appears once or multiple times in the input. Character matching is case-insensitive. Encode each character as an opening or closing parenthesis according to its frequency.",
   "durationMinutes": 15,
   "functionName": "encodeDuplicates",
   "requirements": [

@@ -20,7 +20,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Validate invoice records and collect all field-level problems.",
+  "summary": "An invoice import should report all invalid line items in one pass instead of failing at the first problem. Validate each record and collect field-level issues in the specified structure. Validate invoice records and collect all field-level problems.",
   "durationMinutes": 25,
   "functionName": "validateInvoiceLines",
   "requirements": [

@@ -20,7 +20,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Compute final feature flags from defaults and an allowlisted set of overrides.",
+  "summary": "A feature service combines default flag values with overrides from an allowlist. Apply only permitted overrides and return the effective configuration without mutating either input. Compute final feature flags from defaults and an allowlisted set of overrides.",
   "durationMinutes": 20,
   "functionName": "resolveFeatureFlags",
   "requirements": [

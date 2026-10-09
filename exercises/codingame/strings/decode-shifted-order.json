@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Reverse a known Caesar cipher shift.",
+  "summary": "A field message was encoded by shifting letters a known number of positions through the alphabet. Reverse that Caesar shift while preserving the other characters as specified. Reverse a known Caesar cipher shift.",
   "durationMinutes": 20,
   "functionName": "decodeCaesar",
   "requirements": [

@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Collapse event updates into one most-recent entry per ID.",
+  "summary": "An event consumer can receive multiple updates for the same entity. Keep the latest event for each ID using the sequence information, and return the retained records in the required order. Collapse event updates into one most-recent entry per ID.",
   "durationMinutes": 25,
   "functionName": "deduplicateEvents",
   "requirements": [

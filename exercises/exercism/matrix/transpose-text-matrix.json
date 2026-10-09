@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Swap matrix rows and columns.",
+  "summary": "A table-processing utility swaps the rows and columns of a rectangular matrix. Return the transposed matrix while preserving the order of values. Swap matrix rows and columns.",
   "durationMinutes": 20,
   "functionName": "transposeMatrix",
   "requirements": [

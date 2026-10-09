@@ -21,7 +21,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Fix a function that returns unresolved promises instead of normalized names.",
+  "summary": "A profile loader maps an asynchronous name lookup over a list, but the current implementation exposes unresolved promises to its caller. Repair the function so callers receive the completed normalized values. Fix a function that returns unresolved promises instead of normalized names.",
   "durationMinutes": 20,
   "functionName": "fetchNormalizedNames",
   "requirements": [

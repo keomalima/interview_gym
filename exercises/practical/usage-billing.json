@@ -4,7 +4,7 @@
   "language": "typescript",
   "title": "Build monthly usage invoices",
   "eyebrow": "TypeScript · Billing",
-  "summary": "Produce invoices from billable events across customers and a date window. All rates are fictional.",
+  "summary": "A billing service turns customer usage events in a date window into monthly invoices using fictional rates supplied by the exercise. Group billable usage by customer and return the required invoice totals and detail rows. Produce invoices from billable events across customers and a date window. All rates are fictional.",
   "durationMinutes": 30,
   "functionName": "buildInvoices",
   "requirements": [

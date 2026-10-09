@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Return a compass movement that moves one step toward a target on a grid.",
+  "summary": "A grid navigation helper chooses one compass move from a current position toward a target. Return the direction for a single step using the exercise’s tie-breaking rules. Return a compass movement that moves one step toward a target on a grid.",
   "durationMinutes": 15,
   "functionName": "directionToTarget",
   "requirements": [

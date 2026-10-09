@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Find the shortest orthogonal route through zero-valued grid cells.",
+  "summary": "A robot must cross a rectangular map where 0 is open and 1 is blocked. Find the minimum number of cells in a path from the top-left to the bottom-right, moving one cell at a time in four directions. Return -1 when either endpoint is blocked or no route exists.",
   "durationMinutes": 30,
   "functionName": "shortestZeroPath",
   "requirements": [

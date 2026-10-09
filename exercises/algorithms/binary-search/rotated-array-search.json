@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Locate a value in a sorted array rotated at an unknown pivot.",
+  "summary": "A lookup service searches a strictly increasing list that has been rotated at an unknown pivot. Return the index of the target, or -1 when it is absent. The input contains no duplicates.",
   "durationMinutes": 30,
   "functionName": "searchRotated",
   "requirements": [

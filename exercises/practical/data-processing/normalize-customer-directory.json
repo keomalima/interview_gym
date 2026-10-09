@@ -23,7 +23,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Convert customer signup records into a clean, sorted public-facing directory.",
+  "summary": "A customer directory combines raw signup records into clean public-facing entries. Normalize the fields, apply the stated inclusion rules, and sort the final directory deterministically. Convert customer signup records into a clean, sorted public-facing directory.",
   "durationMinutes": 30,
   "functionName": "normalizeCustomers",
   "requirements": [

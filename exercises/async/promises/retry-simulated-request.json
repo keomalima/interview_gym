@@ -23,7 +23,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Implement bounded retries against a deterministic sequence of simulated async responses.",
+  "summary": "A client talks to an unreliable service and receives a fixed sequence of simulated outcomes. Build the retry policy that decides when to return a result and when to stop. Implement bounded retries against a deterministic sequence of simulated async responses.",
   "durationMinutes": 30,
   "functionName": "retrySimulatedRequest",
   "requirements": [

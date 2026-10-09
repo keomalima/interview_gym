@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Check whether a sentence contains every letter A through Z.",
+  "summary": "A text editor can label a sentence as a pangram when it contains every English letter. Ignore case and non-letter characters when checking coverage. Check whether a sentence contains every letter A through Z.",
   "durationMinutes": 15,
   "functionName": "isPangram",
   "requirements": [

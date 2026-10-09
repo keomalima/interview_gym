@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Expand compact compass commands into individual moves.",
+  "summary": "A compact navigation string represents compass moves, with counts indicating repeated steps. Expand the encoded instructions into the ordered movement sequence. Expand compact compass commands into individual moves.",
   "durationMinutes": 20,
   "functionName": "expandCommands",
   "requirements": [

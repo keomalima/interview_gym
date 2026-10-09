@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Create an ordered roster grouping students by grade.",
+  "summary": "A school roster groups student names by grade and presents grades and names in a stable order. Build the requested roster from the enrollment records. Create an ordered roster grouping students by grade.",
   "durationMinutes": 25,
   "functionName": "gradeRoster",
   "requirements": [

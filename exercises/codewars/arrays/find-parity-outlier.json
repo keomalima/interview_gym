@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Find the only even or odd number in a list dominated by the other parity.",
+  "summary": "A sensor batch is expected to contain values of one parity, with one faulty reading of the other parity. Identify the outlier without assuming whether the majority is even or odd. Find the only even or odd number in a list dominated by the other parity.",
   "durationMinutes": 20,
   "functionName": "parityOutlier",
   "requirements": [

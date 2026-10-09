@@ -4,7 +4,7 @@
   "language": "typescript",
   "title": "Summarize API request logs",
   "eyebrow": "TypeScript · Data processing",
-  "summary": "Turn noisy request records into a concise reliability report for each route.",
+  "summary": "An operations team receives noisy request logs containing retries and query variants. Produce a route-level reliability report after deduplication, including request counts, 5xx error rates, and the specified latency percentile. Turn noisy request records into a concise reliability report for each route.",
   "durationMinutes": 30,
   "functionName": "summarizeRequests",
   "requirements": [

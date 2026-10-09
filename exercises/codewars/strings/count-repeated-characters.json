@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Count distinct characters that occur more than once, ignoring case.",
+  "summary": "A text-inspection tool reports how many different characters repeat in a string. Compare letters without regard to case, and count each repeated character once. Count distinct characters that occur more than once, ignoring case.",
   "durationMinutes": 15,
   "functionName": "countRepeatedCharacters",
   "requirements": [

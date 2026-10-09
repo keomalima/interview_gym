@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Return the number obtained by sorting its decimal digits in descending order.",
+  "summary": "A numeric utility rearranges the digits of a nonnegative integer to form the largest possible number. Return the resulting integer, keeping repeated digits. Return the number obtained by sorting its decimal digits in descending order.",
   "durationMinutes": 15,
   "functionName": "descendingDigits",
   "requirements": [

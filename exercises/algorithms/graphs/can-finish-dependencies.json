@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Determine whether dependency relationships allow every course to be completed.",
+  "summary": "A course planner receives prerequisite pairs where each pair says one course must be completed before another. Determine whether all courses can be completed without encountering a dependency cycle. Courses are numbered from zero.",
   "durationMinutes": 30,
   "functionName": "canCompleteCourses",
   "requirements": [

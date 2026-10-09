@@ -20,7 +20,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Group client tracking event types by their session identifiers.",
+  "summary": "A product analytics job groups tracking events by session identifier. Assemble each session’s event types while following the required order and handling records with missing identifiers as specified. Group client tracking event types by their session identifiers.",
   "durationMinutes": 20,
   "functionName": "groupEventsBySession",
   "requirements": [

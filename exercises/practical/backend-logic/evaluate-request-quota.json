@@ -23,7 +23,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Decide whether a new request fits a rate limit based on a supplied request log.",
+  "summary": "An API gateway evaluates whether a new request fits within a sliding-window quota. Use the supplied request history, current time, and limit to decide whether the request should be accepted. Decide whether a new request fits a rate limit based on a supplied request log.",
   "durationMinutes": 30,
   "functionName": "evaluateRequestQuota",
   "requirements": [

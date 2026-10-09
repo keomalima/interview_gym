@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Check whether two strings use exactly the same characters with identical counts.",
+  "summary": "A word-game helper needs to compare two lowercase words by their letter counts, regardless of letter order. Check whether two strings use exactly the same characters with identical counts.",
   "durationMinutes": 15,
   "functionName": "areAnagrams",
   "requirements": [

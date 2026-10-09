@@ -20,7 +20,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Compute shipping using subtotal and package weight.",
+  "summary": "A store quotes delivery based on both the cart subtotal and package weight. Select the applicable shipping tier and return the cost using the supplied thresholds and rules. Compute shipping using subtotal and package weight.",
   "durationMinutes": 20,
   "functionName": "shippingCostCents",
   "requirements": [

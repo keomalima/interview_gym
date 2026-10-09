@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Find the fewest intervals to delete so the rest do not overlap.",
+  "summary": "A room-booking calendar has several requested time slots, some of which conflict. The scheduler wants to keep as many bookings as possible. Find the fewest intervals to delete so the rest do not overlap.",
   "durationMinutes": 25,
   "functionName": "minIntervalsToRemove",
   "requirements": [

@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Find candidate words that are anagrams of a given word.",
+  "summary": "A word-game helper searches a candidate list for words made from exactly the same letters as a source word. Return matching candidates according to the exercise’s case and ordering rules. Find candidate words that are anagrams of a given word.",
   "durationMinutes": 20,
   "functionName": "findAnagrams",
   "requirements": [

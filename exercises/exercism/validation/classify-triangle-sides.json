@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Identify a triangle as equilateral, isosceles, scalene, or invalid.",
+  "summary": "A geometry helper classifies a triangle from three side lengths. Reject impossible side combinations, then distinguish equilateral, isosceles, and scalene triangles. Identify a triangle as equilateral, isosceles, scalene, or invalid.",
   "durationMinutes": 20,
   "functionName": "classifyTriangle",
   "requirements": [

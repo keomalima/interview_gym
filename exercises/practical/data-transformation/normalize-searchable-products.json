@@ -20,7 +20,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Transform raw products into consistent UI-friendly search records.",
+  "summary": "A catalog indexing job converts inconsistent raw product records into predictable search documents. Normalize the fields needed by the UI and apply the stated defaults and filtering rules. Transform raw products into consistent UI-friendly search records.",
   "durationMinutes": 20,
   "functionName": "normalizeProducts",
   "requirements": [

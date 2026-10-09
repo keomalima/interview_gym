@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Compute (1+...+n) squared minus (1²+...+n²).",
+  "summary": "A math practice tool compares two totals for the first n positive integers: the square of their sum and the sum of their individual squares. Return the difference using the requested formula. Compute (1+...+n) squared minus (1²+...+n²).",
   "durationMinutes": 15,
   "functionName": "differenceOfSquares",
   "requirements": [

@@ -23,7 +23,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Aggregate paid charges and refunds per customer, ignoring pending orders.",
+  "summary": "A finance report calculates each customer’s net order balance from payment and refund records. Include only the statuses defined as billable and aggregate amounts per customer. Aggregate paid charges and refunds per customer, ignoring pending orders.",
   "durationMinutes": 30,
   "functionName": "summarizeOrderBalances",
   "requirements": [

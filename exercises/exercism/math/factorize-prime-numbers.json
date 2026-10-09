@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Express an integer as a sorted list of prime factors with multiplicity.",
+  "summary": "A number-theory utility decomposes an integer into prime factors. Return the factors in ascending order, repeating a factor according to its multiplicity. Express an integer as a sorted list of prime factors with multiplicity.",
   "durationMinutes": 25,
   "functionName": "primeFactors",
   "requirements": [

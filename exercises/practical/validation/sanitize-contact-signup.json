@@ -21,7 +21,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Normalize and validate registration name/email fields.",
+  "summary": "A contact form accepts a name and email address that must be cleaned and checked before use. Normalize valid fields and report invalid input using the output contract defined by the exercise. Normalize and validate registration name/email fields.",
   "durationMinutes": 25,
   "functionName": "sanitizeSignup",
   "requirements": [

@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Find the size of the longest consecutive-number run regardless of input order.",
+  "summary": "A reporting job receives unsorted integer activity dates and needs the longest run of consecutive values. Return the run length without requiring the input to be sorted; duplicate values do not extend a run.",
   "durationMinutes": 25,
   "functionName": "longestConsecutive",
   "requirements": [

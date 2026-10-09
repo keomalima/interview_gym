@@ -20,7 +20,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Identify pairs of bookings overlapping in the same room.",
+  "summary": "A room scheduler checks bookings for time conflicts. Return pairs of bookings that overlap in the same room, applying the exercise’s interval boundary and output-order rules. Identify pairs of bookings overlapping in the same room.",
   "durationMinutes": 25,
   "functionName": "conflictingBookings",
   "requirements": [

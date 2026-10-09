@@ -20,7 +20,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Calculate a proportional monthly charge for the number of days used.",
+  "summary": "A subscription is canceled partway through a billing period, and support needs the unused portion of the monthly charge. Calculate the prorated amount from the charge and days used using the stated rounding policy. Calculate a proportional monthly charge for the number of days used.",
   "durationMinutes": 20,
   "functionName": "prorateMonthlyCharge",
   "requirements": [

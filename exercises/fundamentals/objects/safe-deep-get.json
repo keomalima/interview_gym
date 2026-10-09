@@ -21,7 +21,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Retrieve a nested value from JSON data using a dot-separated path.",
+  "summary": "A configuration reader accesses nested JSON-like objects using a dot-separated path. Return the value at that path safely when intermediate keys may be missing. Retrieve a nested value from JSON data using a dot-separated path.",
   "durationMinutes": 20,
   "functionName": "safeDeepGet",
   "requirements": [

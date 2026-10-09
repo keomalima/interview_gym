@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Map each DNA nucleotide to its complementary RNA nucleotide.",
+  "summary": "A biology utility transcribes a DNA strand into its complementary RNA sequence. Map each supported nucleotide according to the transcription table and preserve sequence length. Map each DNA nucleotide to its complementary RNA nucleotide.",
   "durationMinutes": 15,
   "functionName": "transcribeDna",
   "requirements": [

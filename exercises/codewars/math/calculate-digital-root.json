@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Add the decimal digits repeatedly until only one digit remains.",
+  "summary": "A checksum display repeatedly adds the decimal digits of a nonnegative integer until one digit remains. Return that final digit, including for an input that is already a single digit. Add the decimal digits repeatedly until only one digit remains.",
   "durationMinutes": 15,
   "functionName": "digitalRoot",
   "requirements": [

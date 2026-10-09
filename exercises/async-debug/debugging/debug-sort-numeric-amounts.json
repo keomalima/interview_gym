@@ -21,7 +21,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Fix a sorting function that orders numbers lexicographically.",
+  "summary": "A report ranks numeric amounts, but string-style sorting puts values such as 100 before 20. Correct the comparator so the result follows numeric order. Fix a sorting function that orders numbers lexicographically.",
   "durationMinutes": 15,
   "functionName": "sortNumericAmounts",
   "requirements": [

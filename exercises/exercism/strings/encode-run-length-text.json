@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Compress consecutive character runs by prefixing counts greater than one.",
+  "summary": "A text compressor replaces each consecutive run of identical characters with its count and character. Omit the count for runs of length one as specified. Compress consecutive character runs by prefixing counts greater than one.",
   "durationMinutes": 20,
   "functionName": "runLengthEncode",
   "requirements": [

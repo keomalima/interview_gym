@@ -21,7 +21,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Fetch simulated invoice lines concurrently and sum their totals.",
+  "summary": "An invoice service must fetch simulated line items for several accounts and calculate each account total. The independent lookups can run concurrently, while the returned report must remain deterministic. Fetch simulated invoice lines concurrently and sum their totals.",
   "durationMinutes": 20,
   "functionName": "sumAsyncInvoices",
   "requirements": [

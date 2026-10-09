@@ -21,7 +21,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Consolidate duplicate customer records using normalized email.",
+  "summary": "A CRM cleanup job finds duplicate contact records by normalized email and combines their information. Resolve conflicting fields and order the merged records according to the exercise rules. Consolidate duplicate customer records using normalized email.",
   "durationMinutes": 25,
   "functionName": "mergeCustomerContacts",
   "requirements": [

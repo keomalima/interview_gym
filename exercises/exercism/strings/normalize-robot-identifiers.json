@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Normalize robot identifiers and resolve duplicates deterministically.",
+  "summary": "A robotics fleet importer normalizes serial identifiers and resolves collisions in a deterministic way. Return the cleaned identifiers while retaining the required correspondence to input records. Normalize robot identifiers and resolve duplicates deterministically.",
   "durationMinutes": 25,
   "functionName": "normalizeRobotIds",
   "requirements": [

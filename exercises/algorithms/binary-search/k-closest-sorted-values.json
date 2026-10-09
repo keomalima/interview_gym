@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Return a sorted block of k values nearest to the target.",
+  "summary": "A sorted list is used to find the k values nearest to a target. Return those values in ascending order; when distances tie, prefer the smaller value. The input contains distinct values.",
   "durationMinutes": 30,
   "functionName": "kClosestSorted",
   "requirements": [

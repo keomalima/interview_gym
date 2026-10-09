@@ -20,7 +20,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Aggregate line-item revenue by region, using integer cents.",
+  "summary": "A sales dashboard groups line-item revenue by region. Calculate monetary totals in integer cents and return the regional summary in the required order and shape. Aggregate line-item revenue by region, using integer cents.",
   "durationMinutes": 20,
   "functionName": "salesByRegion",
   "requirements": [

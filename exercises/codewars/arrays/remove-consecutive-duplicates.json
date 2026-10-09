@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Remove only repeated adjacent values while preserving later occurrences.",
+  "summary": "A stream compressor should collapse repeated values only when they are adjacent. Keep later occurrences when the same value appears again after a different value. Remove only repeated adjacent values while preserving later occurrences.",
   "durationMinutes": 15,
   "functionName": "uniqueConsecutive",
   "requirements": [

@@ -20,7 +20,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Validate asynchronously resolved import rows, reporting valid and invalid indexes.",
+  "summary": "An import pipeline resolves rows asynchronously and validates them before accepting the batch. Collect valid and invalid row indexes so the caller can report every problem in one response. Validate asynchronously resolved import rows, reporting valid and invalid indexes.",
   "durationMinutes": 25,
   "functionName": "validateAsyncRows",
   "requirements": [

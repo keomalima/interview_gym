@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Pick the temperature numerically closest to zero.",
+  "summary": "A weather service reports several integer temperatures and needs the reading closest to zero. Apply the specified tie rule when equally close negative and positive values are present. Pick the temperature numerically closest to zero.",
   "durationMinutes": 15,
   "functionName": "closestTemperature",
   "requirements": [

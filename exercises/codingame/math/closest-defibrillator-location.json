@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Find the closest station to latitude/longitude coordinates by approximate geographic distance.",
+  "summary": "An emergency dispatch tool compares the caller’s coordinates with a list of defibrillator locations. Select the nearest station using the distance calculation defined by the exercise. Find the closest station to latitude/longitude coordinates by approximate geographic distance.",
   "durationMinutes": 25,
   "functionName": "closestStation",
   "requirements": [

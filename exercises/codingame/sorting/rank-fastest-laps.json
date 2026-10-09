@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Rank race participants by their lap times.",
+  "summary": "A race results page ranks competitors by their fastest lap. Sort the supplied lap records according to the stated timing and tie-breaking rules. Rank race participants by their lap times.",
   "durationMinutes": 20,
   "functionName": "rankLapTimes",
   "requirements": [

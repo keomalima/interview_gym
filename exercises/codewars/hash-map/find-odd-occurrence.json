@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Identify the integer occurring an odd number of times.",
+  "summary": "A reconciliation batch contains pairs of matching identifiers and one identifier with an odd count. Find the value that occurs an odd number of times. Identify the integer occurring an odd number of times.",
   "durationMinutes": 15,
   "functionName": "oddOccurrence",
   "requirements": [

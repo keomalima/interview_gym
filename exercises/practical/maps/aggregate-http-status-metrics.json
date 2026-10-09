@@ -20,7 +20,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Count HTTP responses by status-code family.",
+  "summary": "An operations dashboard summarizes HTTP responses by status-code family, such as 2xx or 5xx. Count the supplied responses and return the grouped metrics in the requested form. Count HTTP responses by status-code family.",
   "durationMinutes": 20,
   "functionName": "aggregateHttpStatuses",
   "requirements": [

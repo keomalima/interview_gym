@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Read a binary stream as seven-bit ASCII characters.",
+  "summary": "A diagnostics tool receives a stream split into seven-bit binary groups. Decode each group as its corresponding ASCII character and preserve character order. Read a binary stream as seven-bit ASCII characters.",
   "durationMinutes": 20,
   "functionName": "decodeBinaryAscii",
   "requirements": [

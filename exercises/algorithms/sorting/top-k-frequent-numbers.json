@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Return k distinct integers ordered by highest frequency.",
+  "summary": "A telemetry dashboard needs the k most common integer readings. Return distinct values ordered by descending frequency; when frequencies tie, place the smaller integer first. Return an empty array when k is zero or the input is empty.",
   "durationMinutes": 25,
   "functionName": "topKFrequent",
   "requirements": [

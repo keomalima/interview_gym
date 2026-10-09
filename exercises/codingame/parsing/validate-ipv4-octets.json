@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Parse dotted-decimal IPv4 text into four octets.",
+  "summary": "A network configuration form parses a dotted-decimal address into four octets. Validate the complete address and return the parsed values or the error behavior specified by the exercise. Parse dotted-decimal IPv4 text into four octets.",
   "durationMinutes": 20,
   "functionName": "parseIpv4",
   "requirements": [

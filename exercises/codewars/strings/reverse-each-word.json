@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Reverse the characters of each space-separated word independently.",
+  "summary": "A text editor needs to reverse each word independently while preserving the original spaces between words. Do not reverse the whole sentence as one string. Reverse the characters of each space-separated word independently.",
   "durationMinutes": 15,
   "functionName": "reverseWordsInPlace",
   "requirements": [

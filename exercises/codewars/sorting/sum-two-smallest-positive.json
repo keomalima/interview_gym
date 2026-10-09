@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Find the sum of the two smallest values in an array of positive integers.",
+  "summary": "A scoring helper receives positive integer values and needs the combined cost of its two cheapest entries. Return the sum without changing the original list. Find the sum of the two smallest values in an array of positive integers.",
   "durationMinutes": 15,
   "functionName": "sumTwoSmallest",
   "requirements": [

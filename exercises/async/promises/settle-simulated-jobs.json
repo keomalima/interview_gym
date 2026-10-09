@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Run a set of deterministic simulated asynchronous jobs and return every outcome in input order.",
+  "summary": "A dashboard starts several independent jobs at once. It needs a complete report even when some jobs fail, with each outcome attached to its original position. Run a set of deterministic simulated asynchronous jobs and return every outcome in input order.",
   "durationMinutes": 25,
   "functionName": "settleSimulatedJobs",
   "requirements": [

@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Classify numbers by the sum of their positive proper divisors.",
+  "summary": "A number-learning app classifies a positive integer by comparing it with the sum of its positive proper divisors. Return the category defined by that comparison. Classify numbers by the sum of their positive proper divisors.",
   "durationMinutes": 20,
   "functionName": "classifyPerfectNumber",
   "requirements": [

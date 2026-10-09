@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Remove every occurrence from the first array of any value found in the second.",
+  "summary": "A filtering utility receives a source list and a second list of values to exclude. Remove every source occurrence whose value appears in the exclusion list, preserving the order of retained entries. Remove every occurrence from the first array of any value found in the second.",
   "durationMinutes": 15,
   "functionName": "arrayDifference",
   "requirements": [

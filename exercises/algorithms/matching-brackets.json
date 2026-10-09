@@ -4,7 +4,7 @@
   "language": "javascript",
   "title": "Check matching brackets",
   "eyebrow": "JavaScript · Stacks",
-  "summary": "Decide whether a string of brackets is correctly paired and nested.",
+  "summary": "A lightweight parser needs to check whether bracket delimiters are properly nested before it processes an expression. Given a string containing round, square, and curly brackets, return whether every opener is closed by the matching type in the correct order; ignore all other characters.",
   "durationMinutes": 20,
   "functionName": "hasMatchingBrackets",
   "requirements": [

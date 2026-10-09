@@ -21,7 +21,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Produce a result record for every simulated async job, even failed ones.",
+  "summary": "A batch coordinator must report every asynchronous job, including rejected jobs, without letting one failure discard the rest. Keep each result aligned with the job’s input position. Produce a result record for every simulated async job, even failed ones.",
   "durationMinutes": 25,
   "functionName": "settleJobResults",
   "requirements": [

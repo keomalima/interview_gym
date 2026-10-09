@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Count the occurrences of A, E, I, O, U.",
+  "summary": "A simple text metric counts the occurrences of the five English vowel letters. Count each occurrence and treat uppercase and lowercase forms alike. Count the occurrences of A, E, I, O, U.",
   "durationMinutes": 15,
   "functionName": "countVowels",
   "requirements": [

@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Convert a nonempty binary string to a decimal integer.",
+  "summary": "A low-level parser converts a nonempty string of binary digits into its base-ten integer value. Follow the exercise’s rules for malformed input. Convert a nonempty binary string to a decimal integer.",
   "durationMinutes": 15,
   "functionName": "binaryToDecimal",
   "requirements": [

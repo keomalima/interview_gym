@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Find the common ancestor of two values in a binary search tree.",
+  "summary": "A binary search tree contains two requested values. Return the lowest node that is an ancestor of both values, allowing a node to be its own ancestor. Assume both values exist in the tree.",
   "durationMinutes": 25,
   "functionName": "lowestCommonAncestorValue",
   "requirements": [

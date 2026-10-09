@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Add one billion seconds to an ISO 8601 UTC timestamp.",
+  "summary": "An anniversary calculator adds exactly one billion seconds to a supplied ISO 8601 UTC timestamp. Return the resulting timestamp in the required format. Add one billion seconds to an ISO 8601 UTC timestamp.",
   "durationMinutes": 20,
   "functionName": "addGigasecond",
   "requirements": [

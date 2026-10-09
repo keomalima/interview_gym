@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Determine whether an integer array contains a repeated value.",
+  "summary": "A data import can contain the same identifier more than once. Given an array of integers, return whether any value appears at least twice; an empty or single-value array has no duplicate.",
   "durationMinutes": 15,
   "functionName": "hasDuplicates",
   "requirements": [

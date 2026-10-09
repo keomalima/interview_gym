@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Render a word by taking fixed-width glyphs from an ASCII alphabet grid.",
+  "summary": "A terminal banner renderer receives uppercase text and a fixed-width ASCII alphabet grid. Select the correct glyph slice for each character and join the glyphs into the rendered banner. Render a word by taking fixed-width glyphs from an ASCII alphabet grid.",
   "durationMinutes": 25,
   "functionName": "renderAsciiLetters",
   "requirements": [

@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Determine whether a word can be traced through adjacent grid cells.",
+  "summary": "A word game board is a grid of letters. Determine whether the requested word can be formed by moving to horizontally or vertically adjacent cells, using each cell at most once in a single trace. Do not allow diagonal moves.",
   "durationMinutes": 35,
   "functionName": "existsInGrid",
   "requirements": [

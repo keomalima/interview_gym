@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Count the longest consecutive run of days with zero rainfall.",
+  "summary": "A weather dashboard receives daily rainfall totals and wants the longest uninterrupted run of dry days. A day counts as dry when its rainfall is zero. Count the longest consecutive run of days with zero rainfall.",
   "durationMinutes": 15,
   "functionName": "longestDryStreak",
   "requirements": [

@@ -20,7 +20,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Process asynchronous balance operations in strict sequence.",
+  "summary": "A series of account operations depends on the balance produced by the previous operation. Apply each simulated asynchronous step in order and return the final account state. Process asynchronous balance operations in strict sequence.",
   "durationMinutes": 20,
   "functionName": "applyAsyncBalanceSteps",
   "requirements": [

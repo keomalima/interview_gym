@@ -20,7 +20,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Calculate outstanding balances from a list of invoice payments.",
+  "summary": "An accounting job applies payment records to invoices and calculates what remains outstanding. Match records using the supplied identifiers, aggregate payment amounts, and return balances in the defined order. Calculate outstanding balances from a list of invoice payments.",
   "durationMinutes": 25,
   "functionName": "reconcilePayments",
   "requirements": [

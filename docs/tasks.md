@@ -106,3 +106,8 @@ Advanced progress analytics, structured feedback, optional AI evaluation, and No
 - Interview hints now render from each selected exercise's persisted `hints_used` indexes, so switching tabs and refresh restore that exercise's hints without carrying another exercise's hint text.
 - Verification passed: `npm run exercises:validate` (150 exercises, all examples/tests), `npm run check`, `npm test` (163 tests), `npm run build`, `npm run verify:flow`, and `npm run verify:interview`. Build retains the existing large-chunk warning.
 - Production deployment `dpl_DurmXsiciLe8MEQwqZhhZECe4Yy3` is Ready at `https://interview-gym-dusky.vercel.app` (also aliased to `https://gym.keomalima.com`). The deploy was triggered by the GitHub `main` push. Interactive browser verification was not available in this session; the local browser inventory had no browser sessions.
+
+## Exercise descriptions — 2026-10-09
+- Expanded learner-facing problem statements for all 150 exercises with clearer context and goals. Existing exercise contracts and tests were retained.
+- Verified all 150 reference solutions with `npm run exercises:validate`; `npm run check`, `npm test` (163 tests), and `npm run build` passed. The build retains the existing large-chunk warning.
+- Updated and read back all 150 summaries on the production Neon branch. The discount exercise requirements were also synchronized. Existing sessions and attempts were not changed.

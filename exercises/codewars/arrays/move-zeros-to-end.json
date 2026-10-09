@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Return a new array with numeric zeros moved to the end while preserving other order.",
+  "summary": "A data pipeline needs to move placeholder zero values to the end of a list while keeping all real readings in their original order. Return a new array and leave the supplied one untouched. Return a new array with numeric zeros moved to the end while preserving other order.",
   "durationMinutes": 15,
   "functionName": "moveZerosToEnd",
   "requirements": [

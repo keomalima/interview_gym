@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Identify the MIME type of a filename from a configurable extension table.",
+  "summary": "A file service chooses a content type from a filename extension and a supplied lookup table. Match extensions according to the exercise rules and return the configured MIME type or fallback. Identify the MIME type of a filename from a configurable extension table.",
   "durationMinutes": 20,
   "functionName": "lookupMime",
   "requirements": [

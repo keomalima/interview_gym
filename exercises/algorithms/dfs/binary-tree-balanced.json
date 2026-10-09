@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Check that every node has left/right subtree depths differing by no more than one.",
+  "summary": "A service validates a binary tree before using it for indexed lookups. Return whether every node has left and right subtree heights that differ by at most one. An empty tree is balanced.",
   "durationMinutes": 25,
   "functionName": "isHeightBalanced",
   "requirements": [

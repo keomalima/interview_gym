@@ -21,7 +21,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Implement an in-memory endpoint-style product listing.",
+  "summary": "A product listing endpoint applies optional filters, sorts the matching products, and returns the requested page. Implement the complete in-memory transformation and pagination metadata as a pure function. Implement an in-memory endpoint-style product listing.",
   "durationMinutes": 30,
   "functionName": "listProducts",
   "requirements": [

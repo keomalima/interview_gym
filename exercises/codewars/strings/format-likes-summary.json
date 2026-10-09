@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Produce a grammatically correct message describing who liked an item.",
+  "summary": "A social feed turns a list of names into a short sentence about who liked a post. Handle the different wording needed for an empty list, one person, two people, and a longer list. Produce a grammatically correct message describing who liked an item.",
   "durationMinutes": 15,
   "functionName": "formatLikes",
   "requirements": [

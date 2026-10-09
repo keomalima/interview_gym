@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Remove English vowel letters from a string.",
+  "summary": "A text transformation removes English vowel letters from a sentence while preserving the order and spelling of all remaining characters. Remove English vowel letters from a string.",
   "durationMinutes": 15,
   "functionName": "removeVowels",
   "requirements": [

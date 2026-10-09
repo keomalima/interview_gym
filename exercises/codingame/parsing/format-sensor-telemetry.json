@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Convert semicolon-separated device measurements into structured records.",
+  "summary": "A sensor gateway receives semicolon-separated measurement lines and needs structured records for downstream processing. Parse each line and convert its fields according to the stated data format. Convert semicolon-separated device measurements into structured records.",
   "durationMinutes": 25,
   "functionName": "parseTelemetry",
   "requirements": [

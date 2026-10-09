@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Determine whether a digit string passes the Luhn checksum.",
+  "summary": "A payment form uses the Luhn checksum to catch common digit-entry errors. Validate the supplied identifier using the checksum rules and the input format described in the exercise. Determine whether a digit string passes the Luhn checksum.",
   "durationMinutes": 25,
   "functionName": "isLuhnValid",
   "requirements": [

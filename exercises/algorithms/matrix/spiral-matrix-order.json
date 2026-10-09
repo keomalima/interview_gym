@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Traverse all matrix cells clockwise, layer by layer.",
+  "summary": "A reporting tool needs to read a rectangular matrix clockwise from its outer edge toward the center. Return every value once in spiral order, including matrices with a single row or column.",
   "durationMinutes": 30,
   "functionName": "spiralOrder",
   "requirements": [

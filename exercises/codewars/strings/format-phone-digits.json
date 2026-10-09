@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Format exactly ten decimal digits into a standard phone number.",
+  "summary": "A signup form accepts a ten-digit phone number and needs a consistent display format. Convert the supplied digits to the expected formatted string. Format exactly ten decimal digits into a standard phone number.",
   "durationMinutes": 15,
   "functionName": "formatPhoneDigits",
   "requirements": [

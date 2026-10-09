@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Compute union, intersection and left difference for two integer collections.",
+  "summary": "A small collection library needs set operations over integer arrays. Produce the union, intersection, and left-side difference using the ordering and duplicate rules in the exercise. Compute union, intersection and left difference for two integer collections.",
   "durationMinutes": 25,
   "functionName": "setOperations",
   "requirements": [

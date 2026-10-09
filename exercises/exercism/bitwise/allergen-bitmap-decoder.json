@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Decode a bitmask into an ordered list of allergens.",
+  "summary": "A food-label service stores allergen flags in a numeric bitmask. Decode the active bits into the ordered allergen names defined by the exercise. Decode a bitmask into an ordered list of allergens.",
   "durationMinutes": 20,
   "functionName": "decodeAllergies",
   "requirements": [

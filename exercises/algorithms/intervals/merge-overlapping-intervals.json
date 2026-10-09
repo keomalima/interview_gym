@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Combine intersecting or touching time intervals into a minimal sorted list.",
+  "summary": "A booking service receives time intervals that may overlap or touch. Merge every intersecting or touching interval and return the minimal set in ascending start-time order. Each interval is represented by its start and end.",
   "durationMinutes": 25,
   "functionName": "mergeOverlappingIntervals",
   "requirements": [

@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "For each day, find how many days must pass until a strictly warmer day.",
+  "summary": "For each day in a temperature log, calculate how many days a user must wait for a strictly warmer reading. Return zero when no later day is warmer. The answer at each position must refer only to dates that follow it.",
   "durationMinutes": 25,
   "functionName": "nextWarmerDays",
   "requirements": [

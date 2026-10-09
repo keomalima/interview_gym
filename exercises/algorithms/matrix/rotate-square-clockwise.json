@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Rotate a square matrix 90 degrees clockwise.",
+  "summary": "A graphics routine must rotate an n-by-n matrix 90 degrees clockwise. Return the rotated matrix as a new value, preserving each row and leaving the input matrix unchanged.",
   "durationMinutes": 25,
   "functionName": "rotateMatrixClockwise",
   "requirements": [

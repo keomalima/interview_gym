@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Separate camelCase word boundaries with a single space.",
+  "summary": "A documentation tool converts a camelCase identifier into readable words by inserting a space at each lower-to-upper case boundary. Separate camelCase word boundaries with a single space.",
   "durationMinutes": 15,
   "functionName": "splitCamelCase",
   "requirements": [

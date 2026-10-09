@@ -21,13 +21,14 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Calculate subtotal, discount and total in integer cents.",
+  "summary": "A small online shop is adding a percentage promotion to its checkout. Given the cart's line items and a discount percentage, calculate the pre-discount subtotal, the amount taken off, and the amount the customer pays. Keep all monetary values in cents so the result does not depend on floating-point currency formatting.",
   "durationMinutes": 20,
   "functionName": "applyDiscount",
   "requirements": [
-    "Discount is a number from 0 to 100 inclusive.",
-    "Calculate the subtotal before the discount and round the final discounted total once using Math.round.",
-    "Return subtotalCents, discountCents and totalCents."
+    "Each line item has a quantity and a unit price in cents. The subtotal is the sum of quantity multiplied by unitCents for every line item.",
+    "Apply discountPercent to the subtotal. discountPercent is a number from 0 to 100 inclusive; 0 leaves the subtotal unchanged and 100 makes the total zero.",
+    "Round the discounted total once to the nearest whole cent using Math.round. Set discountCents to subtotalCents minus totalCents so the returned amounts always reconcile.",
+    "Return an object with subtotalCents, discountCents, and totalCents. An empty cart returns zero for all three amounts."
   ],
   "starterCode": "export function applyDiscount(lineItems: { quantity: number; unitCents: number }[], discountPercent: number) {\n  // Implement the behavior described in the brief.\n  throw new Error(\"Not implemented\");\n}\n",
   "hints": [

@@ -23,7 +23,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Validate an incoming signup payload without touching a database or an HTTP framework.",
+  "summary": "A registration endpoint needs predictable, safe input before it creates an account. Validate and normalize the supplied signup fields, returning the structured result and field errors defined by the exercise. Validate an incoming signup payload without touching a database or an HTTP framework.",
   "durationMinutes": 30,
   "functionName": "validateSignupData",
   "requirements": [

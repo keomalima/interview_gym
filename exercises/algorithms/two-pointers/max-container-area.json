@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Choose two vertical lines that hold the most water.",
+  "summary": "Two vertical lines and the x-axis form a container. Given line heights in position order, choose two lines that hold the greatest area; the container height is limited by the shorter line. Return the maximum area.",
   "durationMinutes": 25,
   "functionName": "maxContainerArea",
   "requirements": [

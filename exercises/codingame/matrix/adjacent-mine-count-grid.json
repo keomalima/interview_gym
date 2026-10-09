@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Produce mine counts for every empty square in a minesweeper board.",
+  "summary": "A minesweeper board needs a number in each empty cell showing how many mines touch it. Count neighboring cells in all eight directions while retaining the board’s dimensions and mine markers. Produce mine counts for every empty square in a minesweeper board.",
   "durationMinutes": 25,
   "functionName": "minesweeperNumbers",
   "requirements": [

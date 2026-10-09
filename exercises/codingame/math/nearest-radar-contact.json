@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Identify the point with the shortest Euclidean distance to the origin.",
+  "summary": "A radar display needs the contact closest to its center. Compare the supplied two-dimensional coordinates by distance from the origin and return the matching contact as specified. Identify the point with the shortest Euclidean distance to the origin.",
   "durationMinutes": 15,
   "functionName": "nearestRadarPoint",
   "requirements": [

@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Shift alphabetic characters by a fixed rotation while preserving other characters.",
+  "summary": "A text utility rotates alphabetic characters by a fixed offset, wrapping at the end of the alphabet. Preserve non-letter characters and letter case as described. Shift alphabetic characters by a fixed rotation while preserving other characters.",
   "durationMinutes": 20,
   "functionName": "rotateCipher",
   "requirements": [

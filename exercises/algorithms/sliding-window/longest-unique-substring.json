@@ -23,7 +23,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Find the length of the longest contiguous substring with no repeated characters.",
+  "summary": "A text analytics service needs the longest stretch of text without a repeated character. Given a string, return the length of its longest contiguous substring with all distinct characters. Treat characters exactly as supplied, including spaces and punctuation.",
   "durationMinutes": 25,
   "functionName": "longestUniqueSubstring",
   "requirements": [

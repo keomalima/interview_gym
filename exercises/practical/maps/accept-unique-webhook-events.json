@@ -20,7 +20,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Filter duplicate incoming webhook events by their unique identifier.",
+  "summary": "A webhook receiver may see the same event more than once after retries. Keep only the first accepted occurrence of each event ID while preserving the required input order. Filter duplicate incoming webhook events by their unique identifier.",
   "durationMinutes": 20,
   "functionName": "acceptWebhookEvents",
   "requirements": [

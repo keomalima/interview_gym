@@ -23,7 +23,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Count the number of node levels in a binary tree using breadth-first search.",
+  "summary": "A hierarchy is represented as a binary tree. Calculate its maximum depth, counting the root as level one and an empty tree as depth zero.",
   "durationMinutes": 25,
   "functionName": "maxTreeDepth",
   "requirements": [

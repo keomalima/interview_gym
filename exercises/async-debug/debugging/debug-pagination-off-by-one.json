@@ -20,7 +20,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Repair the one-based page offset in an existing paging helper.",
+  "summary": "A list endpoint uses page numbers starting at one, but its current offset skips or repeats records. Fix the paging calculation so each page covers the expected slice. Repair the one-based page offset in an existing paging helper.",
   "durationMinutes": 15,
   "functionName": "pageSlice",
   "requirements": [

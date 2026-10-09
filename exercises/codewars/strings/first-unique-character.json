@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Return the first original character that appears exactly once ignoring letter case.",
+  "summary": "A username checker needs the first character that appears exactly once. Find it in the original text while comparing character frequency without regard to case. Return the first original character that appears exactly once ignoring letter case.",
   "durationMinutes": 20,
   "functionName": "firstUniqueCharacter",
   "requirements": [

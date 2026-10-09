@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Split a string into pairs, padding the last pair if needed.",
+  "summary": "A protocol formatter divides text into consecutive two-character chunks. If the final chunk has only one character, pad it with the specified placeholder. Split a string into pairs, padding the last pair if needed.",
   "durationMinutes": 15,
   "functionName": "splitIntoPairs",
   "requirements": [

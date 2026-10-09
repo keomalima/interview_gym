@@ -21,7 +21,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Flatten an arbitrarily nested JSON array of numbers while preserving their left-to-right order.",
+  "summary": "A data import may contain numbers nested inside arrays of arbitrary depth. Flatten the structure into one array, keeping the original left-to-right order. Flatten an arbitrarily nested JSON array of numbers while preserving their left-to-right order.",
   "durationMinutes": 20,
   "functionName": "flattenNestedNumbers",
   "requirements": [

@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Find the maximum profit from buying once and selling later.",
+  "summary": "A trader may buy once and sell later using a sequence of daily prices. Return the greatest possible profit from one transaction; if no later sale can produce a gain, return zero. The buy must occur before the sale.",
   "durationMinutes": 20,
   "functionName": "maxSingleTradeProfit",
   "requirements": [

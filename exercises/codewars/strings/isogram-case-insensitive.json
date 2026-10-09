@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Check whether a word contains any repeating characters.",
+  "summary": "A word game awards a bonus for isograms, words with no repeated letters. Check for repeats without treating uppercase and lowercase versions as different characters. Check whether a word contains any repeating characters.",
   "durationMinutes": 15,
   "functionName": "isIsogram",
   "requirements": [

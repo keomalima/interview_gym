@@ -21,7 +21,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Normalize asynchronous record results while preserving input order.",
+  "summary": "A batch import resolves records asynchronously and then normalizes them for storage. Preserve the source order even when the individual operations complete in a different order. Normalize asynchronous record results while preserving input order.",
   "durationMinutes": 20,
   "functionName": "normalizeAsyncBatch",
   "requirements": [

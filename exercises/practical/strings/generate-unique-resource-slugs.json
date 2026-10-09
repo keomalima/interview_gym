@@ -21,7 +21,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Generate deterministic unique URL-friendly slugs from titles.",
+  "summary": "A publishing tool turns titles into URL-friendly slugs, but different titles can normalize to the same text. Generate deterministic unique slugs while following the collision rules in the exercise. Generate deterministic unique URL-friendly slugs from titles.",
   "durationMinutes": 25,
   "functionName": "makeUniqueSlugs",
   "requirements": [

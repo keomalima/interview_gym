@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Determine the fewest number of available coin denominations that sum to a target.",
+  "summary": "A vending system accepts a set of coin denominations and must make an exact amount with as few coins as possible. Return the minimum coin count, or -1 when the amount cannot be formed. You may use each denomination any number of times.",
   "durationMinutes": 30,
   "functionName": "minCoinsForAmount",
   "requirements": [

@@ -20,7 +20,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Fix an aggregation that remembers only the last amount per category.",
+  "summary": "A reporting helper should accumulate amounts for every category, but later records overwrite earlier totals. Repair the reducer to preserve and update each running sum. Fix an aggregation that remembers only the last amount per category.",
   "durationMinutes": 20,
   "functionName": "sumTotalsByCategory",
   "requirements": [

@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Encode the seven-bit ASCII binary representation of text into unary runs.",
+  "summary": "A legacy device accepts text encoded as seven-bit ASCII and then represented with unary bit groups. Convert the input text through both encoding steps and return the protocol string. Encode the seven-bit ASCII binary representation of text into unary runs.",
   "durationMinutes": 25,
   "functionName": "unaryEncode",
   "requirements": [

@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Validate an ISBN-10 identifier, allowing hyphens as separators.",
+  "summary": "A catalog import checks ISBN-10 values, which may include hyphens for readability. Validate the identifier using its checksum and accepted character rules. Validate an ISBN-10 identifier, allowing hyphens as separators.",
   "durationMinutes": 25,
   "functionName": "isValidIsbn10",
   "requirements": [

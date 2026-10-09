@@ -4,7 +4,7 @@
   "language": "typescript",
   "title": "Calculate token-usage costs",
   "eyebrow": "TypeScript · Business logic",
-  "summary": "Turn raw model usage into a customer-facing cost report. Prices below are fictional and supplied for this exercise.",
+  "summary": "A usage dashboard converts model token counts into a customer-facing cost report using the fictional per-model rates supplied in this exercise. Account for cached input separately, aggregate by model, and report integer cents. Turn raw model usage into a customer-facing cost report. Prices below are fictional and supplied for this exercise.",
   "durationMinutes": 25,
   "functionName": "calculateTokenCosts",
   "requirements": [

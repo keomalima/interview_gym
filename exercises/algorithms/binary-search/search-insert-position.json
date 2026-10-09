@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Find where a target belongs in a sorted list of unique integers.",
+  "summary": "A sorted list of unique integers needs a stable insertion point for a target value. Return the target index when present, otherwise the index where inserting it would keep the list sorted. The result may equal the list length.",
   "durationMinutes": 20,
   "functionName": "searchInsertPosition",
   "requirements": [

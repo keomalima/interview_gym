@@ -23,7 +23,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Count groups of orthogonally connected land cells in a rectangular character grid.",
+  "summary": "A mapping service receives a rectangular grid where \"1\" marks land and \"0\" marks water. Count the separate islands, where land connects only vertically or horizontally; diagonal contact does not join regions. Do not modify the supplied grid.",
   "durationMinutes": 30,
   "functionName": "countGridIslands",
   "requirements": [

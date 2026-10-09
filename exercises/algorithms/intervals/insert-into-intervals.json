@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Insert an interval into a sorted list of nonoverlapping intervals.",
+  "summary": "A calendar stores sorted, nonoverlapping intervals and receives one new interval. Insert it in the correct position, merging every interval that overlaps or touches it, and return a sorted list without changing the original input.",
   "durationMinutes": 25,
   "functionName": "insertInterval",
   "requirements": [

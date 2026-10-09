@@ -20,7 +20,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Use a fallback value if a simulated asynchronous primary lookup fails.",
+  "summary": "A settings page first requests a preferred value and falls back when that simulated lookup rejects. Return the successful primary value when available, otherwise the supplied fallback. Use a fallback value if a simulated asynchronous primary lookup fails.",
   "durationMinutes": 25,
   "functionName": "resolveAsyncFallback",
   "requirements": [

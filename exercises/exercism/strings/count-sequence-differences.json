@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Count the positions at which two equally sized strings differ.",
+  "summary": "A lab tool compares two equally sized sequences and counts positions that contain different characters. Return the number of mismatches without changing either string. Count the positions at which two equally sized strings differ.",
   "durationMinutes": 15,
   "functionName": "hammingDistance",
   "requirements": [

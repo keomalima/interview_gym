@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Find the shortest part of a string containing every required character, including duplicates.",
+  "summary": "A search feature must find the shortest excerpt containing every required character, including repeated characters. Given a source string and a target string, return the shortest qualifying contiguous substring, or an empty string if none exists. When several answers have the same length, return the one that appears first.",
   "durationMinutes": 35,
   "functionName": "minimumCoveringWindow",
   "requirements": [

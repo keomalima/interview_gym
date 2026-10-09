@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Return the smallest absolute difference between two horse power ratings.",
+  "summary": "A race organizer compares horse power ratings and wants the closest pair for a fair matchup. Return the smallest absolute difference between any two supplied strengths. Return the smallest absolute difference between two horse power ratings.",
   "durationMinutes": 20,
   "functionName": "minimumStrengthGap",
   "requirements": [

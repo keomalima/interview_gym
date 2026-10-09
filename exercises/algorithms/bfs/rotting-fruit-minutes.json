@@ -22,7 +22,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Find the number of minutes for rot to spread from rotten fruit to adjacent fresh fruit.",
+  "summary": "A storage grid contains empty cells, fresh fruit, and initially spoiled fruit. Each minute, spoiled fruit affects fresh fruit directly above, below, left, or right. Return the minutes needed for all fruit to spoil, or -1 if some fresh fruit can never be reached.",
   "durationMinutes": 30,
   "functionName": "minutesUntilRotten",
   "requirements": [

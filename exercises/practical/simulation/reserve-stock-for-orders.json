@@ -20,7 +20,7 @@
   ],
   "exerciseType": "function",
   "prerequisites": [],
-  "summary": "Allocate inventory in order arrival sequence.",
+  "summary": "An order service receives more requests than the warehouse may be able to fulfill. Allocate available inventory in arrival order and report which quantities each order can reserve. Allocate inventory in order arrival sequence.",
   "durationMinutes": 30,
   "functionName": "allocateStock",
   "requirements": [
